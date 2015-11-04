@@ -1,0 +1,27 @@
+10 June 2008
+Due to errors caused by no valid Faculty ID assigned to the "Test" account [i.e. no valid numFacultyId [table name: tblFaculty] assigned to this supervisor, a test faculty was inserted into the strFacultyName field in tblFaculty.
+C.Lee
+
+-------------
+
+8 July 2008
+Following the Faculty restructure effective 1 July 2008, these changes were made:
+
+FASS changes
+i) "Faculty of Engineering" renamed to become "Faculty of Engineering and Information Technology".
+ii) "Faculty of Information Technology" deleted, as no records exist.
+
+FEIT changes
+iii) "Faculty of Education" renamed to become "Faculty of Arts and Social Sciences".  Also changed all references in tblQORA to numFacultyId = 5 (i.e. HSS) to become 3 (FASS) as these are NOT autonumber / autoupdated fields.
+iv) All Supervisors within the "Humanities and Social Sciences" faculty (Dimitri Mazin and Michelle Murch) were moved over to the "Faculty of Arts and Social Sciences" entry.
+v) "Institute for International Studies" deleted, as no records exist.
+C.Lee
+
+-------------
+
+9 April 2014
+Corrections to names of faculties/units in tblFaculty:
+	Faculty of Business to UTS Business School
+	International Office to UTS International
+	Exhibition and Events to Marketing and Communication Unit
+	ISF to Institute for Sustainable Futures

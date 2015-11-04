@@ -1,0 +1,251 @@
+<%@Language = VBscript%>
+<!--#INCLUDE FILE="DbConfig.asp"-->
+<%
+If Trim(Session("strLoginId")) = "" Then
+Response.Redirect("Invalid.asp")
+End If
+%>
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en-au">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<link rel="stylesheet" type="text/css" href="orr.css" media="screen" />
+<title>Save SWMS</title>
+</head>
+<%
+
+'******************** code to fetch the values from the Create QORA Form **************************************
+
+testval = request.form("hdnQORAID")
+//Job Steps
+strT4 = Request.form("T4")
+temp = instr(1,strT4,"'",vbTextCompare)
+      if temp <> 0 then 
+         strT4 = Replace(strT4,"'","''",1)
+      end if
+
+'*************************Database connectivity Code***********************************************************
+
+Dim conn
+Dim rsAdd
+Dim conn2
+
+'Database Connectivity Code 
+  set conn = Server.CreateObject("ADODB.Connection")
+  conn.open constr
+ 
+  ' setting up the recordset
+'***************************Insert into database**************************************************************
+   
+   strSql = "Update tblQORA set strJobSteps = '"&strT4&"', boolSWMSRequired = true where numQORAId = "&testval
+   set rsAdd = Server.CreateObject("ADODB.Recordset")
+  rsAdd.Open strSQL, conn, 3, 3
+  
+%>
+<body>
+<div id="wrapper">
+  <div id="content">
+    <h1 class="pagetitle">SWMS <%=testval%> has been updated successfully</h1>
+	
+	  </div>
+</div>
+</body>
+<!-- **************************************New Code that displays search results afer adding -->
+<%
+
+
+numFacilityId = request.form("hdnFacilityId")
+numFacilityId= cint(numFacilityId)
+
+dim rsShow
+dim rsShowHeader
+dim date_d
+dim date_m
+dim date_y
+dim dtRdate
+
+%>
+
+<%
+numFacilityId = request.form("hdnFacilityId")
+numFacilityId= cint(numFacilityId)
+'response.write(val)
+
+'Database Connectivity Code 
+  set conn = Server.CreateObject("ADODB.Connection")
+  conn.open constr
+
+dim cnt 
+cnt = 1000000
+while cnt <> 0
+  cnt = cnt - 1
+wend
+' SQL for required report
+'AA jan 2010 fix relationship changed:
+'strSQL = "SELECT DISTINCT (strFacultyName), strBuildingName, strCampusName, strRoomName, strRoomNumber , strFacilitySupervisor"_
+'AA Feb 2010 use relationship QORA:FACILITY:BUILDING:CAMPUS
+  strSQL = "SELECT DISTINCT (strFacultyName), strBuildingName, strCampusName, strRoomName, strRoomNumber , numFacilitySupervisorID"_
+&" FROM tblQORA, tblCampus, tblBuilding, tblFacility, tblFaculty "_
+&" WHERE tblQORA.numFacilityId=tblFacility.numFacilityId And tblQORA.numFacultyId=tblFaculty.numFacultyId And tblBuilding.numCampusId=tblCampus.numCampusId And "_ 
+&" tblFacility.numBuildingId=tblBuilding.numBuildingId And tblQORA.numFacilityId= "& numFacilityId &" "_
+&" ORDER BY strFacultyName, strCampusName, strBuildingname, strRoomName "
+  
+ set rsShowHeader = Server.CreateObject("ADODB.Recordset")
+   'response.write(strSQL)
+   rsShowHeader.Open strSQL, conn, 3, 3 
+   
+  dim supId 
+   dim supName
+   'AA jan 2010 fix relationship altered
+   'supId = rsShowHeader("strFacilitySupervisor")
+   supId = rsShowHeader("numFacilitySupervisorID")
+    set rsFs = Server.CreateObject("ADODB.Recordset")
+    'AA jan 2010 fix relationship altered
+    'rsFs.Open "Select * from tblFacilitySupervisor where strLoginId = '"& supId &"'", conn, 3, 3  
+    rsFs.Open "Select * from tblFacilitySupervisor where numSupervisorID = "& supId &"", conn, 3, 3  
+   
+   supName = cstr(rsFs("strGivenName"))+ " " + cstr(rsFs("strSurName")) 
+
+'SQL designed using Access query by DLJ
+
+strSQL = "SELECT tblQORA.numQORAId, tblQORA.strTaskDescription, tblQORA.strHazardsDesc, tblQORA.dtReview, "_
+&" tblQORA.strControlRiskDesc, tblQORA.boolSWMSRequired, tblRiskLevel.strRiskLevel, "_ 
+&" tblRiskLevel.numGrade, tblQORA.boolFurtherActionsSWMS, tblQORA.boolFurtherActionsChemicalRA, "_
+&" tblQORA.boolFurtherActionsGeneralRA, tblQORA.strText, tblQORA.strDateActionsCompleted, tblQORA.numFacilityID, "_
+&" tblQORA.dtDateCreated "_
+&" FROM tblRiskLevel INNER JOIN tblQORA ON tblRiskLevel.strRiskLevel = tblQORA.strAssessRisk "_
+&" WHERE (tblQORA.numFacilityID = "& numFacilityId &" ) ORDER BY tblRiskLevel.numGrade, tblQORA.strTaskDescription"
+
+
+ set rsShow = Server.CreateObject("ADODB.Recordset")
+   'response.write(strSQL)
+   rsShow.Open strSQL, conn, 3, 3  
+
+'********************************edit the code up here for checking the    
+if rsShow.EOF <> true then 
+%>
+<div id="wrapper">
+
+<div id="content">
+
+<table class="suprreportheader">
+      
+    <tr>    		
+    		<td class="campus">
+    		<strong>Campus: </strong><%=rsShowHeader("strCampusName")%>&nbsp;&nbsp;&nbsp;</td>
+    		<td class="campus" colspan="3"><strong>Building: </strong><%=rsShowHeader("strBuildingName")%>&nbsp;&nbsp;&nbsp;
+    		<strong>Room Name: </strong><%=rsShowHeader("strRoomName")%>&nbsp;&nbsp;&nbsp;</td>
+    		<td class="campus" colspan="3"><strong>Room Number: </strong><%=rsShowHeader("strRoomNumber")%>&nbsp;&nbsp;&nbsp;
+    		</td>
+  		</tr>
+  		<tr>
+  			<td class="campus">
+  			<strong>Supervisor: </strong><%=supName%>&nbsp;&nbsp;&nbsp;</td>
+  			<td class="campus" colspan="6"><strong>Faculty: </strong><%=rsShowHeader("strFacultyName")%>&nbsp;&nbsp;&nbsp;
+  			</td>		
+  		<tr>
+ </table>
+     
+<table class="suprlevel" style="width: 100%;">
+		<thead>
+        <tr>
+    		<th class="haztaskresult">Task</th>
+    		<th class="assochazards">Hazards</th>
+    		<th class="currentcontrols">Current Controls</th>
+    		<th class="risklevel">Risk Level</th>
+    		<th class="furtheraction">Proposed Controls</th>
+    		<th class="renewaldate">Review Date</th>
+    		<th class="swms">SWMS</th>
+  		</tr>
+		</thead>
+      <caption>
+		To edit a risk assessment, click on its title under the &quot;Hazardous Task&quot; heading.
+      </caption>
+
+
+<% 
+   while not rsShow.EOF 
+   dtRDate = dateAdd("yyyy",2,rsShow("dtDateCreated"))
+%>
+
+        <tr>
+    	<td><a target="Operation" title="Click to edit this Risk Assessment." href="EditQORA.asp?numCQORAId= <%=rsShow("numQORAId")%> "><%=rsShow("strtaskDescription")%></a></td>
+    	<td><%=rsShow("strHazardsDesc")%></td>
+    	<td><%
+          
+          testval = rsShow("numQORAId")
+           	'here we need to populate the textarea with any existing controls we can locate
+        	set connControls = Server.CreateObject("ADODB.Connection")
+  			connControls.open constr
+			' setting up the recordset
+   			strControls ="Select * from tblRiskControls where numQORAId = "&testval&" and boolImplemented"
+  			set rsControls = Server.CreateObject("ADODB.Recordset")
+        	rsControls.Open strControls, connControls, 3, 3
+        	strControlsImplemented =""
+        	while not rsControls.EOF 
+         		strControlsImplemented = strControlsImplemented +rsControls("strControlMeasures")& "<br/>"
+     		' get the next record
+           rsControls.MoveNext
+     		wend 
+     	  
+     	  %>
+     	  
+     	<%=strControlsImplemented%>
+          
+       </td>
+    	<td><center><%=Escape(rsShow("strRiskLevel"))%></center></td>
+       <td><%
+          
+          testval = rsShow("numQORAId")
+           	'here we need to populate the textarea with any existing controls we can locate
+        	set connControls = Server.CreateObject("ADODB.Connection")
+  			connControls.open constr
+			' setting up the recordset
+   			strControls ="Select * from tblRiskControls where numQORAId = "&testval&" and not boolImplemented"
+  			set rsControls = Server.CreateObject("ADODB.Recordset")
+        	rsControls.Open strControls, connControls, 3, 3
+        	strControlsImplemented =""
+        	while not rsControls.EOF 
+         		strControlsImplemented = strControlsImplemented +rsControls("strControlMeasures")& "<br/>"
+     		' get the next record
+           rsControls.MoveNext
+     		wend 
+     	   %>
+     	  
+     	<%=strControlsImplemented%>
+          
+       </td>
+   <!-- <td><center><%=dtRDate%></center></td> -->
+   <td><center><%=rsShow("dtReview")%></center></td>
+
+    <td><center>
+	<% If rsShow("boolSWMSRequired") = true Then %>
+		<form method="post" action="SWMS.asp">
+		<input type="submit" value="SWMS" name="btnSWMS" />
+		<input type="hidden" name="hdnQORAId" value="<%=rsShow("numQORAId")%>" />
+		<input type="hidden" name="hdnNoSaveBeforeSWMS" value="nosave"/>
+		</form>
+	<% End if%>
+	</center></td>
+  </tr>        
+
+
+               
+
+  <% 
+    rsShow.Movenext
+  wend
+  %>
+</table>
+</div>
+
+<%else%>
+<p>There are currently no Risk Assessments for this facility!</p>
+<%end if%>
+</body>
+</html>
+</body>
+
+</html>

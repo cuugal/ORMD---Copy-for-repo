@@ -1,0 +1,6 @@
+Error Type:
+Microsoft JET Database Engine (0x80004005)
+The changes you requested to the table were not successful because they would create duplicate values in the index, primary key, or relationship. Change the data in the field or fields that contain duplicate data, remove the index, or redefine the index to permit duplicate entries and try again.
+
+
+If you get this error anywhere within the application, please delete ALL entries from tblQORATemp.  What is happening is the cached entries from search are in the temp table, and for some reason the application has crashed before it can delete them.

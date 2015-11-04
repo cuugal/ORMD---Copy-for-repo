@@ -1,0 +1,5 @@
+To move a RA from one location to another, edit tblQORA.
+
+Change the numFacilityID number to to the new FacilityID (found in tblFacility).
+
+If from facility to Operation then make the value NULL and the operation from NUL to the numOperationID of that person (found in tblOperations)

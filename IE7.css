@@ -1,0 +1,348 @@
+#tab-navigation-wrapper {
+width: 100%;
+background: #072b38 url(images/topbg.gif) top left repeat-x;
+}
+
+#tab-navigation {
+height:182px;
+background: transparent url(images/navigation_bg.gif) top left repeat-x;
+width: 100%;
+min-width: 660px;
+max-width: 900px;
+}
+
+#tab-nav {
+height: 37px;
+color: #0078cc;
+font-size: 10px;
+line-height: 1.7em;
+}  
+
+#tab-nav span {
+text-transform: none;
+}
+
+#tab-nav .lowercase {
+text-transform: lowercase;
+font-weight: bold;}
+
+#tab-nav ul {
+position: absolute; 
+margin: 0; 
+padding: 0; 
+list-style: none;
+}
+
+#tab-nav ul li {
+background: none; 
+float: left;
+margin: 0 2px 0 2px;
+}
+
+#tab-nav ul li.tab-env, 
+#tab-nav ul li.tab-erg, 
+#tab-nav ul li.tab-pla, 
+#tab-nav ul li.tab-ele,
+#tab-nav ul li.tab-chm,
+#tab-nav ul li.tab-bio,
+#tab-nav ul li.tab-rad,
+#tab-nav ul li.tab-ele {
+position: absolute;
+padding-top: 15px;
+}
+
+#tab-nav ul li.blank-group {
+position: absolute;
+margin: 0;
+}
+
+#tab-nav ul li.tab-env {
+margin-left: 5px;
+}
+#tab-nav ul li.tab-erg {
+margin-left:110px ;
+}
+#tab-nav ul li.tab-pla {
+margin-left:255px ;
+}
+#tab-nav ul li.tab-ele {
+margin-left: 312px;
+}
+#tab-nav ul li.tab-chm {
+margin-left: 410px;
+}
+#tab-nav ul li.tab-bio {
+margin-left: 494px;
+}
+#tab-nav ul li.tab-rad {
+margin-left: 596px;
+}
+
+#tab-nav ul li.tab-env a:link, 
+#tab-nav ul li.tab-env a:visited, .envon{
+width:100px;
+}
+#tab-nav ul li.tab-erg a:link, 
+#tab-nav ul li.tab-erg a:visited, .ergon{
+width:140px;
+}
+#tab-nav ul li.tab-pla a:link, 
+#tab-nav ul li.tab-pla a:visited , .plaon{
+width:53px;
+}
+#tab-nav ul li.tab-ele a:link, 
+#tab-nav ul li.tab-ele a:visited, .eleon {
+width:92px;
+}
+#tab-nav ul li.tab-chm a:link, 
+#tab-nav ul li.tab-chm a:visited, .chmon {
+width:79px;
+}
+
+#tab-nav ul li.tab-bio a:link, 
+#tab-nav ul li.tab-bio a:visited, .bioon{
+width:97px;
+}
+
+#tab-nav ul li.tab-rad a:link, 
+#tab-nav ul li.tab-rad a:visited, .radon {
+width:88px;
+}
+
+
+
+#tab-nav ul li.tab-elim, 
+#tab-nav ul li.tab-admin, 
+#tab-nav ul li.tab-ppa, 
+#tab-nav ul li.tab-emer {
+position: absolute;
+padding-top: 15px;
+}
+
+#tab-nav ul li.tab-elim {
+margin-left: 5px;
+}
+#tab-nav ul li.tab-admin {
+margin-left: 240px;
+}
+#tab-nav ul li.tab-ppa {
+margin-left: 475px;
+}
+#tab-nav ul li.tab-emer {
+margin-left: 630px;
+}
+
+
+/************/
+#tab-nav ul li.tab-elim a:link, 
+#tab-nav ul li.tab-elim a:visited, .elimon {
+/* width: auto; */
+width:230px;
+}
+
+#tab-nav ul li.tab-admin a:link, 
+#tab-nav ul li.tab-admin a:visited, .adminon {
+/* width: auto; */
+width:230px;
+}
+
+#tab-nav ul li.tab-ppa a:link, 
+#tab-nav ul li.tab-ppa a:visited, .ppaon {
+/* width: auto; */
+width:150x;
+}
+
+#tab-nav ul li.tab-emer a:link, 
+#tab-nav ul li.tab-emer a:visited, .emeron {
+/* width: auto; */
+width:150px;
+}
+
+#tab-nav ul li.tab-bio a:link, 
+#tab-nav ul li.tab-bio a:visited, 
+#tab-nav ul li.tab-pla a:link, 
+#tab-nav ul li.tab-pla a:visited, 
+#tab-nav ul li.tab-env a:link, 
+#tab-nav ul li.tab-env a:visited, 
+#tab-nav ul li.tab-erg a:link, 
+#tab-nav ul li.tab-erg a:visited, 
+#tab-nav ul li.tab-chm a:link, 
+#tab-nav ul li.tab-chm a:visited,
+#tab-nav ul li.tab-ele a:link, 
+#tab-nav ul li.tab-ele a:visited,
+#tab-nav ul li.tab-rad a:link, 
+#tab-nav ul li.tab-rad a:visited{
+display: block;
+text-align: center;
+padding: 2px 0 2px 0;
+color: #000;
+font-weight: bold;
+text-transform: uppercase;
+text-decoration: none;
+cursor: pointer;
+height: 40px;
+background: #0099CC url(images/nav.gif) bottom right no-repeat;
+border-left: 2px solid #000;
+}
+
+#tab-nav ul li.tab-bio a:hover, 
+#tab-nav ul li.tab-bio a:active, 
+#tab-nav ul li.tab-pla a:hover, 
+#tab-nav ul li.tab-pla a:active, 
+#tab-nav ul li.tab-env a:hover, 
+#tab-nav ul li.tab-env a:active, 
+#tab-nav ul li.tab-erg a:hover, 
+#tab-nav ul li.tab-erg a:active,
+#tab-nav ul li.tab-chm a:hover, 
+#tab-nav ul li.tab-chm a:active,
+#tab-nav ul li.tab-ele a:hover, 
+#tab-nav ul li.tab-ele a:active,
+#tab-nav ul li.tab-rad a:hover, 
+#tab-nav ul li.tab-rad a:active,
+#tab-nav ul li.tab-bio a:link.bioon, 
+#tab-nav ul li.tab-bio a:visited.bioon, 
+#tab-nav ul li.tab-pla a:link.plaon, 
+#tab-nav ul li.tab-pla a:visited.plaon, 
+#tab-nav ul li.tab-env a:link.envon, 
+#tab-nav ul li.tab-env a:visited.envon, 
+#tab-nav ul li.tab-erg a:link.ergon, 
+#tab-nav ul li.tab-erg a:visited.ergon,
+#tab-nav ul li.tab-chm a:link.chmon, 
+#tab-nav ul li.tab-chm a:visited.chmon,
+#tab-nav ul li.tab-ele a:link.eleon, 
+#tab-nav ul li.tab-ele a:visited.eleon,
+#tab-nav ul li.tab-rad a:link.radon, 
+#tab-nav ul li.tab-rad a:visited.radon{
+color: #fff; 
+border: none; 
+background: none; 
+/* padding: 4px 0 7px 0; */
+padding: 0 0 7px 0;
+background: #09c url(images/tabs_active_corner2.gif) top right no-repeat;
+border-left: 1px solid #fff;
+position: absolute;
+margin-top: 2px;
+}
+
+#tab-nav ul li.tab-elim a:link, 
+#tab-nav ul li.tab-elim a:visited,
+#tab-nav ul li.tab-admin a:link, 
+#tab-nav ul li.tab-admin a:visited,
+#tab-nav ul li.tab-ppa a:link, 
+#tab-nav ul li.tab-ppa a:visited,
+#tab-nav ul li.tab-emer a:link, 
+#tab-nav ul li.tab-emer a:visited{
+display: block;
+text-align: center;
+padding: 2px 0 2px 0;
+color: #000;
+font-weight: bold;
+text-transform: uppercase;
+text-decoration: none;
+cursor: pointer;
+height: 40px;
+background: #0099CC url(images/nav.gif) bottom right no-repeat;
+border-left: 2px solid #000;
+margin-top:2px;
+}
+
+#tab-nav ul li.tab-elim a:hover, 
+#tab-nav ul li.tab-elim a:active,
+#tab-nav ul li.tab-admin a:hover, 
+#tab-nav ul li.tab-admin a:active,
+#tab-nav ul li.tab-ppa a:hover, 
+#tab-nav ul li.tab-ppa a:active,
+#tab-nav ul li.tab-emer a:hover, 
+#tab-nav ul li.tab-emer a:active,
+#tab-nav ul li.tab-elim a:link.elimon, 
+#tab-nav ul li.tab-elim a:visited.elimon,
+#tab-nav ul li.tab-admin a:link.adminon, 
+#tab-nav ul li.tab-admin a:visited.adminon,
+#tab-nav ul li.tab-ppa a:link.ppaon, 
+#tab-nav ul li.tab-ppa a:visited.ppaon,
+#tab-nav ul li.tab-emer a:link.emeron, 
+#tab-nav ul li.tab-emer a:visited.emeron{
+color: #fff; 
+border: none; 
+background: none; 
+padding: 0px 0 7px 0;
+background: #09c url(images/tabs_active_corner2.gif) top right no-repeat;
+border-left: 1px solid #fff;
+position: absolute;
+ margin-top: 1px; 
+}
+
+/******* FIXED GROUP NAVIGATION *******/
+
+#tab-nav ul .section_list ul #groups, 
+#tab-nav ul .section_list ul .groups {
+height: 101px;
+/* background: #09c url(images/groups_bg.gif) top left no-repeat; */
+}
+
+#group0, #group1, #group2, #group3, #group4,#group5,#group6,#groupc0,#groupc1,#groupc2,#groupc3 {
+position: absolute; 
+padding-top: 10px; 
+margin: 38px 0 0 0; 
+width: 970px; 
+height: 81px; 
+/* background: #09c url(http://www.uts.edu.au/images/css/groups_bg.gif) top left no-repeat; */
+}
+
+.groups ul {
+margin: 0;
+padding: 5px 0px 10px 0;
+/* width: 657px; */
+width: 100%;
+text-transform: none;
+line-height: 1em;
+list-style-type: none;
+
+min-width: 657px;
+max-width: 897px;
+}
+
+.groups ul li {
+float: left; 
+width: 160px; 
+padding: 5px 15px 0 10px; 
+margin-left: 3px; 
+font-size:10px;
+background: transparent url(images/link_dot.gif) top left no-repeat;
+}
+
+.groups ul li a:link, 
+.groups ul li a:visited {
+padding-left: 15px; 
+color: #fff; 
+/* letter-spacing: 0.5px; */
+background: transparent url(images/link_dot.gif) top left no-repeat; 
+margin-left: 0;
+font-weight: bold;
+}
+
+.groups ul li a:hover, 
+.groups ul li a:active {
+color: #8ae2ff; 
+background: transparent url(images/link_dot_active.gif) top left no-repeat;
+}
+
+.groups ul li#current_section a {
+background: transparent url(images/link_dot_active.gif) top left no-repeat;
+}
+
+.groups ul li#current_section a:link, 
+.groups ul li#current_section a:visited {
+color: #fff;
+}
+
+
+.groups ul li.current a {
+background: transparent url(images/link_dot_active.gif) top left no-repeat;
+}
+
+.groups ul li.current a:link, 
+.groups ul li.current a:visited {
+color: #fff;
+}
+

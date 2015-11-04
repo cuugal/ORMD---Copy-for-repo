@@ -1,0 +1,3 @@
+Make sure the permissions of the DB are correct
+
+right click>properties>security>users>modify and write checked

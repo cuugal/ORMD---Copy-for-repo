@@ -1,0 +1,33 @@
+17Apr2007 
+DLJ fixed function in searchResultsFromMenu.asp on advice of http://classicasp.aspfaq.com/general/how-do-i-prevent-invalid-use-of-null-errors.html
+to prevent null error
+
+
+6-7June2007
+
+Problem: when a supervisor-login is allocated to a new facility there is an error.
+
+Solution: Discovered that some code in Supervisor login was using the field tblQORA.strSupervisor, which is not updated by system. Changed references from this redundant field to tblFacility.strFacilitySupervisor. Did this in SupReport, SupRDateModified and SupRDateModified-print.asp.
+
+
+
+7June2007
+
+Problem: Error is returned when supervisor-login tries to return list of risk assessments from multiple locations in My Risk Assessments.
+
+Solution: Added ConfirmChoice function to SupReport to make sure a single location is selected.
+Changed button on form from "Generate Report" to "Generate Facility Report"
+Changed default dropdown value from "Select All" to "Select Facility".
+
+
+Could have changed code to allow to return a list of multiple locations, but the purpose of this search is to look at individual facilities.
+
+Removed hypertext links from supervisor report. 
+Removed sorting from supervisor report because it interfered with styling of the column headings.
+
+10July2007 
+DLJ fixed function in searchResultsFromMenuPrint.asp same problem as in searchResultsFromMenu.asp - on advice of http://classicasp.aspfaq.com/general/how-do-i-prevent-invalid-use-of-null-errors.html
+fixed a null error
+
+13July2007
+Edited EditQORA.asp to make hazards and controls in menus same as is in cqoraSup.asp
