@@ -1,41 +1,33 @@
-<%@Language = VBscript%>
-<!--#INCLUDE FILE="DbConfig.asp"-->
+ 
 <%
 If Trim(Session("strLoginId")) = "" Then
 Response.Redirect("Invalid.asp")
 End If
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
 <%dim loginId
 loginId = session("strLoginId")%>
 
 <%'******* Getting the login information for display on the menu bar *****
   dim rsSearchLogin
-  dim strName
-  dim strSQL
-  dim Conn
+  dim strNameLogin
+  dim strSQLLogin
+  dim ConnLogin
   
   'Database Connectivity Code 
-  set conn = Server.CreateObject("ADODB.Connection")
-  conn.open constr
-  strSQL = "Select strGivenName,strSurname "_
+  set connLogin = Server.CreateObject("ADODB.Connection")
+  connLogin.open constr
+  strSQLLogin = "Select strGivenName,strSurname "_
   &" from tblfacilitySupervisor"_
   &" where tblFacilitySupervisor.strLoginId = '"& loginId &"'" 
   
   set rsSearchLogin = server.CreateObject("ADODB.Recordset")
-  rsSearchLogin.Open strSQL, Conn, 3, 3
-  strName = cstr(rsSearchLogin(0)) + " " + cstr(rsSearchLogin(1))  
+  rsSearchLogin.Open strSQLLogin, ConnLogin, 3, 3
+  strNameLogin = cstr(rsSearchLogin(0)) + " " + cstr(rsSearchLogin(1))  
 %>
 
 
 
-<head>
- <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
- <meta http-equiv="Content-Language" content="en-au" />
- <link rel="stylesheet" type="text/css" href="orr.css" media="all" />
- <title>Online Risk Register - Administration Menu</title>
  <script type="text/javascript">
 <!--
 
@@ -101,17 +93,15 @@ if (da && !pr && !mac) with (document) {
 }
 // -->
 </script>
-<base target="bottom" />
-</head>
 
-<body>
+
 
 <div id="wrapper">
 <div id="content">
 
 <h1 class="pagetitle">Online Risk Register - Administration Menu</h1>
 <div class="topframe">
- You are logged in as <strong><%=strName%></strong><br />
+ You are logged in as <strong><%=strNameLogin%></strong><br />
  </div>
  <div class="loginlist">
  <ul>
@@ -129,5 +119,3 @@ if (da && !pr && !mac) with (document) {
 
 </div><!-- close the content DIV -->
 </div><!-- close the wrapper div -->
-</body>
-</html>

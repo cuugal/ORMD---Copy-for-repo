@@ -113,7 +113,7 @@ function formfocus() {
 
 <div id="wrapper">
 
-<div id="orrheading"><h1>Online Risk Register for Facilities and Operations / Projects</h1><img src="http://www.uts.edu.au/images/css/utslogo.gif" alt="UTS" width="132" height="30" style="border: none; vertical-align: middle; float: right; " /><font size="1" color="gray">V1.3</font></div>
+<div id="orrheading"><h1>Online Risk Register for Facilities and Operations / Projects</h1><img src="http://www.uts.edu.au/images/css/utslogo.gif" alt="UTS" width="132" height="30" style="border: none; vertical-align: middle; float: right; " /><font size="1" color="gray">V2.0</font></div>
 <!-- Version 1.3 30 June 2011 -->
 
 <%'*********************Login component********************************************************%>
@@ -167,7 +167,7 @@ If  rsAccess2.eof then
   		session("strName") = strName
 		
 		if rsAccess2("strAccessLevel") ="A" then
-		   Response.Redirect "indexLoggedAdmin.htm"
+		   Response.Redirect "indexLoggedAdmin.asp"
 		elseif rsAccess2("strAccessLevel") ="S" then
 		   Response.Redirect "indexLoggedSupervisor.htm"
 		   elseif rsAccess2("strAccessLevel") ="D" then

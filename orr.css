@@ -250,6 +250,9 @@ body#printpreview { width: 100%; color: #000; background-color: #fff; font-famil
 
 /* SPECIFIC ORMD STYLING STARTS HERE */
 /* 19/6/2006 - add a DidYouKnow-style to the Search menu box */
+
+/* clashes with bootstrap*/
+/*
 div.container {
 left: 0;
 width: 60%;
@@ -276,12 +279,10 @@ font-weight: 320;
 font-size: 10pt; 
 color: #000;
 background-color: #fff;
-/* border-top: none; 
-border-bottom: none; 
-border-left: solid 1px #bcd7de; 
-border-right: solid 1px #bcd7de;  */
+
 border: none; 
 }
+    */
 
 /* Menu.asp styling */
 #table3 .login { padding: 3px; color: #000; text-align: right; font-weight: 500; }
@@ -389,7 +390,7 @@ background-color: #EDF4F6; color: #0083B3; border-bottom: 1px solid #eee; margin
 #mainleft ul li a:hover, #maincenter ul li a:hover, #mainright ul li a:hover { background-color: #f8e9ad; text-decoration: none; margin-bottom: 3px;border-bottom: 1px solid #eee;}
 
 /* Styles the Administration functions */
-table.adminfn { margin: 0; padding: 0; width: 55%; background-color: #edf4f6; color: #000; border-collapse: separate; border: solid 1px #bcd7de; }
+table.adminfn { margin: 0; padding: 0; width: 100%; background-color: #edf4f6; color: #000; border-collapse: separate; border: solid 1px #bcd7de; border-top:none; }
 .adminfn hr { background-color: #bcd7de; color: #bcd7de; height: 1px; border: 0; margin-top: 10px; margin-bottom: 10px; }
 .adminfn th { text-align: right; /* width: 30%; */ font-size: 10pt; font-weight: 100; color: #000; background-color: #edf4f6; padding: 3px; }
 .adminfn td { color: #000; background-color: #edf4f6; padding: 3px; text-align: left; }
@@ -397,6 +398,10 @@ table.adminfn { margin: 0; padding: 0; width: 55%; background-color: #edf4f6; co
 .adminfn input[type="password"],
 .adminfn input[type="text"],
 .adminfn select { font-size: 10pt; font-weight: normal; border: solid 1px #ffcf00; text-align: left; margin: 3px; color: #000; background-color: #f8e9ad; }
+/* End of Administration functions styling */
+
+/* Styles the Administration functions */
+ul.adminfn { margin: 0; padding: 0; width: 55%; background-color: #edf4f6; color: #000; border-collapse: separate; border: solid 1px #bcd7de; }
 /* End of Administration functions styling */
 
 
