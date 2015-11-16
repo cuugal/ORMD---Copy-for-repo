@@ -9,7 +9,7 @@
 <title>Online Risk Management Database System</title>
     <!--#include file="bootstrap.inc"--> 
 </head>
-<body>
+    <body>
 
 <!--#include file="adminMenu.asp" -->
 <!--#include file="searchQORA.asp"--> 

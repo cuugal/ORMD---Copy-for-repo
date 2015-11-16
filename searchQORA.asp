@@ -46,6 +46,7 @@
               document.MenuLocation.submit();
           }
           function FillDetailsOperation(numFacultyId, strSuperv) {
+              $("#opsFacultyId").val(numFacultyId);
               // Fire off the request to /form.php
               request = $.ajax({
                   url: "AJAXSearch.asp",
@@ -53,15 +54,22 @@
                   data: "mode=" + "MenuOperation&numFacultyId="+numFacultyId+"&strSuperv="+strSuperv,
                   async: false,
                   success: function (data) {
-                      var obj = jQuery.parseJSON(data);
-                      var newOptions = obj.result;
-                      var $el = $("#cboOperation");
-                      $el.empty(); // remove old options
-                      $el.append($("<option></option>").attr("value", 0).text("Select any one"));
-                      $.each(newOptions, function (value, key) {
-                          $el.append($("<option></option>")
-                             .attr("value", value).text(key));
-                      });
+                      var jsonResult;
+                      try {
+                          var obj = jQuery.parseJSON(data);
+                          var newOptions = obj.result;
+                          var $el = $("#cboOperation");
+                          $el.empty(); // remove old options
+                          $el.append($("<option></option>").attr("value", 0).text("Select any one"));
+                          $.each(newOptions, function (value, key) {
+                              $el.append($("<option></option>")
+                                 .attr("value", value).text(key));
+                          });
+                      }
+                      catch (e) {
+                          window.location.href = "/index.asp";
+                      };
+                      
                   }
               });
           }
@@ -72,7 +80,8 @@
           function clearform() {
               var str
               str = "SearchQORA.asp";
-              window.location.replace(str);
+              //window.location.replace(str);
+              location.reload();
           }
 
           function ChangeType(val) {
@@ -80,6 +89,9 @@
               //console.log(document.Form2.QORAtype.value);
 
           }
+
+          function fillSearch() {
+          }2
 
       </script>
 
@@ -381,19 +393,14 @@
                                     if numFacultyID = "" then
                                        numFacultyID = 0
                                     end if %>
-                                 <select size="1" name="cboFacultyOperation" tabindex="1" onchange="javascript:FillDetailsOperation(this.value, '<%=strsuperV%>')">
-                                    <option value="0"
-                                       <% if numFacultyID = 0 then
-                                          response.Write "Select any one"
-                                          end if %>>Select any one</option>
+                                 <select size="1" autocomplete="off"  name="cboFacultyOperation" tabindex="1" onchange="javascript:FillDetailsOperation(this.value, '<%=strsuperV%>')">
+                                    <option value="0" " >Select any one</option>
                                     <%rsFillFac.MoveFirst
                                        while not rsFillFac.Eof 
                                                'DLJ put this if statement in 22 Jan 2010 - is this OK?
                                                if rsFillFac("boolActive")= True Then %>
                                     <option value="<%=rsFillFac("NumFacultyID")%>"
-                                       <% if rsFillFac("NumFacultyID") = numFacultyID Then
-                                          response.Write "selected"
-                                          end if %>><%=cstr(rsFillFac("strFacultyName"))%></option>
+                                      ><%=cstr(rsFillFac("strFacultyName"))%></option>
                                     <% End If
                                        rsFillFac.Movenext	
                                        wend 
@@ -409,7 +416,7 @@
                            <input type="hidden" name="hdnHazardousTask" value="<%=strHazardousTask%>" />
                            <input type="hidden" name="hdnBuildingId" value="<%=numBuildingId%>" />
                            <input type="hidden" name="hdnCampusID" value="<%=numCampusId%>" />
-                           <input type="hidden" name="hdnFacultyId" value="<%=numFacultyId%>" />
+                           <input type="hidden" name="hdnFacultyId" id="opsFacultyId" value="<%=numFacultyId%>" />
                            <input type="hidden" name="cboFaculty" value="<%=cboFacultyOperation%>" />
                            <input type="hidden" name="searchType" value="operation" />
                            <tr>

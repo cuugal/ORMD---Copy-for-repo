@@ -1,8 +1,3 @@
-<%@Language = VBscript%>
-<!--#INCLUDE FILE="DbConfig.asp"-->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <%
 ' Any changes made in this page should also be made in the searchResultsFromMenuPrint.asp
 
@@ -35,27 +30,7 @@ End Function
 
 
 %>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<meta http-equiv="Content-Language" content="en-au" />
-<!-- Generic Metadata -->
-<meta name="description" content="The Online Risk Register of the University of Technology, Sydney." />
-<meta name="keywords" content="online,risk,register,environment,health,safety,ehs,assessment,database,branch,ohs,occupational,university,technology,sydney,australia
- hazards,first,aid,oms,online,management,system,responsibilities,legal" />
-<meta name="author" content="Safety and Wellbeing, University of Technology, Sydney" />
-<!-- Dublin Core Metadata -->
-<meta name="dc.title" content="Online Risk Register - Safety and Wellbeing, University of Technology, Sydney" />
-<meta name="dc.subject" content="risk,register,assessment,environment,health,safety,ehs,branch,ohs,occupational,university,technology,sydney,human,resources,unit,hru,australia
- hazards,oms,online,management,system" />
-<meta name="dc.description" content="The Online Risk Register of the University of Technology, Sydney." />
-<meta name="dc.identifier" scheme="URL" content="http://www.ehs.uts.edu.au" />
-<meta name="dc.creator" content="Safety and Wellbeing, University of Technology, Sydney" />
-<meta name="dc.creator.Address" content="safetyandwellbeing@uts.edu.au" />
-<meta name="dc.language" scheme="RFC1766" content="en" />
-<meta name="dc.publisher" content="Safety and Wellbeing, University of Technology, Sydney" />
-<title>Search UTS Risk Assessment Results</title>
-<base target="Menu" />
-<link rel="stylesheet" type="text/css" href="orr.css" media="all" />
+
 <script type="text/javascript" src="sorttable.js"></script>
 <script type="text/javascript">
 function ChangeType(val)
@@ -65,8 +40,7 @@ function ChangeType(val)
 
 }
 </script>
-</head>
-<body>
+
 <%
 ' Code copied from searchResultsFromMenu.asp to add header to main page instead of top frame
 
@@ -619,18 +593,18 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
   </tr>
   <% 
   	if tFaci <> rsFaculty("numFacilityID") or  tOper <> rsFaculty("numOperationID") or first_time then
-   		%> </body></table>  <%  
+   		%> </table>  <%  
     end if 
    rsFaculty.Movenext
   wend
     %>
 <!--</table>-->
-</body>
+
 </div>
 <!-- close content -->
 </div>
 <!-- close wrapper -->
-</html>
+
 <%set rsClear = Server.CreateObject("ADODB.Recordset")
 rsClear.Open "delete from tblQORATemp", conn, 3, 3 
 end if%>

@@ -1,8 +1,4 @@
-<%@Language = VBscript%>
-<!--#INCLUDE FILE="DbConfig.asp"-->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
 <%
 
 dim loginVal
@@ -28,16 +24,11 @@ Escape = strReturn
 End Function
 %>
 
-<head>
- <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
- <meta http-equiv="Content-Language" content="en-au" />
- <link rel="stylesheet" type="text/css" href="orr.css" media="all" />
- <title>Online Risk Register - Search UTS Risk Assessment Results</title>
-<base target="Menu" />
+
 <script type="text/javascript" src="sorttable.js"></script>
 
-</head>
-<body>
+
+
 
 <div id="wrapper">
  <div id="content">
@@ -170,6 +161,7 @@ if(searchType = "operation") then
 	strSQL = strSQL+" and tblQORA.numOperationID = tblOperations.numOperationID"
 	strSQL = strSQL+" and tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel"
 	strSQL = strSQL+ " Order by tblQORA.strSupervisor, tblRiskLevel.numGrade, tblQORA.strTaskDescription "
+    'Response.write(strSQL)
 end if
 
 
@@ -281,7 +273,7 @@ while not rsSearch.Eof
    &" '"& strTaskDescription &"')"
    
    '&" "& rsSearch("numFacilityId")  &","_
-   
+   'Response.write(SQLInsert)
 set rsTest = Server.CreateObject("ADODB.Recordset")
 rsTest.Open SQLInsert, conn, 3, 3 
   
@@ -482,18 +474,18 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
   </tr>
   <% 
     if tFaci <> rsFaculty("numFacilityId") or tOper <> rsFaculty("numOperationID") or first_time then
-   		%> </body></table>  <%  
+   		%> </table>  <%  
     end if     
  rsFaculty.Movenext
  wend
     %>
 
-</body>
+
 </div>
 <!-- close content -->
 </div>
 <!-- close wrapper -->
-</html>
+
 <%
 set rsClear = Server.CreateObject("ADODB.Recordset")
 rsClear.Open "delete from tblQORATemp", conn, 3, 3 
