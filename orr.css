@@ -4,7 +4,7 @@
 .suprreportheader td, .suprreportheader th { padding: 5px 25px 5px 5px; background-color: #e8ede4; color: #000; vertical-align: middle; }
 .suprreportheader th {background-color: #dfe4db; color: #000; vertical-align: middle; font-weight: bold;}
 
-a:link{color:#445c2c; text-decoration:none;}
+a:link{color:#445c2c; /* text-decoration:none; */}
 a:hover{text-decoration:underline;}
 strong{color:#63db04;}
 
