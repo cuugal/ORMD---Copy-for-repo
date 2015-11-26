@@ -92,7 +92,7 @@ You are logged in as <strong><%=strName%></strong>
 	<div class="loginlist">
 	 <ul>
 	   <li><a  href="LocationSup.asp" title="Create a new Risk Assessment">Create Risk Assessment</a></li>
-	   <li><a href="indexLoggedSupervisor.asp" title="View the Risk Assessments for your facility/facilities">My Risk Assessments</a></li>
+	   <li><a href="IndexSupervisor.asp" title="View the Risk Assessments for your facility/facilities">My Risk Assessments</a></li>
 	   <!--li><a target="Operation" href="help.htm">Help</a></li-->
 	   <!--<li><a target="_top" href="menu.asp" title="Online Risk Register homepage">Home</a></li>-->
 	   <li><a target="_top" href="logout.asp" title="Log out of the Risk Register">Logout</a></li>

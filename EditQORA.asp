@@ -256,7 +256,7 @@ Dim strSurname
    
    %>
 
-  <div id="wrapper">
+  <div id="wrapperform">
   <div id="content">
 
   <table width = 82%>

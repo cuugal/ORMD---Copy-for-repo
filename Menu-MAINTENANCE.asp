@@ -168,11 +168,11 @@ If  rsAccess2.eof then
   		session("strName") = strName
 		
 		if rsAccess2("strAccessLevel") ="A" then
-		   Response.Redirect "indexLoggedAdmin.htm"
+		   Response.Redirect "indexAdmin.htm"
 		elseif rsAccess2("strAccessLevel") ="S" then
-		   Response.Redirect "indexLoggedSupervisor.htm"
+		   Response.Redirect "indexSupervisor.htm"
 		   elseif rsAccess2("strAccessLevel") ="D" then
-		   Response.Redirect "indexLoggedDD.htm"
+		   Response.Redirect "indexDD.htm"
 		end if   
 		
 	else

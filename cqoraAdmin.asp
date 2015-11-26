@@ -122,7 +122,8 @@ div#forcontrols li:hover ul, div#forcontrols li li:hover ul, div#forcontrols li.
 
 </head>
 <body>
-<div id="wrapper">
+    <!--#include file="adminMenu.asp" -->
+<div id="wrapperform ">
   <div id="content">
     <!-- new code starts here-->
     <%

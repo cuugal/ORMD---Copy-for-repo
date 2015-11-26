@@ -117,11 +117,11 @@ If  rsAccess2.eof then
 
 
         if rsAccess2("strAccessLevel") ="A" then
-		   Response.Redirect "indexLoggedAdmin.asp"
+		   Response.Redirect "IndexAdmin.asp"
 		elseif rsAccess2("strAccessLevel") ="S" then
-		   Response.Redirect "indexLoggedSupervisor.asp"
+		   Response.Redirect "IndexSupervisor.asp"
 		   elseif rsAccess2("strAccessLevel") ="D" then
-		   Response.Redirect "indexLoggedDD.asp"
+		   Response.Redirect "IndexDD.asp"
 		end if 
 
 	else

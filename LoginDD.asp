@@ -41,14 +41,14 @@ If  rsAccess.eof then
 		'elseif rsAccess("strAccessLevel") ="S" then
 		 '  Response.Redirect "indexLoggedSupervisor.htm"
 		  ' elseif rsAccess("strAccessLevel") ="D" then
-		   Response.Redirect "indexLoggedDD.htm"
+		   Response.Redirect "IndexDD.htm"
 		'end if   
 	else
 		'msg = "The password for " + strLoginID + " was not correct, please try again. Please contact administrator if you need a new Password"
 		'Response.Write(msg)%>
 		 <script type="text/javascript">
-           alert("Invalid username or password - please try again.")
-         </script>
+		   alert("Invalid username or password - please try again.")
+		 </script>
    <%
 	end if
 end if

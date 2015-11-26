@@ -53,7 +53,7 @@ Dim strSQL
 </head>
 
 <body link="#000000" vlink="#000000" alink="#000000">
-
+    <!--#include file="adminMenu.asp" -->
 <table border="0" width="750" style="border-collapse: collapse" id="table3" height="51">
 	<tr>
 		<td width="20" height="30">

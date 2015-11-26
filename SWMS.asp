@@ -117,7 +117,7 @@ end if
 <body>
 <title>EHS Risk Register for Facilities - Edit a Risk Assessment</title>
 
-<div id="wrapper">
+<div id="wrapperform">
   <div id="content">	
   <table width = 80%>
      	<tr>

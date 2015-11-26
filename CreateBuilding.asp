@@ -55,7 +55,7 @@ function ConfirmChoice()
 </head>
 
 <body>
-
+    <!--#include file="adminMenu.asp" -->
 <div id="wrapper">
  <div id="content">
 

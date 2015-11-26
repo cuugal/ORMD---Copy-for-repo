@@ -92,11 +92,11 @@ if (da && !pr && !mac) with (document) {
  </div>
  <div class="loginlist">
  <ul>
- <li><a target="Operation" href="LocationAdmin.asp" title="Create a new Risk Assessment">Create Risk Assessment</a></li>
-  <li><a target="Operation" href="searchQORA.asp" title="Search the Online Risk Register">Search Risk Assessments</a></li>
+ <li><a href="LocationAdmin.asp" title="Create a new Risk Assessment">Create Risk Assessment</a></li>
+  <li><a href="IndexAdmin.asp" title="Search the Online Risk Register">Search Risk Assessments</a></li>
   
   <li></li>
-  <li><a target="Operation" href="admin.asp" title="Perform administration on the Online Risk Register">Administration Functions</a></li>
+  <li><a href="admin.asp" title="Perform administration on the Online Risk Register">Administration Functions</a></li>
  <!-- <li><a target="Operation" href="MyQoraAdmin.asp" title="&lsquo;My RAs&rsquo;">My RAs</a></li>
   <li><a target="Operation" href="help.htm" title="View the documentation for the Online Risk Register">Help</a></li>
   <li><a target="_top" href="menu.asp" title="Go to the home page of the Online Risk Register">Home</a></li>-->
