@@ -21,7 +21,7 @@
 	<br/>
 		<h1> You have been logged out</h1>
 		<br/>
-		<h5> <a href="index.htm" rel="nofollow" target="_top">Back to Home page</a></h5>
+		<h5> <a href="menu.asp" rel="nofollow" target="_top">Back to Home page</a></h5>
 	<br/>
 	<br/>
 	</td></tr>

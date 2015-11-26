@@ -217,6 +217,8 @@ div#forcontrols li:hover ul, div#forcontrols li li:hover ul, div#forcontrols li.
 
 </head>
 <body>
+    <!--#include file="SupervisorMenu.asp" -->
+
 <form method="post" action="ok.asp" name="Form1" onSubmit="return ConfirmChoice();">
   <input type="hidden" name="hdnBuildingId" value="<%=numBuildingID%>" />
   <input type="hidden" name="hdnCampusId" value="<%=numCampusID%>" />

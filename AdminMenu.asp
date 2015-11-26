@@ -9,26 +9,13 @@ End If
 loginId = session("strLoginId")%>
 
 <%'******* Getting the login information for display on the menu bar *****
-  dim rsSearchLogin
-  dim strNameLogin
-  dim strSQLLogin
-  dim ConnLogin
-  
-  'Database Connectivity Code 
-  set connLogin = Server.CreateObject("ADODB.Connection")
-  connLogin.open constr
-  strSQLLogin = "Select strGivenName,strSurname "_
-  &" from tblfacilitySupervisor"_
-  &" where tblFacilitySupervisor.strLoginId = '"& loginId &"'" 
-  
-  set rsSearchLogin = server.CreateObject("ADODB.Recordset")
-  rsSearchLogin.Open strSQLLogin, ConnLogin, 3, 3
-  strNameLogin = cstr(rsSearchLogin(0)) + " " + cstr(rsSearchLogin(1))  
+
+    dim strNameLogin
+    strNameLogin = session("strName")
+
 %>
 
-
-
- <script type="text/javascript">
+<script type="text/javascript">
 <!--
 
 function ChangeResults(page){
@@ -96,7 +83,7 @@ if (da && !pr && !mac) with (document) {
 
 
 
-<div id="wrapper">
+<div id="wrappertop">
 <div id="content">
 
 <h1 class="pagetitle">Online Risk Register - Administration Menu</h1>
@@ -112,7 +99,7 @@ if (da && !pr && !mac) with (document) {
   <li><a target="Operation" href="admin.asp" title="Perform administration on the Online Risk Register">Administration Functions</a></li>
  <!-- <li><a target="Operation" href="MyQoraAdmin.asp" title="&lsquo;My RAs&rsquo;">My RAs</a></li>
   <li><a target="Operation" href="help.htm" title="View the documentation for the Online Risk Register">Help</a></li>
-  <li><a target="_top" href="homepage.asp" title="Go to the home page of the Online Risk Register">Home</a></li>-->
+  <li><a target="_top" href="menu.asp" title="Go to the home page of the Online Risk Register">Home</a></li>-->
   <li><a target="_top" href="logout.asp" title="Log out of the Online Risk Register">Logout</a></li>
  </ul>
 </div>

@@ -179,13 +179,16 @@ textarea {
 optgroup {
   font-weight: bold;
 }
+
 table {
-  border-spacing: 0;
+ /* border-spacing: 0; */
   border-collapse: collapse;
 }
+    
+
 td,
 th {
-  padding: 0;
+  /* padding: 0; */
 }
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
@@ -1173,6 +1176,7 @@ hr {
 [role="button"] {
   cursor: pointer;
 }
+/*
 h1,
 h2,
 h3,
@@ -1288,6 +1292,8 @@ h6,
 .h6 {
   font-size: 12px;
 }
+
+    */
 p {
   margin: 0 0 10px;
 }

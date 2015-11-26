@@ -18,12 +18,12 @@ function ConfirmChoice()
 { 
   if ((document.Form1.cboFacultyName.value == "0") ) 
   {
-      alert ("Please select a Faculty/Unit to proceed!");
+	  alert ("Please select a Faculty/Unit to proceed!");
 	   return(false);
 	}
   else if ((document.Form1.cboSupervisor.value != "0") && (document.Form2.cboFacility.value =="0"))
   {
-      alert ("Please select both a supervisor and their respective facility.");
+	  alert ("Please select both a supervisor and their respective facility.");
 	   return(false);
   }	
   
@@ -57,7 +57,7 @@ function FillFaculty()
    '*********************Setting up the database connectivity***********
   set Conn = Server.CreateObject("ADODB.Connection")
   Conn.open constr %>
-        
+		
 
  <%  '------------------------get the faculty for the login ---------------
  ' strSQL = "Select * "_
@@ -98,32 +98,32 @@ function FillFaculty()
   rsSearchFaculty.Open strSQL, Conn, 3, 3 %>
 				
 <th>
-      <% numFacultyID = cint(request.form("cboFacultyName"))
-      if numFacultyID = "" then
-       numFacultyID = 0
-        end if %>
+	  <% numFacultyID = cint(request.form("cboFacultyName"))
+	  if numFacultyID = "" then
+	   numFacultyID = 0
+		end if %>
 Faculty/Unit:</th>
 <td>
-    <select size="1" name="cboFacultyName" onchange="javascript:FillFaculty()">
-    <option value="0"
-         <% if numFacultyID = 0 then
+	<select size="1" name="cboFacultyName" onchange="javascript:FillFaculty()">
+	<option value="0"
+		 <% if numFacultyID = 0 then
 				 response.Write "select any one"
 			end if %>>Select any one</option>
-             <%while not rsSearchFaculty.Eof%>
-             <option value="<%=rsSearchFaculty("NumFacultyID")%>"
-        <% if rsSearchFaculty("NumFacultyID") = numFacultyID then
+			 <%while not rsSearchFaculty.Eof%>
+			 <option value="<%=rsSearchFaculty("NumFacultyID")%>"
+		<% if rsSearchFaculty("NumFacultyID") = numFacultyID then
 		  response.Write "selected='selected'"
 		  end if %>><%=cstr(rsSearchFaculty("strFacultyName")) %></option>
-        <%rsSearchFaculty.Movenext
-         wend 
-         
-         ' closing the connections
-         
-           rsSearchFaculty.close
-           set rsSearchFaculty= nothing
-           'conn.Close
-           'set conn = nothing
-         %>
+		<%rsSearchFaculty.Movenext
+		 wend 
+		 
+		 ' closing the connections
+		 
+		   rsSearchFaculty.close
+		   set rsSearchFaculty= nothing
+		   'conn.Close
+		   'set conn = nothing
+		 %>
 
   <%strSQL = "Select * from tblfaculty where numFacultyID ="& numFacultyID
   
@@ -147,11 +147,11 @@ Faculty/Unit:</th>
 		<th>Supervisor:</th>
 		<td>
 	<%		
-	        strLoginID = Request.Form("cboSupervisor") 
-	        if strLoginID = "" then
-	       strLoginID = ""
-        end if
-	        
+			strLoginID = Request.Form("cboSupervisor") 
+			if strLoginID = "" then
+		   strLoginID = ""
+		end if
+			
   strSQL = "Select * from tblfacilitySupervisor where numFacultyID = "& numFacultyID
   set rsSearchSup = server.CreateObject("ADODB.Recordset")
   rsSearchSup.Open strSQL, Conn, 3, 3 %>
@@ -165,8 +165,8 @@ Faculty/Unit:</th>
 			<%while not rsSearchsup.EOF    %>
 			<option value = "<%=rsSearchsup(0)%>" 
 			<% if rsSearchsup("strloginID") = strLoginID then
-		          response.Write "selected"
-		       end if %>><%=cstr(rsSearchsup(3))+"  "+cstr(rsSearchsup(4)) %></option>
+				  response.Write "selected"
+			   end if %>><%=cstr(rsSearchsup(3))+"  "+cstr(rsSearchsup(4)) %></option>
 			<%rsSearchsup.MoveNext 
 			wend  %>
 

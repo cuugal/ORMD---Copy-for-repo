@@ -1,22 +1,11 @@
-<%@Language = VBscript%>
-<!--#INCLUDE FILE="DbConfig.asp"-->
+
 <%
 If Trim(Session("strLoginId")) = "" Then
 Response.Redirect("Invalid.asp")
 End If
 
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<%dim loginId
-loginId = session("strLoginId")%>
 
-<head>
- <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
- <meta http-equiv="Content-Language" content="en-au" />
- <link rel="stylesheet" type="text/css" href="orr.css" media="screen" />
- <title>Online Risk Register - My Risk Assessments</title>
 
 <script type="text/javascript">
 // function to ask about the confirmation of the file. ADDED BY DLJ 7June7
@@ -73,8 +62,7 @@ function FillDetails()
   
 %>
 <%
- dim rsSearchFacility1
- dim rsSearchFacility2
+ dim rsSearchFacility
  dim rsSearchFaculty
  dim Conn
  dim strSQL
@@ -84,38 +72,22 @@ function FillDetails()
   Conn.open constr
         
   '------------------------get the facilities for the login ---------------
-  'AA jan 2010 as par tof reln fix join to tblFacilitySupervisor
+  'AA jan 2010 as part of reln fix join to tblFacilitySupervisor
   strSQL = "Select * "_
-  &" from tblfacility, tblFacilitySupervisor"_
-  &" where tblFacilitySupervisor.numSupervisorID = tblFacility.numFacilitySupervisorID"_
-  &" and tblFacilitySupervisor.strLoginID = '"& loginId &"'  order by strRoomName" 
-  
-  set rsSearchFacility1 = server.CreateObject("ADODB.Recordset")
-  rsSearchFacility1.Open strSQL, Conn, 3, 3   
- 
- 'Get the login ID out as this is more useful
-  strSQL = "Select * from tblFacilitySupervisor where strLoginID = '"& loginId &"'" 
-  
-  set rsID = server.CreateObject("ADODB.Recordset")
-  rsID.Open strSQL, Conn, 3, 3 
-  numSupervisorId = rsID("numSupervisorId")
- %>
- <%  '------------------------get the faculty for the login ---------------
-  strSQL = "Select * "_
-  &" from tblfacilitySupervisor,tblFaculty "_
-  &" where tblFacilitySupervisor.numFacultyId = tblFaculty.numFacultyId "_
-  &" and tblFacilitySupervisor.strLoginId = '"& loginId &"'" 
-  
-  set rsSearchFaculty = server.CreateObject("ADODB.Recordset")
-  'Response.Write(strSQL) 
-  rsSearchFaculty.Open strSQL, Conn, 3, 3     
-  strFacultyName = rsSearchFaculty("strFacultyName")     
-  strGivenName = rsSearchFaculty("strGivenName")
-  strSurname = rsSearchFaculty("strSurname")
-  strName = cstr(strGivenName) + " " + cstr(strSurname)
-  
+  &" from tblfacility "_
+  &" where tblFacility.numFacilitySupervisorId = "& session("numSupervisorId") &"  order by strRoomName" 
+
+  set rsSearchFacility = server.CreateObject("ADODB.Recordset")
+  rsSearchFacility.Open strSQL, Conn, 3, 3 
+    
+
+  'AA jan 2010 add join on tblFacilitySupervisor as part of reln repair
+  strSQL = "Select * from tblOperations where numFacilitySupervisorId = "&session("numSupervisorId")
+
+  set rsOper = server.CreateObject("ADODB.Recordset")
+  rsOper.Open strSQL, Conn, 3, 3
   %>
-</head>
+
 
 <body>
 
@@ -138,16 +110,6 @@ function FillDetails()
 <form method="post" action="SupRDateModified.asp"  name="FormA" enctype="application/x-www-form-urlencoded" onsubmit="return ConfirmChoice();">
 <input type="hidden" name="QORAtype" value=""/>
 
-  <%
-  'AA jan 2010 add join on tblFacilitySupervisor as part of reln repair
-  strSQL = "Select * "_
-  &" from tblfacility, tblFacilitySupervisor"_
-  &" where tblFacilitySupervisor.numSupervisorID = tblFacility.numFacilitySupervisorID"_
-  &" and tblFacilitySupervisor.strLoginID = '"& loginId &"' order by strRoomName" 
-  
-  set rsSearchFacility2 = server.CreateObject("ADODB.Recordset")
-  rsSearchFacility2.Open strSQL, Conn, 3, 3 %>
-
     <th>Faculty/Unit</th>
     <td colspan="2"><%response.write(strFacultyName) %></td>
 </tr>
@@ -160,9 +122,9 @@ function FillDetails()
     <td>
       <select size="1" name="cboFacility" onchange="javascript:ChangeType('location')">
       <option value="0">Select Facility</option>
-      <%while not rsSearchFacility2.EOF    %>
-      <option value="<%=rsSearchFacility2(0)%>"><%=cstr(rsSearchFacility2(1))+" / "+cstr(rsSearchFacility2(2)) %></option>
-      <%rsSearchFacility2.MoveNext 
+      <%while not rsSearchFacility.EOF    %>
+      <option value="<%=rsSearchFacility("numFacilityId")%>"><%=cstr(rsSearchFacility("strRoomNumber"))+" / "+cstr(rsSearchFacility("strRoomName")) %></option>
+      <%rsSearchFacility.MoveNext 
       wend  %>
       </select>&nbsp;
       </td><td>
@@ -170,15 +132,7 @@ function FillDetails()
       
       </td>
     </tr>
-    
-     <%
-  'AA jan 2010 add join on tblFacilitySupervisor as part of reln repair
-  strSQL = "Select * from tblOperations where numFacilitySupervisorId = "&numSupervisorId
-  
-  'response.write strSQL
-  'response.end
-  set rsOper = server.CreateObject("ADODB.Recordset")
-  rsOper.Open strSQL, Conn, 3, 3 %>
+
     <tr>
     <th>Select Operation/Project</th>
     <td>
@@ -200,5 +154,3 @@ function FillDetails()
 </div>
 
 </body>
-
-</html>

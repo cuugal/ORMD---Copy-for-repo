@@ -221,7 +221,7 @@ padding: 5px 10px 10px 9px; margin-bottom: 0; text-align: center; }
 
 body#printpreview { width: 100%; color: #000; background-color: #fff; font-family: Verdana, Arial, sans-serif; padding: 2px; }
 
-#wrappersupermenu{background:#eaede4 url(images/top.png) no-repeat scroll left top; height:200px;}
+#wrappertop{background:#eaede4 url(images/top.png) no-repeat scroll left top;}
 /* wrapper */
 #wrapper { color: #000; background:#eaede4 url(images/bottom.png) no-repeat scroll left top; margin: 0 auto 0 auto; width: 100%; text-align: left; }
 

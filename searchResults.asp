@@ -126,13 +126,14 @@ if(searchType = "supervisor") then
 end if
 
 if(searchType = "location") then
-	strSQL = "Select distinct(tblQORA.numQORAId) as numQORAId, tblFacilitySupervisor.numFacultyId, tblQORA.strSupervisor, tblRiskLevel.numGrade "
-	strSQL = strSQL+" from tblQORA, tblRiskLevel, tblFacility, tblBuilding, tblCampus "
-	strSQL = strSQL+" Where tblQORA.numfacultyId = "& numFacultyId
+	strSQL = "Select distinct(tblQORA.numQORAId) as numQORAId, tblQORA.*, tblRiskLevel.* "
+	strSQL = strSQL+" from tblQORA, tblRiskLevel, tblFacility, tblBuilding, tblCampus, tblFacilitySupervisor "
+	strSQL = strSQL+" Where tblFacilitySupervisor.numfacultyId = "&numFacultyId
 	
 	strSQL = strSQL+" and tblQORA.numFacilityID = tblFacility.numFacilityID"
 	strSQL = strSQL+" and tblBuilding.numBuildingID = tblFacility.numBuildingID"	
 	strSQL = strSQL+" and tblCampus.numCampusID = tblBuilding.numCampusID"
+	strSQL = strSQL+" and tblFacility.numFacilitySupervisorID = tblFacilitySupervisor.numSupervisorID"
 
 	if Len(numFacilityId) > 0 and (numFacilityID <> 0) then
 		strSQL = strSQL+" and tblFacility.numFacilityID = "&numFacilityId
@@ -228,6 +229,53 @@ if(searchType = "task") then
 	
 	
 end if
+
+if(searchType = "myfac") then
+	strSQL = "Select distinct(tblQORA.numQORAId) as numQORAId, tblQORA.*, tblRiskLevel.* "
+	strSQL = strSQL+" from tblQORA, tblRiskLevel, tblFacility, tblBuilding, tblCampus, tblFacilitySupervisor "
+	
+	
+	strSQL = strSQL+" Where tblQORA.numFacilityID = tblFacility.numFacilityID"
+	strSQL = strSQL+" and tblBuilding.numBuildingID = tblFacility.numBuildingID"	
+	strSQL = strSQL+" and tblCampus.numCampusID = tblBuilding.numCampusID"
+	strSQL = strSQL+" and tblFacility.numFacilitySupervisorID = tblFacilitySupervisor.numSupervisorID"
+
+    if cint(numFacultyId) <> -1 then
+        strSQL = strSQL+" and tblFacilitySupervisor.numfacultyId = "&numFacultyId
+    end if
+
+	if Len(numFacilityId) > 0 and (numFacilityID <> 0) then
+		strSQL = strSQL+" and tblFacility.numFacilityID = "&numFacilityId
+	end if
+
+	strSQL = strSQL+" and tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel"
+	strSQL = strSQL + " Order by tblQORA.numFacilityID,tblQORA.strSupervisor, tblRiskLevel.numGrade, tblQORA.strTaskDescription "
+	
+end if
+
+    if(searchType = "myop") then
+	strSQL = "Select distinct(tblQORA.numQORAId) as numQORAId, tblQORA.*, tblRiskLevel.* "
+	strSQL = strSQL+" from tblQORA, tblRiskLevel, tblOperations, tblFacilitySupervisor"
+	
+	strSQL = strSQL+" WHERE tblOperations.numFacilitySupervisorID = tblFacilitySupervisor.numSupervisorId"
+	strSQL = strSQL+" and tblQORA.numOperationID = tblOperations.numOperationID"
+	strSQL = strSQL+" and tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel"
+
+    if cint(numFacultyId) <> -1 then
+        strSQL = strSQL+" and tblFacilitySupervisor.numfacultyId = "&numFacultyId
+    end if
+
+	if Len(strOperation) > 0 and (strOperation <> 0) then
+		strSQL = strSQL+" and tblOperations.numOperationID = "&strOperation
+	end if
+
+
+	strSQL = strSQL+ " Order by tblQORA.strSupervisor, tblRiskLevel.numGrade, tblQORA.strTaskDescription "
+	
+
+end if
+
+
 'response.write strSQL
 'response.end
 

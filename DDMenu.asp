@@ -109,7 +109,7 @@ You are logged in as <strong><%=strName%></strong><strong>.</strong>
 
 	   <li><a target="Operation" href="DDReport.asp" title="View Risk Assessment Action Status report for your Faculty/Unit.">RA Action Status</a></li>	 	   
 	   <!--li><a target="Operation" href="help.htm">Help</a></li-->  
-	   <li><a target="_top" href="homepage.asp" title="Online Risk Register homepage">Home</a></li>
+	   <li><a target="_top" href="menu.asp" title="Online Risk Register homepage">Home</a></li>
 	   <li><a target="_top" href="logout.asp" title="Log out of the Online Risk Register">Logout</a></li>
 	 </ul>
 	</div>

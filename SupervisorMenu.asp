@@ -1,5 +1,4 @@
-<%@Language = VBscript%>
-<!--#INCLUDE FILE="DbConfig.asp"-->
+
 <%
 If Trim(Session("strLoginId")) = "" Then
 Response.Redirect("Invalid.asp")
@@ -8,23 +7,12 @@ End If
 %>
 <%dim loginId
 loginId = session("strLoginId")%>
-<%'************************ Getting the login information for displaing it on the menu bar****************************
-  dim rsSearchLogin
-  dim strName
-  dim strSQL
-  dim Conn
+<%'************************ Getting the login information for displaying it on the menu bar****************************
+
  strName = session("strName")
 %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
- <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
- <meta http-equiv="Content-Language" content="en-au" />
- <link rel="stylesheet" type="text/css" href="orr.css" media="screen" />
- <link rel="stylesheet" type="text/css" href="orrprint.css" media="print" />
- <title>Online Risk Register - Supervisor Menu</title>
+
 <script type="text/javascript">
 <!--
 
@@ -91,11 +79,10 @@ if (da && !pr && !mac) with (document) {
   writeln('<' + '/SCRIPT>');
 }
 // --></script>
-<base target="bottom" />
-</head>
 
-<body>
-<div id="wrappersupermenu">
+
+
+<div id="wrappertop">
  <div id="content">
 <h1 class="pagetitle">Online Risk Register - Supervisor Menu</h1>
 <div class="topframe">
@@ -104,14 +91,12 @@ You are logged in as <strong><%=strName%></strong>
  <br/>
 	<div class="loginlist">
 	 <ul>
-	   <li><a target="Operation" href="LocationSup.asp" title="Create a new Risk Assessment">Create Risk Assessment</a></li>
-	   <li><a target="Operation" href="SupReport.asp" title="View the Risk Assessments for your facility/facilities">My Risk Assessments</a></li>
+	   <li><a  href="LocationSup.asp" title="Create a new Risk Assessment">Create Risk Assessment</a></li>
+	   <li><a href="indexLoggedSupervisor.asp" title="View the Risk Assessments for your facility/facilities">My Risk Assessments</a></li>
 	   <!--li><a target="Operation" href="help.htm">Help</a></li-->
-	   <!--<li><a target="_top" href="homepage.asp" title="Online Risk Register homepage">Home</a></li>-->
+	   <!--<li><a target="_top" href="menu.asp" title="Online Risk Register homepage">Home</a></li>-->
 	   <li><a target="_top" href="logout.asp" title="Log out of the Risk Register">Logout</a></li>
 	 </ul>
 	</div>
  </div><!-- close the content DIV -->
 </div><!-- close the wrapper div -->
-</body>
-</html> 

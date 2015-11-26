@@ -107,7 +107,7 @@ End if
 <ul>
  <li><a target="_self" href="Login.asp" title="The Online Risk Register login for Supervisors and Administrators.">Supervisor and Administrator Login</a></li>
  <!--li><a target="_self" href="help.htm" title="Read the Online Risk Register documentation.">Help</a></li-->
- <li><a target="_top" href="index.htm" title="Return to the Online Risk Register home page.">Home</a></li>
+ <li><a target="_top" href="menu.asp" title="Return to the Online Risk Register home page.">Home</a></li>
 </ul>
 </div>
 </center>

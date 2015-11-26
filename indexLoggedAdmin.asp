@@ -12,6 +12,20 @@
     <body>
 
 <!--#include file="adminMenu.asp" -->
-<!--#include file="searchQORA.asp"--> 
+        
+      <div id="wrapper" class="container">
+         <div id="content">
+            <h1 class="pagetitle">Search UTS Risk Assessments</h1>
+            <center>
+                <div style="width:950px">
+                    <!--#include file="searchQORA.asp"--> 
+                </div>
+            </center>
+             <br />
+              <br />
+         </div>
+         <!-- close the content DIV -->
+      </div>
+      <!-- close the wrapper div -->
     </body>
 </html>
