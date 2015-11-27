@@ -79,7 +79,7 @@ Dim strSQL
    rsFillOperation.Open strSQL, conn, 3, 3
 %>
 <body>
-    <!--#include file="adminMenu.asp" -->
+    <!--#include file="HeaderMenu.asp" -->
 <div id="wrapper">
  <div id="content">
  <h1 class="pagetitle">Edit an Operation</h1>

@@ -20,7 +20,7 @@
  <title>Online Risk Register - Administration Functions</title>
 </head>
 <body>
-    <!--#include file="adminMenu.asp" -->
+    <!--#include file="HeaderMenu.asp" -->
 <%
  if session("strLoginId") <> "admin" then
   response.redirect "AccessRestricted.htm"

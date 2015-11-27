@@ -46,7 +46,7 @@ function FillBuildingCampus()
 </head>
 
 <body>
-    <!--#include file="adminMenu.asp" -->
+    <!--#include file="HeaderMenu.asp" -->
 <div id="wrapper">
  <div id="content">
 

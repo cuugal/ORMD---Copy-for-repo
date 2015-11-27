@@ -1,11 +1,40 @@
 <%@Language = VBscript%>
 <!--#INCLUDE FILE="DbConfig.asp"-->
+<%
+If Trim(Session("strLoginId")) = "" Then
+Response.Redirect("Invalid.asp")
+End If
+
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <%
-'Campbells borrowed code to escape the output 30/6/2006
+dim loginId
+loginId = session("strLoginId")
+'Response.Write(loginId)
+%>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-au" />
+<link rel="stylesheet" type="text/css" href="orr.css" media="screen">
+<!--<link rel="stylesheet" type="text/css" href="orrprint.css" media="print" />-->
+<title>Online Risk Register - UTS Risk Assessments</title>
+<script language="javaScript" type="text/javascript">
+<!--
+	function framebreakout() {
+		if (top.location != location) {
+			top.location.href = document.location.href;
+		}
+	}
+
+
+	//-->
+</script>
+<script type="text/javascript" src="sorttable.js"></script>
+</head>
+<%
+'Campbells borrowed code to escape the output 15/6/2006
 Function Escape(sString)
 
 'Replace any Cr and Lf with <br />
@@ -15,8 +44,7 @@ strReturn = Replace(strReturn , vbLf , "<br />")
 Escape = strReturn
 End Function
 
-'*********************declaring the variables************************
-
+'*******declaring the variables****
   dim rsSearchH
   dim rsSearchM
   dim rsSearchL 
@@ -30,357 +58,216 @@ End Function
   dim strSurname
   dim strName
   dim dtDate
-  dim cboVal
-  dim loginId
-  dim facultyID
-  dim caseval
+  dim cboFacility
+  dim cboValDummy
+  dim numOptionId
   dim numPageStatus
-  
-    numPageStatus = request.querystring("cboValDummy")
-    numOptionId = request.querystring("numOptionId")   
-      
-   ' Response.Write(numOptionId) 
-    
-     if numPageStatus = "1" then 
-         cboVal = session("cboVal")
-         cboval = cint(cboVal)
-        
-    else
-       cboVal = Request.Form("cboFacility")  
-       session("cboVal")= cboVal
-      ' Response.Write (Session("cboVal")) 
-     end if  
-  
-loginId = session("LoginId")
-FacultyId = session("facultyId")
 
-'cboVal = Request.Form("cboFacility")
-'session("facilityID") = cboVal
-
-' Response.Write(facultyID)
-' Response.Write("login : "+loginID)
-' Response.Write(cboVal)
-%>
-
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<meta http-equiv="Content-Language" content="en-au" />
-<link rel="stylesheet" type="text/css" href="orr.css" media="screen" />
-<script type="text/javascript" src="sorttable.js"></script>
-<title>Online Risk Register - Report for Administrator Login</title>
-</head>
-<body>
-
-<div id="wrapper">
- <div id="content">
-
- <h1 class="pagetitle">My Risk Assessments</h1>
-
-<center>
-
-<%
-  
-  ' Analyse the case of the input and then navigate to the proper function
-  
-  'case 1 : only faculty
-  'case 2 : faculty , login and facility
-  
-     if facultyID <> 0 and loginId = "0" and cboVal = 0 then
-          caseval = 1
-     else 
-       if  facultyID <> 0 and len(loginId)>1 and cboVal <> 0 then
-          caseval = 2
-       end if
-     end if
- 
-  
-
+	  QORAtype = request.form("QORAtype")
+	  session("QORAtype") = QORAtype
+	  
+	  numOperationID = request.form("cboOperation")
+      session("cboOperation") = numOperationId
+	  
+    cboFacility = request.form("cboFacility")
+	  session("cboFacility") = cboFacility
+	  
   '*********************Setting up the database connectivity***********
   set Conn = Server.CreateObject("ADODB.Connection")
   Conn.open constr
   
-  '*********************writting the SQL ******************************
-  '------------------------get the faculty for the login ---------------
-          select case caseval 
-  '************************************************************************************************
-          case "1" :  ' Only for Faculty selection
-          
-  '***************************** REPORT FOR ONLY FACULTY SELECTION********************************* 	
-  
-				  strSQL = "Select * from tblFaculty where numFacultyId = "& FacultyID 
-				  'Response.Write(strSQL)
-				'Response.Write("test dlj")
-				'Response.Write(FacultyID)
-				  set rsSearchFaculty = server.CreateObject("ADODB.Recordset")
-				  rsSearchFaculty.Open strSQL, Conn, 3, 3     
-				  strFacultyName = rsSearchFaculty("strFacultyName")     
-  
-				  %>
-				  
-				  <table class="suprreportheader">
-				<tr>
-				 <th>Faculty/Unit:</th>
-				 <td><%Response.Write(strFacultyName) %></td>
-				</table>
-				
-				<br />
-			<%	
-			
-			      strSQL = "SELECT * FROM tblQORA, tblFacility, tblBuilding, tblCampus "_
-						 &" WHERE  numFacultyId = "& FacultyID & " and "_
-						 &" tblQORA.numFacilityId = tblFacility.numFacilityID and "_
-						 &" tblQORA.numBuildingId = tblBuilding.numBuildingID and "_
-						 &" tblQORA.numCampusId = tblCampus.numCampusID  "_
-						 &" ORDER BY strTaskDescription"
-						 
-			 select case numOptionId
-			   
-			   case "1":			      		
-					     strSQL = "SELECT * FROM tblQORA, tblFacility,tblBuilding,tblCampus "_
-						 &" WHERE tblQORA.numFacilityId = tblFacility.numFacilityID and "_
-						 &" tblQORA.numBuildingId = tblBuilding.numBuildingID and "_
-						 &" tblQORA.numCampusId = tblCampus.numCampusID  "_
-						 &" ORDER BY strTaskDescription"
-						 
-				case "2":
-			      		
-					     strSQL = "SELECT * FROM tblQORA, tblFacility,tblBuilding,tblCampus "_
-						 &" WHERE tblQORA.numFacilityId = tblFacility.numFacilityID and "_
-						 &" tblQORA.numBuildingId = tblBuilding.numBuildingID and "_
-						 &" tblQORA.numCampusId = tblCampus.numCampusID  "_
-						 &" ORDER BY strAssessRisk"
-				
-				case "3":			      		 
-					     strSQL = "SELECT * FROM tblQORA, tblFacility,tblBuilding,tblCampus "_
-						 &" WHERE tblQORA.numFacilityId = tblFacility.numFacilityID and "_
-						 &" tblQORA.numBuildingId = tblBuilding.numBuildingID and "_
-						 &" tblQORA.numCampusId = tblCampus.numCampusID  "_
-						 &" ORDER BY strDateActionsCompleted"
-				
-				case "4":
-			      		 strSQL = "SELECT * FROM tblQORA, tblFacility,tblBuilding,tblCampus "_
-						 &" WHERE tblQORA.numFacilityId = tblFacility.numFacilityID and "_
-						 &" tblQORA.numBuildingId = tblBuilding.numBuildingID and "_
-						 &" tblQORA.numCampusId = tblCampus.numCampusID  "_
-						 &" ORDER BY dtDateCreated"
-						 
-						 
-						 
-              end select 
-  
-						
-							  set rsSearchH = server.CreateObject("ADODB.Recordset")
-							  rsSearchH.Open strSQL, Conn, 3, 3 %>
-   
-							<% if not rsSearchH.EOF then 
-								%> 
-								<table class="sortable suprlevel" id="id12" style="width:95%;" >
-								<thead>
-									<tr>
-										<th class="haztaskresult">Hazardous Task</th>
-										<th class="assochazards">Associated Hazards</th>
-										<th class="currentcontrols">Current Controls</th>
-										<th class="risklevel">Risk Level</th>
-										<th class="location">Location</th>
-										<th class="furtheraction">Further Action required</th>
-										
-										<th class="dac">Date Actions Completed</th>
-										<th class="renewaldate">Renewal Date</th>
-										</tr>
-										</thead>
-										<caption>Click a table heading to sort by the respective criteria.  To edit a risk assessment, click on its title under the &quot;Hazardous Task&quot; heading.</caption>
-									<%
-								  while not rsSearchH.EOF 
-								    dtDate = dateAdd("yyyy",2,rsSearchH(6))
-								   
-								    'Response.Write("Exception caught")
-											%>
-											<tbody>
-											<tr>
-												<td><a target="Operation" href="EditQORA.asp?numCQORAId=<%=rsSearchH(0)%>" title="Click to edit this QORA."><% Response.Write(rsSearchH(8))%>&nbsp;</td>
-												<!-- <td><% Response.Write(rsSearchH(11))%></td> -->
-												<td><%=rsSearchH(11)%></td>
-												<td><% Response.Write(rsSearchH(10))%></td>
-												<td><%=rsSearchH(9)%></td>
-												<td><%=cstr(rsSearchH(19))+"/"+ cstr(rsSearchH(20))+","+ cstr(rsSearchH(24))+","+ cstr(rsSearchH(27)) %></td>
-												<td><% Response.Write(rsSearchH(15))%><BR><%if rsSearchH(12)= true then %><a target="_blank" href="http://www.ehs.uts.edu.au/forms/swms.doc">Safe Work Method Statements</a> <%end if%><br />
-											<%if rsSearchH(13)= true then %><a target="_blank" href="http://www.ocid.uts.edu.au/">Chemical Risk Assessment</a><%end if%><br />    
-											<%if rsSearchH(14)= true then %><a target="_blank" href="http://www.ehs.uts.edu.au/sections/level2/internal/generalriskmgt.doc">General Risk 
-											Assessment</a> <%end if%></td>
-												
-												<td><% Response.Write(rsSearchH(17))%></td>
-												<td><%=dtDate%></td>
-											</tr>
 
-								<%
-								     
-								    rsSearchH.MoveNext  
-								 wend 
-								 %>
-								</tbody>
-								</table>
-								 <%
-							end if 
+  %>
+<body>
+	<!--#include file="HeaderMenu.asp" -->
+<div id="wrapper">
+  <div id="content">
+  <!-- Break out of frame --> 
+  <form target="_blank" action="SupRDateModified-print.asp">
+	<h1 class="pagetitle">Risk Assessment Search Results &nbsp;&nbsp;&nbsp;<input type="submit" value="Print preview" /></h1>    
+  </form>
 
-
-'*****************************REPORT FOR ONLY FACULTY SELECTION ENDS HERE************************%>				
+</div>
 <%
-				   
-'*************************************************************************************************
-case "2" : ' Selection for everything.
-
-'*************************************************************************************************
-'strSQL = "SELECT * FROM tblQORA,tblFaculty,tblFacility,tblFacilitySupervisor,tblBuilding,tblCampus "_
-'&" WHERE tblQORA.numFacilityId = tblFacility.numFacilityID and "_
-'&" tblQORA.numBuildingId = tblBuilding.numBuildingID and tblQORA.numFacultyId = tblFaculty.numFacultyID and"_
-'&" tblQORA.numCampusId = tblCampus.numCampusID and "_
-'&" tblQORA.strsupervisor = tblfacilitySupervisor.strLoginID and "_
-'&" tblQORA.numFacilityId = "& cboVal &" and tblQORA.numfacultyId = "& FacultyId &" and "_
-'&" strSupervisor = '"& loginId &"'  ORDER BY strAssessRisk,dtDateCreated,strRoomName"
-	
-	'DLJ had to edit above sql to use strSupervisor in tblFacility rather than strSupervisor in tblQORA
-	'strSupervisor is redundant and is not updated by system. It should not be used.
-
-' AA Jan 2010 relatonship fix: altered this line
-'&" tblFacility.strFacilitySupervisor = tblFacilitySupervisor.strLoginID and "_
-strSQL = "SELECT * FROM tblQORA,tblFaculty,tblFacility,tblFacilitySupervisor,tblBuilding,tblCampus "_
-&" WHERE tblQORA.numFacilityId = tblFacility.numFacilityID and "_
-&" tblQORA.numBuildingId = tblBuilding.numBuildingID and tblQORA.numFacultyId = tblFaculty.numFacultyID and"_
-&" tblQORA.numCampusId = tblCampus.numCampusID and "_
-&" tblFacility.numFacilitySupervisorID = tblFacilitySupervisor.numSupervisorID and "_
-&" tblQORA.numFacilityId = "& cboVal &" and tblQORA.numfacultyId = "& FacultyId &" and "_
-&" strLoginID = '"& loginId &"'  ORDER BY strAssessRisk,dtDateCreated,strRoomName"
+'Get the login ID out as this is more useful
 
 
+ if(QORAtype = "location") then 
+ 'AA jan 2010 rewrite include join to tlFacilitySupervisor as part of reln fix
+ strSQL = "SELECT * FROM tblQORA, tblFacility,tblBuilding,tblCampus, tblRiskLevel ,tblFacilitySupervisor, tblFaculty "_
+  &" WHERE tblQORA.numFacilityId = tblFacility.numFacilityID and "_
+  &" tblFacilitySupervisor.numSupervisorID = tblFacility.numFacilitySupervisorID and"_
+  
+  &" tblQORA.numFacilityId = "& cboFacility &" and "_
+  &" tblFacility.numBuildingId = tblBuilding.numBuildingID and "_
+  &" tblBuilding.numCampusId = tblCampus.numCampusID and "_
+   &" tblFacilitySupervisor.numFacultyId = tblFaculty.numFacultyId and "_
+  &" tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel  "_ 
+  &" ORDER BY tblFacilitySupervisor.numFacultyId, tblRiskLevel.numGrade, strTaskDescription"
+ end if
+ 
+ 
+ if(QORAtype = "operation") then
+	 strSQL = "SELECT * FROM tblQORA, tblOperations, tblRiskLevel ,tblFacilitySupervisor, tblFaculty "_
+  &" WHERE tblQORA.numOperationId = tblOperations.numOperationId and "_
+  &" tblFacilitySupervisor.numSupervisorID = tblOperations.numFacilitySupervisorID and"_
+  
+  &" tblQORA.numOperationId = "& numOperationID &" and "_
+  &" tblFacilitySupervisor.numFacultyId = tblFaculty.numFacultyId and "_
+  &" tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel  "_ 
+  &" ORDER BY tblFacilitySupervisor.numFacultyId, tblRiskLevel.numGrade, strTaskDescription"
+ end if
 
-
-							  set rsSearchFaculty = server.CreateObject("ADODB.Recordset")
-							 ' Response.Write(strSQL) 
-							  rsSearchFaculty.Open strSQL, Conn, 3, 3     
-							  strFacultyName = rsSearchFaculty(19)     
-							  strGivenName = rsSearchFaculty(32)
-							  strSurname = rsSearchFaculty(33)
-							  strName = cstr(strGivenName) + " " + cstr(strSurname)
-							  %><br />
-							   
-							
-							<table class="suprreportheader">
-							<tr>
-							 <th>Faculty/Unit:</th>
-							 <td><%Response.Write(strFacultyName) %></td>
-							</tr>
-							<tr>
-							 <th>Supervisor:</th>
-							 <td><%Response.Write (strName)%></td>
-							</tr>
-						 <%if not rsSearchfaculty.EOF then%>
-							<tr>
-							 <th>Location:</th>
-							 <td><%=cstr(rsSearchFaculty(36))+","+ cstr(rsSearchFaculty(39)) %></td>
-							</tr>
-							<tr>
-							 <th>Facility Room Name/Number:</th>
-							 <td><%=cstr(rsSearchFaculty(25))+"/"+ cstr(rsSearchFaculty(26))%></td>
-							</tr>
-						 <%end if%>
-						<%
-			select case numOptionId
-			   
-			   case "1":
-			      		
-						      strSQL = "SELECT * FROM tblQORA, tblFacility,tblBuilding,tblCampus "_
-							  &" WHERE tblQORA.numFacilityId = tblFacility.numFacilityID and "_
-							  &" tblQORA.numBuildingId = tblBuilding.numBuildingID and "_
-							  &" tblQORA.numCampusId = tblCampus.numCampusID and "_
-							  &" tblQORA.numFacilityId = "& cboVal &" and "_
-							  &" strSupervisor = '"& loginId &"'  ORDER BY strTaskDescription"
-						 
-				case "2":
-			      		
-					  	 strSQL = "SELECT * FROM tblQORA, tblFacility,tblBuilding,tblCampus "_
-							  &" WHERE tblQORA.numFacilityId = tblFacility.numFacilityID and "_
-							  &" tblQORA.numBuildingId = tblBuilding.numBuildingID and "_
-							  &" tblQORA.numCampusId = tblCampus.numCampusID and "_
-							  &" tblQORA.numFacilityId = "& cboVal &" and "_
-							  &" strSupervisor = '"& loginId &"'  ORDER BY strAssessRisk"
-				
-				case "3":
-			      		
-					 	 strSQL = "SELECT * FROM tblQORA, tblFacility,tblBuilding,tblCampus "_
-							  &" WHERE tblQORA.numFacilityId = tblFacility.numFacilityID and "_
-							  &" tblQORA.numBuildingId = tblBuilding.numBuildingID and "_
-							  &" tblQORA.numCampusId = tblCampus.numCampusID and "_
-							  &" tblQORA.numFacilityId = "& cboVal &" and "_
-							  &" strSupervisor = '"& loginId &"'  ORDER BY strDateActionsCompleted"
-				
-				case "4":
-			      		
-					  	   strSQL = "SELECT * FROM tblQORA, tblFacility,tblBuilding,tblCampus "_
-							  &" WHERE tblQORA.numFacilityId = tblFacility.numFacilityID and "_
-							  &" tblQORA.numBuildingId = tblBuilding.numBuildingID and "_
-							  &" tblQORA.numCampusId = tblCampus.numCampusID and "_
-							  &" tblQORA.numFacilityId = "& cboVal &" and "_
-							  &" strSupervisor = '"& loginId &"'  ORDER BY dtDateCreated"
-						 
-              end select 
-						  
-						  'Response.Write(strSQL)
-						    set rsSearchH = server.CreateObject("ADODB.Recordset")
-						    rsSearchH.Open strSQL, Conn, 3, 3 %>
-						 <%
-							  'Response.Write(strSQL) 
-						if not rsSearchH.EOF then 
-							       %>
-							</table>
-
-							<br />
-
-							<table width="100%" class="sortable suprlevel" id="id132">
-							<thead>
-							<tr>
-							 <th class="haztaskresult">Hazardous Task</th>
-							 <th class="assochazards">Associated Hazards</th>
-							 <th class="currentcontrols">Current Controls</th>
-							 <th class="risklevel">Risk Level</th>
-							 <th class="furtheraction">Further Action Required</th>
-							 
-							 <th class="dac">Date Actions Completed</th>
-							 <th class="renewaldate">Renewal Date</th>
-							</tr>
-							</thead>
-							<caption>Click a table heading to sort by the respective criteria.  To edit a risk assessment, click on its title under the &quot;Hazardous Task&quot; heading.</caption>
-								<%
-							  while not rsSearchH.EOF 
-							    dtDate = dateAdd("yyyy",2,rsSearchH(6))
-							    
-											'Response.Write("Expection caught")
-											%>
-											<tr>
-												<td><a target="Operation" href="EditQORA.asp?numCQORAId=<%=rsSearchH(0)%>" title="Edit this QORA."><% Response.Write(rsSearchH(8))%></td>
-												<td><%=Escape(rsSearchH(11))%></td>
-												<td><%=Escape(rsSearchH(10))%></td>
-												<td><%=rsSearchH(9)%></td>
-												<td><%=Escape(rsSearchH(15))%><BR><%if rsSearchH(12)= true then %><a target="_blank" href="http://www.ehs.uts.edu.au/forms/swms.doc">Safe Work Method Statements</a> <%end if%><br />
-											<%if rsSearchH(13)= true then %><a target="_blank" href="http://www.ocid.uts.edu.au/">Chemical Risk Assessment</a><%end if%><br />    
-											<%if rsSearchH(14)= true then %><a target="_blank" href="http://www.ehs.uts.edu.au/sections/level2/internal/generalriskmgt.doc">General Risk 
-											Assessment</a> <%end if%></td>
-												
-												<td><% Response.Write(rsSearchH(17))%></td>
-												<td><%=dtDate%></td>
-											</tr><%
-							     
-							      rsSearchH.MoveNext  
-							   wend 
-							   end if 
-'***********************************************************************************************************************
-	    end select
-'***********************************************************************************************************************
+	 ' Response.write(strSQL)
+	set rsSearchH = server.CreateObject("ADODB.Recordset")
+	rsSearchH.Open strSQL, Conn, 3, 3 
+	if rsSearchH.EOF <> true then 
 %>
+	
+	
+	<% if(QORAtype="location") then %>
+<table class="suprreportheader">
+	<tr>
+		<th>Campus:</th><td><%=cstr(rsSearchH("strCampusName")) %></td>
+		<th>Building:</th><td><%=cstr(rsSearchH("strBuildingName")) %></td>
+		<th>Room Name:</th><td><%=cstr(rsSearchH("strRoomName"))%></td>
+		<th>Room Number:</th><td><%=cstr(rsSearchH("strRoomNumber"))%></td>
+  
+	</tr>
+	<tr>
+		<th>Supervisor:</th><td><%=rsSearchH("strGivenName")&" "&rsSearchH("strSurname")%></td>
+		<th>Faculty:</th><td colspan="5"><%=rsSearchH("strFacultyName") %></td>
+ </tr>
  </table>
+<% end if
+if (QORAtype = "operation") then %>
+<table class="suprreportheader">
+	<tr>
+		<th>Supervisor: </th><td><%=rsSearchH("strGivenName")&" "&rsSearchH("strSurname")%></td>
+		<th>Operation: </th><td><%=rsSearchH("strOperationName")%></td>	
+	</tr>
+</table>
+<% end if %>
+	<%
+  
+   'Response.Write(strSQL) 
+  if not rsSearchH.EOF then 
+	   %>
+	<br />
+	<table class="sortable suprlevel" id="id13">
+	 <caption>
+	  To sort any column, click on a table heading.  To edit a risk assessment, click on its title under the &quot;Task&quot; column.
+	  </caption>
+	  <thead>
+		<tr>
+			<th class="qoraID">Ra No.</th>
+			<th class="haztaskresult">Task</th>
+			<th class="assochazards">Hazards</th>
+			<th class="currentcontrols">Current Controls</th>
+			<th class="risklevel">Risk Level</th>
+			<th class="furtheraction">Proposed Controls</th>
+			<th class="renewaldate">Review Date</th>
+			<th class="swms">SWMS</th>
+		</tr>
+	  </thead>
+		<tbody>
+	  <%
 
-</center>
+	 while not rsSearchH.EOF 
+	dtDate = dateAdd("yyyy",2,rsSearchH("dtDateCreated"))
+	
+	%>
+	  
+		<tr>
+		<td><%=Escape(rsSearchH("numQORAId"))%></td>
+		  <td><a target="Operation" title="Click to edit this Risk Assessment." href="EditQORA.asp?numCQORAId=<%=rsSearchH("numQORAID")%>"><%=rsSearchH("strTaskDescription")%></td>
+		  <!--		<td><% Response.Write(rsSearchH(11))%></td> -->
+		  <td><%=Escape(rsSearchH("strHazardsDesc"))%></td>
+		  <td><%
+		  
+		  testval = rsSearchH("numQORAId")
+			'here we need to populate the textarea with any existing controls we can locate
+			set connControls = Server.CreateObject("ADODB.Connection")
+			connControls.open constr
+			' setting up the recordset
+			strControls ="Select * from tblRiskControls where numQORAId = "&testval&" and boolImplemented"
+			set rsControls = Server.CreateObject("ADODB.Recordset")
+			rsControls.Open strControls, connControls, 3, 3
+			strControlsImplemented =""
+			while not rsControls.EOF 
+				strControlsImplemented = strControlsImplemented +rsControls("strControlMeasures")& "<br/>"
+			' get the next record
+		   rsControls.MoveNext
+			wend 
+		   %>
+		  
+		<%=strControlsImplemented%>
+		  
+	   </td>
+		  <td><center>
+			  <%=rsSearchH("strAssessRisk")%>
+			</center></td>
+		 <!-- old 'further action required' code <td><% Response.Write(rsSearchH("strText"))%>
+			<%if rsSearchH("boolFurtherActionsSWMS")= true then %>
+			<BR>
+			<a target="_blank" href="http://www.ehs.uts.edu.au/forms/swms.doc" title="Safe Work Method Statement (in Microsoft Word format, 47 Kb).">Safe Work Method Statement</a>
+			<%end if%>
+			<%if rsSearchH("boolFurtherActionsChemicalRA")= true then %>
+			<BR />
+			<a target="_blank" href="http://www.ocid.uts.edu.au/" title="Chemical risk assessment at OCID.">Chemical Risk Assessment</a>
+			<%end if%>
+			<%if rsSearchH("boolFurtherActionsGeneralRA")= true then %>
+			<BR />Detailed Risk Assessment<%end if%></td>
+		  <td><% Response.Write(rsSearchH(17))%></td>-->
+		  <td><%
+		  ' New code to put in the unimplemented risk controls
+		  
+		  testval = rsSearchH("numQORAId")
+			'here we need to populate the textarea with any existing controls we can locate
+			set connControls = Server.CreateObject("ADODB.Connection")
+			connControls.open constr
+			' setting up the recordset
+			strControls ="Select * from tblRiskControls where numQORAId = "&testval&" and not boolImplemented"
+			set rsControls = Server.CreateObject("ADODB.Recordset")
+			rsControls.Open strControls, connControls, 3, 3
+			strControlsImplemented =""
+			while not rsControls.EOF 
+				strControlsImplemented = strControlsImplemented +rsControls("strControlMeasures")& "<br/>"
+			' get the next record
+		   rsControls.MoveNext
+			wend 
+		   %>
+		  
+		<%=strControlsImplemented%>
+		  
+	   </td>
+		  
+		<td><center><%=rsSearchH("dtReview")%></center></td>
+		 <td><center>
+		<% If rsSearchH("boolSWMSRequired") = true Then %>
+				 <form method="post" action="SWMS.asp">
+		 <input type="submit" value="SWMS" name="btnSWMS" />
+		 <input type="hidden" name="hdnQORAId" value="<%=rsSearchH("numQORAId")%>" />
+		 <input type="hidden" name="hdnNoSaveBeforeSWMS" value="nosave"/>
+		 </form>
 
-</div></div>
+		<% End if%>
+				 </center></td>
+			</tr>
+		<%
+	rsSearchH.MoveNext  
+ wend
 
+ %>
+	  </tbody>
+	</table>
+	<%
+ 'end if 
+ end if %>
+ 
+<%else%>
+<p>There are currently no Risk Assessments for this facility or operation!</p>
+<%end if%>
+</div>
 </body>
 </html>

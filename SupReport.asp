@@ -107,7 +107,7 @@ function FillDetails()
 <tbody>
 <tr>
 <!-- <form method="post" action="SupRDateModified.asp">  -->
-<form method="post" action="SupRDateModified.asp"  name="FormA" enctype="application/x-www-form-urlencoded" onsubmit="return ConfirmChoice();">
+<form method="post" action="SupRDateModified.asp"  name="FormA" enctype="application/x-www-form-urlencoded">
 <input type="hidden" name="QORAtype" value=""/>
 
     <th>Faculty/Unit</th>

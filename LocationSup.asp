@@ -47,7 +47,7 @@ function ChangeType(val)
 <title>Online Risk Register - Select a location or an operation for creating the Risk Assessment</title>
 </head>
 <body>
-    <!--#include file="SupervisorMenu.asp" -->
+    <!--#include file="HeaderMenu.asp" -->
 
 <% 'empty out previous session:
 session("LastRACreatednumFacilityID") = "" 

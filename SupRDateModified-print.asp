@@ -12,7 +12,7 @@ End If
 dim loginId
 loginId = session("strLoginId")
 
-QORAtype = session("QORAtype")
+
 %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
@@ -52,7 +52,7 @@ End Function
   dim strSurname
   dim strName
   dim dtDate
-  dim cboVal
+  dim cboFacility
   dim cboValDummy
   dim numOptionId
   dim numPageStatus
@@ -61,19 +61,10 @@ End Function
 
     
       numPageStatus = request.querystring("cboValDummy")
-      'Response.Write(numPageStatus) 
-'DLJ only need to print one facility location at a time for the facility folder
-'     if numPageStatus = "1" then 
-'      cboVal = session("cboVal")
-    'response.write(cboVal)
-'     else
-'       cboVal = Request.Form("cboFacility")  
-'       session("cboVal")= cboval   
-'     end if  
-     'response.write(cboVal)
-      cboVal = session("cboVal")
-      cboOperation = session("cboOperation")
 
+      cboFacility = session("cboFacility")
+      cboOperation = session("cboOperation")
+      QORAtype = session("QORAtype")
 
       'Response.Write (Session("cboVal"))    
        numOptionId = Request.QueryString("numOptionID")
@@ -83,21 +74,8 @@ End Function
   set Conn = Server.CreateObject("ADODB.Connection")
   Conn.open constr
   
-  '*********************writting the SQL ******************************
-      
-  '------------------------get the faculty for the login ---------------
-  strSQL = "Select * "_
-  &" from tblfacilitySupervisor,tblFaculty "_
-  &" where tblFacilitySupervisor.numFacultyId = tblFaculty.numFacultyId "_
-  &" and tblFacilitySupervisor.strLoginId = '"& loginId &"'" 
-  
-  set rsSearchFaculty = server.CreateObject("ADODB.Recordset")
-  'Response.Write(strSQL) 
-  rsSearchFaculty.Open strSQL, Conn, 3, 3     
-  strFacultyName = rsSearchFaculty("strFacultyName")     
-  strGivenName = rsSearchFaculty("strGivenName")
-  strSurname = rsSearchFaculty("strSurname")
-  strName = cstr(strGivenName) + " " + cstr(strSurname)
+   
+
   %>
 
 <body>
@@ -126,91 +104,32 @@ End Function
 
 <%
  '****Writing the report****
+
+ if(QORAtype = "location") then 
+ 'AA jan 2010 rewrite include join to tlFacilitySupervisor as part of reln fix
+ strSQL = "SELECT * FROM tblQORA, tblFacility,tblBuilding,tblCampus, tblRiskLevel ,tblFacilitySupervisor, tblFaculty "_
+  &" WHERE tblQORA.numFacilityId = tblFacility.numFacilityID and "_
+  &" tblFacilitySupervisor.numSupervisorID = tblFacility.numFacilitySupervisorID and"_
+  
+  &" tblQORA.numFacilityId = "& cboFacility &" and "_
+  &" tblFacility.numBuildingId = tblBuilding.numBuildingID and "_
+  &" tblBuilding.numCampusId = tblCampus.numCampusID and "_
+   &" tblFacilitySupervisor.numFacultyId = tblFaculty.numFacultyId and "_
+  &" tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel  "_ 
+  &" ORDER BY tblFacilitySupervisor.numFacultyId, tblRiskLevel.numGrade, strTaskDescription"
+ end if
  
- strSQL = "SELECT * FROM tblQORA, tblFacility,tblBuilding,tblCampus, tblRiskLevel, tblFacilitySupervisor  "_
-  &" WHERE tblQORA.numFacilityId = tblFacility.numFacilityID and "_
-  &" tblFacility.numBuildingId = tblBuilding.numBuildingID and "_
-  &" tblBuilding.numCampusId = tblCampus.numCampusID and "_
-  &" tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel and "_
-  &" tblFacilitySupervisor.numSupervisorID = tblFacility.numFacilitySupervisorID and"_
-  &" tblQORA.numFacilityId = "& cboVal &" and "_
-  &" strLoginID = '"& loginId &"' ORDER BY tblRiskLevel.numGrade, strTaskDescription"
-
  
-  'Response.Write(strSQL)
-  'insert case here
-  'AA jan 2010: altered ALL of the below to remove strFacilitySupervisor	
-select case numOptionId
-case "1" :
-
-strSQL = "SELECT * FROM tblQORA, tblFacility,tblBuilding,tblCampus, tblFacilitySupervisor "_
- &" WHERE tblQORA.numFacilityId = tblFacility.numFacilityID and "_
- &" tblFacility.numBuildingId = tblBuilding.numBuildingID and "_
- &" tblBuilding.numCampusId = tblCampus.numCampusID and "_
- &" tblFacilitySupervisor.numSupervisorID = tblFacility.numFacilitySupervisorID and"_
- &" tblQORA.numFacilityId = "& cboVal &" and "_
- &" strLoginID = '"& loginId &"' ORDER BY strTaskDescription"
-case "2" :
-				 strSQL = "SELECT * FROM tblQORA, tblFacility,tblBuilding,tblCampus, tblFacilitySupervisor  "_
-  &" WHERE tblQORA.numFacilityId = tblFacility.numFacilityID and "_
-  &" tblFacility.numBuildingId = tblBuilding.numBuildingID and "_
-  &" tblBuilding.numCampusId = tblCampus.numCampusID and "_
-  &" tblFacilitySupervisor.numSupervisorID = tblFacility.numFacilitySupervisorID and"_
-  &" tblQORA.numFacilityId = "& cboVal &" and "_
-  &" strLoginID = '"& loginId &"' ORDER BY strControlRiskDesc"
-				
-case "3" :
-				 strSQL = "SELECT * FROM tblQORA, tblFacility,tblBuilding,tblCampus, tblFacilitySupervisor  "_
-  &" WHERE tblQORA.numFacilityId = tblFacility.numFacilityID and "_
-  &" tblFacility.numBuildingId = tblBuilding.numBuildingID and "_
-  &" tblBuilding.numCampusId = tblCampus.numCampusID and "_
-  &" tblFacilitySupervisor.numSupervisorID = tblFacility.numFacilitySupervisorID and"_
-  &" tblQORA.numFacilityId = "& cboVal &" and "_
-  &" strLoginID = '"& loginId &"'  ORDER BY strRoomName,strRoomNumber,strBuildingName,strCampusName" 
-
-case "4" :
-				 strSQL = "SELECT * FROM tblQORA, tblFacility,tblBuilding,tblCampus, tblFacilitySupervisor  "_
-  &" WHERE tblQORA.numFacilityId = tblFacility.numFacilityID and "_
-  &" tblFacility.numBuildingId = tblBuilding.numBuildingID and "_
-  &" tblBuilding.numCampusId = tblCampus.numCampusID and "_
-  &" tblFacilitySupervisor.numSupervisorID = tblFacility.numFacilitySupervisorID and"_
-  &" tblQORA.numFacilityId = "& cboVal &" and "_
-  &" strLoginID = '"& loginId &"' ORDER BY  strAssessRisk" 
-
-case "5" :
-				 strSQL = "SELECT * FROM tblQORA, tblFacility,tblBuilding,tblCampus, tblFacilitySupervisor  "_
-  &" WHERE tblQORA.numFacilityId = tblFacility.numFacilityID and "_
-  &" tblFacility.numBuildingId = tblBuilding.numBuildingID and "_
-  &" tblBuilding.numCampusId = tblCampus.numCampusID and "_
-  &" tblFacilitySupervisor.numSupervisorID = tblFacility.numFacilitySupervisorID and"_
-  &" tblQORA.numFacilityId = "& cboVal &" and "_
-  &" strLoginID = '"& loginId &"' ORDER BY strDateActionsCompleted" 
-
-case "6" :
-strSQL = "SELECT * FROM tblQORA, tblFacility,tblBuilding,tblCampus , tblFacilitySupervisor "_
-  &" WHERE tblQORA.numFacilityId = tblFacility.numFacilityID and "_
-  &" tblFacility.numBuildingId = tblBuilding.numBuildingID and "_
-  &" tblBuilding.numCampusId = tblCampus.numCampusID and "_
-  &" tblFacilitySupervisor.numSupervisorID = tblFacility.numFacilitySupervisorID and"_
-  &" tblQORA.numFacilityId = "& cboVal &" and "_
-  &" strLoginID = '"& loginId &"'  ORDER BY dtDateCreated"
-
-end select
+ if(QORAtype = "operation") then
+	 strSQL = "SELECT * FROM tblQORA, tblOperations, tblRiskLevel ,tblFacilitySupervisor, tblFaculty "_
+  &" WHERE tblQORA.numOperationId = tblOperations.numOperationId and "_
+  &" tblFacilitySupervisor.numSupervisorID = tblOperations.numFacilitySupervisorID and"_
   
-  'Get the login ID out as this is more useful
-  strSQL2 = "Select * from tblFacilitySupervisor where strLoginID = '"& loginId &"'" 
-  
-  set rsID = server.CreateObject("ADODB.Recordset")
-  rsID.Open strSQL2, Conn, 3, 3 
-  numSupervisorId = rsID("numSupervisorId")
-  
-if(QORAtype="operation") then 
-	strSQL = "SELECT * FROM tblQORA, tblOperations "_
-	&" WHERE tblQORA.numOperationID = tblOperations.numOperationID and "_
-	&" tblQORA.numOperationID = "&cboOperation&" and "_
-	&" numFacilitySupervisorId = "& numSupervisorId &" ORDER BY dtDateCreated" 
-	      
-end if
+  &" tblQORA.numOperationId = "& numOperationID &" and "_
+  &" tblFacilitySupervisor.numFacultyId = tblFaculty.numFacultyId and "_
+  &" tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel  "_ 
+  &" ORDER BY tblFacilitySupervisor.numFacultyId, tblRiskLevel.numGrade, strTaskDescription"
+ end if
 
 set rsSearchH = server.CreateObject("ADODB.Recordset")
 rsSearchH.Open strSQL, Conn, 3, 3 
@@ -226,8 +145,8 @@ if(QORAtype = "location") then %>
 	</tr>
 	<tr>
 		<td class="campus">
-		<strong>Supervisor: </strong><%=strName%>&nbsp;&nbsp;&nbsp;</td>
-		<td class="campus" colspan="6"><strong>Faculty: </strong><%=strFacultyName%>&nbsp;&nbsp;&nbsp;
+		<strong>Supervisor: </strong><%=rsSearchH("strGivenName")&" "&rsSearchH("strSurname")%>&nbsp;&nbsp;&nbsp;</td>
+		<td class="campus" colspan="6"><strong>Faculty: </strong><%=rsSearchH("strFacultyName")%></strong>&nbsp;&nbsp;&nbsp;
 		</td>		
 	</tr>
 </table>
@@ -236,7 +155,7 @@ if(QORAtype = "location") then %>
 if(QORAtype = "operation") then %>
 		<tr>
   			<td class="campus">
-  			<strong>Supervisor: </strong><%=strName%>&nbsp;&nbsp;&nbsp;</td>
+  			<strong>Supervisor: </strong><%=rsSearchH("strGivenName")&" "&rsSearchH("strSurname")%>>&nbsp;&nbsp;&nbsp;</td>
   			<td class="campus" colspan="6"><strong>Operation: </strong><%=rsSearchH("strOperationName")%>&nbsp;&nbsp;&nbsp;
   			</td>		
   		</tr>

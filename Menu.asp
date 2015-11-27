@@ -81,8 +81,8 @@ If  rsAccess2.eof then
 <%else If  rsAccess2("strPassword")= strPassword then
 		session("LoggedIn")= true
 		session("strLoginID")= strLoginID
-		strAccessLevel = rsAccess2("strAccessLevel")
-		session("strAccessLevel") = strAccessLevel
+	
+
 		
 		'get the username & put into session data to avoid annoying timeout message
 		set conn3 = Server.CreateObject("ADODB.Connection")
@@ -98,6 +98,13 @@ If  rsAccess2.eof then
   		session("strName") = strName
 		session("numSupervisorId") = rsSearchLogin("numSupervisorId")
         session("numFacultyId") = rsSearchLogin("numFacultyId")
+        session("strAccessLevel")  = rsAccess2("strAccessLevel")
+
+        if rsAccess2("strAccessLevel") ="A" then
+		   session("isAdmin") = true
+		elseif rsAccess2("strAccessLevel") ="S" then
+		   session("isAdmin") = false
+		end if 
 		
     
         dim strFacultyName
@@ -115,14 +122,12 @@ If  rsAccess2.eof then
 	    session("strFacultyName") = strFacultyName	
 
 
-
-        if rsAccess2("strAccessLevel") ="A" then
-		   Response.Redirect "IndexAdmin.asp"
-		elseif rsAccess2("strAccessLevel") ="S" then
-		   Response.Redirect "IndexSupervisor.asp"
-		   elseif rsAccess2("strAccessLevel") ="D" then
-		   Response.Redirect "IndexDD.asp"
-		end if 
+        Response.redirect "Home.asp"
+        'if rsAccess2("strAccessLevel") ="A" then
+		'   Response.Redirect "IndexAdmin.asp"
+		'elseif rsAccess2("strAccessLevel") ="S" then
+		'   Response.Redirect "IndexSupervisor.asp"
+		'end if 
 
 	else
 		'msg = "The password for " + strLoginID + " was not correct, please try again. Please contact administrator if you need a new Password"

@@ -10,7 +10,7 @@
 <title>hi</title>
 </head>
 <body>
-    <!--#include file="adminMenu.asp" -->
+    <!--#include file="HeaderMenu.asp" -->
 <%
 
 'strCampusname = request.form("hdnNumCampusname")

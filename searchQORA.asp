@@ -155,20 +155,25 @@
 
 
 			   <ul class="nav nav-tabs" >
+                   <% if not session("LoggedIn") OR (session("loggedIn") AND session("isAdmin")) then %>
 				  <li class="active"><a data-toggle="tab" href="#facility">Search Facility Locations</a></li>
 				  <li><a data-toggle="tab" href="#operations">Search Operations/Projects</a></li>
 				  <li><a data-toggle="tab" href="#supervisors">Search Supervisors</a></li>
 				  <li><a data-toggle="tab" href="#ra">Search RA Number</a></li>
+                   <% end if %>
 				   <% if session("LoggedIn")= true then %>
-				   <li><a data-toggle="tab" href="#my">My Risk Assessments</a></li>
+				   <li <% if not session("isAdmin") then  %> class="active" <% end if %>><a data-toggle="tab" href="#my">My Risk Assessments</a></li>
 				   <% end if %>
+                  
 			   </ul>
 			   <div class="tab-content">
+
+                   <!-- hide these sections unless you are logged out, or admin -->
+                  <% if not session("LoggedIn") OR (session("loggedIn") AND session("isAdmin")) then %>
 				  <%'********************************** SEARCH SUPERVISOR  **************************************************************%>
 				  <div id="supervisors" class="tab-pane fade">
 					 <table class="adminfn">
-						<form method="post" action="SearchQORA.asp" name="MenuSuper">
-						   <tr>
+						  <tr>
 							  <td>Search Supervisor</td>
 						   </tr>
 						   <tr>
@@ -198,7 +203,7 @@
 								 </select>
 							  </td>
 						   </tr>
-						</form>
+						
 						<form method="post" name="Submit1" action="CollectInfoAdmin.asp" name="f1" enctype="application/x-www-form-urlencoded">
 						   <input type="hidden" name="hdnSuperV" value="<%=strsuperV%>" />
 						   <input type="hidden" name="hdnHazardousTask" value="<%=strHazardousTask%>" />
@@ -211,7 +216,7 @@
 							  <th>Supervisor Name</th>
 							  <td>
 															   
-								 <select size="1" name="cboSupervisorName" id="cboSupervisor" tabindex="2">
+								 <select autocomplete="off"  size="1" name="cboSupervisorName" id="cboSupervisor" tabindex="2">
 									  <option value="0">Select any one</option>
 									</select>
 								 &nbsp;
@@ -235,8 +240,7 @@
 				  <%'************************************************  SEARCH LOCATION ******************************************************** %>
 				  <div id="facility" class="tab-pane fade in active">
 					 <table class="adminfn">
-						<form method="post" action="Menu.asp" name="MenuLocation">
-						   <tr>
+						 <tr>
 							  <td>Search Location</td>
 						   </tr>
 						   <tr>
@@ -273,13 +277,13 @@
 								 
 										   
 							  <td>
-								 <select size="1" name="cboBuilding" id="cboBuilding" tabindex="4" onchange="javascript:FillRoomLocation(this.value, '<%=strsuperV%>')">
+								 <select autocomplete="off"  size="1" name="cboBuilding" id="cboBuilding" tabindex="4" onchange="javascript:FillRoomLocation(this.value, '<%=strsuperV%>')">
 									<option value="0">Select any one</option>
 		 
 								 </select>
 							  </td>
 						   </tr>
-						</form>
+						
 						<form method="post" name="Submit2" action="CollectInfoAdmin.asp" name="f1" enctype="application/x-www-form-urlencoded">
 						   <input type="hidden" name="hdnSuperV" value="<%=strsuperV%>" />
 						   <input type="hidden" name="hdnHazardousTask" value="<%=strHazardousTask%>" />
@@ -292,7 +296,7 @@
 							  <th>Room No. / Name</th>
 							 
 							  <td>
-								 <select size="1" name="cboRoom" id="cboRoom" tabindex="5">
+								 <select autocomplete="off"  size="1" name="cboRoom" id="cboRoom" tabindex="5">
 									<option value="0">Select any one</option>
 									
 								 </select>
@@ -313,8 +317,7 @@
 				  <%'************************************************  SEARCH OPERATION ******************************************************** %>
 				  <div id="operations" class="tab-pane fade">
 					 <table class="adminfn">
-						<form method="post" action="SearchQORA.asp" name="MenuOperation">
-						   <tr>
+						<tr>
 							  <td>Search Operation</td>
 						   </tr>
 						   <tr>
@@ -341,7 +344,6 @@
 							  </td>
 						   </tr>
 						
-						</form>
 						<form method="post" name="Submit3" action="CollectInfoAdmin.asp" name="f1" enctype="application/x-www-form-urlencoded">
 						   <input type="hidden" name="hdnSuperV" value="<%=strsuperV%>" />
 						   <input type="hidden" name="hdnHazardousTask" value="<%=strHazardousTask%>" />
@@ -353,7 +355,7 @@
 						   <tr>
 							  <th>Operation</th>
 							  <td>
-								 <select name="cboOperation" id="cboOperation">
+								 <select autocomplete="off"  name="cboOperation" id="cboOperation">
 									<option value="0">Select any one</option>
 								   
 								 </select>
@@ -375,7 +377,7 @@
 				  <%'************************************************ END SEARCH OPERATION ******************************************************** %>
 				  <%'************************************************  SEARCH TASK ******************************************************** %>
 				  <div id="ra" class="tab-pane fade">
-					  <form method="post" action="SearchQORA.asp" name="MenuTask">
+					 
 						<table class="adminfn">
 					   
 						   <tr>
@@ -388,7 +390,7 @@
 									if numFacultyID = "" then
 									   numFacultyID = 0
 									end if %>
-								 <select size="1" name="cboFacultyTask" tabindex="1" onchange="javascript:FillDetailsTask()">
+								 <select autocomplete="off"  size="1" name="cboFacultyTask" tabindex="1" onchange="javascript:FillDetailsTask()">
 									<option value="0"
 									   <% if numFacultyID = 0 then
 										  response.Write "Select any one"
@@ -409,7 +411,7 @@
 								 </select>
 							  </td>
 						   </tr>
-						</form>
+						
 						<form method="post" name="Submit4" action="CollectInfoAdmin.asp" name="f1" enctype="application/x-www-form-urlencoded">
 						   <input type="hidden" name="hdnSuperV" value="<%=strsuperV%>" />
 						   <input type="hidden" name="hdnHazardousTask" value="<%=strHazardousTask%>" />
@@ -442,10 +444,9 @@
 					 </table>
 				  </div>
 				  <%'************************************************  END TASK OPERATION ***************************************************** %>
+                  <% end if %>
 				  <%'************************************************  START MY RA OPERATION ***************************************************** %>
-					<% if session("LoggedIn")= true then %>
-
-					<%
+				    <% if session("LoggedIn") then 
 						  Dim connFaci
 						  Dim rsFillFaci
 						  Dim strSQLFaci
@@ -484,38 +485,35 @@
 						   set rsFillProj = Server.CreateObject("ADODB.Recordset")
 						   rsFillProj.Open strSQLProj, connProj, 3, 3
 
-
+						'response.write(strSQLProj)
 						 %>
-					  <div id="my" class="tab-pane fade">
-					  <form method="post" action="SearchQORA.asp" name="MenuTask">
-						<table class="adminfn">
-						   <tr>
-							  <td>My Risk Assessments </td>   
-						   </tr>
+					  <div id="my" class="tab-pane fade <% if not session("isAdmin") then %> in active <% end if %> %>">
+                          <% if session("isAdmin") then %>
+									<form method="post" action="AdminRDateModified.asp"  name="FormA" enctype="application/x-www-form-urlencoded">
+							   <% else %>
+									<form method="post" action="SupRDateModified.asp"  name="FormA" enctype="application/x-www-form-urlencoded">
+								<% end if %>
+
+					       <table class="adminfn">
+						   
 							<tr>
 								<th>Faculty/Unit:</th>
-								<td><strong><% =session("strFacultyName") %></strong></td>
+								<td colspan ="3"><strong><% =session("strFacultyName") %></strong></td>
 							</tr>
 							<tr>
 								<th>Supervisor Name:</th>
-								<td><strong><% =session("strName") %></strong></td>
+								<td colspan="3"><strong><% =session("strName") %></strong></td>
 							</tr>
-							</form>
-						  <form method="post" name="Submit4" action="CollectInfoAdmin.asp" name="f1" enctype="application/x-www-form-urlencoded">
-						   <input type="hidden" name="hdnSuperV" value="<%=strsuperV%>" />
-						   <input type="hidden" name="hdnHazardousTask" value="<%=strHazardousTask%>" />
-						   <input type="hidden" name="hdnBuildingId" value="<%=numBuildingId%>" />
-						   <input type="hidden" name="hdnCampusID" value="<%=numCampusId%>" />
-						   <input type="hidden" name="hdnFacultyId" value="<%=session("numFacultyId")%>" />
-						   <input type="hidden" name="cboFaculty" value="<%=cboFacultyTask%>" />
-						   <input type="hidden" name="searchType" id="switch" value="myfac" />
+					
+ 
+							<input type="hidden" name="QORAtype" ID="QORAtype" value=""/>
 						   <tr>
 							  <th>Facility</th>
-							  <td>
+							  <td colspan="2">
 								
-								 <select size="1" name="cboRoom" tabindex="1" onchange="$('#switch').val('myfac')">
+								 <select autocomplete="off"  size="1" name="cboFacility" tabindex="1" onchange="$('#QORAtype').val('location')">
 									<option value="0">Select any one</option>
-									<%rsFillFaci.MoveFirst
+									<%
 									   while not rsFillFaci.Eof
 											concat = rsFillFaci("strRoomNumber")&" "&rsFillFaci("strRoomName")
 											 %>   
@@ -526,42 +524,36 @@
 									%>
 								 </select>
 							  </td>
+                               <td><input type="submit" size="70" value="Generate Facility Report" name="btnGenRep" /></td>
 						   </tr>
 						
-						
+						<tr><td colspan="4"><hr /></td></tr>
 						   <tr>
 							  <th>Operation/Project</th>
-							  <td>
-								 <select name="cboOperation" id="Select1" onchange="$('#switch').val('myop')">
+							  <td colspan="2">
+								 <select autocomplete="off"  name="cboOperation" id="Select1" Onchange="$('#QORAtype').val('operation')">
 									<option value="0">Select any one</option>
-								   <%rsFillProj.MoveFirst
+								   <%
 									   while not rsFillProj.Eof
 											 %>   
 											<option value="<%=rsFillProj("numOperationId")%>">
-                                                <%=rsFillProj("strOperationName")%></option>
+												<%=rsFillProj("strOperationName")%></option>
 									<% 
 										rsFillProj.Movenext	
 									   wend 
 									%>
 								 </select>
 							  </td>
+						   
+							  <td>
+                                   <input type="submit" size="70"value="Generate Operation/Project Report" name="btnGenRep" /></td>
 						   </tr>
-						   <tr>
-							  <td></td>
-						   </tr>
-						   <tr>
-							  <td colspan="2">
-								 <center>
-									<input type="Submit" value="Search" name="btnSearch" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Clear Form" name="btnClear" onclick="    clearform()" />&nbsp;&nbsp;&nbsp;&nbsp;<!--input type="Submit" value="Action Status Report" name="btnSearch" onclick="FillSearch()" /-->
-									<!--DLJ Removed this button from common search 22July2011-->
-						
-						</center></td>
-						</form>
-						</tr>
+						   
 						<tr>
 						   <td>&nbsp;</td>
 						</tr>
 					 </table>
+                          </form>
 				  </div>
 				   <% end if %>
 				   <%'************************************************  END MY RA OPERATION ***************************************************** %>
