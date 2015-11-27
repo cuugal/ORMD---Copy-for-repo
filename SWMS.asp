@@ -115,6 +115,7 @@ end if
 <link rel="stylesheet" type="text/css" href="orr.css" media="screen" />
 </head>
 <body>
+	<!--#include file="HeaderMenu.asp" -->
 <title>EHS Risk Register for Facilities - Edit a Risk Assessment</title>
 
 <div id="wrapperform">

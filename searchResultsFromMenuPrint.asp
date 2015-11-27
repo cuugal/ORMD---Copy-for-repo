@@ -96,16 +96,16 @@ Dim flag
 '*******************Fetching the inputs************************************************
 strHTask = Request.form("txtHazardoustask")
 numBuildingId = Request.form("hdnBuildingId")
-numCampusId = Request.form("hdnCampusId")
+numCampusId = cint(Request.form("hdnCampusId"))
 strSupervisor = Request.form("hdnSuperV")
-numFacultyId = Request.form("hdnFacultyId")
-numFacilityId = Request.form("cboRoom")
+numFacultyId = cint(Request.form("hdnFacultyId"))
+numFacilityId = cint(Request.form("cboRoom"))
 
 strHTask = Session("hdnHTask") 
-numBuildingId =  Session("hdnBuildingId")
-numCampusId = Session("hdnCampusId")
-numFacultyId = Session("hdnFacultyId")
-numFacilityId =Session("hdnFacilityId")
+numBuildingId =  cint(Session("hdnBuildingId"))
+numCampusId = cint(Session("hdnCampusId"))
+numFacultyId = cint(Session("hdnFacultyId"))
+numFacilityId = cint(Session("hdnFacilityId"))
 strSupervisor =Session("hdnSupervisor")
 
 strOperation = Session("hdnOperationID")
@@ -152,12 +152,13 @@ end if
 
 if(searchType = "location") then
 	strSQL = "Select distinct(tblQORA.numQORAId) as numQORAId, tblQORA.*, tblRiskLevel.* "
-	strSQL = strSQL+" from tblQORA, tblRiskLevel, tblFacility, tblBuilding, tblCampus "
+	strSQL = strSQL+" from tblQORA, tblRiskLevel, tblFacility, tblBuilding, tblCampus, tblFacilitySupervisor "
 	strSQL = strSQL+" Where tblFacilitySupervisor.numfacultyId = "& numFacultyId
 	
 	strSQL = strSQL+" and tblQORA.numFacilityID = tblFacility.numFacilityID"
 	strSQL = strSQL+" and tblBuilding.numBuildingID = tblFacility.numBuildingID"	
 	strSQL = strSQL+" and tblCampus.numCampusID = tblBuilding.numCampusID"
+    strSQL = strSQL+" and tblFacility.numFacilitySupervisorID = tblFacilitySupervisor.numSupervisorID"
 
 	if Len(numFacilityId) > 0 and (numFacilityID <> 0) then
 		strSQL = strSQL+" and tblFacility.numFacilityID = "&numFacilityId

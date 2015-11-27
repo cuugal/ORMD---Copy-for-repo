@@ -123,7 +123,8 @@ function getBaseURL() {
 // function to populate the textboxes on click event
 function Populate(val)
 {
-  document.all.T1.value = document.all.T1.value + val
+    //document.all.T1.value = document.all.T1.value + val
+    $("#T1").val($("#T1").val() + val);
 
 }
 // function to populate the textboxes on click event

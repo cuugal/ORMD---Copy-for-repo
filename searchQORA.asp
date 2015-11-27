@@ -173,9 +173,7 @@
 				  <%'********************************** SEARCH SUPERVISOR  **************************************************************%>
 				  <div id="supervisors" class="tab-pane fade">
 					 <table class="adminfn">
-						  <tr>
-							  <td>Search Supervisor</td>
-						   </tr>
+						  
 						   <tr>
 							  <th>Faculty/Unit</th>
 							  <td>
@@ -240,9 +238,7 @@
 				  <%'************************************************  SEARCH LOCATION ******************************************************** %>
 				  <div id="facility" class="tab-pane fade in active">
 					 <table class="adminfn">
-						 <tr>
-							  <td>Search Location</td>
-						   </tr>
+						 
 						   <tr>
 							  <th>Faculty/Unit</th>
 							  <td>
@@ -317,9 +313,7 @@
 				  <%'************************************************  SEARCH OPERATION ******************************************************** %>
 				  <div id="operations" class="tab-pane fade">
 					 <table class="adminfn">
-						<tr>
-							  <td>Search Operation</td>
-						   </tr>
+						
 						   <tr>
 							  <th>Faculty/Unit</th>
 							  <td>
@@ -380,37 +374,8 @@
 					 
 						<table class="adminfn">
 					   
-						   <tr>
-							  <td>Search Task/RA Number</td>
-						   </tr>
-						   <tr>
-							  <th>Faculty/Unit</th>
-							  <td>
-								 <%    numFacultyID = cint(request.form("cboFacultyTask"))
-									if numFacultyID = "" then
-									   numFacultyID = 0
-									end if %>
-								 <select autocomplete="off"  size="1" name="cboFacultyTask" tabindex="1" onchange="javascript:FillDetailsTask()">
-									<option value="0"
-									   <% if numFacultyID = 0 then
-										  response.Write "Select any one"
-										  end if %>>Select any one</option>
-									<%rsFillFac.MoveFirst
-									   while not rsFillFac.Eof 
-											   'DLJ put this if statement in 22 Jan 2010 - is this OK?
-											   if rsFillFac("boolActive")= True Then %>
-									<option value="<%=rsFillFac("NumFacultyID")%>"
-									   <% if rsFillFac("NumFacultyID") = numFacultyID Then
-										  response.Write "selected"
-										  end if %>><%=cstr(rsFillFac("strFacultyName"))%></option>
-									<% End If
-									   rsFillFac.Movenext	
-									   wend 
-									   
-											   %>
-								 </select>
-							  </td>
-						   </tr>
+						  
+						 
 						
 						<form method="post" name="Submit4" action="CollectInfoAdmin.asp" name="f1" enctype="application/x-www-form-urlencoded">
 						   <input type="hidden" name="hdnSuperV" value="<%=strsuperV%>" />

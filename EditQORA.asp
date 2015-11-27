@@ -427,13 +427,13 @@ Dim strSurname
 <!-- Chemical -->
 <li class="tab-chm"><a href="#point1" name="tab4" id="tablink-chm" class="chm" onmouseover="switchTab(4);" onkeypress="switchTab(4);" onfocus="switchTab(4);" onmouseout="hideAllTabs();">Chemical</a></li>
 <li id="group-chm"><div id="group4" class="groups"><ul class="section-list">
-<li><a href="#point1" onClick="Populate('Chemical - Hazardous Substances or Dangerous Goods\r\n'); return radioClick2 (event)" title="Click to add 'Hazardous Substances or Dangerous Goods' as a Hazard in this Risk Assessment.">Hazardous Substances or Dangerous Goods</a></li>
-<li><a href="#point1" onClick="Populate('Chemical - Hazardous Waste\r\n'); return radioClick2 (event)" title="Click to add 'Hazardous Waste' as a Hazard in this Risk Assessment.">Hazardous Waste</a></li>
-<li><a href="#point1" onClick="Populate('Chemical - Fumes\r\n'); return radioClick2 (event)" title="Click to add 'Fumes' as a Hazard in this Risk Assessment.">Fumes</a></li>
-<li><a href="#point1" onClick="Populate('Chemical - Dust\r\n'); return radioClick2 (event)" title="Click to add 'Dust' as a Hazard in this Risk Assessment.">Dust</a></li>
-<li><a href="#point1" onClick="Populate('Chemical - Vapours\r\n'); return radioClick2 (event)" title="Click to add 'Vapours' as a Hazard in this Risk Assessment.">Vapours</a></li>
-<li><a href="#point1" onClick="Populate('Chemical - Gases\r\n'); return radioClick2 (event)" title="Click to add 'Gases' as a Hazard in this Risk Assessment.">Gases</a></li>
-<li><a href="#point1" onClick="Populate('Chemical - Fire/Explosion Risk\r\n'); return radioClick2 (event)" title="Click to add 'Fire/Explosion Risk' as a Hazard in this Risk Assessment.">Fire/Explosion Risk</a></li>
+<li><a href="#point1" onClick="Populate('Chemical - Hazardous Substances or Dangerous Goods\r\n'); " title="Click to add 'Hazardous Substances or Dangerous Goods' as a Hazard in this Risk Assessment.">Hazardous Substances or Dangerous Goods</a></li>
+<li><a href="#point1" onClick="Populate('Chemical - Hazardous Waste\r\n'); " title="Click to add 'Hazardous Waste' as a Hazard in this Risk Assessment.">Hazardous Waste</a></li>
+<li><a href="#point1" onClick="Populate('Chemical - Fumes\r\n');" title="Click to add 'Fumes' as a Hazard in this Risk Assessment.">Fumes</a></li>
+<li><a href="#point1" onClick="Populate('Chemical - Dust\r\n'); " title="Click to add 'Dust' as a Hazard in this Risk Assessment.">Dust</a></li>
+<li><a href="#point1" onClick="Populate('Chemical - Vapours\r\n'); " title="Click to add 'Vapours' as a Hazard in this Risk Assessment.">Vapours</a></li>
+<li><a href="#point1" onClick="Populate('Chemical - Gases\r\n'); " title="Click to add 'Gases' as a Hazard in this Risk Assessment.">Gases</a></li>
+<li><a href="#point1" onClick="Populate('Chemical - Fire/Explosion Risk\r\n'); " title="Click to add 'Fire/Explosion Risk' as a Hazard in this Risk Assessment.">Fire/Explosion Risk</a></li>
 </ul></div></li>
 
 
