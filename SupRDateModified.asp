@@ -118,7 +118,7 @@ End Function
   &" tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel and "_ 
   &" tblFacilitySupervisor.numSupervisorId = "& numSupervisorID &" ORDER BY tblRiskLevel.numGrade, strTaskDescription"
  end if
-
+    'response.write (strSQL)
       
     set rsSearchH = server.CreateObject("ADODB.Recordset")
     rsSearchH.Open strSQL, Conn, 3, 3 
@@ -267,7 +267,7 @@ if (QORAtype = "operation") then %>
  end if %>
  
 <%else%>
-<p>There are currently no Risk Assessments for this facility or operation!</p>
+<p style="background-color:#fff">There are currently no Risk Assessments for this facility or operation</p>
 <%end if%>
 </div>
 </body>

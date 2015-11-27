@@ -55,17 +55,17 @@ Dim strSQL
 Dim flag
 '*******************Fetching the inputs************************************************
 strHTask = Request.form("txtHazardoustask")
-numBuildingId = Request.form("hdnBuildingId")
-numCampusId = Request.form("hdnCampusId")
+numBuildingId = cint(Request.form("hdnBuildingId"))
+numCampusId = cint(Request.form("hdnCampusId"))
 strSupervisor = Request.form("hdnSuperV")
-numFacultyId = Request.form("hdnFacultyId")
-numFacilityId = Request.form("cboRoom")
+numFacultyId = cint(Request.form("hdnFacultyId"))
+numFacilityId = cint(Request.form("cboRoom"))
 
 strHTask = Session("hdnHTask") 
-numBuildingId =  Session("hdnBuildingId")
-numCampusId = Session("hdnCampusId")
-numFacultyId = Session("hdnFacultyId")
-numFacilityId =Session("hdnFacilityId")
+numBuildingId =  cint(Session("hdnBuildingId"))
+numCampusId = cint(Session("hdnCampusId"))
+numFacultyId = cint(Session("hdnFacultyId"))
+numFacilityId = cint(Session("hdnFacilityId"))
 strSupervisor =Session("hdnSupervisor")
 strOperation = Session("hdnOperationID")
 

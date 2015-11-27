@@ -207,9 +207,9 @@
 						<form method="post" name="Submit1" action="CollectInfoAdmin.asp" name="f1" enctype="application/x-www-form-urlencoded">
 						   <input type="hidden" name="hdnSuperV" value="<%=strsuperV%>" />
 						   <input type="hidden" name="hdnHazardousTask" value="<%=strHazardousTask%>" />
-						   <input type="hidden" name="hdnBuildingId" value="<%=numBuildingId%>" />
-						   <input type="hidden" name="hdnCampusID" value="<%=numCampusId%>" />
-						   <input type="hidden" name="hdnFacultyId" id="superFacultyId" value="<%=numFacultyId%>" />
+						   <input type="hidden" name="hdnBuildingId" value="0" />
+						   <input type="hidden" name="hdnCampusID" value="0" />
+						   <input type="hidden" name="hdnFacultyId" id="superFacultyId" value="0" />
 						   <input type="hidden" name="cboFaculty" value="<%=cboFacultySuper%>" />
 						   <input type="hidden" name="searchType" value="supervisor" />
 						   <tr>
@@ -287,10 +287,10 @@
 						<form method="post" name="Submit2" action="CollectInfoAdmin.asp" name="f1" enctype="application/x-www-form-urlencoded">
 						   <input type="hidden" name="hdnSuperV" value="<%=strsuperV%>" />
 						   <input type="hidden" name="hdnHazardousTask" value="<%=strHazardousTask%>" />
-						   <input type="hidden" name="hdnBuildingId" id="locBuidingId" value="<%=numBuildingId%>" />
-						   <input type="hidden" name="hdnCampusID" id="locCampusId" value="<%=numCampusId%>" />
-						   <input type="hidden" name="hdnFacultyId" id="locFacultyId" value="<%=numFacultyId%>" />
-						   <input type="hidden" name="cboFaculty"  value="<%=cboFacultyLocation%>" />
+						   <input type="hidden" name="hdnBuildingId" id="locBuidingId" value="0" />
+						   <input type="hidden" name="hdnCampusID" id="locCampusId" value="0" />
+						   <input type="hidden" name="hdnFacultyId" id="locFacultyId" value="0" />
+						   <input type="hidden" name="cboFaculty"  value="0" />
 						   <input type="hidden" name="searchType" value="location" />
 						   <tr>
 							  <th>Room No. / Name</th>
@@ -347,10 +347,10 @@
 						<form method="post" name="Submit3" action="CollectInfoAdmin.asp" name="f1" enctype="application/x-www-form-urlencoded">
 						   <input type="hidden" name="hdnSuperV" value="<%=strsuperV%>" />
 						   <input type="hidden" name="hdnHazardousTask" value="<%=strHazardousTask%>" />
-						   <input type="hidden" name="hdnBuildingId" value="<%=numBuildingId%>" />
-						   <input type="hidden" name="hdnCampusID" value="<%=numCampusId%>" />
-						   <input type="hidden" name="hdnFacultyId" id="opsFacultyId" value="<%=numFacultyId%>" />
-						   <input type="hidden" name="cboFaculty" value="<%=cboFacultyOperation%>" />
+						   <input type="hidden" name="hdnBuildingId" value="0" />
+						   <input type="hidden" name="hdnCampusID" value="0" />
+						   <input type="hidden" name="hdnFacultyId" id="opsFacultyId" value="0" />
+						   <input type="hidden" name="cboFaculty" value="0" />
 						   <input type="hidden" name="searchType" value="operation" />
 						   <tr>
 							  <th>Operation</th>
@@ -415,10 +415,10 @@
 						<form method="post" name="Submit4" action="CollectInfoAdmin.asp" name="f1" enctype="application/x-www-form-urlencoded">
 						   <input type="hidden" name="hdnSuperV" value="<%=strsuperV%>" />
 						   <input type="hidden" name="hdnHazardousTask" value="<%=strHazardousTask%>" />
-						   <input type="hidden" name="hdnBuildingId" value="<%=numBuildingId%>" />
-						   <input type="hidden" name="hdnCampusID" value="<%=numCampusId%>" />
-						   <input type="hidden" name="hdnFacultyId" value="<%=numFacultyId%>" />
-						   <input type="hidden" name="cboFaculty" value="<%=cboFacultyTask%>" />
+						   <input type="hidden" name="hdnBuildingId" value="0" />
+						   <input type="hidden" name="hdnCampusID" value="0" />
+						   <input type="hidden" name="hdnFacultyId" value="0" />
+						   <input type="hidden" name="cboFaculty" value="0" />
 						   <input type="hidden" name="searchType" value="task" />
 						   <tr>
 							  <th>Task/RA Number</th>
@@ -494,6 +494,23 @@
 									<form method="post" action="SupRDateModified.asp"  name="FormA" enctype="application/x-www-form-urlencoded">
 								<% end if %>
 
+                                        <script type="text/javascript">
+                                            function checkFacility() {
+                                                if ($("#myfacility").val() == 0) {
+                                                    alert("Please select a Facility");
+                                                    return false;
+                                                }
+                                                return true;
+                                            }
+                                            function checkOperation() {
+                                                if ($("#myoperation").val() == 0) {
+                                                    alert("Please select an Operation");
+                                                    return false;
+                                                }
+                                                return true;
+                                            }
+                                        </script>
+
 					       <table class="adminfn">
 						   
 							<tr>
@@ -511,7 +528,7 @@
 							  <th>Facility</th>
 							  <td colspan="2">
 								
-								 <select autocomplete="off"  size="1" name="cboFacility" tabindex="1" onchange="$('#QORAtype').val('location')">
+								 <select autocomplete="off" id="myfacility" size="1" name="cboFacility" tabindex="1" onchange="$('#QORAtype').val('location')">
 									<option value="0">Select any one</option>
 									<%
 									   while not rsFillFaci.Eof
@@ -524,14 +541,14 @@
 									%>
 								 </select>
 							  </td>
-                               <td><input type="submit" size="70" value="Generate Facility Report" name="btnGenRep" /></td>
+                               <td><input type="submit" size="70" value="Generate Facility Report" onclick="return checkFacility();" name="btnGenRep" /></td>
 						   </tr>
 						
 						<tr><td colspan="4"><hr /></td></tr>
 						   <tr>
 							  <th>Operation/Project</th>
 							  <td colspan="2">
-								 <select autocomplete="off"  name="cboOperation" id="Select1" Onchange="$('#QORAtype').val('operation')">
+								 <select autocomplete="off" id="myoperation" name="cboOperation" id="Select1" Onchange="$('#QORAtype').val('operation')">
 									<option value="0">Select any one</option>
 								   <%
 									   while not rsFillProj.Eof
@@ -546,7 +563,7 @@
 							  </td>
 						   
 							  <td>
-                                   <input type="submit" size="70"value="Generate Operation/Project Report" name="btnGenRep" /></td>
+                                   <input type="submit" size="70"value="Generate Operation/Project Report" onclick="return checkOperation();" name="btnGenRep" /></td>
 						   </tr>
 						   
 						<tr>

@@ -17,12 +17,12 @@
   dim numFacilityId
    
    strTask = Request.Form("txtHazardousTask")
-   numBuildingId = Request.form("hdnBuildingId")
-   numCampusId = Request.form("hdnCampusId")
+   numBuildingId = cint(Request.form("hdnBuildingId"))
+   numCampusId = cint(Request.form("hdnCampusId"))
    strSupervisor = Request.form("cboSupervisorName")
-   numFacultyId = Request.form("hdnFacultyId")
-   numFacilityId = Request.form("cboRoom")
-   strOperation = Request.Form("cboOperation")
+   numFacultyId = cint(Request.form("hdnFacultyId"))
+   numFacilityId = cint(Request.form("cboRoom"))
+   strOperation = cint(Request.Form("cboOperation"))
   
    Session("hdnHTask") = strTask
    Session("hdnBuildingId") = numBuildingId
