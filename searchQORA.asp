@@ -513,7 +513,7 @@
 						   <tr>
 							  <th>Operation/Project</th>
 							  <td colspan="2">
-								 <select autocomplete="off" id="myoperation" name="cboOperation" id="Select1" Onchange="$('#QORAtype').val('operation')">
+								 <select autocomplete="off" id="myoperation" name="cboOperation" id="cboOperation" Onchange="$('#QORAtype').val('operation')">
 									<option value="0">Select any one</option>
 								   <%
 									   while not rsFillProj.Eof

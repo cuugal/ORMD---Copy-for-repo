@@ -40,6 +40,7 @@ table.swms td.medium { background-color: #FFE000; }
 table.swms td.low { background-color: #FFFF99;}
 table.swms .plainbox { padding: 2px; background-color: #e8ede4; color: #000000; vertical-align: middle;}
 
+table.sortable a {text-decoration: underline;}
 
 /* Style the HRs for this page only */
 body#editqora hr { width: 50%; background-color: #BCD7DE; color: #BCD7DE; height: 1px; border: 0; margin-top: 12px; margin-bottom: 10px;}

@@ -115,7 +115,7 @@ select,
 textarea {
   margin: 0;
  /* font: inherit; */
-  color: inherit;
+ /*  color: inherit; */
 }
 button {
   overflow: visible;
@@ -3039,7 +3039,7 @@ select[multiple].input-lg {
 .btn:hover,
 .btn:focus,
 .btn.focus {
-  color: #333;
+  color: #fff;
   text-decoration: none;
 }
 .btn:active,
@@ -3130,26 +3130,29 @@ fieldset[disabled] .btn-default.active {
 }
 .btn-primary {
   color: #fff;
-  background-color: #337ab7;
-  border-color: #2e6da4;
+  background-color: #445c2c;
+  border-color: #e8ede4;
 }
 .btn-primary:focus,
 .btn-primary.focus {
-  color: #fff;
+ /* color: #fff;
   background-color: #286090;
   border-color: #122b40;
+     */
 }
 .btn-primary:hover {
-  color: #fff;
-  background-color: #286090;
-  border-color: #204d74;
+  color: #000;
+  background-color: #e8ede4;
+  border-color: #445c2c;
+     
 }
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
-  color: #fff;
+/*  color: #fff;
   background-color: #286090;
   border-color: #204d74;
+    */
 }
 .btn-primary:active:hover,
 .btn-primary.active:hover,
@@ -3160,9 +3163,9 @@ fieldset[disabled] .btn-default.active {
 .btn-primary:active.focus,
 .btn-primary.active.focus,
 .open > .dropdown-toggle.btn-primary.focus {
-  color: #fff;
-  background-color: #204d74;
+/*  background-color: #204d74;
   border-color: #122b40;
+    */
 }
 .btn-primary:active,
 .btn-primary.active,

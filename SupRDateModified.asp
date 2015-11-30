@@ -15,23 +15,12 @@ loginId = session("strLoginId")
 'Response.Write(loginId)
 %>
 <head>
+    <!--#include file="bootstrap.inc"--> 
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 <meta http-equiv="Content-Language" content="en-au" />
-<link rel="stylesheet" type="text/css" href="orr.css" media="screen">
-<!--<link rel="stylesheet" type="text/css" href="orrprint.css" media="print" />-->
+
 <title>Online Risk Register - UTS Risk Assessments</title>
-<script language="javaScript" type="text/javascript">
-<!--
-function framebreakout()
-{
-  if (top.location != location) {
-    top.location.href = document.location.href ;
-  }
-}
 
-
-//-->
-</script>
 <script type="text/javascript" src="sorttable.js"></script>
 </head>
 <%
@@ -75,6 +64,9 @@ End Function
 	  session("cboFacility") = cboFacility
       
       numSupervisorId = session("numSupervisorId")
+
+        strName = session("strName")
+        strFacultyName = session("strFacultyName")
   '*********************Setting up the database connectivity***********
   set Conn = Server.CreateObject("ADODB.Connection")
   Conn.open constr
@@ -136,8 +128,8 @@ End Function
   
     </tr>
     <tr>
-    	<th>Supervisor:</th><td><%Response.Write (strName)%></td>
-    	<th>Faculty:</th><td colspan="5"><%Response.Write(strFacultyName) %></td>
+    	<th>Supervisor:</th><td><%=strName%></td>
+    	<th>Faculty:</th><td colspan="5"><%=strFacultyName %></td>
  </tr>
  </table>
 <% end if
@@ -148,9 +140,7 @@ if (QORAtype = "operation") then %>
 		<th>Operation: </th><td><%=rsSearchH("strOperationName")%></td>	
 	</tr>
 </table>
-<% end if %>
-    <%
-  
+<% end if
    'Response.Write(strSQL) 
   if not rsSearchH.EOF then 
        %>
@@ -161,6 +151,7 @@ if (QORAtype = "operation") then %>
       </caption>
       <thead>
         <tr>
+            <th style="width:80px">&nbsp;</th>
         	<th class="qoraID">Ra No.</th>
           	<th class="haztaskresult">Task</th>
     		<th class="assochazards">Hazards</th>
@@ -180,8 +171,12 @@ if (QORAtype = "operation") then %>
     %>
       
         <tr>
+            <td><a href="EditQORA.asp?numCQORAId=<%=rsSearchH("numQORAID")%>">Edit</a> / <a href="#" data-toggle="modal" data-target="#CopyModal" data-qora="<%=rsSearchH("numQORAID")%>">Copy</a>
+
+
+            </td>
         <td><%=Escape(rsSearchH("numQORAId"))%></td>
-          <td><a target="Operation" title="Click to edit this Risk Assessment." href="EditQORA.asp?numCQORAId=<%=rsSearchH("numQORAID")%>"><%=rsSearchH("strTaskDescription")%></td>
+          <td><a title="Click to edit this Risk Assessment." href="EditQORA.asp?numCQORAId=<%=rsSearchH("numQORAID")%>"><%=rsSearchH("strTaskDescription")%></a></td>
           <!--		<td><% Response.Write(rsSearchH(11))%></td> -->
           <td><%=Escape(rsSearchH("strHazardsDesc"))%></td>
           <td><%
@@ -270,5 +265,142 @@ if (QORAtype = "operation") then %>
 <p style="background-color:#fff">There are currently no Risk Assessments for this facility or operation</p>
 <%end if%>
 </div>
+
+
+    <%
+        
+        Dim connFaci
+		Dim rsFillFaci
+		Dim strSQLFaci
+	  
+		'Database Connectivity Code 
+		set connFaci = Server.CreateObject("ADODB.Connection")
+		connFaci.open constr
+	   
+		' setting up the recordset
+	   
+		strSQLFaci ="Select * from tblFacility "
+
+		if session("numSupervisorId") <> 1 then
+			strSQLFaci =strSQLFaci&" WHERE numFacilitySupervisorId = "& session("numSupervisorId")
+		end if
+		strSQLFaci = strSQLFaci&" order by strRoomNumber"
+		set rsFillFaci = Server.CreateObject("ADODB.Recordset")
+		rsFillFaci.Open strSQLFaci, connFaci, 3, 3
+
+		Dim connProj
+		Dim rsFillProj
+		Dim strSQLProj
+	  
+		'Database Connectivity Code 
+		set connProj = Server.CreateObject("ADODB.Connection")
+		connProj.open constr
+	   
+		' setting up the recordset
+	   
+		strSQLProj ="Select * from tblOperations "
+
+		if session("numSupervisorId") <> 1 then
+			strSQLProj =strSQLProj&" WHERE numFacilitySupervisorId = "& session("numSupervisorId")
+		end if
+		strSQLProj = strSQLProj&" order by strOperationName"
+		set rsFillProj = Server.CreateObject("ADODB.Recordset")
+		rsFillProj.Open strSQLProj, connProj, 3, 3
+        
+         %>
+
+<div class="modal fade" id="CopyModal" tabindex="-1" role="dialog" aria-labelledby="CopyModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+      </div>
+      <div class="modal-body">
+        <form id="copyForm">
+          <input type="hidden" class="form-control" id="qora" name="qora"/>
+            <input type="hidden" name="mode" ID="QORAtype" value=""/>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">To Facility:</label>
+           <select class="form-control" autocomplete="off" id="myfacility" size="1" name="cboFacility" tabindex="1" onchange="$('#QORAtype').val('location');$('#submitCopy').html('Copy to Location');">
+			<option value="0">Select any one</option>
+			<%
+				while not rsFillFaci.Eof
+					concat = rsFillFaci("strRoomNumber")&" "&rsFillFaci("strRoomName")
+						%>   
+					<option value="<%=rsFillFaci("numFacilityId")%>"><%=concat%></option>
+			<% 
+				rsFillFaci.Movenext	
+				wend 
+			%>
+			</select>  
+          </div>
+            <hr/>
+            <b>OR</b>
+            <hr />
+           <div class="form-group">
+            <label for="recipient-name" class="control-label">To Operation:</label>
+           <select class="form-control" autocomplete="off" id="myoperation" name="cboOperation" id="cboOperation" Onchange="$('#QORAtype').val('operation');$('#submitCopy').html('Copy to Operation');">
+			<option value="0">Select any one</option>
+			<%
+				while not rsFillProj.Eof
+						%>   
+					<option value="<%=rsFillProj("numOperationId")%>">
+						<%=rsFillProj("strOperationName")%></option>
+			<% 
+				rsFillProj.Movenext	
+				wend 
+			%>
+			</select>  
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" id="submitCopy" class="btn btn-primary">Copy to..</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <script type="text/javascript">
+        $('#CopyModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var qora = button.data('qora') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+            modal.find('.modal-title').text('Copy Risk Assessment: ' + qora)
+            modal.find('.modal-body #qora').val(qora)
+        })
+
+        $(function () {
+            //twitter bootstrap script
+            $("#submitCopy").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "AJAXCopy.asp",
+                    data: $('#copyForm').serialize(),
+                    success: function (data) {
+                        var obj = jQuery.parseJSON(data);
+                        var newRA = obj.result;
+                        alert("Copied to RA "+newRA);
+                        $("#CopyModal").modal('hide');
+                        $("#refreshResults").submit();
+                    },
+                    error: function () {
+                        alert("failure");
+                    }
+                });
+            });
+        });
+
+    </script>
+
+    <form id="refreshResults" action="SupRDateModified.asp" method="post">
+        <input type="hidden" name="QORAtype" value="<%=QORAtype %>" />
+        <input type="hidden" name="cboOperation" value="<%=numOperationID %>" />
+        <input type="hidden" name="cboFacility" value="<%=cboFacility %>" />
+    </form>
 </body>
 </html>
