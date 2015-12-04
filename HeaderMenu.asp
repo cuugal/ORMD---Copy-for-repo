@@ -87,8 +87,8 @@ if (da && !pr && !mac) with (document) {
 <% if session("isAdmin") then %>
      <div class="loginlist">
      <ul>
-        <li><a href="LocationAdmin.asp" title="Create a new Risk Assessment">Create Risk Assessment</a></li>
-        <li><a href="Home.asp" title="Search the Online Risk Register">Search Risk Assessments</a></li>
+    
+        <li><a href="Home.asp" title="Search the Online Risk Register">Home</a></li>
   
          <li></li>
         <li><a href="admin.asp" title="Perform administration on the Online Risk Register">Administration Functions</a></li>
@@ -98,8 +98,8 @@ if (da && !pr && !mac) with (document) {
 <% else %>
     <div class="loginlist">
 	 <ul>
-	   <li><a  href="LocationSup.asp" title="Create a new Risk Assessment">Create Risk Assessment</a></li>
-	   <li><a href="Home.asp" title="View the Risk Assessments for your facility/facilities">My Risk Assessments</a></li>
+
+	   <li><a href="Home.asp" title="View the Risk Assessments for your facility/facilities">Home</a></li>
 	   <!--li><a target="Operation" href="help.htm">Help</a></li-->
 	   <!--<li><a target="_top" href="menu.asp" title="Online Risk Register homepage">Home</a></li>-->
 	   <li><a href="logout.asp" title="Log out of the Risk Register">Logout</a></li>

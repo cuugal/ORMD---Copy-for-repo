@@ -155,21 +155,20 @@
 
 
 			   <ul class="nav nav-tabs" >
-                   <% if not session("LoggedIn") OR (session("loggedIn") AND session("isAdmin")) then %>
+                 
 				  <li class="active"><a data-toggle="tab" href="#facility">Search Facility Locations</a></li>
 				  <li><a data-toggle="tab" href="#operations">Search Operations/Projects</a></li>
 				  <li><a data-toggle="tab" href="#supervisors">Search Supervisors</a></li>
 				  <li><a data-toggle="tab" href="#ra">Search RA Number</a></li>
-                   <% end if %>
+             
 				   <% if session("LoggedIn")= true then %>
-				   <li <% if not session("isAdmin") then  %> class="active" <% end if %>><a data-toggle="tab" href="#my">My Risk Assessments</a></li>
+				   <li><a data-toggle="tab" href="#my">My Risk Assessments</a></li>
 				   <% end if %>
                   
 			   </ul>
 			   <div class="tab-content">
 
-                   <!-- hide these sections unless you are logged out, or admin -->
-                  <% if not session("LoggedIn") OR (session("loggedIn") AND session("isAdmin")) then %>
+               
 				  <%'********************************** SEARCH SUPERVISOR  **************************************************************%>
 				  <div id="supervisors" class="tab-pane fade">
 					 <table class="adminfn">
@@ -409,7 +408,7 @@
 					 </table>
 				  </div>
 				  <%'************************************************  END TASK OPERATION ***************************************************** %>
-                  <% end if %>
+                 
 				  <%'************************************************  START MY RA OPERATION ***************************************************** %>
 				    <% if session("LoggedIn") then 
 						  Dim connFaci
@@ -452,7 +451,7 @@
 
 						'response.write(strSQLProj)
 						 %>
-					  <div id="my" class="tab-pane fade <% if not session("isAdmin") then %> in active <% end if %> %>">
+					  <div id="my" class="tab-pane fade">
                           <% if session("isAdmin") then %>
 									<form method="post" action="AdminRDateModified.asp"  name="FormA" enctype="application/x-www-form-urlencoded">
 							   <% else %>
@@ -531,6 +530,17 @@
                                    <input type="submit" size="70"value="Generate Operation/Project Report" onclick="return checkOperation();" name="btnGenRep" /></td>
 						   </tr>
 						   
+
+                               <tr><td colspan="4"><hr /></td></tr>
+                               <tr><td colspan="3"></td><td>
+                               <% if session("isAdmin") then %>
+                                   <button type="button" onclick="window.location='LocationAdmin.asp'">Create Risk Assessment</button>
+                                  
+                               <% else %>
+                                    <button type="button" onclick="window.location='LocationSup.asp'">Create Risk Assessment</button>
+                                <% end if %>
+                              </td>
+                               </tr>
 						<tr>
 						   <td>&nbsp;</td>
 						</tr>
