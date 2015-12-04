@@ -32,7 +32,11 @@ End Function
 
 <div id="wrapper">
  <div id="content">
-
+     <%
+         dim today
+         today = Date()
+        
+         %>
 <center>
 
 <%
@@ -503,7 +507,7 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
           
        </td>
    <!-- <td><center><%=dtRDate%></center></td> -->
-   <td><center><%=rsFaculty("dtReview")%></center></td>
+   <td <% If DateDiff("d", cDate(rsFaculty("dtReview")), today) > 1 Then %>style="color:red;font-weight:bold" <%end if %> ><center><%=rsFaculty("dtReview")%></center></td>
    
    
    <td><center>

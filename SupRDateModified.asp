@@ -151,7 +151,7 @@ if (QORAtype = "operation") then %>
       </caption>
       <thead>
         <tr>
-            <th style="width:80px">&nbsp;</th>
+            <th style="width:130px">&nbsp;</th>
         	<th class="qoraID">Ra No.</th>
           	<th class="haztaskresult">Task</th>
     		<th class="assochazards">Hazards</th>
@@ -171,7 +171,9 @@ if (QORAtype = "operation") then %>
     %>
       
         <tr>
-            <td><a href="EditQORA.asp?numCQORAId=<%=rsSearchH("numQORAID")%>">Edit</a> / <a href="#" data-toggle="modal" data-target="#CopyModal" data-qora="<%=rsSearchH("numQORAID")%>">Copy</a>
+            <td><a href="EditQORA.asp?numCQORAId=<%=rsSearchH("numQORAID")%>">Edit</a> / 
+                <a href="#" data-toggle="modal" data-target="#CopyModal" data-qora="<%=rsSearchH("numQORAID")%>">Copy</a> / 
+                <a href="#" data-toggle="modal" data-target="#ArchiveModal" data-qora="<%=rsSearchH("numQORAID")%>">Archive</a>
 
 
             </td>
@@ -314,7 +316,7 @@ if (QORAtype = "operation") then %>
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+          <h4 class="modal-title" id="exampleModalLabel">New message</h4>
       </div>
       <div class="modal-body">
         <form id="copyForm">
@@ -363,6 +365,32 @@ if (QORAtype = "operation") then %>
   </div>
 </div>
 
+<div class="modal fade" id="ArchiveModal" tabindex="-1" role="dialog" aria-labelledby="ArchiveModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="H1">New message</h4>
+      </div>
+      <div class="modal-body">
+        <form id="archiveForm">
+      
+            <input type="hidden" name="mode" value="archive"/>
+            <input type="hidden" name="superv" value="<% =session("numSupervisorId") %>" />
+            <input type="hidden" name="qora" id="archiveQora" value=""/>
+          <div class="form-group">
+            <label  class="control-label">Are you sure you wish to archive this Risk Assessment?</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" id="submitArchive" class="btn btn-primary">Archive</button>
+      </div>
+    </div>
+  </div>
+</div>
+
     <script type="text/javascript">
         $('#CopyModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) // Button that triggered the modal
@@ -386,6 +414,37 @@ if (QORAtype = "operation") then %>
                         var newRA = obj.result;
                         alert("Copied to RA "+newRA);
                         $("#CopyModal").modal('hide');
+                        $("#refreshResults").submit();
+                    },
+                    error: function () {
+                        alert("failure");
+                    }
+                });
+            });
+        });
+
+        $('#ArchiveModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var qora = button.data('qora') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+            modal.find('.modal-title').text('Archive Risk Assessment: ' + qora)
+            modal.find('.modal-body #archiveQora').val(qora)
+        })
+
+        $(function () {
+            //twitter bootstrap script
+            $("#submitArchive").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "AJAXArchive.asp",
+                    data: $('#archiveForm').serialize(),
+                    success: function (data) {
+                        var obj = jQuery.parseJSON(data);
+                        var newRA = obj.result;
+                        alert("Archived RA " + newRA);
+                        $("#ArchiveModal").modal('hide');
                         $("#refreshResults").submit();
                     },
                     error: function () {
