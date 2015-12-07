@@ -153,13 +153,13 @@
 
 	  </script>
 
-
+                
 			   <ul class="nav nav-tabs" >
                  
-				  <li class="active"><a data-toggle="tab" href="#facility">Search Facility Locations</a></li>
-				  <li><a data-toggle="tab" href="#operations">Search Operations/Projects</a></li>
-				  <li><a data-toggle="tab" href="#supervisors">Search Supervisors</a></li>
-				  <li><a data-toggle="tab" href="#ra">Search RA Number</a></li>
+				  <li class="active"><a data-toggle="tab" href="#facility">Facility Locations</a></li>
+				  <li><a data-toggle="tab" href="#operations">Operations/Projects</a></li>
+				  <li><a data-toggle="tab" href="#supervisors">Supervisors</a></li>
+				  <li><a data-toggle="tab" href="#ra">RA Number/Task</a></li>
              
 				   <% if session("LoggedIn")= true then %>
 				   <li><a data-toggle="tab" href="#my">My Risk Assessments</a></li>
@@ -385,7 +385,7 @@
 						   <input type="hidden" name="cboFaculty" value="0" />
 						   <input type="hidden" name="searchType" value="task" />
 						   <tr>
-							  <th>Task/RA Number</th>
+							  <th>RA Number/Task</th>
 							  <td>
 								 <input type="text" name="txtHazardousTask" size="40" tabindex="0" />
 							  </td>

@@ -18,6 +18,10 @@
             <h1 class="pagetitle">Search UTS Risk Assessments</h1>
             <center>
                 <div style="width:950px">
+                    <h3 style="float:left;color:#6edb04">Search By:</h3>
+                </div>
+                <div style="clear:both"></div>
+                <div style="width:950px">
                     <!--#include file="searchQORA.asp"--> 
                 </div>
             </center>
