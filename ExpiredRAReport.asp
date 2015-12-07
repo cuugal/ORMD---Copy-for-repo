@@ -49,6 +49,7 @@ sOutPut = sOutPut & sData & vbCrLf
         sData =sData & Chr(34) & rsFillOperation("strRoomName") & Chr(34) & ","
         sData = sData &Chr(34) & rsFillOperation("strRoomNumber") & Chr(34) & ","
         sData = sData &Chr(34) & rsFillOperation("strOperationName") & Chr(34) & ","
+        sData = sData &Chr(34) & rsFillOperation("numQORAId") & Chr(34) & ","
         sData = sData &Chr(34) & rsFillOperation("strTaskDescription") & Chr(34) & ","
         sData = sData &Chr(34) & rsFillOperation("dtReview") & Chr(34) 
      
