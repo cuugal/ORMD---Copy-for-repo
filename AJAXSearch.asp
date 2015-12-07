@@ -1,4 +1,4 @@
-﻿<!--#include virtual="aspJSON.asp" -->
+﻿<!--#include file="aspJSON.asp" -->
 <!--#INCLUDE FILE="DbConfig.asp"-->
 <%
 
