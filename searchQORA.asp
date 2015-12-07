@@ -452,11 +452,9 @@
 						'response.write(strSQLProj)
 						 %>
 					  <div id="my" class="tab-pane fade">
-                          <% if session("isAdmin") then %>
-									<form method="post" action="AdminRDateModified.asp"  name="FormA" enctype="application/x-www-form-urlencoded">
-							   <% else %>
-									<form method="post" action="SupRDateModified.asp"  name="FormA" enctype="application/x-www-form-urlencoded">
-								<% end if %>
+                        
+						<form method="post" action="SupRDateModified.asp"  name="FormA" enctype="application/x-www-form-urlencoded">
+							  
 
                                         <script type="text/javascript">
                                             function checkFacility() {

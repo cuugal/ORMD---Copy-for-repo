@@ -25,7 +25,7 @@
 	if mode = "archive" then
 
         strSQL = "Select numOperationId from tblOperations where numFacilitySupervisorId ="& cint(super)&""_
-            &" and strOperationName = 'Archive'"
+            &" and strOperationName contains 'Archive%'"
         set rsOps = Server.CreateObject("ADODB.Recordset")
         rsOps.Open strSQL, con, 3, 3
 
@@ -39,8 +39,10 @@
         'if the operation ID can't be found, make a new one
         if archiveId = 0 then
             set conn = Server.CreateObject("ADODB.Connection")
+            dim name
+            name = "Archive - "&session("strName")
             strSql = "insert into tblOperations(numFacilitySupervisorId, strOperationName) values ("_
-                    &cint(super)&" , 'Archive')"
+                    &cint(super)&" , '"&name&"')"
 		    conn.open constr
 		    conn.BeginTrans
 		    conn.Execute strSQL

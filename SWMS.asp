@@ -247,23 +247,6 @@ if(rsResults("numOperationId") <> 0) then %>
   <br/>
   <strong> Hazards relating to this Work Activity</strong>
 
-      <!--table class="bluebox" style="margin 0 auto; width:80%; padding-left:40px">
-		<tr>  
-			<td>
-				<textarea rows = "8" style="width:100%;" name="T1"readonly >TASK HAZARDS:
-				<%=strHazardsDesc%>
-				</textarea>           
-			</td>
-		</tr> 
-		<tr>
-			<td>
-				<textarea rows = "8" style="width:100%;" name="T2" readonly>INHERENT RISKS:
-				<%=strInherentRisk%>
-				</textarea>
-          </td>
-		</tr>  
-    </table-->
-
 
       <table class="bluebox" style="margin 0 auto; width:80%; padding-left:40px">
 		<tr>  
@@ -285,7 +268,7 @@ if(rsResults("numOperationId") <> 0) then %>
 <br/>
   <strong> Control Measures - Safety equipment, training, signage & information</strong>
   
-  <table class="bluebox" style="margin 0 auto; width:80%; padding-left:40px">
+  <table class="bluebox" style="margin: 0 auto; width:80%; padding-left:40px">
   
       	<tr>  
           <td>
