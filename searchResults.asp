@@ -460,7 +460,8 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
      %>
   	<tr>
     	<td><%=Escape(rsFaculty("numQORAId"))%></td>
-    	<td><a target="Operation" title="Click to edit this Risk Assessment." href="EditQORA.asp?numCQORAId=<%=rsFaculty("numQORAId")%>"><%=rsFaculty("strTaskDescription")		%></td>
+    	<!--td><a target="Operation" title="Click to edit this Risk Assessment." href="EditQORA.asp?numCQORAId=<%=rsFaculty("numQORAId")%>"><%=rsFaculty("strTaskDescription")		%></td-->
+		<td><%=rsFaculty("strTaskDescription")		%></td>
     	<td><%=Escape(rsFaculty("strHazardsDesc"))%></td>
     	<td><%
           

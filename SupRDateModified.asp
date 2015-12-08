@@ -182,7 +182,8 @@ if (QORAtype = "operation") then %>
 
             </td>
         <td><%=Escape(rsSearchH("numQORAId"))%></td>
-          <td><a title="Click to edit this Risk Assessment." href="EditQORA.asp?numCQORAId=<%=rsSearchH("numQORAID")%>"><%=rsSearchH("strTaskDescription")%></a></td>
+          <!--td><a title="Click to edit this Risk Assessment." href="EditQORA.asp?numCQORAId=<%=rsSearchH("numQORAID")%>"><%=rsSearchH("strTaskDescription")%></a></td-->
+		  <td><%=rsSearchH("strTaskDescription")%></td>
           <!--		<td><% Response.Write(rsSearchH(11))%></td> -->
           <td><%=Escape(rsSearchH("strHazardsDesc"))%></td>
           <td><%
