@@ -1,2 +1,2 @@
 ﻿<%@Language = VBscript%>
-<% Response.redirect("menu.asp") %>
+<% Response.redirect("Home.asp") %>

@@ -1,88 +1,24 @@
- 
-<%
-If Trim(Session("strLoginId")) = "" Then
-Response.Redirect("Invalid.asp")
-End If
-%>
 
-<script type="text/javascript">
-<!--
-
-function ChangeResults(page){
-	parent.frames["Results"].location.href = page
-	return true
-	}
-//-->
-
-<!--
-var da = (document.all) ? 1 : 0;
-var pr = (window.print) ? 1 : 0;
-var mac = (navigator.userAgent.indexOf("Mac") != -1); 
-function printPage(frame, arg) {
-  if (frame == window) {
-    printThis();
-  } else {
-    link = arg; // a global variable
-     printFrame(frame);
-  }
-  return false;
-}
-
-function printThis() {
-  if (pr) { // NS4, IE5
-    window.print();
-  } else if (da && !mac) { // IE4 (Windows)
-    vbPrintPage();
-  } else { // other browsers
-    alert("Sorry, your browser doesn't support this feature.");
-  }
-}
-
-function printFrame(frame) {
-  if (pr && da) { // IE5
-    frame.focus();
-    window.print();
-    link.focus();
-  } else if (pr) { // NS4
-    frame.print();
-  } else if (da && !mac) { // IE4 (Windows)
-    frame.focus();
-    setTimeout("vbPrintPage(); link.focus();", 100);
-  } else { // other browsers
-    alert("Sorry, your browser doesn't support this feature.");
-  }
-}
-if (da && !pr && !mac) with (document) {
-  writeln('<OBJECT ID="WB" WIDTH="0" HEIGHT="0" CLASSID="clsid:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT>');
-  writeln('<' + 'SCRIPT LANGUAGE="VBScript">');  
-  writeln('Sub window_onunload');
-  writeln('  On Error Resume Next');  
-  writeln('  Set WB = nothing');
-  writeln('End Sub'); 
-  writeln('Sub vbPrintPage');
-  writeln('  OLECMDID_PRINT = 6');
-  writeln('  OLECMDEXECOPT_DONTPROMPTUSER = 2');
-  writeln('  OLECMDEXECOPT_PROMPTUSER = 1');  
-  writeln('  On Error Resume Next');
-  writeln('  WB.ExecWB OLECMDID_PRINT, OLECMDEXECOPT_DONTPROMPTUSER');
-  writeln('End Sub');  
-  writeln('<' + '/SCRIPT>');
-}
-// -->
-</script>
 
 
 
 <div id="wrappertop">
 <div id="content">
-<% if session("isAdmin") then %>
-<h1 class="pagetitle">Online Risk Register - Administration Menu</h1>
+<% if session("LoggedIn") then %>
+    <% if session("isAdmin") then %>
+    <h1 class="pagetitle">Online Risk Register - Administration Menu</h1>
+    <% else %>
+        <h1 class="pagetitle">Online Risk Register - Supervisor Menu</h1>
+    <% end if %>
 <% else %>
-    <h1 class="pagetitle">Online Risk Register - Supervisor Menu</h1>
+     <h1 class="pagetitle">Online Risk Register</h1>
 <% end if %>
-<div class="topframe">
- You are logged in as <strong><%=session("strName")%></strong><br />
- </div>
+
+<% if session("LoggedIn") then %>
+    <div class="topframe">
+     You are logged in as <strong><%=session("strName")%></strong><br />
+     </div>
+<% end if %>
 
 <% if session("isAdmin") then %>
      <div class="loginlist">
@@ -102,9 +38,70 @@ if (da && !pr && !mac) with (document) {
 	   <li><a href="Home.asp" title="View the Risk Assessments for your facility/facilities">Home</a></li>
 	   <!--li><a target="Operation" href="help.htm">Help</a></li-->
 	   <!--<li><a target="_top" href="menu.asp" title="Online Risk Register homepage">Home</a></li>-->
-	   <li><a href="logout.asp" title="Log out of the Risk Register">Logout</a></li>
+         <% if session("LoggedIn") then %>
+	        <li><a href="logout.asp" title="Log out of the Risk Register">Logout</a></li>
+         <% else %>
+            <li><a href="#" data-toggle="modal" data-target="#LoginModal" >Login</a></li>
+         <% end if %>
 	 </ul>
 	</div>
 <% end if %>
 </div><!-- close the content DIV -->
 </div><!-- close the wrapper div -->
+
+<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="exampleModalLabel">Log In</h4>
+      </div>
+      <div class="modal-body">
+        <form id="loginForm">
+          <input type="hidden" class="form-control" id="qora" name="qora"/>
+            <input type="hidden" name="mode" ID="QORAtype" value=""/>
+          <div class="form-group">
+            <label for="txtLoginId" class="control-label">User Name:</label>
+            <input name="txtLoginID" class="form-control" id="txtLoginID" maxlength="70" type="text" value="<%=strLoginID%>" size="25" />
+            </div>
+              <div class="form-group">
+            <label for="txtPassword" class="control-label">Password:</label>
+            <input name="txtPassword" class="form-control" maxlength="70" type="password" size="25" />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" id="submitLogin" class="btn btn-primary">Log In</button>
+      </div>
+    </div>
+  </div>
+</div>
+   <script type="text/javascript">
+   
+
+       $(function () {
+           //twitter bootstrap script
+           $("#submitLogin").click(function () {
+               $.ajax({
+                   type: "POST",
+                   url: "AJAXLogin.asp",
+                   data: $('#loginForm').serialize(),
+                   success: function (data) {
+                       var obj = jQuery.parseJSON(data);
+                       var res = obj.result;
+                       if(res == 1){
+                           location.reload();
+                       }
+                       else{
+                           alert("Incorrect username or password.  Please try again");
+                       }
+                       
+                   },
+                   error: function () {
+                       alert("error - please contact adminstrator");
+                   }
+               });
+           });
+       });
+       </script>

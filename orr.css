@@ -392,7 +392,7 @@ table.searchResultsFromMenuPrint1 { font-size: 10pt; color: #000; background-col
 #mainleft ul li a:link, #mainleft ul li a:visited, #maincenter ul li a:link, 
 #maincenter ul li a:visited, #mainright ul li a:link, #mainright ul li a:visited
 { display: block; padding: 3px; width: 160px;
-background-color: #EDF4F6; color: #0083B3; border-bottom: 1px solid #eee; margin-bottom: 3px; text-decoration: none;  }
+background-color: #EDF4F6;  border-bottom: 1px solid #eee; margin-bottom: 3px; text-decoration: none;  }
 
 #mainleft ul li a:hover, #maincenter ul li a:hover, #mainright ul li a:hover { background-color: #f8e9ad; text-decoration: none; margin-bottom: 3px;border-bottom: 1px solid #eee;}
 

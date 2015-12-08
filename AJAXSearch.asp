@@ -26,7 +26,7 @@
             counter = 0
             With oJSON.data("result")
                 while not rsFillOperation.Eof
-                    if len(strSuperv) <= 1 then
+                    if len(strSuperv) >= 1 then
                         operation_name =rsFillOperation("strOperationName")&" - "&rsFillOperation("strGivenName")&" "&rsFillOperation("strSurname") 
                     else
                         operation_name =rsFillOperation("strOperationName")

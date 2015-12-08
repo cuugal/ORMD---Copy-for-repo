@@ -1,4 +1,10 @@
 
+<link rel="stylesheet" type="text/css" href="DataTables-1.10.10/css/dataTables.bootstrap.css" media="all" />
+<script src="DataTables-1.10.10/js/jQuery.dataTables.min.js"></script>
+<script src="DataTables-1.10.10/js/dataTables.foundation.min.js"></script>
+<script src="DataTables-1.10.10/js/dataTables.bootstrap.min.js"></script>
+
+
    <%
 	  Dim connFac
 	  Dim rsFillFac
@@ -548,4 +554,71 @@
 				   <% end if %>
 				   <%'************************************************  END MY RA OPERATION ***************************************************** %>
 			   </div>
+
+
+<%
+      set con	= server.createobject ("adodb.connection")
+    con.open constr
+
+
+    strSQL = "SELECT count(numQORAId) as numRA, 'location' as searchType, tblFacility.numFacilityId as key_id, sum(iif(dtReview < Date() , 1 , 0 )) as numExp, strRoomName&' '&strRoomNumber as location "_
+    &" FROM tblFacility,tblQORA "_
+    &" Where tblQORA.numFacilityID = tblFacility.numFacilityID  group by strRoomName, strRoomNumber, tblFacility.numFacilityId"_
+ 
+ 
+ &" union all "_
+ 
+ &"SELECT count(numQORAId) as numRA, 'operation' as searchType, tblOperations.numOperationId as key_id, count(iif(dtReview < Date() , 1 , 0 )) as numExp, strOperationName as location "_
+ &" FROM tblOperations ,tblQORA "_
+ &" where tblQORA.numOperationID = tblOperations.numOperationId and not strOperationName contains 'Archive%' group by strOperationName, tblOperations.numOperationId"
+    
+     'response.write strSQL
+    set rsFillOperation = Server.CreateObject("ADODB.Recordset")
+        rsFillOperation.Open strSQL, con, 3, 3
+   
+     %>
+<br />
+<div class="tab-content" style="padding:5px;">
+    <h3>Risk Assessment Overview</h3>
+    <table id="ratable" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Facility Name/Number or Operation</th>
+
+                <th>Current RA</th>
+                <th>Expired RA</th>
+                <th>% Current</th>
+            </tr>
+        </thead>
+
+        <tbody>
+         <% dim link
+             while not rsFillOperation.Eof %>
+            <tr>
+                <% 
+                    if rsFillOperation("searchType") = "location" then
+                        link = "CollectInfoAdmin.asp?searchType=location&cboroom="&rsFillOperation("key_id") 
+                    else
+                        link = "CollectInfoAdmin.asp?searchType=operation&cboOperation="&rsFillOperation("key_id") 
+                    end if
+                    %>
+                <td><a style="text-decoration: underline;" href="<%=link %>"><%=rsFillOperation("location") %></a></td>
+                <td><%=rsFillOperation("numRA") %></td>
+                <td><%=rsFillOperation("numExp") %></td>
+                <td><%=formatnumber((cint(rsFillOperation("numRA"))-cint(rsFillOperation("numExp")))/cint(rsFillOperation("numRA")) *100,2)%></td>
+            </tr>
+            <%
+            rsFillOperation.Movenext
+            wend
+                 %>
+            </tbody>
+        </table>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#ratable').DataTable();
+        });
+
+    </script>
+    </div>
 		 

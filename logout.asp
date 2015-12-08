@@ -6,5 +6,5 @@
 
 <%	
 	session.Abandon 
-	Response.Redirect "Menu.asp"
+	Response.Redirect "Home.asp"
 %>

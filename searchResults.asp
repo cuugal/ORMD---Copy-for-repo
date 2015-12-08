@@ -132,13 +132,16 @@ end if
 if(searchType = "location") then
 	strSQL = "Select distinct(tblQORA.numQORAId) as numQORAId, tblQORA.*, tblRiskLevel.* "
 	strSQL = strSQL+" from tblQORA, tblRiskLevel, tblFacility, tblBuilding, tblCampus, tblFacilitySupervisor "
-	strSQL = strSQL+" Where tblFacilitySupervisor.numfacultyId = "&numFacultyId
+	'strSQL = strSQL+" Where tblFacilitySupervisor.numfacultyId = "&numFacultyId
 	
-	strSQL = strSQL+" and tblQORA.numFacilityID = tblFacility.numFacilityID"
+	strSQL = strSQL+" Where tblQORA.numFacilityID = tblFacility.numFacilityID"
 	strSQL = strSQL+" and tblBuilding.numBuildingID = tblFacility.numBuildingID"	
 	strSQL = strSQL+" and tblCampus.numCampusID = tblBuilding.numCampusID"
 	strSQL = strSQL+" and tblFacility.numFacilitySupervisorID = tblFacilitySupervisor.numSupervisorID"
 
+    if Len(numFacultyId) > 0 and (numFacultyId <> 0) then
+		strSQL = strSQL+" and tblFacilitySupervisor.numFacultyID = "&numFacultyId
+	end if
 	if Len(numFacilityId) > 0 and (numFacilityID <> 0) then
 		strSQL = strSQL+" and tblFacility.numFacilityID = "&numFacilityId
 	end if
@@ -157,14 +160,17 @@ end if
 if(searchType = "operation") then
 	strSQL = "Select distinct(tblQORA.numQORAId) as numQORAId, tblQORA.*, tblRiskLevel.* "
 	strSQL = strSQL+" from tblQORA, tblRiskLevel, tblOperations, tblFacilitySupervisor"
-	strSQL = strSQL+" Where tblFacilitySupervisor.numfacultyId = "& numFacultyId
+	'strSQL = strSQL+" Where tblFacilitySupervisor.numfacultyId = "& numFacultyId
 	
-	if Len(strOperation) > 0 and (strOperation <> 0) then
-		strSQL = strSQL+" and tblOperations.numOperationID = "&strOperation
-	end if
-	strSQL = strSQL+" and tblOperations.numFacilitySupervisorID = tblFacilitySupervisor.numSupervisorId"
+	strSQL = strSQL+" Where tblOperations.numFacilitySupervisorID = tblFacilitySupervisor.numSupervisorId"
 	strSQL = strSQL+" and tblQORA.numOperationID = tblOperations.numOperationID"
 	strSQL = strSQL+" and tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel"
+    if Len(strOperation) > 0 and (strOperation <> 0) then
+		strSQL = strSQL+" and tblOperations.numOperationID = "&strOperation
+	end if
+    if Len(numFacultyId) > 0 and (numFacultyId <> 0) then
+		strSQL = strSQL+" and tblFacilitySupervisor.numFacultyID = "&numFacultyId
+	end if
 	strSQL = strSQL+ " Order by tblQORA.strSupervisor, tblRiskLevel.numGrade, tblQORA.strTaskDescription "
     'Response.write(strSQL)
 end if

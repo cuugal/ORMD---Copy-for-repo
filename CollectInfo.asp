@@ -55,7 +55,7 @@
   	%>
 	<script><!--
 	alert("To many results, please refine your search criteria");
-	location.href="Menu.asp";
+	location.href="Home.asp";
 	// -->
 	</script>
 	<%

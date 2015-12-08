@@ -14,14 +14,14 @@
 'Response.Redirect "index.htm"
 
 %>
-<div id="orrheading"><h1>Online Risk Register</h1><img src="http://www.uts.edu.au/images/css/utslogo.gif" alt="UTS" width="130" height="29" style="border: none; vertical-align: middle; 	float: right; " /><font size="1" color="gray">V1.3</font></div>
+<div id="orrheading"><h1>Online Risk Register</h1><img src="http://www.uts.edu.au/images/css/utslogo.gif" alt="UTS" width="130" height="29" style="border: none; vertical-align: middle; 	float: right; " /><font size="1" color="gray">V2.0</font></div>
 <table class="searchtable">
 	<tr><td style="text-align:center">
 	<br/>
 	<br/>
 		<h1> You have been logged out</h1>
 		<br/>
-		<h5> <a href="menu.asp" rel="nofollow" target="_top">Back to Home page</a></h5>
+		<h5> <a href="Home.asp" target="_top">Back to Home page</a></h5>
 	<br/>
 	<br/>
 	</td></tr>
