@@ -25,7 +25,7 @@
 	if mode = "archive" then
 
         strSQL = "Select numOperationId from tblOperations where numFacilitySupervisorId ="& cint(super)&""_
-            &" and strOperationName contains 'Archive%'"
+            &" and strOperationName like 'Archive*'"
         set rsOps = Server.CreateObject("ADODB.Recordset")
         rsOps.Open strSQL, con, 3, 3
 

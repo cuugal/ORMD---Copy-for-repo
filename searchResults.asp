@@ -423,8 +423,23 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
   		<tr>
   			<td class="campus">
   			<strong>Supervisor: </strong><%=rsFaculty("strGivenName")%>&nbsp;<%=rsFaculty("strSurname")%>&nbsp;&nbsp;&nbsp;</td>
-  			<td class="campus" colspan="6"><strong>Faculty: </strong><%=rsFaculty("strFacultyName")%>&nbsp;&nbsp;&nbsp;
-  			</td>		
+  			<td class="campus" colspan="3"><strong>Faculty: </strong><%=rsFaculty("strFacultyName")%>&nbsp;&nbsp;&nbsp;
+  			</td>
+            <%
+            set connControls = Server.CreateObject("ADODB.Connection")
+  			connControls.open constr
+			' setting up the recordset
+   			strControls ="Select count(numQORAId) as numRA, sum(iif(dtReview > Date() , 1 , 0 )) as numCurrent, strRoomName from tblFacility, tblQORA "_
+                &" where tblFacility.numFacilityId = "&rsFaculty("numFacilityId")_
+                &" and tblQORA.numFacilityId = tblFacility.numFacilityId"_
+                &" group by strRoomName"
+
+            'response.write strControls
+  			set rsControls = Server.CreateObject("ADODB.Recordset")
+        	rsControls.Open strControls, connControls, 3, 3
+ 	
+                %>	
+              <td class="campus" colspan="3"><strong>Current Risk Assessments: </strong><%=rsControls("numCurrent")%>/<%=rsControls("numRA")%></td>
   		<tr>
   	</table>
  
@@ -433,8 +448,24 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
   	<tr>
   			<td class="campus">
   			<strong>Supervisor: </strong><%=rsFaculty("strGivenName")%>&nbsp;<%=rsFaculty("strSurname")%>&nbsp;&nbsp;&nbsp;</td>
-  			<td class="campus" colspan="6"><strong>Operation: </strong><%=rsFaculty("strOperationName")%>&nbsp;&nbsp;&nbsp;
-  			</td>		
+  			<td class="campus" colspan="3"><strong>Operation: </strong><%=rsFaculty("strOperationName")%>&nbsp;&nbsp;&nbsp;
+  			</td>	
+             <%
+            set connControls = Server.CreateObject("ADODB.Connection")
+  			connControls.open constr
+			' setting up the recordset
+   			strControls ="Select count(numQORAId) as numRA, sum(iif(dtReview > Date() , 1 , 0 )) as numCurrent, strOperationName from tblOperations, tblQORA "_
+                &" where tblOperations.numOperationId = "&rsFaculty("numOperationId")_
+                &" and tblQORA.numOperationId = tblOperations.numOperationId"_
+                &" group by strOperationName"
+
+            'response.write strControls
+  			set rsControls = Server.CreateObject("ADODB.Recordset")
+        	rsControls.Open strControls, connControls, 3, 3
+ 	
+                %>	
+              <td class="campus" colspan="3"><strong>Current Risk Assessments: </strong><%=rsControls("numCurrent")%>/<%=rsControls("numRA")%></td>
+  			
   		<tr>
   	</table>
    
@@ -467,7 +498,7 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
   	<tr>
     	<td><%=Escape(rsFaculty("numQORAId"))%></td>
     	<!--td><a target="Operation" title="Click to edit this Risk Assessment." href="EditQORA.asp?numCQORAId=<%=rsFaculty("numQORAId")%>"><%=rsFaculty("strTaskDescription")		%></td-->
-		<td><%=rsFaculty("strTaskDescription")		%></td>
+		<td><%=rsFaculty("strTaskDescription") %></td>
     	<td><%=Escape(rsFaculty("strHazardsDesc"))%></td>
     	<td><%
           
@@ -514,15 +545,8 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
           
        </td>
    <!-- <td><center><%=dtRDate%></center></td> -->
-          <% dim reviewDate
-              if rsFaculty("dtReview") <> null then
-                reviewDate = cDate(rsFaculty("dtReview"))
-                
-              else
-                reviewDate = DateAdd("d",-1,today)
-              end if
-               %>
-   <td <% If DateDiff("d", reviewDate, today) > 1 Then %>style="color:red;font-weight:bold" <%end if %> ><center><%=rsFaculty("dtReview")%></center></td>
+
+   <td <% If not isNull(rsFaculty("dtReview")) and DateDiff("d", rsFaculty("dtReview"), today) > 1 Then %>style="color:red;font-weight:bold" <%end if %> ><center>  <%=rsFaculty("dtReview")%></center></td>
    
    
    <td><center>
