@@ -45,6 +45,8 @@ function ChangeType(val)
 }
 </script>
 <title>Online Risk Register - Select a location or an operation for creating the Risk Assessment</title>
+
+     <!--#include file="bootstrap.inc"--> 
 </head>
 <body>
     <!--#include file="HeaderMenu.asp" -->

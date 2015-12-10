@@ -112,7 +112,8 @@ end if
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <meta http-equiv="Content-Language" content="en-au" />
-<link rel="stylesheet" type="text/css" href="orr.css" media="screen" />
+
+     <!--#include file="bootstrap.inc"--> 
 </head>
 <body>
 	<!--#include file="HeaderMenu.asp" -->
