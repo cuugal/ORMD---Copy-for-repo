@@ -71,20 +71,7 @@ End Function
   set Conn = Server.CreateObject("ADODB.Connection")
   Conn.open constr
   
-
-  %>
-<body>
-    <!--#include file="HeaderMenu.asp" -->
-<div id="wrapper">
-  <div id="content">
-  <!-- Break out of frame --> 
-  <form target="_blank" action="SupRDateModified-print.asp">
-    <h1 class="pagetitle">Risk Assessment Search Results &nbsp;&nbsp;&nbsp;<input type="submit" value="Print preview" /></h1>    
-  </form>
-
-</div>
-<%
-
+    
 
  if(QORAtype = "location") then 
 
@@ -120,9 +107,23 @@ End Function
       
     set rsSearchH = server.CreateObject("ADODB.Recordset")
     rsSearchH.Open strSQL, Conn, 3, 3 
-    if rsSearchH.EOF <> true then 
+    
 %>
 	
+
+<body>
+    <!--#include file="HeaderMenu.asp" -->
+<div id="wrapper">
+  <div id="content">
+  <!-- Break out of frame --> 
+      <%if rsSearchH.EOF <> true then  %>
+  <form target="_blank" action="SupRDateModified-print.asp">
+    <h1 class="pagetitle">Risk Assessment Search Results &nbsp;&nbsp;&nbsp;<input type="submit" value="Print preview" /></h1>    
+  </form>
+      <% end if %>
+</div>
+
+<% if rsSearchH.EOF <> true then  %>
     
     <% if(QORAtype="location") then %>
 <table class="suprreportheader">
@@ -246,8 +247,11 @@ if (QORAtype = "operation") then %>
      	<%=strControlsImplemented%>
           
        </td>
-          
-      	<td><center><%=rsSearchH("dtReview")%></center></td>
+          <%
+              dim today
+         today = Date()
+               %>
+      	<td <% If not isNull(rsSearchH("dtReview")) and DateDiff("d", rsSearchH("dtReview"), today) > 1 Then %>style="color:red;font-weight:bold" <%end if %> ><center><%=rsSearchH("dtReview")%></center></td>
          <td><center>
         <% If rsSearchH("boolSWMSRequired") = true Then %>
                  <form method="post" action="SWMS.asp">

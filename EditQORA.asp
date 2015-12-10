@@ -215,6 +215,7 @@ div#forcontrols li:hover ul, div#forcontrols li li:hover ul, div#forcontrols li.
 <![endif]-->
 <title>Online Risk Register - Edit a Risk Assessment</title>
 
+    <!--#include file="bootstrap.inc"--> 
 </head>
 <body>
     <!--#include file="HeaderMenu.asp" -->
@@ -483,12 +484,12 @@ Dim strSurname
   	<tr>  
     	<td><!-- textarea box goes in this table cell -->
         <br/>
-        	<textarea rows="8" name="T1" cols="45"><%=strHazardsDesc%></textarea>
+        	<textarea rows="8" name="T1" id="T1" cols="45"><%=strHazardsDesc%></textarea>
             
         </td>
         <td><!-- textarea box goes in this table cell -->
         	<br />
-          	<textarea rows="8" name="T3" cols="45" ><%=strInherentRisk%></textarea>
+          	<textarea rows="8" name="T3" id="T3" cols="45" ><%=strInherentRisk%></textarea>
 		</td>
 	</tr>
     <tr>

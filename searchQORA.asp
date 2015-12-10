@@ -40,7 +40,7 @@
 			  request = $.ajax({
 				  url: "AJAXSearch.asp",
 				  type: "post",
-				  data: "mode=" + "Operation&numFacultyId="+numFacultyId+"&strSuperv="+strSuperv,
+				  data: "mode=Operation&numFacultyId="+numFacultyId+"&strSuperv="+strSuperv,
 				  async: false,
 				  success: function (data) {
 					  var jsonResult;
@@ -50,10 +50,14 @@
 						  var $el = $("#cboOperation");
 						  $el.empty(); // remove old options
 						  $el.append($("<option></option>").attr("value", 0).text("Select any one"));
+
 						  $.each(newOptions, function (value, key) {
-							  $el.append($("<option></option>")
-								 .attr("value", value).text(key));
+						      $.each(key, function(value, key){
+						          $el.append($("<option></option>")
+                                     .attr("value", value).text(key));
+						      })
 						  });
+						  
 					  }
 					  catch (e) {
 						  window.location.href = "/menu.asp";
@@ -68,7 +72,7 @@
 			  request = $.ajax({
 				  url: "AJAXSearch.asp",
 				  type: "post",
-				  data: "mode=" + "Supervisor&numFacultyId=" + numFacultyId + "&strSuperv=" + strSuperv,
+				  data: "mode=Supervisor&numFacultyId=" + numFacultyId + "&strSuperv=" + strSuperv,
 				  async: false,
 				  success: function (data) {
 					  var jsonResult;
@@ -79,8 +83,10 @@
 						  $el.empty(); // remove old options
 						  $el.append($("<option></option>").attr("value", 0).text("Select any one"));
 						  $.each(newOptions, function (value, key) {
-							  $el.append($("<option></option>")
-								 .attr("value", value).text(key));
+						      $.each(key, function (value, key) {
+						          $el.append($("<option></option>")
+                                     .attr("value", value).text(key));
+						      })
 						  });
 					  }
 					  catch (e) {
@@ -97,7 +103,7 @@
 			  request = $.ajax({
 				  url: "AJAXSearch.asp",
 				  type: "post",
-				  data: "mode=" + "LocationBuilding&numFacultyId=" + numFacultyId + "&strSuperv=" + strSuperv,
+				  data: "mode=LocationBuilding&numFacultyId=" + numFacultyId + "&strSuperv=" + strSuperv,
 				  async: false,
 				  success: function (data) {
 					  var jsonResult;
@@ -108,8 +114,10 @@
 						  $el.empty(); // remove old options
 						  $el.append($("<option></option>").attr("value", 0).text("Select any one"));
 						  $.each(newOptions, function (value, key) {
-							  $el.append($("<option></option>")
-								 .attr("value", value).text(key +" Campus"));
+						      $.each(key, function (value, key) {
+						          $el.append($("<option></option>")
+                                     .attr("value", value).text(key));
+						      })
 						  });
 					  }
 					  catch (e) {
@@ -138,8 +146,10 @@
 						  $el.empty(); // remove old options
 						  $el.append($("<option></option>").attr("value", 0).text("Select any one"));
 						  $.each(newOptions, function (value, key) {
-							  $el.append($("<option></option>")
-								 .attr("value", value).text(key + " Campus"));
+						      $.each(key, function (value, key) {
+						          $el.append($("<option></option>")
+                                     .attr("value", value).text(key));
+						      })
 						  });
 					  }
 					  catch (e) {
@@ -187,7 +197,7 @@
 									   numFacultyID = 0
 									end if %>
 							
-								 <select size="1" autocomplete="off"  name="cboFacultySuper" tabindex="1" onchange="javascript:FillDetailsSupervisor(this.value, '<%=strsuperV%>')">
+								 <select size="1" autocomplete="off" class="form-control" name="cboFacultySuper" tabindex="1" onchange="javascript:FillDetailsSupervisor(this.value, '<%=strsuperV%>')">
 									<option value="0"
 									   <% if numFacultyID = 0 then
 										  response.Write "Select any one"
@@ -219,7 +229,7 @@
 							  <th>Supervisor Name</th>
 							  <td>
 															   
-								 <select autocomplete="off"  size="1" name="cboSupervisorName" id="cboSupervisor" tabindex="2">
+								 <select autocomplete="off" class="form-control" size="1" name="cboSupervisorName" id="cboSupervisor" tabindex="2">
 									  <option value="0">Select any one</option>
 									</select>
 								 &nbsp;
@@ -228,7 +238,7 @@
 						   <tr>
 							  <td colspan="2">
 								 <center>
-									<input type="Submit" value="Search" name="btnSearch" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Clear Form" name="btnClear" onclick="    clearform()" />&nbsp;&nbsp;&nbsp;&nbsp;<!--input type="Submit" value="Action Status Report" name="btnSearch" onclick="FillSearch()" /-->
+									<input type="Submit" class="btn btn-primary" value="Search" name="btnSearch" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="btn btn-primary" value="Clear Form" name="btnClear" onclick="    clearform()" />&nbsp;&nbsp;&nbsp;&nbsp;<!--input type="Submit" value="Action Status Report" name="btnSearch" onclick="FillSearch()" /-->
 									<!--DLJ Removed this button from common search 22July2011-->
 						</form>
 						</center>
@@ -251,7 +261,7 @@
 									if numFacultyID = "" then
 									   numFacultyID = 0
 									end if %>
-								 <select size="1" autocomplete="off" name="cboFacultyLocation" id="cboFacultyLocation" tabindex="1" onchange="javascript:FillBuildingsLocation(this.value, '<%=strsuperV%>')">
+								 <select size="1" autocomplete="off" class="form-control" name="cboFacultyLocation" id="cboFacultyLocation" tabindex="1" onchange="javascript:FillBuildingsLocation(this.value, '<%=strsuperV%>')">
 									<option value="0"
 									   <% if numFacultyID = 0 then
 										  response.Write "Select any one"
@@ -278,7 +288,7 @@
 								 
 										   
 							  <td>
-								 <select autocomplete="off"  size="1" name="cboBuilding" id="cboBuilding" tabindex="4" onchange="javascript:FillRoomLocation(this.value, '<%=strsuperV%>')">
+								 <select autocomplete="off" class="form-control" size="1" name="cboBuilding" id="cboBuilding" tabindex="4" onchange="javascript:FillRoomLocation(this.value, '<%=strsuperV%>')">
 									<option value="0">Select any one</option>
 		 
 								 </select>
@@ -297,7 +307,7 @@
 							  <th>Room No. / Name</th>
 							 
 							  <td>
-								 <select autocomplete="off"  size="1" name="cboRoom" id="cboRoom" tabindex="5">
+								 <select autocomplete="off" class="form-control" size="1" name="cboRoom" id="cboRoom" tabindex="5">
 									<option value="0">Select any one</option>
 									
 								 </select>
@@ -306,7 +316,7 @@
 						   <tr>
 							  <td colspan="2">
 								 <center>
-									<input type="Submit" value="Search" name="btnSearch" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Clear Form" name="btnClear" onclick="    clearform()" />
+									<input type="Submit" class="btn btn-primary" value="Search" name="btnSearch" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="btn btn-primary" value="Clear Form" name="btnClear" onclick="    clearform()" />
 									&nbsp;&nbsp;&nbsp;&nbsp;
 						</form>
 						</center></td>
@@ -326,7 +336,7 @@
 									if numFacultyID = "" then
 									   numFacultyID = 0
 									end if %>
-								 <select size="1" autocomplete="off"  name="cboFacultyOperation" tabindex="1" onchange="javascript:FillDetailsOperation(this.value, '<%=strsuperV%>')">
+								 <select size="1" class="form-control" autocomplete="off"  name="cboFacultyOperation" tabindex="1" onchange="javascript:FillDetailsOperation(this.value, '<%=strsuperV%>')">
 									<option value="0" " >Select any one</option>
 									<%rsFillFac.MoveFirst
 									   while not rsFillFac.Eof 
@@ -354,7 +364,7 @@
 						   <tr>
 							  <th>Operation</th>
 							  <td>
-								 <select autocomplete="off"  name="cboOperation" id="cboOperation">
+								 <select autocomplete="off" class="form-control" name="cboOperation" id="cboOperation">
 									<option value="0">Select any one</option>
 								   
 								 </select>
@@ -363,7 +373,7 @@
 						   <tr>
 							  <td colspan="2">
 								 <center>
-									<input type="Submit" value="Search" name="btnSearch" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Clear Form" name="btnClear" onclick="    clearform()" />&nbsp;&nbsp;&nbsp;&nbsp;<!--input type="Submit" value="Action Status Report" name="btnSearch" onclick="FillSearch()" /-->
+									<input type="Submit" class="btn btn-primary" value="Search" name="btnSearch" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Clear Form" class="btn btn-primary" name="btnClear" onclick="    clearform()" />&nbsp;&nbsp;&nbsp;&nbsp;<!--input type="Submit" value="Action Status Report" name="btnSearch" onclick="FillSearch()" /-->
 									<!--DLJ Removed this button from common search 22July2011-->
 						</form>
 						</center></td>
@@ -393,7 +403,7 @@
 						   <tr>
 							  <th>RA Number/Task</th>
 							  <td>
-								 <input type="text" name="txtHazardousTask" size="40" tabindex="0" />
+								 <input type="text" class="form-control" name="txtHazardousTask" size="40" tabindex="0" />
 							  </td>
 						   </tr>
 						   <tr>
@@ -402,7 +412,7 @@
 						   <tr>
 							  <td colspan="2">
 								 <center>
-									<input type="Submit" value="Search" name="btnSearch" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Clear Form" name="btnClear" onclick="    clearform()" />&nbsp;&nbsp;&nbsp;&nbsp;<!--input type="Submit" value="Action Status Report" name="btnSearch" onclick="FillSearch()" /-->
+									<input type="Submit"  class="btn btn-primary" value="Search" name="btnSearch" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="btn btn-primary" value="Clear Form" name="btnClear" onclick="    clearform()" />&nbsp;&nbsp;&nbsp;&nbsp;<!--input type="Submit" value="Action Status Report" name="btnSearch" onclick="FillSearch()" /-->
 									<!--DLJ Removed this button from common search 22July2011-->
 						
 						</center></td>
@@ -496,7 +506,7 @@
 							  <th>Facility</th>
 							  <td colspan="2">
 								
-								 <select autocomplete="off" id="myfacility" size="1" name="cboFacility" tabindex="1" onchange="$('#QORAtype').val('location')">
+								 <select autocomplete="off" class="form-control" id="myfacility" size="1" name="cboFacility" tabindex="1" onchange="$('#QORAtype').val('location')">
 									<option value="0">Select any one</option>
 									<%
 									   while not rsFillFaci.Eof
@@ -509,14 +519,14 @@
 									%>
 								 </select>
 							  </td>
-                               <td><input type="submit" size="70" value="Generate Facility Report" onclick="return checkFacility();" name="btnGenRep" /></td>
+                               <td><input type="submit" size="70" value="Generate Facility Report" class="btn btn-primary" onclick="return checkFacility();" name="btnGenRep" /></td>
 						   </tr>
 						
 						<tr><td colspan="4"><hr /></td></tr>
 						   <tr>
 							  <th>Operation/Project</th>
 							  <td colspan="2">
-								 <select autocomplete="off" id="myoperation" name="cboOperation" id="cboOperation" Onchange="$('#QORAtype').val('operation')">
+								 <select autocomplete="off" class="form-control" id="myoperation" name="cboOperation" id="cboOperation" Onchange="$('#QORAtype').val('operation')">
 									<option value="0">Select any one</option>
 								   <%
 									   while not rsFillProj.Eof
@@ -531,17 +541,20 @@
 							  </td>
 						   
 							  <td>
-                                   <input type="submit" size="70"value="Generate Operation/Project Report" onclick="return checkOperation();" name="btnGenRep" /></td>
+                                   <input type="submit" size="70"value="Generate Operation/Project Report" class="btn btn-primary" onclick="return checkOperation();" name="btnGenRep" /></td>
 						   </tr>
 						   
 
                                <tr><td colspan="4"><hr /></td></tr>
                                <tr><td colspan="3"></td><td>
+                               <button class="btn btn-primary" type="button" onclick="$('#myfacility').val(0);$('#myoperation').val(0);">Clear</button>
+                                   </td></tr>
+                               <tr><td colspan="3"></td><td>
                                <% if session("isAdmin") then %>
-                                   <button type="button" onclick="window.location='LocationAdmin.asp'">Create Risk Assessment</button>
+                                   <button  class="btn btn-primary" type="button" onclick="window.location='LocationAdmin.asp'">Create Risk Assessment</button>
                                   
                                <% else %>
-                                    <button type="button" onclick="window.location='LocationSup.asp'">Create Risk Assessment</button>
+                                    <button class="btn btn-primary" type="button" onclick="window.location='LocationSup.asp'">Create Risk Assessment</button>
                                 <% end if %>
                               </td>
                                </tr>
@@ -618,6 +631,9 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#ratable').DataTable();
+            $("form").each(function () {
+                $(this).trigger("reset");
+            });
         });
 
     </script>

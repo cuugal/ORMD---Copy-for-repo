@@ -37,8 +37,12 @@
                     else
                         numopid = rsFillOperation("numOperationID")
                     end if
-                    .Add Cstr(numopid), operation_name
-                   
+
+                    .Add counter, oJSON.Collection()
+                    With .item(counter)
+                        .Add Cstr(numopid), operation_name
+                     end with              
+
                     counter = counter + 1
                     rsFillOperation.Movenext
                 wend
@@ -69,7 +73,11 @@
                     else
                         numopid = rsFillOperation("strLoginId")
                     end if
+                    
+                    .Add counter, oJSON.Collection()
+                    With .item(counter)
                     .Add Cstr(numopid), super_name
+                    end with
 
                     counter = counter + 1
                     rsFillOperation.Movenext
@@ -81,15 +89,15 @@
 	end if
 
     if mode = "LocationBuilding" then
-       strSQL = "Select distinct(tblFacility.numBuildingId)as NumBuildingID,tblCampus.strCampusName,tblBuilding.strBuildingName "_
-                                    &"from tblBuilding,tblCampus,tblFacility, tblFacilitySupervisor, tblFaculty "_
-                                    &"where tblFaculty.numFacultyID="& numFacultyID&" "_
-                                    &"and tblFaculty.numFacultyID = tblFacilitySupervisor.numFacultYID "_
+       strSQL = "Select  distinct(tblBuilding.strBuildingName) as strBuildingName, tblFacility.numBuildingId as NumBuildingID, tblCampus.strCampusName "_
+                                    &"from tblBuilding,tblCampus,tblFacility, tblFacilitySupervisor "_
+                                    &"where tblFacilitySupervisor.numFacultyId="& numFacultyID&" "_
                                     &"and tblFacilitySupervisor.numSupervisorID = tblFacility.numFacilitySupervisorID "_
                                     &"and tblFacility.numBuildingId = tblBuilding.numBuildingId "_
                                     &"and tblBuilding.numCampusId = tblCampus.numCampusId "_
-                                    &" order by strBuildingName"
+                                    &" order by strBuildingName "
 
+   
         set rsFillOperation = Server.CreateObject("ADODB.Recordset")
         rsFillOperation.Open strSQL, con, 3, 3
         Dim building_name
@@ -108,7 +116,10 @@
                     else
                         numopid = rsFillOperation("numBuildingID")
                     end if
-                    .Add Cstr(numopid), building_name
+                    .Add counter, oJSON.Collection()
+                        With .item(counter)
+                        .Add Cstr(numopid), building_name
+                    end with
 
                     counter = counter + 1
                     rsFillOperation.Movenext
@@ -154,7 +165,11 @@
                     else
                         numopid = rsFillOperation("numFacilityId")
                     end if
-                    .Add Cstr(numopid), facility_name
+
+                    .Add counter, oJSON.Collection()
+                    With .item(counter)
+                        .Add Cstr(numopid), facility_name
+                     end with
 
                     counter = counter + 1
                     rsFillOperation.Movenext

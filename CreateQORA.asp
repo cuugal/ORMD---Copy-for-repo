@@ -3,10 +3,7 @@
 <html>
 
 <script language="javascript">
-function Populate(val)
-{
-  document.all.T1.value = document.all.T1.value + val
-}
+
 
 // function to ask about the confirmation of the file.
 function ConfirmChoice() 
