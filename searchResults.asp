@@ -514,7 +514,15 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
           
        </td>
    <!-- <td><center><%=dtRDate%></center></td> -->
-   <td <% If DateDiff("d", cDate(rsFaculty("dtReview")), today) > 1 Then %>style="color:red;font-weight:bold" <%end if %> ><center><%=rsFaculty("dtReview")%></center></td>
+          <% dim reviewDate
+              if rsFaculty("dtReview") <> null then
+                reviewDate = cDate(rsFaculty("dtReview"))
+                
+              else
+                reviewDate = DateAdd("d",-1,today)
+              end if
+               %>
+   <td <% If DateDiff("d", reviewDate, today) > 1 Then %>style="color:red;font-weight:bold" <%end if %> ><center><%=rsFaculty("dtReview")%></center></td>
    
    
    <td><center>
