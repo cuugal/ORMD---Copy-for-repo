@@ -98,8 +98,9 @@ End Function
   
   &" tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel "
     if not session("isAdmin") then
-        strSQL = strSQL &" and tblFacilitySupervisor.numSupervisorId = "& numSupervisorID &" ORDER BY tblRiskLevel.numGrade, strTaskDescription"
+        strSQL = strSQL &" and tblFacilitySupervisor.numSupervisorId = "& numSupervisorID 
     end if
+     strSQL = strSQL&" ORDER BY tblRiskLevel.numGrade, strTaskDescription"
  end if
  
  
@@ -111,8 +112,9 @@ End Function
   &" tblQORA.numOperationId = "& numOperationID &" and "_
   &" tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel "
   if not session("isAdmin") then
-    strSQL = strSQL&" and tblFacilitySupervisor.numSupervisorId = "& numSupervisorID &" ORDER BY tblRiskLevel.numGrade, strTaskDescription"
+    strSQL = strSQL&" and tblFacilitySupervisor.numSupervisorId = "& numSupervisorID
   end if
+    strSQL = strSQL&" ORDER BY tblRiskLevel.numGrade, strTaskDescription"
  end if
     'response.write (strSQL)
       

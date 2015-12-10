@@ -18,8 +18,10 @@
 .navcontainer a:hover { background-color: #F8E9AD; color: #0083B3; margin-bottom: 2px;}
  </style>
  <title>Online Risk Register - Administration Functions</title>
+    <!--#include file="bootstrap.inc"--> 
 </head>
 <body>
+
     <!--#include file="HeaderMenu.asp" -->
 <%
  if session("strLoginId") <> "admin" then

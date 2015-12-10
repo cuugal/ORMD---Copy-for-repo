@@ -570,7 +570,7 @@
  
  &"SELECT count(numQORAId) as numRA, 'operation' as searchType, tblOperations.numOperationId as key_id, sum(iif(dtReview > Date() , 1 , 0 )) as numCurr, strOperationName as location "_
  &" FROM tblOperations ,tblQORA "_
- &" where tblQORA.numOperationID = tblOperations.numOperationId and strOperationName not like 'Archive*' group by strOperationName, tblOperations.numOperationId"
+ &" where tblQORA.numOperationID = tblOperations.numOperationId and strOperationName not like 'Archive%' group by strOperationName, tblOperations.numOperationId"
     
     ' response.write strSQL
     set rsFillOperation = Server.CreateObject("ADODB.Recordset")

@@ -58,8 +58,7 @@
       </div>
       <div class="modal-body">
         <form id="loginForm">
-          <input type="hidden" class="form-control" id="qora" name="qora"/>
-            <input type="hidden" name="mode" ID="QORAtype" value=""/>
+        
           <div class="form-group">
             <label for="txtLoginId" class="control-label">User Name:</label>
             <input name="txtLoginID" class="form-control" id="txtLoginID" maxlength="70" type="text" value="<%=strLoginID%>" size="25" />

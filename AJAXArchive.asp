@@ -25,7 +25,7 @@
 	if mode = "archive" then
 
         strSQL = "Select numOperationId from tblOperations where numFacilitySupervisorId ="& cint(super)&""_
-            &" and strOperationName like 'Archive*'"
+            &" and strOperationName like 'Archive%'"
         set rsOps = Server.CreateObject("ADODB.Recordset")
         rsOps.Open strSQL, con, 3, 3
 
@@ -35,7 +35,7 @@
             archiveId = cint(rsOps("numOperationId"))
             rsOps.Movenext	
 		wend 
-
+        'Response.write archiveId
         'if the operation ID can't be found, make a new one
         if archiveId = 0 then
             set conn = Server.CreateObject("ADODB.Connection")
