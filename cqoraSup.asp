@@ -14,7 +14,7 @@ End If
 <meta name="GENERATOR" content="Microsoft FrontPage 6.0">
 <meta name="ProgId" content="FrontPage.Editor.Document">
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<link rel="stylesheet" type="text/css" href="orr.css" media="screen" />
+  <!--#include file="bootstrap.inc"--> 
 <!--[if IE]>
 
 <link rel="stylesheet" type="text/css" href="IE7.css" />
@@ -400,12 +400,12 @@ strJobSteps = ""
   	<tr>  
     	<td><!-- textarea box goes in this table cell -->
         <br/>
-        	<textarea rows="8" name="T1" cols="45"></textarea>
+        	<textarea rows="8" name="T1" id="T1" cols="45"></textarea>
             
         </td>
         <td><!-- textarea box goes in this table cell -->
         	<br />
-          	<textarea rows="8" name="T3" cols="45" ></textarea>
+          	<textarea rows="8" name="T3" id="T3" cols="45" ></textarea>
 		</td>
 		</tr>
 		<tr>
