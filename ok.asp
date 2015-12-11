@@ -6,12 +6,11 @@
 <head>
 <head>
 <meta http-equiv="Content-Language" content="en-au">
-<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
-<meta name="ProgId" content="FrontPage.Editor.Document">
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<link rel="stylesheet" type="text/css" href="orr.css" media="screen" />
 <title></title>
+    <!--#include file="bootstrap.inc"--> 
 </head>
+     <!--#include file="HeaderMenu.asp"--> 
 <%
 session.LCID = 2057	'English(British) format
 
@@ -301,6 +300,12 @@ set remover=nothing
 <div id="wrapper">
   <div id="content">
     <h1 class="pagetitle">Risk Assessment <%=testval%> has been edited successfully</h1>
+      <form id="refreshResults" action="SupRDateModified.asp" method="post">
+        <input type="hidden" name="QORAtype" value="<%=session("searchType") %>" />
+        <input type="hidden" name="cboOperation" value="<%=session("cboOperation")  %>" />
+        <input type="hidden" name="cboFacility" value="<%=session("cboFacility") %>" />
+          <input type="submit" class="btn btn-primary" value="Next" />
+    </form>
 	
   </div>
 </div>

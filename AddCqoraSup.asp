@@ -12,8 +12,9 @@ End If
 <meta name="GENERATOR" content="Microsoft FrontPage 6.0">
 <meta name="ProgId" content="FrontPage.Editor.Document">
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<link rel="stylesheet" type="text/css" href="orr.css" media="screen" />
-<title>hi</title>
+
+<title>Risk Assessment Added</title>
+    <!--#include file="bootstrap.inc"--> 
 </head>
 <%
 
@@ -364,6 +365,7 @@ Dim rsAddControls
 <!--#INCLUDE FILE="UpdateReview.asp"--> 
 
 <body>
+     <!--#include file="HeaderMenu.asp"--> 
 <div id="wrapper">
   <div id="content">
     <h1 class="pagetitle">Risk Assessment <%=strPrikey%> has been added successfully</h1>
@@ -371,28 +373,15 @@ Dim rsAddControls
 	<!--  DLJ Perhaps commented out this because it is redundant. Just put in line below ...
     <p>Do you want to add another Risk Assessment? If yes, please click the 'Create Risk Assessment' button above.</p> -->
     <div class="addAnother">
-    <p>Do you want to add another Risk Assessment? If yes, please click the 'Add more' button below.</p>
-    </div>
-    <center>
-      <table class="bluebox" style="width: 30%; " id="table1" >
-        <tr>
-          <td style="text-align: center; vertical-align: middle;"><br />
-            <form method="POST" action="locationSup.asp">
+    <p>Do you want to add another Risk Assessment? If yes, please click the 'Next' button below.</p>
+        <form method="POST" action="locationSup.asp">
               <input type="hidden" name = cboBuilding value ="<%=numBuildingID%>">
               <input type="hidden" name = cboCampus value ="<%=numCampusID%>">
               <input type="hidden" name = cboRoom value ="<%=numFacilityID%>">
-              <input type="submit" href="LocationSup.asp" value="Add more" name="btnAddMore">
-            </form></td>
-          <td style="text-align: center; vertical-align: middle;"><br />
-            <form method="POST" action="supReport.asp">
-              <input type="hidden" name = hdnFacilityId value ="<%=numFacilityID%>">
-              <input type="hidden" name = hdnTaskDesc value ="<%=strTaskDesc%>">
-              <input type="hidden" name = hdnNavigationCnt value ="<%=numNavigationCnt%>">
-              <input type="submit" value="Cancel" name="btnClear">
-            </form></td>
-        </tr>
-      </table>
-    </center>
+              <input type="submit" class="btn btn-primary" href="LocationSup.asp" value="Next" name="btnAddMore">
+            </form>
+    </div>
+
   </div>
 </div>
 </body>

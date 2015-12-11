@@ -550,12 +550,8 @@
                                <button class="btn btn-primary" type="button" onclick="$('#myfacility').val(0);$('#myoperation').val(0);">Clear</button>
                                    </td></tr>
                                <tr><td colspan="3"></td><td>
-                               <% if session("isAdmin") then %>
-                                   <button  class="btn btn-primary" type="button" onclick="window.location='LocationAdmin.asp'">Create Risk Assessment</button>
-                                  
-                               <% else %>
-                                    <button class="btn btn-primary" type="button" onclick="window.location='LocationSup.asp'">Create Risk Assessment</button>
-                                <% end if %>
+                                   <button  class="btn btn-primary" type="button" onclick="window.location='LocationSup.asp'">Create Risk Assessment</button>
+                               
                               </td>
                                </tr>
 						<tr>
@@ -707,7 +703,9 @@
 		  <script type="text/javascript">
 		      $(document).ready(function () {
 		          $('#ratable').DataTable();
+		          $('#factable').DataTable();
 		          $("form").each(function () {
+		            
 		              $(this).trigger("reset");
 		          });
 		      });

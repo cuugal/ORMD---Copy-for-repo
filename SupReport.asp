@@ -1,4 +1,5 @@
-
+<%@Language = VBscript%>
+<!--#INCLUDE FILE="DbConfig.asp"-->
 <%
 If Trim(Session("strLoginId")) = "" Then
 Response.Redirect("Invalid.asp")

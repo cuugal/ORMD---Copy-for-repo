@@ -82,9 +82,11 @@ Dim rsFillBuilding
    strSQL ="SELECT Distinct(tblBuilding.numBuildingId),"_
    &" tblBuilding.strBuildingName "_
    &" FROM tblBuilding, tblfacility ,tblFacilitySupervisor"_ 
-   &" WHERE tblFacilitySupervisor.numSupervisorID = tblFacility.numFacilitySupervisorID and"_
-   &" tblBuilding.numBuildingId=tblfacility.numBuildingID and tblFacilitySupervisor.strLoginID ='"& strSuperV &"'" 
-   
+   &" WHERE tblFacilitySupervisor.numSupervisorID = tblFacility.numFacilitySupervisorID "_
+   &" and tblBuilding.numBuildingId=tblfacility.numBuildingID"
+   if not session("isAdmin") then 
+      strSQL = strSQL &"  and tblFacilitySupervisor.numSupervisorId ="&session("numSupervisorId") 
+   end if 
    set rsFillBuilding = Server.CreateObject("ADODB.Recordset")
    rsFillBuilding.Open strSQL, conn, 3, 3
 
@@ -157,7 +159,10 @@ Dim rsFillR
    &" FROM tblFacility, tblBuilding , tblFacilitySupervisor"_ 
    &" WHERE tblFacility.numBuildingID=tblBuilding.numBuildingID "_
    &" and tblFacilitySupervisor.numSupervisorID = tblFacility.numFacilitySupervisorID "_
-   &"  and tblBuilding.numBuildingId = "& numBuildingId &" and tblFacilitySupervisor.strLoginID = '"& strSuperV&"'" 
+   &" and tblBuilding.numBuildingId = "& numBuildingId 
+   if not session("isAdmin") then 
+      strSQL = strSQL &"  and tblFacilitySupervisor.numSupervisorId ="&session("numSupervisorId") 
+   end if 
    
    set rsFillR = Server.CreateObject("ADODB.Recordset")
    rsFillR.Open strSQL, connR, 3, 3
@@ -193,8 +198,12 @@ wend
  	Dim rsOperations
  	set operConn = Server.CreateObject("ADODB.Connection")
     operConn.open constr
-    strSQL = "select * from tblOperations, tblFacilitySupervisor where tblFacilitySupervisor.strLoginId = '"&strSuperV&"' and tblOperations.numFacilitySupervisorID = tblFacilitySupervisor.numSupervisorID"
-    set rsOperations = Server.CreateObject("ADODB.Recordset")
+    strSQL = "select * from tblOperations, tblFacilitySupervisor where tblOperations.numFacilitySupervisorID = tblFacilitySupervisor.numSupervisorID"
+    if not session("isAdmin") then 
+      strSQL = strSQL &"  and tblFacilitySupervisor.numSupervisorId ="&session("numSupervisorId") 
+    end if 
+         
+         set rsOperations = Server.CreateObject("ADODB.Recordset")
     rsOperations.Open strSQL, operConn, 3, 3
     While not rsOperations.EOF %>
 		<option value="<%=rsOperations("numOperationId")%>"><%=cstr(rsOperations("strOperationName"))%></option>

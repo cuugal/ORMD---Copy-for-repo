@@ -154,7 +154,7 @@ if (QORAtype = "operation") then %>
     <br />
     <table class="sortable suprlevel" id="id13">
      <caption>
-      To sort any column, click on a table heading.  To edit a risk assessment, click on its title under the &quot;Task&quot; column.
+      To sort any column, click on a table heading. 
       </caption>
       <thead>
         <tr>

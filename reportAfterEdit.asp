@@ -140,7 +140,7 @@ while not rsShow.EOF
 %>
 
         <tr>
-          <td><a target="Operation" title="Click to edit this Risk Assessment." href="EditQORA.asp?numCQORAId= <%=rsShow("numQORAId")%> "><%=rsShow("strtaskDescription")%></a></td>
+          <td><a style="text-decoration:underline" title="Click to edit this Risk Assessment." href="EditQORA.asp?numCQORAId= <%=rsShow("numQORAId")%> "><%=rsShow("strtaskDescription")%></a></td>
           <!--<td><%=escape(rsShow("strHazardsDesc"))%></td>-->
           <td><%=rsShow("strHazardsDesc")%></td>
           <td><%
@@ -191,7 +191,12 @@ while not rsShow.EOF
 
          <!-- <td><%=rsShow("strDateActionsCompleted")%></td>-->
          <!--  <td><%=dtRDate%></td> -->
-         <td><%=rsShow("dtReview")%></td> 
+     <%
+              dim today
+         today = Date()
+               %>
+            <td <% If not isNull(rsShow("dtReview")) and DateDiff("d", rsShow("dtReview"), today) > 1 Then %>style="color:red;font-weight:bold" <%end if %> ><center>  <%=rsShow("dtReview")%></center></td>
+    
          <td><center>
         <% If rsShow("boolSWMSRequired") = true Then %>
                  <form method="post" action="SWMS.asp">
