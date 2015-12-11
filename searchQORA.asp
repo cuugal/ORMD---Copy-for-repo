@@ -570,7 +570,33 @@
 
 
 <%
-      set con	= server.createobject ("adodb.connection")
+    set con	= server.createobject ("adodb.connection")
+    con.open constr
+
+    strSQL = "SELECT tblfaculty.strFacultyName, 'Facility' as searchType, tblFaculty.numFacultyID as key_id, count(numQORAId) as numRA, sum(iif(dtReview > Date() , 1 , 0 )) as numCurr  "_
+    &"from tblFaculty, tblfacilitysupervisor, tblfacility, tblQORA "_
+    &"where tblfaculty.numfacultyID = tblfacilitysupervisor.numfacultyid "_
+    &"and tblfacility.numfacilitysupervisorid = tblfacilitysupervisor.numsupervisorid "_
+    &"and tblqora.numfacilityid = tblfacility.numfacilityid "_
+    &"group by strFacultyName, tblFaculty.numFacultyID "_
+
+    &"union all "_
+
+    &"SELECT tblfaculty.strFacultyName, 'Operation' as searchType, tblFaculty.numFacultyID as key_id, count(numQORAId) as numRA, sum(iif(dtReview > Date() , 1 , 0 )) as numCurr "_
+    &"from tblFaculty, tblfacilitysupervisor, tbloperations, tblQORA "_
+    &"where tblfaculty.numfacultyID = tblfacilitysupervisor.numfacultyid "_
+    &"and tbloperations.numfacilitysupervisorid = tblfacilitysupervisor.numsupervisorid "_
+    &"and tblqora.numoperationid = tbloperations.numoperationid "_
+    &"group by strFacultyName, tblFaculty.numFacultyID "_
+
+    &"order by  2, strFacultyName"
+
+    set rsFillFaculty = Server.CreateObject("ADODB.Recordset")
+    rsFillFaculty.Open strSQL, con, 3, 3
+
+
+
+    set con	= server.createobject ("adodb.connection")
     con.open constr
 
 
@@ -591,8 +617,56 @@
    
      %>
 <br />
+<h3 style="float:left">Risk Assessment Overview</h3>
+
+<div style="clear:both"></div>
+<ul class="nav nav-tabs" >
+                 
+	<li class="active"><a data-toggle="tab" href="#faculty_list">By Faculty</a></li>
+	<li><a data-toggle="tab" href="#fac_oper_list">By Facility/Operation</a></li>
+
+                  
+</ul>
 <div class="tab-content" style="padding:5px;">
-    <h3>Risk Assessment Overview</h3>
+    <div id="faculty_list" class="tab-pane fade in active">
+     <table id="factable" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Faculty Name</th>
+                <th>Facility/Operation</th>
+                <th>Current RA</th>
+                <th>Total RA</th>
+                
+                <th>% Current</th>
+            </tr>
+        </thead>
+
+        <tbody>
+         <% dim link
+             while not rsFillFaculty.Eof %>
+            <tr>
+                <% 
+                    if rsFillFaculty("searchType") = "Facility" then
+                        link = "CollectInfoAdmin.asp?searchType=location&hdnFacultyId="&rsFillFaculty("key_id") 
+                    else
+                        link = "CollectInfoAdmin.asp?searchType=operation&hdnFacultyId="&rsFillFaculty("key_id") 
+                    end if
+                    %>
+                <td><a style="text-decoration: underline;" href="<%=link %>"><%=rsFillFaculty("strFacultyName") %></a></td>
+                <td><%=rsFillFaculty("searchType") %></td>
+                 <td><%=rsFillFaculty("numCurr") %></td>
+                <td><%=rsFillFaculty("numRA") %></td>
+               
+                <td><%=formatnumber( cint(rsFillFaculty("numCurr"))/cint(rsFillFaculty("numRA")) *100,2)%></td>
+            </tr>
+            <%
+            rsFillFaculty.Movenext
+            wend
+                 %>
+            </tbody>
+        </table>
+    </div>
+    <div id="fac_oper_list" class="tab-pane fade">
     <table id="ratable" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
@@ -605,7 +679,7 @@
         </thead>
 
         <tbody>
-         <% dim link
+         <% 
              while not rsFillOperation.Eof %>
             <tr>
                 <% 
@@ -628,14 +702,14 @@
             </tbody>
         </table>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#ratable').DataTable();
-            $("form").each(function () {
-                $(this).trigger("reset");
-            });
-        });
+   </div>
+ </div>
+		  <script type="text/javascript">
+		      $(document).ready(function () {
+		          $('#ratable').DataTable();
+		          $("form").each(function () {
+		              $(this).trigger("reset");
+		          });
+		      });
 
     </script>
-    </div>
-		 
