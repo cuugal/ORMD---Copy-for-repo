@@ -197,11 +197,8 @@
 									   numFacultyID = 0
 									end if %>
 							
-								 <select size="1" autocomplete="off" class="form-control" name="cboFacultySuper" tabindex="1" onchange="javascript:FillDetailsSupervisor(this.value, '<%=strsuperV%>')">
-									<option value="0"
-									   <% if numFacultyID = 0 then
-										  response.Write "Select any one"
-										  end if %>>Select any one</option>
+								 <select size="1" autocomplete="false" class="form-control" name="cboFacultySuper" id="cboFacultySuper" tabindex="1" onchange="javascript:FillDetailsSupervisor(this.value, '<%=strsuperV%>')">
+									<option value="0">Select any one</option>
 									<%while not rsFillFac.Eof 
 									   if rsFillFac("boolActive")= True Then %>
 									<option value="<%=rsFillFac("NumFacultyID")%>"
@@ -217,7 +214,7 @@
 							  </td>
 						   </tr>
 						
-						<form method="post" name="Submit1" action="CollectInfoAdmin.asp" name="f1" enctype="application/x-www-form-urlencoded">
+						<form method="post" autocomplete="false"  name="Submit1" action="CollectInfoAdmin.asp" name="f1" enctype="application/x-www-form-urlencoded">
 						   <input type="hidden" name="hdnSuperV" value="<%=strsuperV%>" />
 						   <input type="hidden" name="hdnHazardousTask" value="<%=strHazardousTask%>" />
 						   <input type="hidden" name="hdnBuildingId" value="0" />
@@ -229,7 +226,7 @@
 							  <th>Supervisor Name</th>
 							  <td>
 															   
-								 <select autocomplete="off" class="form-control" size="1" name="cboSupervisorName" id="cboSupervisor" tabindex="2">
+								 <select autocomplete="false" class="form-control" size="1" name="cboSupervisorName" id="cboSupervisor" tabindex="2">
 									  <option value="0">Select any one</option>
 									</select>
 								 &nbsp;
@@ -261,7 +258,7 @@
 									if numFacultyID = "" then
 									   numFacultyID = 0
 									end if %>
-								 <select size="1" autocomplete="off" class="form-control" name="cboFacultyLocation" id="cboFacultyLocation" tabindex="1" onchange="javascript:FillBuildingsLocation(this.value, '<%=strsuperV%>')">
+								 <select size="1" autocomplete="false" class="form-control" name="cboFacultyLocation" id="cboFacultyLocation" tabindex="1" onchange="javascript:FillBuildingsLocation(this.value, '<%=strsuperV%>')">
 									<option value="0"
 									   <% if numFacultyID = 0 then
 										  response.Write "Select any one"
@@ -288,14 +285,14 @@
 								 
 										   
 							  <td>
-								 <select autocomplete="off" class="form-control" size="1" name="cboBuilding" id="cboBuilding" tabindex="4" onchange="javascript:FillRoomLocation(this.value, '<%=strsuperV%>')">
+								 <select autocomplete="false" class="form-control" size="1" name="cboBuilding" id="cboBuilding" tabindex="4" onchange="javascript:FillRoomLocation(this.value, '<%=strsuperV%>')">
 									<option value="0">Select any one</option>
 		 
 								 </select>
 							  </td>
 						   </tr>
 						
-						<form method="post" name="Submit2" action="CollectInfoAdmin.asp" name="f1" enctype="application/x-www-form-urlencoded">
+						<form method="post" autocomplete="false"  name="Submit2" action="CollectInfoAdmin.asp" name="f1" enctype="application/x-www-form-urlencoded">
 						   <input type="hidden" name="hdnSuperV" value="<%=strsuperV%>" />
 						   <input type="hidden" name="hdnHazardousTask" value="<%=strHazardousTask%>" />
 						   <input type="hidden" name="hdnBuildingId" id="locBuidingId" value="0" />
@@ -307,7 +304,7 @@
 							  <th>Room No. / Name</th>
 							 
 							  <td>
-								 <select autocomplete="off" class="form-control" size="1" name="cboRoom" id="cboRoom" tabindex="5">
+								 <select autocomplete="false" class="form-control" size="1" name="cboRoom" id="cboRoom" tabindex="5">
 									<option value="0">Select any one</option>
 									
 								 </select>
@@ -336,8 +333,8 @@
 									if numFacultyID = "" then
 									   numFacultyID = 0
 									end if %>
-								 <select size="1" class="form-control" autocomplete="off"  name="cboFacultyOperation" tabindex="1" onchange="javascript:FillDetailsOperation(this.value, '<%=strsuperV%>')">
-									<option value="0" " >Select any one</option>
+								 <select size="1" class="form-control" autocomplete="false"  name="cboFacultyOperation" id="cboFacultyOperation" tabindex="1" onchange="javascript:FillDetailsOperation(this.value, '<%=strsuperV%>')">
+									<option value="0" >Select any one</option>
 									<%rsFillFac.MoveFirst
 									   while not rsFillFac.Eof 
 											   'DLJ put this if statement in 22 Jan 2010 - is this OK?
@@ -353,7 +350,7 @@
 							  </td>
 						   </tr>
 						
-						<form method="post" name="Submit3" action="CollectInfoAdmin.asp" name="f1" enctype="application/x-www-form-urlencoded">
+						<form method="post" autocomplete="false"  name="Submit3" action="CollectInfoAdmin.asp" name="f1" enctype="application/x-www-form-urlencoded">
 						   <input type="hidden" name="hdnSuperV" value="<%=strsuperV%>" />
 						   <input type="hidden" name="hdnHazardousTask" value="<%=strHazardousTask%>" />
 						   <input type="hidden" name="hdnBuildingId" value="0" />
@@ -364,7 +361,7 @@
 						   <tr>
 							  <th>Operation</th>
 							  <td>
-								 <select autocomplete="off" class="form-control" name="cboOperation" id="cboOperation">
+								 <select autocomplete="false" class="form-control" name="cboOperation" id="cboOperation">
 									<option value="0">Select any one</option>
 								   
 								 </select>
@@ -392,7 +389,7 @@
 						  
 						 
 						
-						<form method="post" name="Submit4" action="CollectInfoAdmin.asp" name="f1" enctype="application/x-www-form-urlencoded">
+						<form method="post" autocomplete="false"  name="Submit4" action="CollectInfoAdmin.asp" name="f1" enctype="application/x-www-form-urlencoded">
 						   <input type="hidden" name="hdnSuperV" value="<%=strsuperV%>" />
 						   <input type="hidden" name="hdnHazardousTask" value="<%=strHazardousTask%>" />
 						   <input type="hidden" name="hdnBuildingId" value="0" />
@@ -469,7 +466,7 @@
 						 %>
 					  <div id="my" class="tab-pane fade">
                         
-						<form method="post" action="SupRDateModified.asp"  name="FormA" enctype="application/x-www-form-urlencoded">
+						<form method="post" autocomplete="false" action="SupRDateModified.asp"  name="FormA" enctype="application/x-www-form-urlencoded">
 							  
 
                                         <script type="text/javascript">
@@ -506,7 +503,7 @@
 							  <th>Facility</th>
 							  <td colspan="2">
 								
-								 <select autocomplete="off" class="form-control" id="myfacility" size="1" name="cboFacility" tabindex="1" onchange="$('#QORAtype').val('location')">
+								 <select autocomplete="false" class="form-control" id="myfacility" size="1" name="cboFacility" tabindex="1" onchange="$('#QORAtype').val('location')">
 									<option value="0">Select any one</option>
 									<%
 									   while not rsFillFaci.Eof
@@ -526,7 +523,7 @@
 						   <tr>
 							  <th>Operation/Project</th>
 							  <td colspan="2">
-								 <select autocomplete="off" class="form-control" id="myoperation" name="cboOperation" id="cboOperation" Onchange="$('#QORAtype').val('operation')">
+								 <select autocomplete="false" class="form-control" id="myoperation" name="cboOperation" id="cboOperation" Onchange="$('#QORAtype').val('operation')">
 									<option value="0">Select any one</option>
 								   <%
 									   while not rsFillProj.Eof
@@ -708,6 +705,9 @@
 		            
 		              $(this).trigger("reset");
 		          });
+		          $("#cboFacultyLocation").val(0);
+		          $("#cboFacultyOperation").val(0);
+		          $("#cboFacultySuper").val(0);
 		      });
 
     </script>

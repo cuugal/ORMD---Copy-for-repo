@@ -300,12 +300,14 @@ set remover=nothing
 <div id="wrapper">
   <div id="content">
     <h1 class="pagetitle">Risk Assessment <%=testval%> has been edited successfully</h1>
+      <% if not isNull(session("searchType")) and session("searchType") <> "" then %>
       <form id="refreshResults" action="SupRDateModified.asp" method="post">
         <input type="hidden" name="QORAtype" value="<%=session("searchType") %>" />
         <input type="hidden" name="cboOperation" value="<%=session("cboOperation")  %>" />
         <input type="hidden" name="cboFacility" value="<%=session("cboFacility") %>" />
           <input type="submit" class="btn btn-primary" value="Next" />
     </form>
+      <% end if %>
 	
   </div>
 </div>
