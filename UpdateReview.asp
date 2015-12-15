@@ -6,13 +6,13 @@
   rsUpdateReview.open constr
   	' MS Access has no support for aggregation within updates, so we need to do this in two parts.
   	' First, get the new review date.
-  	strSQL2 = "SELECT "_
-				&"IIF(IsNull( min(rc.dtProposed) ), DateAdd('yyyy',1,date() ), IIF(min(rc.dtProposed) < DateAdd('yyyy',1,date() ) ,min(rc.dtProposed) ,DateAdd('yyyy',1,date() ) ) ) as NewDate "_
+  	strSQL2 = "SELECT iif(strAssessRisk = 'L',  DateAdd('yyyy',3,date()),  DateAdd('yyyy',1,date() )) as proposedDte, "_
+				&"IIF(IsNull( min(rc.dtProposed) ), proposedDte, IIF(min(rc.dtProposed) < proposedDte ,min(rc.dtProposed) ,proposedDte )) as NewDate "_
 				&"from tblQORA "_
 				&"left outer join tblRiskControls rc on rc.numQORAID = tblQORA.numQORAID "_
 				&"where rc.dtProposed >date()  or IsNull(rc.dtProposed) "_
-				&"group by rc.numQORAID "_
-				&" having rc.numQORAID = "&testval
+				&"group by tblQora.numQORAID, tblQora.strAssessRisk "_
+				&" having tblQora.numQORAID = "&testval
 				
 	set rsShowReview = Server.CreateObject("ADODB.Recordset")
 	rsShowReview.Open strSQL2, rsUpdateReview, 3, 3 

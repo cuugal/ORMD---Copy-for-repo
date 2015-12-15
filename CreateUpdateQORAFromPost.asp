@@ -198,7 +198,7 @@ if NoSaveBeforeSWMS = "" then
 		' &"strDateActionsCompleted = '"& strdate &"',"_ 
 		'strDate = CDate(strDate)
 		dtDateCreated = request.form("hdnDateCreated")
-		dtdate = date
+		dtdate = Date()
 		set dcnDb = server.CreateObject("ADODB.Connection")
 		dcnDb.Open constr
 	
@@ -452,7 +452,7 @@ if NoSaveBeforeSWMS = "" then
 		   
 		      strSQL ="Insert into tblQORA(numQORAID, numFacilityId,dtDateCreated,strAssessor,strTaskDescription, "_
 		   &" strAssessRisk, strConsequence, strLikelyhood, strControlRiskDesc,strHazardsDesc,boolFurtherActionsSWMS,boolFurtherActionsChemicalRA, "_
-		   &" boolFurtherActionsGeneralRA,strText,numFacultyId,strSupervisor,strDateActionsCompleted, strConsultation, boolSWMSRequired, strInherentRisk, numOperationID) Values "_
+		   &" boolFurtherActionsGeneralRA,strText,numFacultyId,strSupervisor,dtDateCreated, strConsultation, boolSWMSRequired, strInherentRisk, numOperationID) Values "_
 		   &" ("& testval  &","_
 		   &" "& numFacilityId  &","_
 		   &" '"& dtDateCreated &"',"_

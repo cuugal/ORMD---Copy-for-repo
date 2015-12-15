@@ -31,6 +31,8 @@ temp = instr(1,strT4,"'",vbTextCompare)
 Dim conn
 Dim rsAdd
 Dim conn2
+    Dim dte
+    dte = Date()
 
 'Database Connectivity Code 
   set conn = Server.CreateObject("ADODB.Connection")
@@ -39,7 +41,7 @@ Dim conn2
   ' setting up the recordset
 '***************************Insert into database**************************************************************
    ' DLJ 14April2010 added set boolSWMSRequired to catch saved SWMS even though not originaly selected as requiring one
-   strSql = "Update tblQORA set strJobSteps = '"&strT4&"', boolSWMSRequired = true where numQORAId = "&testval
+   strSql = "Update tblQORA set strJobSteps = '"&strT4&"', boolSWMSRequired = true, dtDateCreated = '"&dte&"' where numQORAId = "&testval
    set rsAdd = Server.CreateObject("ADODB.Recordset")
   rsAdd.Open strSQL, conn, 3, 3
   
