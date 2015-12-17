@@ -1,6 +1,6 @@
 <%
 'If we have been redirected from a search form, there is no need to save QORA information prior.  Skip all this if so.
-if NoSaveBeforeSWMS = "" then
+if NoSaveBeforeSWMS <> "nosave" then
 
 	if testval ="" then
 			

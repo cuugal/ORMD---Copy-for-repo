@@ -13,6 +13,7 @@ End If
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 <link rel="stylesheet" type="text/css" href="orr.css" media="screen" />
 <title>Save SWMS</title>
+     <!--#include file="bootstrap.inc"--> 
 </head>
 <%
 
@@ -45,8 +46,11 @@ Dim conn2
    set rsAdd = Server.CreateObject("ADODB.Recordset")
   rsAdd.Open strSQL, conn, 3, 3
   
+  
 %>
+      <!--#INCLUDE FILE="UpdateReview.asp"-->
 <body>
+     <!--#include file="HeaderMenu.asp"--> 
 <div id="wrapper">
   <div id="content">
     <h1 class="pagetitle">SWMS <%=testval%> has been updated successfully</h1>
