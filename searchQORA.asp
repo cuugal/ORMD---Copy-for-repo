@@ -6,6 +6,18 @@
 
 
    <%
+       'Empty out session
+        Session("hdnHTask") = ""
+        Session("hdnBuildingId") = ""
+        Session("hdnCampusId") = ""
+        Session("hdnFacultyId") = ""
+        Session("hdnFacilityId") = ""
+        Session("hdnSupervisor") = ""
+        Session("hdnOperationID") = ""
+
+        Session("searchType") = ""
+
+
 	  Dim connFac
 	  Dim rsFillFac
 	  Dim strSQL
