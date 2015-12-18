@@ -64,7 +64,7 @@ End Function
 
       cboFacility = session("cboFacility")
       cboOperation = session("cboOperation")
-      QORAtype = session("QORAtype")
+      searchType = session("searchType")
 
       'Response.Write (Session("cboVal"))    
        numOptionId = Request.QueryString("numOptionID")
@@ -105,7 +105,7 @@ End Function
 <%
  '****Writing the report****
 
- if(QORAtype = "location") then 
+ if(searchType = "location") then 
  'AA jan 2010 rewrite include join to tlFacilitySupervisor as part of reln fix
  strSQL = "SELECT * FROM tblQORA, tblFacility,tblBuilding,tblCampus, tblRiskLevel ,tblFacilitySupervisor, tblFaculty "_
   &" WHERE tblQORA.numFacilityId = tblFacility.numFacilityID and "_
@@ -120,7 +120,7 @@ End Function
  end if
  
  
- if(QORAtype = "operation") then
+ if(searchType = "operation") then
 	 strSQL = "SELECT * FROM tblQORA, tblOperations, tblRiskLevel ,tblFacilitySupervisor, tblFaculty "_
   &" WHERE tblQORA.numOperationId = tblOperations.numOperationId and "_
   &" tblFacilitySupervisor.numSupervisorID = tblOperations.numFacilitySupervisorID and"_
@@ -134,7 +134,7 @@ End Function
 set rsSearchH = server.CreateObject("ADODB.Recordset")
 rsSearchH.Open strSQL, Conn, 3, 3 
 
-if(QORAtype = "location") then %>
+if(searchType = "location") then %>
 <tr>    		
 	<td class="campus">
 	<strong>Campus: </strong><%=rsSearchH("strCampusName")%>&nbsp;&nbsp;&nbsp;</td>
@@ -152,7 +152,7 @@ if(QORAtype = "location") then %>
 </table>
 
 <% end if
-if(QORAtype = "operation") then %>
+if(searchType = "operation") then %>
 		<tr>
   			<td class="campus">
   			<strong>Supervisor: </strong><%=rsSearchH("strGivenName")&" "&rsSearchH("strSurname")%>>&nbsp;&nbsp;&nbsp;</td>

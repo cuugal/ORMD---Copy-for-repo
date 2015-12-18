@@ -36,6 +36,8 @@
        strOperation = cint(Request.Form("cboOperation"))
        searchType = request.form("searchType")
     end if
+
+ 
   
    Session("hdnHTask") = strTask
    Session("hdnBuildingId") = numBuildingId
@@ -44,6 +46,14 @@
    Session("hdnFacilityId") = numFacilityId
    Session("hdnSupervisor") = strSupervisor
    Session("hdnOperationID") = strOperation
+
+    'persist these in session so that we can easily replicate the search results
+    session("cboOperation") = strOperation
+	session("cboFacility") = numFacilityId
+    session("cboFaculty") = numFacultyId
+
+    Session("mostRecentSearch") = "CollectInfoAdmin.asp"
+    Session("confirmationMsg") = request.form("confirmationMsg")
 
    session("searchType") = searchType
    

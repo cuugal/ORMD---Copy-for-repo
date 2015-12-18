@@ -39,8 +39,8 @@ function FillDetails()
 }
 function ChangeType(val)
 {
- document.Form2.QORAtype.value = val;
- //console.log(document.Form2.QORAtype.value);
+    document.Form2.searchType.value = val;
+    //console.log(document.Form2.searchType.value);
 
 }
 </script>
@@ -130,7 +130,7 @@ Dim rsFillBuilding
       <form method="post" action="cqoraSup.asp" enctype="application/x-www-form-urlencoded" name="Form2" onsubmit="return ConfirmChoice();">
         <input type="hidden" name="hdnBuildingId" value="<%=numBuildingID%>" />
         <input type="hidden" name="hdnCampusId" value="<%=numCampusID%>" />
-        <input type="hidden" name="QORAtype" value=""/>
+        <input type="hidden" name="searchType" value=""/>
         <%'*****Code to fill the Room Name and Room Number****%>
         <%
 	

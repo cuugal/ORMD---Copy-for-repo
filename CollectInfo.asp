@@ -33,12 +33,12 @@
    Response.AppendToLog("***"+numFacilityId+"***")
     
    Session("hdnHTask") = strTask
-   Session("hdnBuildingId") = numBuildingId
-   Session("hdnCampusId") = numCampusId
-   Session("hdnFacultyId") = numFacultyId
-   Session("hdnFacilityId") = numFacilityId
+   Session("hdnBuildingId") = cint(numBuildingId)
+   Session("hdnCampusId") = cint(numCampusId)
+   Session("hdnFacultyId") = cint(numFacultyId)
+   Session("hdnFacilityId") = cint(numFacilityId)
    Session("hdnSupervisor") = strSupervisor
-   Session("hdnOperationID") = strOperation
+   Session("hdnOperationID") = cint(strOperation)
   
   ' Determines if normal Search or Action Status Report
   if request.form("btnSearch") = "Action Status Report" then

@@ -35,8 +35,8 @@ End Function
 <script type="text/javascript">
 function ChangeType(val)
 {
- document.Form2.QORAtype.value = val;
- //console.log(document.Form2.QORAtype.value);
+    document.Form2.searchType.value = val;
+    //console.log(document.Form2.searchType.value);
 
 }
 </script>
@@ -74,7 +74,7 @@ numFacultyId = Session("hdnFacultyId")
 numFacilityId =Session("hdnFacilityId")
 strSupervisor =Session("hdnSupervisor")
 
-QORAtype = session("QORAtype")
+searchType = session("searchType")
 
 'intSearchType = Session("intSearchType")
 

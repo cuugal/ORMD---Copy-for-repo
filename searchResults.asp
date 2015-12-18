@@ -156,8 +156,7 @@ end if
 if(searchType = "operation") then
 	strSQL = "Select distinct(tblQORA.numQORAId) as numQORAId, tblQORA.*, tblRiskLevel.* "
 	strSQL = strSQL+" from tblQORA, tblRiskLevel, tblOperations, tblFacilitySupervisor"
-	'strSQL = strSQL+" Where tblFacilitySupervisor.numfacultyId = "& numFacultyId
-	
+
 	strSQL = strSQL+" Where tblOperations.numFacilitySupervisorID = tblFacilitySupervisor.numSupervisorId"
 	strSQL = strSQL+" and tblQORA.numOperationID = tblOperations.numOperationID"
 	strSQL = strSQL+" and tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel"

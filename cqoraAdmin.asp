@@ -30,8 +30,8 @@ function radiounClick(){
 
 function ChangeType(val)
 {
- document.Form2.QORAtype.value = val;
- //console.log(document.Form2.QORAtype.value);
+ document.Form2.searchType.value = val;
+    //console.log(document.Form2.searchType.value);
 
 }
 </script>
@@ -138,16 +138,16 @@ Dim strSupervisorName
 Dim strGivenName
 Dim strSurname
 
-Dim QORAtype
-QORAtype = Request.form("QORAtype")
-Session("QORAtype") = QORAtype
+Dim searchType
+searchType = Request.form("searchType")
+Session("searchType") = searchType
 
 'Database Connectivity Code 
   set connAdmin = Server.CreateObject("ADODB.Connection")
   connAdmin.open constr
   
 'if we are doing a location based QORA, run this code
-if(QORAtype = "location") then
+if(searchType = "location") then
    '*************************** Code to get the details of location************************
     dim numFacilityId
     dim numBuildingId
@@ -223,7 +223,7 @@ if(QORAtype = "location") then
 end if
 
 'if our QORA type is operation
-if(QORAtype = "operation") then
+if(searchType = "operation") then
 	set connOperation = Server.CreateObject("ADODB.Connection")
   	connOperation.open constr
 	dim operationId 
@@ -278,7 +278,7 @@ strJobSteps = ""
       <input type="hidden" name="hdnLoginId" value ="<%=strLogin%>" />
       <input type="hidden" name="hdnFacilityName" value ="<%=strFacilityName%>" />
       <input type="hidden" name="operationId" value ="<%=operationId%>" />
-      <input type="hidden" name="QORAtype" value="<%=QORAtype%>" />
+      <input type="hidden" name="searchType" value="<%=searchType%>" />
       <input type="hidden" name="hasSWMS" value="" />
       <table width = 82%>
      	<tr>
@@ -295,7 +295,7 @@ strJobSteps = ""
         </tr>
         <tr>
         <%
-        if(QORAtype = "location") then %>
+        if(searchType = "location") then %>
         
         <th>Facility</th>
           <td><strong>Campus</strong><br/><%=strCampusName%></td>
@@ -303,7 +303,7 @@ strJobSteps = ""
           <td><strong>Room Number/Name</strong><br/><%=strFacilityName%></td>
         </tr>
         <% end if
-        if(QORAtype = "operation") then %>
+        if(searchType = "operation") then %>
 	        <th>Operation</th>
 	          <td colspan="3"><%=strOperationName%></td>
 	        </tr>

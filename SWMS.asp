@@ -108,6 +108,33 @@ end if
 	rsOper.Open strSQL, dcnDb, 3, 3
 	
 
+    dim canEdit
+    canEdit = false
+    'If we aren't logged in then you can't edit
+    if session("LoggedIn") then
+        ' if we are admin then we can edit
+        if session("isAdmin") then
+            canEdit = true
+        else
+            ' otherwise, check the DB to see if we have ownership of this record, ergo edit permission
+            set rsCanEdit = server.CreateObject("ADODB.Recordset")
+            strSQL = " Select count(*) as editable from ( "_
+                &" Select tblFacility.numFacilitySupervisorId from tblQORA, tblFacility"_
+                &" where tblQORA.numFacilityId = tblFacility.numFacilityId"_
+                &" and numQORAID = "&testval&" and numFacilitySupervisorId = "&session("numSupervisorId")_
+
+               &" union all "_
+                &" Select tblOperations.numFacilitySupervisorId from tblQORA, tblOperations"_
+                &" where tblQORA.numOperationId = tblOperations.numOperationId"_
+                &" and numQORAID = "&testval&"  and numFacilitySupervisorId = "&session("numSupervisorId")_
+                &")"
+           
+            rsCanEdit.Open strSQL, dcnDb, 3, 3
+            if cint(rsCanEdit("editable")) > 0 then
+                canEdit = true
+            end if
+        end if
+    end if
 %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
@@ -140,35 +167,29 @@ end if
 		<tr>
 			
 			<td>
-			
-			<% 'only display save button if the user is logged in.
-				If not Trim(Session("strLoginId")) = "" Then %>
-					<table width = 80% class="swms">
-						<tr align="center" width="50%">
-							<td> 
-							<input type="submit" value="To Risk Assessment" onclick="Form1.action='EditQORA.asp?numCQORAId=<%=testval%>'; Form1.target='_self'; return true;">
-							</td>
-							<td >
-							<!-- 9April2010 DLJ added target=self -->
-							<input type="submit" value="Save SWMS" target="_self" onclick="Form1.action='AddSWMS.asp'; Form1.target='_self'; return true;"/>
-							<!--</form>-->
-							</td>
-						</tr>
-					</table>
 
-				<% else %>
-				<table width = 80% class="swms">
-					<tr align="center" width="50%">
-					<td>
-					<% if strLoginID = "" then %>
-						<input type="button" value="Back to Risk Assessment List" name="Back" onclick="history.back();">
-					<% else %>
-						<!--input type="button" value="Back to Risk Assessment" name="Back" onclick="location.href(EditQORA.asp)"-->
-					<% end if %>
+			<table width = 80% class="swms">
+						<tr align="center" width="50%">
+			<% 'only display save button if the user is logged in, and has write access to the record, or is a admin.
+				If canEdit Then %>
+					
+					<td> 
+					<input type="submit" value="To Risk Assessment" onclick="Form1.action='EditQORA.asp?numCQORAId=<%=testval%>'; Form1.target='_self'; return true;">
 					</td>
-					</tr>
-				</table>
-			  <% End If %>
+					<td >
+					<!-- 9April2010 DLJ added target=self -->
+					<input type="submit" value="Save SWMS" target="_self" onclick="Form1.action='AddSWMS.asp'; Form1.target='_self'; return true;"/>
+					<!--</form>-->
+					</td>
+					
+			    <% End If %>
+                <td>
+				
+					<input type="button" value="Back to Risk Assessment List" name="Back" onclick="history.back();">
+					
+					</td>
+                            </tr>
+					</table>
 			</td>
 
 

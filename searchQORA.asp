@@ -14,9 +14,10 @@
         Session("hdnFacilityId") = ""
         Session("hdnSupervisor") = ""
         Session("hdnOperationID") = ""
-        Session("QORAtype") = ""
         Session("searchType") = ""
 
+       session("cboOperation") = ""
+	   session("cboFacility") = ""
 
 	  Dim connFac
 	  Dim rsFillFac
@@ -519,12 +520,12 @@
 							</tr>
 					
  
-							<input type="hidden" name="QORAtype" ID="QORAtype" value=""/>
+							<input type="hidden" name="searchType" ID="searchType" value=""/>
 						   <tr>
 							  <th>Facility</th>
 							  <td colspan="2">
 								
-								 <select autocomplete="false" class="form-control" id="myfacility" size="1" name="cboFacility" tabindex="1" onchange="$('#QORAtype').val('location')">
+								 <select autocomplete="false" class="form-control" id="myfacility" size="1" name="cboFacility" tabindex="1" onchange="$('#searchType').val('location')">
 									<option value="0">Select any one</option>
 									<%
 									   while not rsFillFaci.Eof
@@ -544,7 +545,7 @@
 						   <tr>
 							  <th>Operation/Project</th>
 							  <td colspan="2">
-								 <select autocomplete="false" class="form-control" id="myoperation" name="cboOperation" id="cboOperation" Onchange="$('#QORAtype').val('operation')">
+								 <select autocomplete="false" class="form-control" id="myoperation" name="cboOperation" id="cboOperation" Onchange="$('#searchType').val('operation')">
 									<option value="0">Select any one</option>
 								   <%
 									   while not rsFillProj.Eof

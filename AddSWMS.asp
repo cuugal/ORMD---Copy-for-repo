@@ -51,17 +51,32 @@ Dim conn2
       <!--#INCLUDE FILE="UpdateReview.asp"-->
 <body>
      <!--#include file="HeaderMenu.asp"--> 
-<div id="wrapper">
+
+
+<div id="wrapper" style="display:none">
   <div id="content">
     <h1 class="pagetitle">SWMS <%=testval%> has been updated successfully</h1>
-	
-	  </div>
+      <form id="refreshResults" action="<%=Session("mostRecentSearch") %>" method="post">
+          <input type="hidden" name="confirmationMsg" value="SWMS <%=testval%> has been updated successfully" />
+        <input type="hidden" name="searchType" value="<%=session("searchType") %>" />
+        <input type="hidden" name="cboOperation" value="<%=session("cboOperation")  %>" />
+        <input type="hidden" name="cboFacility" value="<%=session("cboFacility") %>" />
+        <input type="hidden" name="hdnFacultyId" value="<%=session("cboFaculty") %>" />
+          <input type="hidden" name="hdnBuildingId" value="<%=session("hdnBuildingId") %>" />
+          <input type="hidden" name="hdnCampusId" value="<%=session("hdnCampusId") %>" />
+
+          <input type="submit" class="btn btn-primary" value="Next" />
+    </form>
+  </div>
 </div>
+    <script type="text/javascript">
+        $(function () {
+            $("#refreshResults").submit();
+        });
+    </script>
 
-<!-- **************************************New Code that displays search results afer adding -->
-
-<!--#include file="reportAfterEdit.asp"--></body>
 
 </body>
+
 
 </html>

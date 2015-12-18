@@ -53,10 +53,10 @@ End Function
   dim numOptionId
   dim numSupervisorId
   
-  
-       QORAtype = request.form("QORAtype")
-	  session("QORAtype") = QORAtype
-        session("searchType") = QORAtype
+    Session("mostRecentSearch") = "SupRDateModified.asp"
+
+       searchType = request.form("searchType")
+	  session("searchType") = searchType
 	  
 	  numOperationID = request.form("cboOperation")
       session("cboOperation") = numOperationId
@@ -74,17 +74,17 @@ End Function
   
     
 
- if(QORAtype = "location") then 
+ if(searchType = "location") then 
 
  strSQL = "SELECT * FROM tblQORA, tblFacility,tblBuilding,tblCampus, tblRiskLevel ,tblFacilitySupervisor "_
   &" WHERE tblQORA.numFacilityId = tblFacility.numFacilityID and "_
-  &" tblFacilitySupervisor.numSupervisorID = tblFacility.numFacilitySupervisorID and"_
-  
-  &" tblQORA.numFacilityId = "& cboFacility &" and "_
+  &" tblFacilitySupervisor.numSupervisorID = tblFacility.numFacilitySupervisorID and"_ 
   &" tblFacility.numBuildingId = tblBuilding.numBuildingID and "_
-  &" tblBuilding.numCampusId = tblCampus.numCampusID and "_
-  
+  &" tblBuilding.numCampusId = tblCampus.numCampusID  and"_
   &" tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel "
+    if cboFacility > 0 then
+        strSQL = StrSQL &"and tblQORA.numFacilityId = "& cboFacility
+    end if
     if not session("isAdmin") then
         strSQL = strSQL &" and tblFacilitySupervisor.numSupervisorId = "& numSupervisorID 
     end if
@@ -92,16 +92,20 @@ End Function
  end if
  
  
- if(QORAtype = "operation") then
+ if(searchType = "operation") then
 	 strSQL = "SELECT * FROM tblQORA, tblOperations, tblRiskLevel ,tblFacilitySupervisor "_
   &" WHERE tblQORA.numOperationId = tblOperations.numOperationId and "_
   &" tblFacilitySupervisor.numSupervisorID = tblOperations.numFacilitySupervisorID and"_
-  
-  &" tblQORA.numOperationId = "& numOperationID &" and "_
   &" tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel "
+
+    if numOperationID > 0 then
+        strSQL = StrSQL &"and tblQORA.numOperationId = "& numOperationID
+    end if
+
   if not session("isAdmin") then
     strSQL = strSQL&" and tblFacilitySupervisor.numSupervisorId = "& numSupervisorID
   end if
+
     strSQL = strSQL&" ORDER BY tblRiskLevel.numGrade, strTaskDescription"
  end if
     'response.write (strSQL)
@@ -138,7 +142,7 @@ End Function
 
 <% if rsSearchH.EOF <> true then  %>
     
-    <% if(QORAtype="location") then %>
+    <% if(searchType="location") then %>
 <table class="suprreportheader">
 	<tr>
 		<th>Campus:</th><td><%=cstr(rsSearchH("strCampusName")) %></td>
@@ -153,7 +157,7 @@ End Function
  </tr>
  </table>
 <% end if
-if (QORAtype = "operation") then %>
+if (searchType = "operation") then %>
 <table class="suprreportheader">
 	<tr>
 		<th>Supervisor: </th><td><%=strName%></td>
@@ -345,10 +349,10 @@ if (QORAtype = "operation") then %>
       <div class="modal-body">
         <form id="copyForm">
           <input type="hidden" class="form-control" id="qora" name="qora"/>
-            <input type="hidden" name="mode" ID="QORAtype" value=""/>
+            <input type="hidden" name="mode" id="searchType" value=""/>
           <div class="form-group">
             <label for="recipient-name" class="control-label">To Facility:</label>
-           <select class="form-control" autocomplete="off" id="myfacility" size="1" name="cboFacility" tabindex="1" onchange="$('#QORAtype').val('location');$('#submitCopy').html('Copy to Location');">
+           <select class="form-control" autocomplete="off" id="myfacility" size="1" name="cboFacility" tabindex="1" onchange="$('#searchType').val('location');$('#submitCopy').html('Copy to Location');">
 			<option value="0">Select any one</option>
 			<%
 				while not rsFillFaci.Eof
@@ -366,7 +370,7 @@ if (QORAtype = "operation") then %>
             <hr />
            <div class="form-group">
             <label for="recipient-name" class="control-label">To Operation:</label>
-           <select class="form-control" autocomplete="off" id="myoperation" name="cboOperation" id="cboOperation" Onchange="$('#QORAtype').val('operation');$('#submitCopy').html('Copy to Operation');">
+           <select class="form-control" autocomplete="off" id="myoperation" name="cboOperation" id="cboOperation" Onchange="$('#searchType').val('operation');$('#submitCopy').html('Copy to Operation');">
 			<option value="0">Select any one</option>
 			<%
 				while not rsFillProj.Eof
@@ -481,7 +485,7 @@ if (QORAtype = "operation") then %>
     </script>
 
     <form id="refreshResults" action="SupRDateModified.asp" method="post">
-        <input type="hidden" name="QORAtype" value="<%=QORAtype %>" />
+        <input type="hidden" name="searchType" value="<%=searchType %>" />
         <input type="hidden" name="cboOperation" value="<%=numOperationID %>" />
         <input type="hidden" name="cboFacility" value="<%=cboFacility %>" />
     </form>

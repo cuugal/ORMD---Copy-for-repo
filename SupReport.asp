@@ -20,8 +20,8 @@ function ConfirmChoice()
 }
 function ChangeType(val)
 {
- document.FormA.QORAtype.value = val;
- //console.log(document.Form2.QORAtype.value);
+    document.FormA.searchType.value = val;
+    //console.log(document.Form2.searchType.value);
 
 }
 // function to reload the form to add the new entries
@@ -109,7 +109,7 @@ function FillDetails()
 <tr>
 <!-- <form method="post" action="SupRDateModified.asp">  -->
 <form method="post" action="SupRDateModified.asp"  name="FormA" enctype="application/x-www-form-urlencoded">
-<input type="hidden" name="QORAtype" value=""/>
+<input type="hidden" name="searchType" value=""/>
 
     <th>Faculty/Unit</th>
     <td colspan="2"><%response.write(strFacultyName) %></td>

@@ -50,8 +50,8 @@ Dim numFacultyId
    Dim strGivenName
    Dim strSurname
    
-   QORAtype = Request.form("QORAtype")
-   Session("QORAtype") = QORAtype
+   searchType = Request.form("searchType")
+   Session("searchType") = searchType
   
    '*************************** Code to get the details of location************************
     dim numFacilityId
@@ -65,7 +65,7 @@ Dim numFacultyId
 	session("LastRACreatednumBuildingID") = numBuildingId
     session("LastRACreatednumCampusID") = numCampusId
 
-if(QORAtype = "location") then   
+if(searchType = "location") then   
  'code for Campus Name
   set connCampus = Server.CreateObject("ADODB.Connection")
   connCampus.open constr
@@ -110,7 +110,7 @@ if(QORAtype = "location") then
 end if
   
   'if our QORA type is operation
-if(QORAtype = "operation") then
+if(searchType = "operation") then
 	set connOperation = Server.CreateObject("ADODB.Connection")
   	connOperation.open constr
 	dim operationId 
@@ -190,7 +190,7 @@ strJobSteps = ""
       <input type="hidden" name="hdnLoginId" 		value ="<%=strLogin%>" />
       <input type="hidden" name="hdnFacilityName" 	value ="<%=strFacilityName%>" />
       <input type="hidden" name="operationId" 		value ="<%=operationId%>" />
-      <input type="hidden" name="QORAtype" 			value="<%=QORAtype%>" />
+      <input type="hidden" name="searchType" 			value="<%=searchType%>" />
       <input type="hidden" name="hasSWMS" 			value="" />
       <table width = 80%>
      	<tr>
@@ -208,7 +208,7 @@ strJobSteps = ""
         <tr>
         
          <%
-        if(QORAtype = "location") then %>
+        if(searchType = "location") then %>
         
         <th>Facility</th>
           <td><strong>Campus</strong><br/><%=strCampusName%></td>
@@ -216,7 +216,7 @@ strJobSteps = ""
           <td><strong>Room Number/Name</strong><br/><%=strFacilityName%></td>
         </tr>
         <% end if
-        if(QORAtype = "operation") then %>
+        if(searchType = "operation") then %>
 	        <th>Operation</th>
 	          <td colspan="3"><%=strOperationName%></td>
 	        </tr>

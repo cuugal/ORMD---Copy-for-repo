@@ -68,7 +68,7 @@ dim boolSWMSRequired
 likelyhood = Request.form("radiol")
 consequence = Request.form("radioc")
 
-QORAtype= Session("QORAtype")
+searchType= Session("searchType")
 
 dim likelyhoodnum
 dim consequencenum
@@ -300,11 +300,15 @@ set remover=nothing
 <div id="wrapper" style="display:none">
   <div id="content">
     <h1 class="pagetitle">Risk Assessment <%=testval%> has been edited successfully</h1>
-      <form id="refreshResults" action="SupRDateModified.asp" method="post">
+      <form id="refreshResults" action="<%=Session("mostRecentSearch") %>" method="post">
           <input type="hidden" name="confirmationMsg" value="Risk Assessment <%=testval%> has been edited successfully" />
-        <input type="hidden" name="QORAtype" value="<%=session("searchType") %>" />
+        <input type="hidden" name="searchType" value="<%=session("searchType") %>" />
         <input type="hidden" name="cboOperation" value="<%=session("cboOperation")  %>" />
         <input type="hidden" name="cboFacility" value="<%=session("cboFacility") %>" />
+          <input type="hidden" name="hdnFacultyId" value="<%=session("cboFaculty") %>" />
+         <input type="hidden" name="hdnBuildingId" value="<%=session("hdnBuildingId") %>" />
+          <input type="hidden" name="hdnCampusId" value="<%=session("hdnCampusId") %>" />
+
           <input type="submit" class="btn btn-primary" value="Next" />
     </form>
   </div>

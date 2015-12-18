@@ -293,11 +293,11 @@ if NoSaveBeforeSWMS <> "nosave" then
 		
 		numNavigationCnt = 1
 		'******************** code to fetch the values from the Create QORA Form **************************************
-		QORAtype = Session("QORAtype")
+		searchType = Session("searchType")
 		numFacultyId = request.form("hdnFacultyId")
 		strLoginId = Request.Form("hdnLoginId")
 		
-	if(QORAtype = "location") then
+	if(searchType = "location") then
 		numBuildingId = request.form("hdnBuildingId")
 		numFacilityId = request.form("hdnFacilityId")
 		
@@ -314,7 +314,7 @@ if NoSaveBeforeSWMS <> "nosave" then
 		'Response.Write(numCampusId)
 		numOperationID = 0
 	end if
-	if(QORAtype = "operation") then
+	if(searchType = "operation") then
 		numBuildingId = 0
 		numFacilityId = 0
 		numCampusId = 0

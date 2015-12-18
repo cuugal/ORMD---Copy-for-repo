@@ -49,12 +49,12 @@ numFacultyId = request.form("hdnFacultyId")
 strLoginId = Request.Form("hdnLoginId")
 
 dim operationId
-dim QORAtype
+dim searchType
 numOperationID = request.form("operationId")
 
-QORAtype = request.form("QORAtype")
+searchType = request.form("searchType")
 
-if(QORAtype = "location") then
+if(searchType = "location") then
 	strSQL ="Select * from tblBuilding where numBuildingId ="&numBuildingId
 	
 	  set connC = Server.CreateObject("ADODB.Connection")
@@ -69,7 +69,7 @@ if(QORAtype = "location") then
 	numOperationID = 0
 end if
 
-if(QORAtype = "operation") then
+if(searchType = "operation") then
 	numFacilityID = 0
 	numCampusId = 0
 	numBuildingId = 0
