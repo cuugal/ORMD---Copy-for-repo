@@ -14,7 +14,7 @@
         Session("hdnFacilityId") = ""
         Session("hdnSupervisor") = ""
         Session("hdnOperationID") = ""
-
+        Session("QORAtype") = ""
         Session("searchType") = ""
 
 
@@ -412,7 +412,7 @@
 						   <tr>
 							  <th>RA Number/Task</th>
 							  <td>
-								 <input type="text" class="form-control" name="txtHazardousTask" size="40" tabindex="0" />
+								 <input type="text" class="form-control" id="txtHazardousTask" name="txtHazardousTask" size="40" tabindex="0" />
 							  </td>
 						   </tr>
 						   <tr>
@@ -421,11 +421,20 @@
 						   <tr>
 							  <td colspan="2">
 								 <center>
-									<input type="Submit"  class="btn btn-primary" value="Search" name="btnSearch" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="btn btn-primary" value="Clear Form" name="btnClear" onclick="    clearform()" />&nbsp;&nbsp;&nbsp;&nbsp;<!--input type="Submit" value="Action Status Report" name="btnSearch" onclick="FillSearch()" /-->
+									<input type="Submit" class="btn btn-primary" value="Search" id="taskSearch" name="btnSearch"  />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="btn btn-primary" value="Clear Form" name="btnClear" onclick="clearform()" />&nbsp;&nbsp;&nbsp;&nbsp;
 									<!--DLJ Removed this button from common search 22July2011-->
 						
 						</center></td>
 						</form>
+                            <script type="text/javascript">
+                                $('#taskSearch').click(function () {
+                                    if ($.trim($('#txtHazardousTask').val()) == '') {
+                                        alert('RA Number/Task can not be left blank');
+                                        return false;
+                                    }
+                                    return true;
+                                });
+                            </script>
 						</tr>
 						<tr>
 						   <td>&nbsp;</td>

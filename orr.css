@@ -802,6 +802,32 @@ color: #fff;
 }
 
 
+.wrapper {
+    background: #eaede4 url("images/bottom.png") no-repeat scroll left top;
+    color: #000;
+    margin: 0 auto;
+    text-align: left;
+    width: 100%;
+}
 
+.content {
+    color: #445c2c;
+    font-size: 10pt;
+    margin-bottom: 0;
+    padding: 5px 10px 10px 9px;
+}
 
-
+.content h1.pagetitle {
+    background-image: url("images/pageheading_tile.gif");
+    background-repeat: repeat-y;
+    font-size: 12pt;
+    font-weight: bold;
+    line-height: 10pt;
+    margin-top: 0;
+    padding-left: 10px;
+    padding-top: 2px;
+}
+.content h1 {
+    color: #6edb04;
+    font-size: 13pt;
+}

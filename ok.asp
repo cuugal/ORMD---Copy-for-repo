@@ -297,26 +297,25 @@ set remover=nothing
 %>
 <!--#INCLUDE FILE="UpdateReview.asp"--> 
 <body>
-<div id="wrapper">
+<div id="wrapper" style="display:none">
   <div id="content">
     <h1 class="pagetitle">Risk Assessment <%=testval%> has been edited successfully</h1>
-      <% if not isNull(session("searchType")) and session("searchType") <> "" then %>
       <form id="refreshResults" action="SupRDateModified.asp" method="post">
+          <input type="hidden" name="confirmationMsg" value="Risk Assessment <%=testval%> has been edited successfully" />
         <input type="hidden" name="QORAtype" value="<%=session("searchType") %>" />
         <input type="hidden" name="cboOperation" value="<%=session("cboOperation")  %>" />
         <input type="hidden" name="cboFacility" value="<%=session("cboFacility") %>" />
           <input type="submit" class="btn btn-primary" value="Next" />
     </form>
-      <% end if %>
-	
   </div>
 </div>
+    <script type="text/javascript">
+        $(function () {
+            $("#refreshResults").submit();
+        });
+    </script>
+
 </body>
 
-
-<!-- **************************************New Code that displays search results after editing -->
-
-<!--#include file="reportAfterEdit.asp"-->
-</body>
 </html>
 

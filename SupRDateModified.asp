@@ -56,6 +56,7 @@ End Function
   
        QORAtype = request.form("QORAtype")
 	  session("QORAtype") = QORAtype
+        session("searchType") = QORAtype
 	  
 	  numOperationID = request.form("cboOperation")
       session("cboOperation") = numOperationId
@@ -113,6 +114,18 @@ End Function
 
 <body>
     <!--#include file="HeaderMenu.asp" -->
+    <%
+        dim confirmationMsg
+        confirmationMsg = request.form("confirmationMsg")
+        if confirmationMsg <> "" then
+         %>
+            <div class="wrapper">
+              <div class="content">
+                <h1 class="pagetitle"><%=confirmationMsg%> </h1>
+              </div>
+            </div>
+    <% end if %>
+
 <div id="wrapper">
   <div id="content">
   <!-- Break out of frame --> 
