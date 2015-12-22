@@ -12,7 +12,7 @@ End If
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
  <meta http-equiv="Content-Language" content="en-au" />
- <link rel="stylesheet" type="text/css" href="orr.css" media="all" />
+ <!--#include file="bootstrap.inc"--> 
  <title>Online Risk Register - Edit a Facility</title>
  <script type="text/javascript">
 // function to ask about the confirmation of the file.
@@ -82,10 +82,10 @@ Dim strSQL
     <!--#include file="HeaderMenu.asp" -->
 <div id="wrapper">
  <div id="content">
- <h1 class="pagetitle">Edit a Facility</h1>
+ <h2 class="pagetitle">Edit a Facility</h2>
  <center>
 
- <table class="searchtable" style="width: 65%;">
+ <table class="adminfn" style="width: 65%;">
  <tr>
   <th>Existing Building Name</th>
   <td>

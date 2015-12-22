@@ -6,7 +6,7 @@
 
 a:link{color:#445c2c; /* text-decoration:none; */}
 a:hover{text-decoration:underline;}
-strong{color:#0099cc;}
+strong{color:#63db04;}
 
 /* Styles the EditQORA page */
 /* The Further Actions Required table styling */
@@ -38,7 +38,7 @@ table.swms td.extreme { background-color: #FF0F00; color: #ffffff}
 table.swms td.high { background-color: #FF9000; }
 table.swms td.medium { background-color: #FFE000; }
 table.swms td.low { background-color: #FFFF99;}
-table.swms .plainbox { padding: 2px; background-color: #EDF0F6; color: #000000; vertical-align: middle;}
+table.swms .plainbox { padding: 2px; background-color: #e8ede4; color: #000000; vertical-align: middle;}
 
 table.sortable a {text-decoration: underline;}
 
@@ -200,79 +200,60 @@ table#supreport select { font-size: 10pt; font-weight: normal; border: solid 1px
 table#supreport td.submitclear {text-align: center; }
 
 
-
-
-
-
-
 /* AMENDED ELEMENTS FROM THE EHS.CSS STYLESHEET */
 /* body */
 html{
-	background: #ffffff;
+	background: #e8ede4;
 	}
 	
 	frame html{background:none;}
 	
 body { color: #000; 
-background-color: #fff; 
+/*background-color: #fff; */
 font-family: Verdana, Arial,  Helvetica, sans-serif; 
 margin: 0; 
 padding: 0; 
 min-width: 100%; 
 }
-
-
 /* text-align: center; } */
 
-body.searchresultsfrommenu { color: #000; background-color: #eee; font-family: Verdana, Arial, sans-serif; 
+body.searchresultsfrommenu { color: #000; background-color: #fff; font-family: Verdana, Arial, sans-serif; 
 padding: 5px 10px 10px 9px; margin-bottom: 0; text-align: center; }
 
 body#printpreview { width: 100%; color: #000; background-color: #fff; font-family: Verdana, Arial, sans-serif; padding: 2px; }
 
-/* make this solid 0099cc  whit white font */
-/* top bar */
-/* #wrappertop{background:#eaede4 url(images/top.png) no-repeat scroll left top;} */
-#wrappertop{background:#0099cc ;}
-
+#wrappertop{background:#eaede4 url(images/top.png) no-repeat scroll left top;}
 /* wrapper */
-#wrapper { color:#ffffff; background: #fff) url(images/bottomx.png) no-repeat scroll left top; margin: 0 auto 0 auto; width: 100%; text-align: left; }
+#wrapper { color: #000; background:#eaede4 url(images/bottom.png) no-repeat scroll left top; margin: 0 auto 0 auto; width: 100%; text-align: left; }
 #wrapperform {
-    background: #ffffff;
-    color: #ffffff;
+    background: #eaede4;
+    color: #eaede4;
     margin: 0 auto;
     text-align: left;
     width: 100%;
 }
-
-
-
 /* ORR-heading */
-#orrheading { background:#ffffff url(images/top.png) no-repeat scroll left top; /* width: 545px;  min-width: 750px;*/ color: #000; height: 100px; margin-top: 1px; padding-top: 0; padding-left: 5px; padding-bottom: 0; }
+#orrheading { background:#eaede4 url(images/top.png) no-repeat scroll left top; /* width: 545px;  min-width: 750px;*/ color: #000; height: 100px; margin-top: 1px; padding-top: 0; padding-left: 5px; padding-bottom: 0; }
 #orrheading img { position: relative; float: right; margin: 0; padding: 0; }
-#orrheading h1 { color: #0099cc;  font-size: 17pt; font-weight: bold; line-height: 17pt; margin: 0; top: 20px; padding: 40px 0 0 7px; }
+#orrheading h1 { color: #6edb04;  font-size: 17pt; font-weight: bold; line-height: 17pt; margin: 0; top: 20px; padding: 40px 0 0 7px; }
 
 /* content */
-#content { color:#004d66; font-size: 10pt; padding: 5px 10px 10px 9px; margin-bottom: 0; background-color:#e8ede4 transparent;/* border-bottom: solid 1px #09c; */ }
+#content { color:#445c2c; font-size: 10pt; padding: 5px 10px 10px 9px; margin-bottom: 0; background-color:#e8ede4 transparent;/* border-bottom: solid 1px #09c; */ }
 
-/* styles within the content DIV - top headings */
-#content p { font-size: 10pt; color: #4C8080; }
-#content h1 { font-size: 13pt; color: #fff;  }
+/* styles within the content DIV */
+#content p { font-size: 10pt; color: #445c2c; }
+#content h1 { font-size: 13pt; color: #6edb04;  }
 #content h1.pagetitle { font-size: 12pt; font-weight: bold; line-height: 10pt; margin-top: 0; padding-top: 2px; padding-left: 10px; background-image: url(images/pageheading_tile.gif); background-repeat: repeat-y; }
-#content h2 { font-size: 12pt; color: #0099cc;  }
-#content strong{color:#000;}
-#content hr { background-color: #004d66; color: #004d66; height: 1px; border: 0; margin-top: 5px; margin-bottom: 5px; padding: 0;}
+#content h2 { font-size: 12pt; color: #6edb04;  }
+#content strong{color:#445c2c;}
+#content hr { background-color: #445c2c; color: #445c2c; height: 1px; border: 0; margin-top: 5px; margin-bottom: 5px; padding: 0;}
 
 /* SupervisorMenu.htm table styling */
 .loginlist {margin: 10px 0 0 0; padding: 0; }
 .loginlist ul { margin: 0; padding: 0; list-style-type: none; text-align: center; }
 .loginlist ul li { display: inline; }
-.loginlist ul li a { text-decoration: none; padding: 3px 6px; color: #1566AB; background-color: #fff; border: solid 1px #fff; }
-.loginlist ul li a:hover { color: #fff; background-color: /* #d7e9ed*/#dddddd; border: solid 1px #bcd7de; }
-
-
-
-
-
+.loginlist ul li a { text-decoration: none; padding: 3px 6px; color: #445c2c; background-color: #dfe4db; border: solid 1px #445c2c; }
+.loginlist ul li a:hover { color: #fff; background-color: /* #d7e9ed*/#445c2c; border: solid 1px #bcd7de; }
 
 /* SPECIFIC ORMD STYLING STARTS HERE */
 /* 19/6/2006 - add a DidYouKnow-style to the Search menu box */
@@ -343,18 +324,16 @@ span.right {position: absolute; }
 .bluebox input[type="text"],
 .bluebox select { font-size: 10pt; font-weight: normal; border: solid 1px #ffcf00; text-align: left; margin: 3px; color: #000; background-color: #f8e9ad; }
 
-
-
-/* resultsFrameFromAdmin.asp styling */
+/* searchResultsFromMenu.asp styling */
 /* This was also originally used for styling the locationSup.asp file - but have replaced with bluebox styling instead. */
 .searchResultsFromMenu .strong1 { font-size: 1.05em; font-weight: bolder; color: #000; background-color: #F8E9AD; font-size: 10pt; font-weight: bolder; }
 table.searchResultsFromMenu { border: solid 1px #fff; min-width: 760px; font-size: 11px; border-collapse: separate; background-color: #fff; text-align: left; }
 .searchResultsFromMenu strong { font-weight: bolder; }
-.searchResultsFromMenu td { font-size: 8pt; padding: 5px; background-color: #ebf2f4; color: #000; vertical-align: top; /* all rows was ddeef4 */}
+.searchResultsFromMenu td { font-size: 8pt; padding: 5px; background-color: #e8ede4; color: #000; vertical-align: top; }
 .searchResultsFromMenu td.facultyunitname { font-size: 8pt; text-align: left; width: 100%; color: #000; background-color: #f8e9ad; }
-.searchResultsFromMenu td.campus { font-size: 9pt; text-align: left; color: #ffffff; background-color: #0099cc;/* background-color: #6ed404; */ }
+.searchResultsFromMenu td.campus { font-size: 8pt; text-align: left; color: #000; background-color: #6ed404;/* background-color: #ffff99; */ }
 .searchResultsFromMenu td.blank { background-color: #fff; }
-.searchResultsFromMenu th { font-size: 8pt; color: #fff; background-color: #dfe4db; text-align: center; vertical-align: middle; /* top row */}
+.searchResultsFromMenu th { font-size: 8pt; color: #fff; background-color: #dfe4db; text-align: center; vertical-align: middle; }
 .searchResultsFromMenu tr { background-color: #c0c0c0; }
 .searchResultsFromMenu textarea { color: #000; background-color: #fff; font-size: 8pt; font-family: Verdana, Arial, sans-serif;}
 
@@ -374,13 +353,8 @@ table.searchResultsFromMenu { border: solid 1px #fff; min-width: 760px; font-siz
 .searchResultsFromMenu thead td { text-align: center; background-color: #fff; color: #000; vertical-align: top; padding: 0; margin: 0;}
 .searchResultsFromMenu thead img { border: none; background-color: #fff; color: #000; }
 
-.topframe{color:#EDF4F6;}
-#content .topframe strong{color:#EDF4F6;}
-
-
-
-
-
+.topframe{color:#6edb04;}
+#content .topframe strong{color:#6edb04;}
 
 
 /* ReportSearchHeader.asp */
@@ -423,7 +397,7 @@ background-color: #EDF4F6;  border-bottom: 1px solid #eee; margin-bottom: 3px; t
 #mainleft ul li a:hover, #maincenter ul li a:hover, #mainright ul li a:hover { background-color: #f8e9ad; text-decoration: none; margin-bottom: 3px;border-bottom: 1px solid #eee;}
 
 /* Styles the Administration functions */
-table.adminfn { margin: 0; padding: 0; width: 100%; background-color: #edf4f6; color: #000; border-collapse: separate; border: solid 1px #bcd7de; }
+table.adminfn { margin: 0; padding: 0; width: 100%; background-color: #edf4f6; color: #000; border-collapse: separate; border: solid 1px #bcd7de; border-top:none; }
 .adminfn hr { background-color: #bcd7de; color: #bcd7de; height: 1px; border: 0; margin-top: 10px; margin-bottom: 10px; }
 .adminfn th { text-align: right; /* width: 30%; */ font-size: 10pt; font-weight: 100; color: #000; background-color: #edf4f6; padding: 3px; }
 .adminfn td { color: #000; background-color: #edf4f6; padding: 3px; text-align: left; }
@@ -482,8 +456,8 @@ table.mainprintable td.date { background-color: #fff; color: #000; font-size: 9p
 }
 
 #tab-navigation {
-background: #0099cc url(images/navigation_bg.png) top left repeat-x;
-height: 200px;
+background: transparent url(images/navigation_bg.gif) top left repeat-x;
+height: 160px;
 width: 100%;
 min-width: 660px;
 /* max-width: 900px; */
@@ -620,9 +594,8 @@ text-decoration: none;
 cursor: hand;
 max-width: 260px;
 height:40px;
-background: #fff url(images/navx.gif) bottom right no-repeat;
-border-left: 1px solid #000;
-border-right: 1px solid #000;
+background: #507628 url(images/nav.gif) bottom right no-repeat;
+border-left: 2px solid #000;
 }
 
 
@@ -658,9 +631,8 @@ color: #fff;
 border: none; 
 background: none; 
 padding: 2px 8px 7px 2px;
-background: #13576D url(images/tabs_active_corner2x.gif) top right no-repeat;
-border-left: 1px solid #000;
-border-right: 1px solid #000;
+background: #507628 url(images/tabs_active_corner2.gif) top right no-repeat;
+border-left: 1px solid #fff;
 /* position: absolute; */
  margin-top: -4px; 
 }
@@ -684,9 +656,8 @@ cursor: hand;
 max-width: 260px;
 min-height: 40px;
 height:40px;
-background: #fff url(images/navx.gif) bottom right no-repeat;
-border-left: 1px solid #000;
-border-right: 1px solid #000;
+background: #507628 url(images/nav.gif) bottom right no-repeat;
+border-left: 2px solid #000;
 }
 
 #tab-nav ul li.tab-elim a:hover, 
@@ -709,9 +680,8 @@ color: #fff;
 border: none; 
 background: none; 
 padding: 2px 8px 7px 2px;
-background: #13576D url(images/tabs_active_corner2x.gif) top right no-repeat;
-border-left: 1px solid #000;
-border-right: 1px solid #000;
+background: #507628 url(images/tabs_active_corner2.gif) top right no-repeat;
+border-left: 1px solid #fff;
 /* position: absolute; */
  margin-top: -4px; 
 }
@@ -729,8 +699,8 @@ height: 101px;
 position: absolute; 
 padding-top: 20px; 
 margin: 18px 0 0 0; 
-width: 800px; 
-height: 100px;
+width: 970px; 
+height: 81px;
 margin-left: -12%;
 }
 
@@ -793,7 +763,7 @@ list-style-type: none;
 float: left; 
 font-size: 10px;
 width: 150px; 
-padding: 5px 25px 10px 0px; 
+padding: 5px 15px 0 0px; 
 margin-left: 3px; 
 background: transparent url(images/link_dot.gif) top left no-repeat;
 }
@@ -832,6 +802,32 @@ color: #fff;
 }
 
 
+.wrapper {
+    background: #eaede4 url("images/bottom.png") no-repeat scroll left top;
+    color: #000;
+    margin: 0 auto;
+    text-align: left;
+    width: 100%;
+}
 
+.content {
+    color: #445c2c;
+    font-size: 10pt;
+    margin-bottom: 0;
+    padding: 5px 10px 10px 9px;
+}
 
-
+.content h1.pagetitle {
+    background-image: url("images/pageheading_tile.gif");
+    background-repeat: repeat-y;
+    font-size: 12pt;
+    font-weight: bold;
+    line-height: 10pt;
+    margin-top: 0;
+    padding-left: 10px;
+    padding-top: 2px;
+}
+.content h1 {
+    color: #6edb04;
+    font-size: 13pt;
+}

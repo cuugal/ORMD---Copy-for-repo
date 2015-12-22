@@ -31,7 +31,7 @@
 <div id="wrapper">
 <div id="content">
 
-<h1 class="pagetitle">Administration Functions</h1>
+<h2 class="pagetitle">Administration Functions</h2>
 
 <table>
 <tr>

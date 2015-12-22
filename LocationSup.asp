@@ -58,7 +58,7 @@ session("LastRACreatednumFacilityID") = ""
     %>
 <div id="wrapper">
   <div id="content">
-    <h1 class="pagetitle">Select a location or operation for creating the Risk Assessment</h1>
+    <h2 class="pagetitle">Select a location or operation for creating the Risk Assessment</h2>
     <center>
       <form method="post" action="LocationSup.asp" name="Form1">
         <table class="adminfn" style="width: 50%">

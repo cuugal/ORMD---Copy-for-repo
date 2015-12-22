@@ -10,7 +10,7 @@
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
  <meta http-equiv="Content-Language" content="en-au" />
- <link rel="stylesheet" type="text/css" href="orr.css" media="all" />
+ <!--#include file="bootstrap.inc"--> 
 <script type="text/javascript">
 // function to ask about the confirmation of the file.
 function ConfirmChoice() 
@@ -43,7 +43,7 @@ function ConfirmChoice()
 <div id="wrapper">
 <div id="content">
 
-<h1 class="pagetitle">Create a Campus</h1>
+<h2 class="pagetitle">Create a Campus</h2>
 
 <center>
 

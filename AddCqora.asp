@@ -146,8 +146,8 @@ Dim rsAdd
 <body>
 <div id="wrapper">
   <div id="content">
-    <h1 class="pagetitle">Risk Assessment added successfully!</h1>
-    <p>Do you want to add another Risk Assessment? If yes, please click the 'Add more' button below.</p>
+    <h2 class="pagetitle">Risk Assessment added successfully!</h2>
+    <strong>Do you want to add another Risk Assessment? If yes, please click the 'Add more' button below.</strong>
     <center>
       <table class="bluebox" style="width: 30%; " id="table1" >
         <tr>

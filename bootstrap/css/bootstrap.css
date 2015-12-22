@@ -3133,8 +3133,8 @@ fieldset[disabled] .btn-default.active {
 }
 .btn-primary {
   color: #fff;
-  background-color: #445c2c;
-  border-color: #e8ede4;
+  background-color: #A2B63A;
+  border-color: #80986C;
 }
 .btn-primary:focus,
 .btn-primary.focus {
@@ -3144,9 +3144,9 @@ fieldset[disabled] .btn-default.active {
      */
 }
 .btn-primary:hover {
-  color: #000;
-  background-color: #e8ede4;
-  border-color: #445c2c;
+  color: #fff;
+  background-color: #92A434;
+  border-color: #80986C;
      
 }
 .btn-primary:active,
@@ -4088,7 +4088,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   line-height: 1.42857143;
   border: 1px solid transparent;
   border-radius: 4px 4px 0 0;
-  background-color: #fff;
+  background-color: #DCE2E4;
 }
 .nav-tabs > li > a:hover {
   border-color: #eee #eee #ddd;
@@ -4096,7 +4096,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
-  color: #000;
+  color: #001D8C;
   cursor: default;
   background-color: #edf4f6;
   border: 1px solid #ddd;

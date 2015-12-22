@@ -194,7 +194,7 @@ strJobSteps = ""
       <input type="hidden" name="hasSWMS" 			value="" />
       <table width = 80%>
      	<tr>
-      		<td align="left"><h1 class="pagetitle">Enter the details of the new Risk Assessment</h1></td>
+      		<td align="left"><h2 class="pagetitle">Enter the details of the new Risk Assessment</h2></td>
       		<td align="right"> <h2> RA Number <%=strNewQORAId%></h1></td>
       	</tr>
       </table>

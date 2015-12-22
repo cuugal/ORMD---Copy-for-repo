@@ -260,13 +260,13 @@ Dim strSurname
   <div id="wrapperform">
   <div id="content">
 
-  <table width = 82%>
+  <table width = 90%>
      	<tr>
-      		<td align="left"><h1 class="pagetitle">Edit a Risk Assessment</h1></td>
+      		<td align="left"><h2 class="pagetitle">Edit a Risk Assessment</h2></td>
       		<td align="right"> <h2> RA Number <%=numQORAID%></h1></td>
       	</tr>
       </table>
-  <table class="suprreportheader" style="width: 82%;">
+  <table class="suprreportheader" style="width: 90%;">
     <input type="hidden" name="VTI-GROUP" value="1" />
  
     <tr>
@@ -332,11 +332,11 @@ Dim strSurname
 		</tr>
   </table>
   <br>
-  <B><font color="#000000" style="BACKGROUND-COLOR: 6CA544">NOTE: All risk assessments should be performed in consultation with staff involved with the task.</font></B><br>
-      <hr style = "width: 82%;" align="left" />
+  <B><font color="#000000" style="BACKGROUND-COLOR: FFD102">NOTE: All risk assessments should be performed in consultation with staff involved with the task.</font></B><br>
+      <hr style = "width: 90%;" align="left" />
  <strong>(1) Describe briefly how the task is performed</strong><br>
   <br>
-  <table class="suprreportheader" style="width: 82%">
+  <table class="suprreportheader" style="width: 90%">
     <tr>
       <th>Task Description</th>
       <td><!--<input type="text" name="txtTaskDesc" size="100%" value="<%=strTaskDescription%>" />-->
@@ -347,13 +347,13 @@ Dim strSurname
   
   
   <BR>
-      <hr style = "width: 82%;" align="left" />
+      <hr style = "width: 90%;" align="left" />
   
   <!--Navigation -->
   <a name="point1"></a> <strong>(2) Select hazards relating to task</strong>
   <p style = "width:80%">Select from the menu below all of the hazards that apply to the task.<br />  NOTE: Lists of hazards appear when you put the cursor over this menu. When you click on one it appears in the text box below.</p>
 <div>
- <table class="suprreportheader" style="width: 82%">
+ <table class="suprreportheader" style="width: 90%">
  	<tr>
 		<td colspan="2">
 
@@ -511,14 +511,14 @@ Dim strSurname
     </div> 
    
   <BR>
-      <hr style = "width: 82%;" align="left" />
+      <hr style = "width: 90%;" align="left" />
   <strong>(3) Select safety control measures to make task safe</strong>
-      <p style = "width:82%">Select the safety control measures needed to minimise the risk of harm. List the Safety Control Measures that are both 'currently in place' and 'proposed'. NOTE: Lists of safety control measures appear when you put the cursor over this menu.</p>
+      <p style = "width:90%">Select the safety control measures needed to minimise the risk of harm. List the Safety Control Measures that are both 'currently in place' and 'proposed'. NOTE: Lists of safety control measures appear when you put the cursor over this menu.</p>
       
 <div>
 	<!--********old menu archived - contact Andrew Alger -->
 	<!-- <table class="suprreportheader" style="width: 80%"> -->
-	<table class="suprreportheader" name="controls" id="tblControls" style="width: 82%">
+	<table class="suprreportheader" name="controls" id="tblControls" style="width: 90%">
 	<tr>
 		<td colspan="4">
 			<div id="tab-navigation-wrapper">
@@ -537,6 +537,8 @@ Dim strSurname
 <li><a href="#point2" onClick="PopulateNext('- Redesign the equipment\r\n')" title="Add the control 'Redesign the equipment' to this Risk Assessment.">Redesign the equipment</a></li>
 <li><a href="#point2" onClick="PopulateNext('- Guarding/Barriers\r\n')" title="Add the control 'Guarding/Barriers' to this Risk Assessment.">Guarding / Barriers</a></li>
 <li><a href="#point2" onClick="PopulateNext('- Biosafety Cabinet\r\n')" title="Add the control 'Biosafety Cabinet' to this Risk Assessment.">BioSafety Cabinet</a></li>
+
+
 <li><a href="#point2" onClick="PopulateNext('- Fume Cupboard/Local Exhaust Ventillation\r\n')" title="Add the control 'Fume Cupboard/Local Exhaust Ventillation' to this Risk Assessment.">Fume Cupboard / Local Exhaust Ventilation</a></li>
 <li><a href="#point2" onClick="PopulateNext('- Redesign the Workspace/Workflow\r\n')" title="Add the control 'Redesign the Workspace/Workflow' to this Risk Assessment.">Redesign the Workspace / Workflow</a></li>
 <li><a href="#point2" onClick="PopulateNext('- Lifting Equipment/Trolleys\r\n')" title="Add the control 'Lifting Equipment/Trolleys' to this Risk Assessment.">Lifting Equipment / Trolleys</a></li>
@@ -552,7 +554,7 @@ Dim strSurname
 <li><a href="#point2" onClick="PopulateNext('- Chemical Risk Assessment\r\n')" title="Click to add the administrative control 'Chemical Risk Assessment' to this Risk Assessment.">Chemical Risk Assessment</a></li>
 <li><a href="#point2" onClick="PopulateNext('- Licensing/Certification of Operators\r\n')" title="Click to add the administrative control 'Licensing/Certification of Operators' to this Risk Assessment.">Licensing/Certification of Operators</a></li>
 <li><a href="#point2" onClick="PopulateNext('- Test and Tag Electrical Equipment\r\n')" title="Click to add the administrative control 'Test and Tag Electrical Equipment' to this Risk Assessment.">Test and Tag Electrical Equipment</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Monitor Exposure Level (Sound/Substance/Radiation)\r\n')" title="Click to add the administrative control 'Monitor Exposure Level (Sound/Substance/Radiation)' to this Risk Assessment.">Monitor Exposure Level (Sound/Substance / Radiation)</a></li>
+<li><a href="#point2" onClick="PopulateNext('- Monitor Exposure Level (Sound/Substance/Radiation)\r\n')" title="Click to add the administrative control 'Monitor Exposure Level (Sound/Substance/Radiation)' to this Risk Assessment.">Monitor Exposure Level</a></li>
 <li><a href="#point2" onClick="PopulateNext('- Licences (Lifts, Boilers, Pressure Vessles, Radiation)\r\n')" title="Click to add the administrative control 'Licences (Lifts, Boilers, Pressure Vessles, Radiation)' to this Risk Assessment.">Licences (Lifts, Boilers, Pressure Vessels, Radiation)</a></li>
 <li><a href="#point2" onClick="PopulateNext('- Biosafety Committe Assessment (GMOs, pathogens, radiation, cytotoxins, imported biologicals)\r\n')" title="Click to add the administrative control 'Biosafety Committe Assessment (GMOs, pathogens, radiation, cytotoxins, imported biologicals)' to this Risk Assessment.">BioSafety Committee Assessment (GMOs, pathogens, radiation, cytotoxins, imported biologicals)</a></li>
 <li><a href="#point2" onClick="PopulateNext('- UTS Fieldwork Guidelines for overnight excursions in the field\r\n')" title="Click to add the administrative control 'UTS Fieldwork Guidelines for overnight excursions in the field' to this Risk Assessment.">UTS Fieldwork Guidelines for overnight excursions in the field</a></li>
@@ -644,7 +646,7 @@ Dim strSurname
      		
 		</table>
 
-       	<table class="bluebox" style="width:82%;">
+       	<table class="bluebox" style="width:90%;">
        		<tfoot><tr><td style="text-align:right"></td>
        			<!--<input type="button" value="Remove" onclick="removeRowFromTable();" />-->
        			
@@ -661,13 +663,13 @@ Dim strSurname
    </div>
   
   
-      <hr style = "width: 82%;" align="left" />
+      <hr style = "width: 90%;" align="left" />
 
 <strong>(4) Assess level of residual risk</strong>
-  <p style = "width:82%">Use the risk matrix below as a guide to assess the level of risk, based on the hazards identified above and the way that the task is done with safety control measures that are in place.</p>
+  <p style = "width:90%">Use the risk matrix below as a guide to assess the level of risk, based on the hazards identified above and the way that the task is done with safety control measures that are in place.</p>
 <!-- Risk Matrix -->
 
-<TABLE style = "width:82%">
+<TABLE style = "width:90%">
 <TR>
 <TD><strong>L<br>I<br>K<br>E<br>L<br>I<br>H<br>O<br>O<br>D</strong></TD>
 <TD>
@@ -756,7 +758,7 @@ Dim strSurname
 <p  align="left">If risk level is high or extreme, then add more control measures in step (3).</p>
 
   <BR />
-      <hr style = "width: 82%;" align="left" />
+      <hr style = "width: 90%;" align="left" />
   <div style="clear: all; "></div>
 
 <table class="loginlist" style="margin: 0 auto">

@@ -3,6 +3,7 @@
 
 <head>
 <title>Search Results For UTS Risk Assessments</title>
+<link rel="SHORTCUT ICON" href="favicon.ico" type="image/x-icon" />
 <!--#include file="bootstrap.inc"--> 
 </head>
     <body>

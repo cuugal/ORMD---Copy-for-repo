@@ -135,7 +135,7 @@ End Function
   <!-- Break out of frame --> 
       <%if rsSearchH.EOF <> true then  %>
   <form target="_blank" action="SupRDateModified-print.asp">
-    <h1 class="pagetitle">Risk Assessment Search Results &nbsp;&nbsp;&nbsp;<input type="submit" value="Print preview" /></h1>    
+    <h2 class="pagetitle">Risk Assessment Search Results &nbsp;&nbsp;&nbsp;<input type="submit" value="Print preview" /></h2>    
   </form>
       <% end if %>
 </div>
@@ -152,7 +152,8 @@ End Function
   
     </tr>
     <tr>
-    	<th>Supervisor:</th><td><%=strName%></td>
+    	<th>Supervisor:</th><td><%=rsSearchH("strGivenName")&" "&rsSearchH("strSurname")%></td>
+		<!--th>Supervisor:</th><td><%=strName%></td-->
     	<th>Faculty:</th><td colspan="5"><%=strFacultyName %></td>
  </tr>
  </table>
@@ -160,7 +161,8 @@ End Function
 if (searchType = "operation") then %>
 <table class="suprreportheader">
 	<tr>
-		<th>Supervisor: </th><td><%=strName%></td>
+    	<th>Supervisor:</th><td><%=rsSearchH("strGivenName")&" "&rsSearchH("strSurname")%></td>
+		<!--th>Supervisor:</th><td><%=strName%></td-->
 		<th>Operation: </th><td><%=rsSearchH("strOperationName")%></td>	
 	</tr>
 </table>
@@ -292,7 +294,7 @@ if (searchType = "operation") then %>
  end if %>
  
 <%else%>
-<p style="background-color:#fff">There are currently no Risk Assessments for this facility or operation</p>
+<strong>There are currently no Risk Assessments for this facility or operation</strong>
 <%end if%>
 </div>
 

@@ -3,6 +3,7 @@
 
 <%strLoginId = session("strLoginId")%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<link rel="SHORTCUT ICON" href="favicon.ico" type="image/x-icon" />
 
 <%
 testval = request.form("hdnQORAID")
@@ -150,7 +151,7 @@ end if
   <div id="content">	
   <table width = 80%>
      	<tr>
-      		<td align="left"><h1 class="pagetitle">Safe Work Method Statement (SWMS)</h1> 
+      		<td align="left"><h2 class="pagetitle">Safe Work Method Statement (SWMS)</h2> 
    
   </td>
       		<td align="right"> <h2> Risk Assessment Number <%=testval%></h2></td>
@@ -160,22 +161,19 @@ end if
    <!--<form target="_blank" method="post" action="SWMS-print.asp"> -->
      <form method="post" name="Form1" action="AddSWMS.asp">  
        
-  <table width = 80% class="swms">
+ <table class="swms" width = 80%>
      	<tr>
-      		<td align="left" class="plainbox"><strong>Work Activity:</strong> <%=rsResults("strTaskDescription")%></td>
+      		<td align="left" class="plainbox" colspan="4"><strong>Work Activity:</strong> <%=rsResults("strTaskDescription")%></td>
 		</tr>
 		<tr>
 			
-			<td>
-
-			<table width = 80% class="swms">
-						<tr align="center" width="50%">
 			<% 'only display save button if the user is logged in, and has write access to the record, or is a admin.
 				If canEdit Then %>
 					
 					<td> 
 					<input type="submit" value="To Risk Assessment" onclick="Form1.action='EditQORA.asp?numCQORAId=<%=testval%>'; Form1.target='_self'; return true;">
 					</td>
+
 					<td >
 					<!-- 9April2010 DLJ added target=self -->
 					<input type="submit" value="Save SWMS" target="_self" onclick="Form1.action='AddSWMS.asp'; Form1.target='_self'; return true;"/>
@@ -183,32 +181,28 @@ end if
 					</td>
 					
 			    <% End If %>
-                <td>
-				
+					<td>
 					<input type="button" value="Back to Risk Assessment List" name="Back" onclick="history.back();">
-					
-					</td>
-                            </tr>
-					</table>
-			</td>
+					</td>	
 
-
-      		<td align="center">
-      		<!-- <input type="submit" value="Print preview" /> -->
-      		
-			<input type="submit" value="Print Preview" target="_blank" onclick="Form1.action='SWMS-print.asp'; Form1.target='_blank'; return true;" />
-
-      		
-      		<input type="hidden" name="hdnQORAId" value="<%=testval%>" /> 
-	  		<input type="hidden" name="hdnFacilityId" value="<%=numFacilityID%>" />
-	  		<input type="hidden" name="operationId" value="<%=numOperationID%>" />
-	  		</td>
-      		<% if strAssessRisk="L" then%> <td class="low" align="right" width="250"> Residual Risk Level: Low </td><%end if%>
-      		<% if strAssessRisk="M" then%> <td class="medium" align="right" width="250"> Residual Risk Level: Medium </td><%end if%>
+      				<td align="center">
+					<!-- <input type="submit" value="Print preview" /> -->		
+					<input type="submit" value="Print Preview" target="_blank" onclick="Form1.action='SWMS-print.asp'; Form1.target='_blank'; return true;" />			
+					<input type="hidden" name="hdnQORAId" value="<%=testval%>" /> 
+					<input type="hidden" name="hdnFacilityId" value="<%=numFacilityID%>" />
+					<input type="hidden" name="operationId" value="<%=numOperationID%>" />
+	  				</td>
+		</tr>
+  </table>
+ <table class="swms" width = 80%>
+	<tr>
+      		<% if strAssessRisk="L" then%> <td class="low" align="middle" width="250"> Residual Risk Level: Low </td><%end if%>
+      		<% if strAssessRisk="M" then%> <td class="medium" align="middle" width="250"> Residual Risk Level: Medium </td><%end if%>
       		<% if strAssessRisk="H" then%> <td class="high" align="right" width="250"> Residual Risk Level: High </td><%end if%>
       		<% if strAssessRisk="E" then%> <td class="extreme" align="right" width="250"> Residual Risk Level: Extreme </td><%end if%>
-      	</tr>
-  </table>
+	</tr>
+</table>
+
 
 
   
@@ -290,7 +284,7 @@ if(rsResults("numOperationId") <> 0) then %>
 <br/>
   <strong> Control Measures - Safety equipment, training, signage & information</strong>
   
-  <table class="bluebox" style="margin: 0 auto; width:80%; padding-left:40px">
+  <table class="bluebox" style="margin: 0; width:80%; padding-left:40px">
   
       	<tr>  
           <td>
@@ -313,6 +307,7 @@ if(rsResults("numOperationId") <> 0) then %>
 </td>
 </tr> 
 </table>
+
 <br/>       
 <strong> Work Activity steps </strong> <br/>&mdash; These "Work Activity Steps" can be edited directly. 
 <% 

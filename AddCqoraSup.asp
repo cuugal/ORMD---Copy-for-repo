@@ -368,12 +368,12 @@ Dim rsAddControls
      <!--#include file="HeaderMenu.asp"--> 
 <div id="wrapper">
   <div id="content">
-    <h1 class="pagetitle">Risk Assessment <%=strPrikey%> has been added successfully</h1>
+    <h2 class="pagetitle">Risk Assessment <%=strPrikey%> has been added successfully</h2>
 	
 	<!--  DLJ Perhaps commented out this because it is redundant. Just put in line below ...
     <p>Do you want to add another Risk Assessment? If yes, please click the 'Create Risk Assessment' button above.</p> -->
     <div class="addAnother">
-    <p>Do you want to add another Risk Assessment? If yes, please click the 'Next' button below.</p>
+    <strong>Do you want to add another Risk Assessment? If yes, please click the 'Next' button below.</strong>
         <form method="POST" action="locationSup.asp">
               <input type="hidden" name = cboBuilding value ="<%=numBuildingID%>">
               <input type="hidden" name = cboCampus value ="<%=numCampusID%>">

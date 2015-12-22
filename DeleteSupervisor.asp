@@ -49,7 +49,7 @@ Dim strSQL
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
  <meta http-equiv="Content-Language" content="en-au" />
- <link rel="stylesheet" type="text/css" href="orr.css" media="all" />
+ <!--#include file="bootstrap.inc"--> 
  <title>Online Risk Register - Delete a Supervisor</title>
 </head>
 
@@ -58,7 +58,7 @@ Dim strSQL
 <div id="wrapper">
  <div id="content">
 
- <h1 class="pagetitle">Delete a Supervisor</h1>
+ <h2 class="pagetitle">Delete a Supervisor</h2>
  
  <center>
 

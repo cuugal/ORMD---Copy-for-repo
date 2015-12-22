@@ -11,7 +11,7 @@ session.LCID = 2057	'English(British) format
 
 
 <head>
-<title>Online Risk Management Database System</title>
+<title>Health and Safety Risk Management Database</title>
     <!--#include file="bootstrap.inc"--> 
 </head>
     <body>
@@ -20,10 +20,10 @@ session.LCID = 2057	'English(British) format
         
       <div id="wrapper" class="container">
          <div id="content">
-            <h1 class="pagetitle">Search UTS Risk Assessments</h1>
+            <h2 class="pagetitle">Search UTS Risk Assessments</h2>
             <center>
                 <div style="width:950px">
-                    <h3 style="float:left;color:#6edb04">Search By:</h3>
+                    <h3 style="float:left">Search By:</h3>
                 </div>
                 <div style="clear:both"></div>
                 <div style="width:950px">

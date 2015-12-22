@@ -26,7 +26,7 @@ Dim strSQL
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
  <meta http-equiv="Content-Language" content="en-au" />
- <link rel="stylesheet" type="text/css" href="orr.css" media="all" />
+ <!--#include file="bootstrap.inc"--> 
 <title>Online Risk Register - Edit a Campus</title>
 <script type="text/javascript">
 // function to ask about the confirmation of the file.
@@ -83,7 +83,7 @@ function FillDetails()
 <div id="wrapper">
  <div id="content">
 
- <h1 class="pagetitle">Edit a Campus</h1>
+ <h2 class="pagetitle">Edit a Campus</h2>
  
  <center>
 
