@@ -191,7 +191,7 @@
 				  <li><a data-toggle="tab" href="#ra">RA Number/Task</a></li>
              
 				   <% if session("LoggedIn")= true then %>
-				   <li><a data-toggle="tab" href="#my">My Risk Assessments</a></li>
+				   <li><a data-toggle="tab" href="#my"><font color="#E60A0A">My Risk Assessments</font></a></li>
 				   <% end if %>
                   
 			   </ul>

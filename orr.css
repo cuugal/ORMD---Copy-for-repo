@@ -18,7 +18,7 @@ table.far a:link {  font-weight: normal;  }
 #wrapper #content .addAnother p{color:#dfe4db}
 
 /* Risk assessment rating */
-table.eq { width: auto; font-size: 10pt; font-weight: normal; text-decoration: none; border: solid 1px #CACACA;}
+table.eq { width: auto; font-size: 10pt; font-weight: normal; text-decoration: none; width: 100%; border: solid 1px #fff;}
 table.eq tr.high { background-color: #FF9000; } /* these tr stylings are now redundant   */
 table.eq tr.medium { background-color: #FFE000; }
 table.eq tr.low { background-color: #FFFF99;}
