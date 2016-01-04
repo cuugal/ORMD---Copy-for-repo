@@ -31,6 +31,8 @@ End If
 
 </head>
 <body>
+    <!--#include file="HeaderMenu.asp" -->
+
 <div id="wrapperform">
   <div id="content">
     <!-- new code starts here-->
@@ -687,7 +689,7 @@ Come back and fill in this date when actions have been completed.<br />
       	<li><input type="submit" value="SWMS" name="btnSWMS" />&nbsp;&nbsp;&nbsp;</li>-->
       	<li><input type="submit" value="Save Risk Assessment" name="btnSave" />&nbsp;&nbsp;&nbsp;</li>
       	<li><input type="submit" value="Create SWMS" onclick="Form1.action='SWMS.asp'; return true;"></li>
-      	<li><input type="submit" value="Cancel" onclick="Form1.action='cqoraSup.asp'; return true;"></li>
+
       	</ul>
       </div>
       
