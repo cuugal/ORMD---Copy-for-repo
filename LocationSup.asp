@@ -43,6 +43,8 @@ function ChangeType(val)
     //console.log(document.Form2.searchType.value);
 
 }
+
+
 </script>
 <title>Online Risk Register - Select a location or an operation for creating the Risk Assessment</title>
 
@@ -217,7 +219,7 @@ wend
  </td></tr>
         
         <tr>
-          <td colspan="2"><center>
+		<td colspan="2"><center>
               <input type="submit" value="Next" name="btnProceed" />
             </center>
       </form>
