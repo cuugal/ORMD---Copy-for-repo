@@ -43,13 +43,6 @@ function ChangeType(val)
     //console.log(document.Form2.searchType.value);
 
 }
-
-		  function clearform() {
-			  var str
-	 
-			  location.reload();
-		  }
-
 </script>
 <title>Online Risk Register - Select a location or an operation for creating the Risk Assessment</title>
 
@@ -224,13 +217,9 @@ wend
  </td></tr>
         
         <tr>
-		<td>
-              <center><input type="submit" class="btn btn-primary" value="Next" name="btnProceed" /></center>
-		</td>
-		<td>
-			  <center><input type="button" align = "right" class="btn btn-primary" value="Clear Form" name="btnClear" onclick="    clearform()"></center>
-		</td>	
-
+          <td colspan="2"><center>
+              <input type="submit" value="Next" name="btnProceed" />
+            </center>
       </form>
       </td>
       </tr>
