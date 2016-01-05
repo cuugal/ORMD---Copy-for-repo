@@ -152,8 +152,9 @@ End Function
   
     </tr>
     <tr>
-    	<th>Supervisor:</th><td><%=rsSearchH("strGivenName")&" "&rsSearchH("strSurname")%></td>
-		<!--th>Supervisor:</th><td><%=strName%></td-->
+	<!-- DLJJan2016 appears supervisor is derived from wrong source -->
+    	<!--th>Supervisor:</th><td><%=rsSearchH("strGivenName")&" "&rsSearchH("strSurname")%></td-->
+		<th>Supervisor:</th><td><%=strName%></td>
     	<th>Faculty:</th><td colspan="5"><%=strFacultyName %></td>
  </tr>
  </table>
@@ -161,8 +162,8 @@ End Function
 if (searchType = "operation") then %>
 <table class="suprreportheader">
 	<tr>
-    	<th>Supervisor:</th><td><%=rsSearchH("strGivenName")&" "&rsSearchH("strSurname")%></td>
-		<!--th>Supervisor:</th><td><%=strName%></td-->
+    	<!--th>Supervisor:</th><td><%=rsSearchH("strGivenName")&" "&rsSearchH("strSurname")%></td-->
+		<th>Supervisor:</th><td><%=strName%></td>
 		<th>Operation: </th><td><%=rsSearchH("strOperationName")%></td>	
 	</tr>
 </table>
