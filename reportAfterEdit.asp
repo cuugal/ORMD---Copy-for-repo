@@ -140,7 +140,9 @@ while not rsShow.EOF
 %>
 
         <tr>
-          <td><a target="Operation" title="Click to edit this Risk Assessment." href="EditQORA.asp?numCQORAId= <%=rsShow("numQORAId")%> "><%=rsShow("strtaskDescription")%></a></td>
+			<!-- previously target="Operation"-->
+          <td><a target="_self" title="Click to edit this Risk Assessment." href="EditQORA.asp?numCQORAId= <%=rsShow("numQORAId")%> 
+		  "><%=rsShow("strtaskDescription")%></a></td>
           <!--<td><%=escape(rsShow("strHazardsDesc"))%></td>-->
           <td><%=rsShow("strHazardsDesc")%></td>
           <td><%
