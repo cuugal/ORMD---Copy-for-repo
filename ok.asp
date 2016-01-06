@@ -297,10 +297,18 @@ set remover=nothing
 %>
 <!--#INCLUDE FILE="UpdateReview.asp"--> 
 <body>
-<div id="wrapper" style="display:none">
+<div id="wrapper">
   <div id="content">
-    <h1 class="pagetitle">Risk Assessment <%=testval%> has been edited successfully</h1>
-      <form id="refreshResults" action="<%=Session("mostRecentSearch") %>" method="post">
+    <h2 class="pagetitle">Risk Assessment <%=testval%> has been edited successfully</h2>
+      <%
+          dim action
+          if Session("mostRecentSearch") <> "" then
+            action = Session("mostRecentSearch")
+          else
+            action = "/Home.asp"
+          end if
+           %>
+      <form id="refreshResults" action="<%=action %>" method="post">
           <input type="hidden" name="confirmationMsg" value="Risk Assessment <%=testval%> has been edited successfully" />
         <input type="hidden" name="searchType" value="<%=session("searchType") %>" />
         <input type="hidden" name="cboOperation" value="<%=session("cboOperation")  %>" />
@@ -313,11 +321,7 @@ set remover=nothing
     </form>
   </div>
 </div>
-    <script type="text/javascript">
-        $(function () {
-            $("#refreshResults").submit();
-        });
-    </script>
+    
 
 </body>
 

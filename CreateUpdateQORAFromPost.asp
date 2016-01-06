@@ -450,12 +450,11 @@ if NoSaveBeforeSWMS <> "nosave" then
 		  ' setting up the recordset
 		'***************************Insert into database**************************************************************
 		   
-		      strSQL ="Insert into tblQORA(numQORAID, numFacilityId,dtDateCreated,strAssessor,strTaskDescription, "_
+		      strSQL ="Insert into tblQORA(numQORAID, numFacilityId,strAssessor,strTaskDescription, "_
 		   &" strAssessRisk, strConsequence, strLikelyhood, strControlRiskDesc,strHazardsDesc,boolFurtherActionsSWMS,boolFurtherActionsChemicalRA, "_
 		   &" boolFurtherActionsGeneralRA,strText,numFacultyId,strSupervisor,dtDateCreated, strConsultation, boolSWMSRequired, strInherentRisk, numOperationID) Values "_
 		   &" ("& testval  &","_
 		   &" "& numFacilityId  &","_
-		   &" '"& dtDateCreated &"',"_
 		   &" '"& strAssessor &"',"_
 		   &" '"& strtaskDesc &"',"_
 		   &" '"& strRisk &"',"_
@@ -469,7 +468,7 @@ if NoSaveBeforeSWMS <> "nosave" then
 		   &" '"& strGenCom &"',"_
 		   &" "& numFacultyId &","_
 		   &" '"& strLoginId &"',"_
-		   &" '"& dtDate &"' ,"_
+		   &" '"& Date() &"' ,"_
 		   &" '"& strConsultation &"' ,"_
 		   &" "& boolSWMSRequired &" ,"_
 		   &" '"& strT3 &"',"_

@@ -53,10 +53,18 @@ Dim conn2
      <!--#include file="HeaderMenu.asp"--> 
 
 
-<div id="wrapper" style="display:none">
+<div id="wrapper">
   <div id="content">
-    <h1 class="pagetitle">SWMS <%=testval%> has been updated successfully</h1>
-      <form id="refreshResults" action="<%=Session("mostRecentSearch") %>" method="post">
+      <%
+          dim action
+          if Session("mostRecentSearch") <> "" then
+            action = Session("mostRecentSearch")
+          else
+            action = "/Home.asp"
+          end if
+           %>
+    <h2 class="pagetitle">SWMS <%=testval%> has been updated successfully</h2>
+      <form id="refreshResults" action="<%=action %>" method="post">
           <input type="hidden" name="confirmationMsg" value="SWMS <%=testval%> has been updated successfully" />
         <input type="hidden" name="searchType" value="<%=session("searchType") %>" />
         <input type="hidden" name="cboOperation" value="<%=session("cboOperation")  %>" />
@@ -69,11 +77,7 @@ Dim conn2
     </form>
   </div>
 </div>
-    <script type="text/javascript">
-        $(function () {
-            $("#refreshResults").submit();
-        });
-    </script>
+
 
 
 </body>
