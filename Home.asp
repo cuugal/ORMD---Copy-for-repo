@@ -12,6 +12,7 @@ session.LCID = 2057	'English(British) format
 
 <head>
 <title>Health and Safety Risk Management Database</title>
+<link rel="SHORTCUT ICON" href="favicon.ico" type="image/x-icon" />
     <!--#include file="bootstrap.inc"--> 
 </head>
     <body>

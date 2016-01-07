@@ -305,7 +305,7 @@ set remover=nothing
           if Session("mostRecentSearch") <> "" then
             action = Session("mostRecentSearch")
           else
-            action = "/Home.asp"
+            action = "Home.asp"
           end if
            %>
       <form id="refreshResults" action="<%=action %>" method="post">

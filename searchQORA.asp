@@ -16,8 +16,8 @@
         Session("hdnOperationID") = ""
         Session("searchType") = ""
 
-       session("cboOperation") = ""
-	   session("cboFacility") = ""
+       session("cboOperation") = 0
+	   session("cboFacility") = 0
 
 	  Dim connFac
 	  Dim rsFillFac

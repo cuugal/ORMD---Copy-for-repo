@@ -60,7 +60,7 @@ Dim conn2
           if Session("mostRecentSearch") <> "" then
             action = Session("mostRecentSearch")
           else
-            action = "/Home.asp"
+            action = "Home.asp"
           end if
            %>
     <h2 class="pagetitle">SWMS <%=testval%> has been updated successfully</h2>

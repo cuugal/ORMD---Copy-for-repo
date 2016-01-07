@@ -82,7 +82,10 @@ End Function
   &" tblFacility.numBuildingId = tblBuilding.numBuildingID and "_
   &" tblBuilding.numCampusId = tblCampus.numCampusID  and"_
   &" tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel "
-    if cboFacility > 0 then
+
+     ' response.write (cboFacility)
+    'if cboFacility > 0 Then
+    If cboFacility > 0 then
         strSQL = StrSQL &"and tblQORA.numFacilityId = "& cboFacility
     end if
     if not session("isAdmin") then
