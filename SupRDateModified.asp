@@ -20,7 +20,7 @@ loginId = session("strLoginId")
 <meta http-equiv="Content-Language" content="en-au" />
 
 <title>Online Risk Register - UTS Risk Assessments</title>
-
+<link rel="SHORTCUT ICON" href="favicon.ico" type="image/x-icon" />
 <script type="text/javascript" src="sorttable.js"></script>
 </head>
 <%
@@ -128,7 +128,7 @@ End Function
          %>
             <div class="wrapper">
               <div class="content">
-                <h1 class="pagetitle"><%=confirmationMsg%> </h1>
+                <h2 class="pagetitle"><%=confirmationMsg%> </h2>
               </div>
             </div>
     <% end if %>

@@ -20,6 +20,7 @@ loginId = session("strLoginId")
  <!--<link rel="stylesheet" type="text/css" href="orr.css" media="screen,print" />-->
  <link rel="stylesheet" type="text/css" href="orrprint.css" media="screen,print" />
  <title>Online Risk Register - Report for Supervisors</title>
+ <link rel="SHORTCUT ICON" href="favicon.ico" type="image/x-icon" />
  <script type="text/javascript" src="sorttable.js"></script>
  <style type="text/css">
 <!--

@@ -214,7 +214,7 @@ div#forcontrols li:hover ul, div#forcontrols li li:hover ul, div#forcontrols li.
 
 <![endif]-->
 <title>Online Risk Register - Edit an existing Risk Assessment</title>
-
+<link rel="SHORTCUT ICON" href="favicon.ico" type="image/x-icon" />
     <!--#include file="bootstrap.inc"--> 
 </head>
 <body>

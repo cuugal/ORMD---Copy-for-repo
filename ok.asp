@@ -299,7 +299,10 @@ set remover=nothing
 <body>
 <div id="wrapper">
   <div id="content">
-    <h2 class="pagetitle">Risk Assessment <%=testval%> has been edited successfully</h2>
+    <!--h2 class="pagetitle">Risk Assessment <%=testval%> has been edited successfully</h2-->
+    <h2 class="pagetitle">Risk Assessment <%=testval%> - "<%response.write(strTaskDescription)%>" has been edited successfully</h2>
+
+	
       <%
           dim action
           if Session("mostRecentSearch") <> "" then
@@ -309,7 +312,8 @@ set remover=nothing
           end if
            %>
       <form id="refreshResults" action="<%=action %>" method="post">
-          <input type="hidden" name="confirmationMsg" value="Risk Assessment <%=testval%> has been edited successfully" />
+          <input type="hidden" name="confirmationMsg" value="Risk Assessment <%=testval%> - <%=strTaskDescription%> has been edited successfully" />
+		 
         <input type="hidden" name="searchType" value="<%=session("searchType") %>" />
         <input type="hidden" name="cboOperation" value="<%=session("cboOperation")  %>" />
         <input type="hidden" name="cboFacility" value="<%=session("cboFacility") %>" />

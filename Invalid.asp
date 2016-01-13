@@ -14,7 +14,7 @@
 'Response.Redirect "index.htm"
 
 %>
-<div id="orrheading"><h1>Online Risk Register</h1><img src="http://www.uts.edu.au/images/css/utslogo.gif" alt="UTS" width="130" height="29" style="border: none; vertical-align: middle; 	float: right; " /><font size="1" color="gray">V2.0</font></div>
+<div id="orrheading"><h1>Health and Safety Risk Register</h1><img src="http://www.uts.edu.au/images/css/utslogo.gif" alt="UTS" width="130" height="29" style="border: none; vertical-align: middle; 	float: right; " /><font size="1" color="gray">V2.0</font></div>
 <table class="searchtable">
 	<tr><td style="text-align:center">
 	<br/>

@@ -238,9 +238,10 @@ strJobSteps = ""
 			renewalDate = cstr(todaysDay) +"/"+cstr(todaysMonth)+"/"+cstr(renewal)
 			%>
         	<th>Assessor / Reviewer:</th><td><input type="text" name="txtAssessor" size="35" /></td>
-        	<td>Date Last Modified (dd/mm/yyyy)&nbsp;&nbsp;&nbsp;
-          	<input type="text" name="txtDateCreated" size="9" value="<%=todaysDate%>"/></td>
-          	<td>Review Date&nbsp;&nbsp;&nbsp;<%=renewalDate%></td>
+        	<td colspan="2">Date Last Modified (dd/mm/yyyy)&nbsp;&nbsp;&nbsp;<input type="text" name="txtDateCreated" size="9" value="<%=todaysDate%>"/></td>
+			<!-- the line above is needed as an input box to prevent error - how can this be converted to plain text as attempted in line below-->
+        	<!--td colspan="2">Date Last Modified (dd/mm/yyyy)&nbsp;&nbsp;&nbsp;<%Response.write(todaysDate)%></td-->
+          	<!--td>Review Date&nbsp;&nbsp;&nbsp;<%=renewalDate%></td-->
         </tr>
 		<tr>
 			<th>Persons Consulted</th>
