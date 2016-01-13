@@ -8,6 +8,11 @@ a:link{color:#445c2c; /* text-decoration:none; */}
 a:hover{text-decoration:underline;}
 strong{color:#0099cc;}
 
+/* For warning message table */
+.reportwarn { padding: 1px; width:98%; border: solid 1px #445c2c; font-size: 11px; border-collapse: separate;  text-align: left; }
+.reportwarn td { padding: 1px 5px 5px 5px; background-color: #F9EDB6; color: #000; vertical-align: middle; }
+
+
 /* Styles the EditQORA page */
 /* The Further Actions Required table styling */
 table.far { width: 90%; padding: 1px; font-size: 10pt; border: solid 1px #d4e5fe; border-collapse: separate; background-color: #fff; text-align: left; }

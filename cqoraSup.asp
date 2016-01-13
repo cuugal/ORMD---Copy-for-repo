@@ -247,9 +247,12 @@ strJobSteps = ""
 			<td colspan="3"><textarea rows="1" name="strConsultation" cols="90" ></textarea></td>
 		</tr>
       </table>
-      <br>
-      <B><font color="#330066">NOTE: All risk assessments should be performed in consultation with staff involved with the task.</B></font><br>
-      <hr style = "width: 82%;" align="left" />
+    </br>
+	  <table class="reportwarn" style="width: 82%">
+      <tr><td><b>NOTE: All risk assessments should be performed in consultation with staff involved with the task.</b></td></tr>
+	  </table>
+	</br>
+
       	<strong>(1) Describe briefly how the task is performed</strong><br>
       <br>
       <table class="suprreportheader" style="width: 82%">
@@ -410,6 +413,13 @@ strJobSteps = ""
           	<textarea rows="8" name="T3" id="T3" cols="45" ></textarea>
 		</td>
 		</tr>
+
+          
+       
+		<!-- </table>  -->
+	</table>
+	</br>
+	<table class="reportwarn" style="width: 82%">
 		<tr>
 			<td colspan="2"> Do the hazards you have selected have the potential to cause death, or serious injury / illness (causing temporary disability)? &nbsp 
 				<strong>YES</strong> 
@@ -419,10 +429,8 @@ strJobSteps = ""
 				If they do, then a Safe Work Method Statement (SWMS) must also be recorded.	
 			</td>
 		</tr>
-          
-       
-		<!-- </table>  -->
 	</table>
+
  </div>
     <div style="clear:both">
     </div> 

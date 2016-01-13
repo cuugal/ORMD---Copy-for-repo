@@ -213,7 +213,7 @@ div#forcontrols li:hover ul, div#forcontrols li li:hover ul, div#forcontrols li.
 <link rel="stylesheet" type="text/css" href="IE7.css" />
 
 <![endif]-->
-<title>Online Risk Register - Edit a Risk Assessment</title>
+<title>Online Risk Register - Edit an existing Risk Assessment</title>
 
     <!--#include file="bootstrap.inc"--> 
 </head>
@@ -260,13 +260,13 @@ Dim strSurname
   <div id="wrapperform">
   <div id="content">
 
-  <table width = 90%>
+  <table style="width: 82%">
      	<tr>
-      		<td align="left"><h2 class="pagetitle">Edit a Risk Assessment</h2></td>
+      		<td align="left"><h2 class="pagetitle">Edit an existing Risk Assessment</h2></td>
       		<td align="right"> <h2> RA Number <%=numQORAID%></h1></td>
       	</tr>
       </table>
-  <table class="suprreportheader" style="width: 90%;">
+  <table class="suprreportheader" style="width: 82%">
     <input type="hidden" name="VTI-GROUP" value="1" />
  
     <tr>
@@ -320,10 +320,11 @@ Dim strSurname
 			renewalDate = cstr(todaysDay) +"/"+cstr(todaysMonth)+"/"+cstr(renewal)
 			%>
         	<th>Assessor / Reviewer</th><td><input type="text" name="txtAssessor" size="35" value="<%=strAssessor%>" /></td>
-        	<td>Date Last Modified (dd/mm/yyyy)&nbsp;&nbsp;&nbsp;
-          	<input type="text" name="txtDateCreated" size="9" value="<%=todaysDate%>"/></td>
+        	<td>Date Last Modified &nbsp;&nbsp;&nbsp;
+          	<!--input type="text" name="txtDateCreated" size="9" value="<%=todaysDate%>"/></td-->
+			<%=todaysDate%></td>
           	<!--<td>Review Date&nbsp;&nbsp;&nbsp;<%=renewalDate%></td>-->
-          	<td>Review Date&nbsp;&nbsp;&nbsp;<%=rsResults("dtReview")%></td>
+          	<td>Current Review Date&nbsp;&nbsp;&nbsp;<%=rsResults("dtReview")%></td>
         </tr>
 		<tr>
 			<!--DLJ dummy placeholder text box-->
@@ -331,12 +332,16 @@ Dim strSurname
 			<td colspan="3"><textarea rows="1" name="strConsultation" cols="90" ><%=strConsultation%></textarea></td>
 		</tr>
   </table>
-  <br>
-  <B><font color="#000000" style="BACKGROUND-COLOR: FFD102">NOTE: All risk assessments should be performed in consultation with staff involved with the task.</font></B><br>
-      <hr style = "width: 90%;" align="left" />
+
+    </br>
+	  <table class="reportwarn" style="width: 82%">
+      <tr><td><b>NOTE: All risk assessments should be performed in consultation with staff involved with the task.</b></td></tr>
+	  </table>
+	</br>
+
  <strong>(1) Describe briefly how the task is performed</strong><br>
   <br>
-  <table class="suprreportheader" style="width: 90%">
+  <table class="suprreportheader" style="width: 82%">
     <tr>
       <th>Task Description</th>
       <td><!--<input type="text" name="txtTaskDesc" size="100%" value="<%=strTaskDescription%>" />-->
@@ -347,13 +352,13 @@ Dim strSurname
   
   
   <BR>
-      <hr style = "width: 90%;" align="left" />
+      <hr style = "width: 82%;" align="left" />
   
   <!--Navigation -->
   <a name="point1"></a> <strong>(2) Select hazards relating to task</strong>
   <p style = "width:80%">Select from the menu below all of the hazards that apply to the task.<br />  NOTE: Lists of hazards appear when you put the cursor over this menu. When you click on one it appears in the text box below.</p>
 <div>
- <table class="suprreportheader" style="width: 90%">
+ <table class="suprreportheader" style="width: 82%">
  	<tr>
 		<td colspan="2">
 
@@ -492,17 +497,23 @@ Dim strSurname
           	<textarea rows="8" name="T3" id="T3" cols="45" ><%=strInherentRisk%></textarea>
 		</td>
 	</tr>
-    <tr>
-	<!-- DLJ added radios as dummy placeholder -->
+</table>
 
-		<td colspan="2"> Do the hazards you have selected have the potential to cause death, or serious injury / illness (causing temporary disability)? &nbsp 
+
+	</br>
+	<table class="reportwarn" style="width: 82%">
+		<tr>
+			<td colspan="2"> Do the hazards you have selected have the potential to cause death, or serious injury / illness (causing temporary disability)? &nbsp 
 			<strong>YES</strong> 
 			<input type="radio" name="boolSWMSRequired" Value="Yes" onClick="return radiounClick (event)"<%if boolSWMSRequired then%>checked<%end if%> />  &nbsp &nbsp 
 			<strong>NO</strong> 
 			<input type="radio" name="boolSWMSRequired" Value="No" onClick="return radiounClick (event)" <%if not boolSWMSRequired then%>checked<%end if%> /><br />
 			If they do, then a Safe Work Method Statement (SWMS) must also be recorded.	
-		</td>
-	</tr>
+			</td>
+		</tr>
+	</table>
+
+
        
 		<!-- </table>  -->
 	</table>
@@ -511,14 +522,14 @@ Dim strSurname
     </div> 
    
   <BR>
-      <hr style = "width: 90%;" align="left" />
+      <hr style = "width: 82%;" align="left" />
   <strong>(3) Select safety control measures to make task safe</strong>
-      <p style = "width:90%">Select the safety control measures needed to minimise the risk of harm. List the Safety Control Measures that are both 'currently in place' and 'proposed'. NOTE: Lists of safety control measures appear when you put the cursor over this menu.</p>
+      <p style = "width:82%">Select the safety control measures needed to minimise the risk of harm. List the Safety Control Measures that are both 'currently in place' and 'proposed'. NOTE: Lists of safety control measures appear when you put the cursor over this menu.</p>
       
 <div>
 	<!--********old menu archived - contact Andrew Alger -->
 	<!-- <table class="suprreportheader" style="width: 80%"> -->
-	<table class="suprreportheader" name="controls" id="tblControls" style="width: 90%">
+	<table class="suprreportheader" name="controls" id="tblControls" style="width: 82%">
 	<tr>
 		<td colspan="4">
 			<div id="tab-navigation-wrapper">
@@ -646,7 +657,7 @@ Dim strSurname
      		
 		</table>
 
-       	<table class="bluebox" style="width:90%;">
+       	<table class="bluebox" style="width:82%;">
        		<tfoot><tr><td style="text-align:right"></td>
        			<!--<input type="button" value="Remove" onclick="removeRowFromTable();" />-->
        			
@@ -663,13 +674,13 @@ Dim strSurname
    </div>
   
   
-      <hr style = "width: 90%;" align="left" />
+      <hr style = "width: 82%;" align="left" />
 
 <strong>(4) Assess level of residual risk</strong>
-  <p style = "width:90%">Use the risk matrix below as a guide to assess the level of risk, based on the hazards identified above and the way that the task is done with safety control measures that are in place.</p>
+  <p style = "width:82%">Use the risk matrix below as a guide to assess the level of risk, based on the hazards identified above and the way that the task is done with safety control measures that are in place.</p>
 <!-- Risk Matrix -->
 
-<TABLE style = "width:90%">
+<TABLE>
 <TR>
 <TD><strong>L<br>I<br>K<br>E<br>L<br>I<br>H<br>O<br>O<br>D</strong></TD>
 <TD>
@@ -758,7 +769,7 @@ Dim strSurname
 <p  align="left">If risk level is high or extreme, then add more control measures in step (3).</p>
 
   <BR />
-      <hr style = "width: 90%;" align="left" />
+      <hr style = "width: 82%;" align="left" />
   <div style="clear: all; "></div>
 
 <table class="loginlist" style="margin: 0 auto">
