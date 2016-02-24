@@ -188,7 +188,7 @@
 				  <li class="active"><a data-toggle="tab" href="#facility">Facility Locations</a></li>
 				  <li><a data-toggle="tab" href="#operations">Operations/Projects</a></li>
 				  <li><a data-toggle="tab" href="#supervisors">Supervisors</a></li>
-				  <li><a data-toggle="tab" href="#ra">RA Number/Task</a></li>
+				  <li><a data-toggle="tab" href="#ra">Keyword Search</a></li>
              
 				   <% if session("LoggedIn")= true then %>
 				   <li><a data-toggle="tab" href="#my"><font color="#E60A0A">My Risk Assessments</font></a></li>
