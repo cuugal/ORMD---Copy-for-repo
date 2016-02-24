@@ -41,7 +41,8 @@
 		   
 		   strSQL ="Insert into tblQORA(numFacilityId,dtDateCreated,strAssessor,strTaskDescription, "_
 		   &" strAssessRisk, strConsequence, strLikelyhood, strControlRiskDesc,strHazardsDesc,boolFurtherActionsSWMS,boolFurtherActionsChemicalRA, "_
-		   &" boolFurtherActionsGeneralRA,strText,numFacultyId,strSupervisor,strDateActionsCompleted, strConsultation, boolSWMSRequired, strInherentRisk, dtReview, numOperationID) Values "_
+		   &" boolFurtherActionsGeneralRA,strText,numFacultyId,strSupervisor,strDateActionsCompleted, strConsultation, boolSWMSRequired, "_
+           &" strInherentRisk, dtReview, strJobSteps, numOperationID) Values "_
 		   &" (0,"_
 		   &" '"& rsFill("dtDateCreated") &"',"_
 		   &" '"& rsFill("strAssessor") &"',"_
@@ -64,6 +65,7 @@
 		   &" "& rsFill("boolSWMSRequired") &" ,"_
 		   &" '"& rsFill("strInherentRisk") &"',"_
            &" '"& rsFill("dtReview") &"',"_
+           &" '"& rsFill("strJobSteps") &"',"_
 		   & cint(cboOperation)&" ) "
 		   
 		   set rsAdd = Server.CreateObject("ADODB.Recordset")
@@ -135,7 +137,8 @@
 		   
 		   strSQL ="Insert into tblQORA(numFacilityId,dtDateCreated,strAssessor,strTaskDescription, "_
 		   &" strAssessRisk, strConsequence, strLikelyhood, strControlRiskDesc,strHazardsDesc,boolFurtherActionsSWMS,boolFurtherActionsChemicalRA, "_
-		   &" boolFurtherActionsGeneralRA,strText,numFacultyId,strSupervisor,strDateActionsCompleted, strConsultation, boolSWMSRequired, strInherentRisk, dtReview, numOperationID) Values "_
+		   &" boolFurtherActionsGeneralRA,strText,numFacultyId,strSupervisor,strDateActionsCompleted, strConsultation, boolSWMSRequired, "_
+           &" strInherentRisk, dtReview, strJobSteps, numOperationID) Values "_
 		   &" ("&cint(cboFacility)&","_
 		   &" '"& rsFill("dtDateCreated") &"',"_
 		   &" '"& rsFill("strAssessor") &"',"_
@@ -157,7 +160,8 @@
 		   &" '"& rsFill("strConsultation") &"' ,"_
 		   &" "& rsFill("boolSWMSRequired") &" ,"_
 		   &" '"& rsFill("strInherentRisk") &"',"_
-            &" '"& rsFill("dtReview") &"',"_
+           &" '"& rsFill("dtReview") &"',"_
+           &" '"& rsFill("strJobSteps") &"',"_
 		   &"0 ) "
 		   
 		   set rsAdd = Server.CreateObject("ADODB.Recordset")

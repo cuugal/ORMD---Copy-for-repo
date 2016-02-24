@@ -601,7 +601,9 @@
     &"from tblFaculty, tblfacilitysupervisor, tbloperations, tblQORA "_
     &"where tblfaculty.numfacultyID = tblfacilitysupervisor.numfacultyid "_
     &"and tbloperations.numfacilitysupervisorid = tblfacilitysupervisor.numsupervisorid "_
+    &"and tbloperations.strOperationName not like 'Archive%' "_
     &"and tblqora.numoperationid = tbloperations.numoperationid "_
+
     &"group by strFacultyName, tblFaculty.numFacultyID "_
 
     &"order by  2, strFacultyName"
