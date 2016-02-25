@@ -10,7 +10,11 @@ End If
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
  <link rel="stylesheet" type="text/css" href="orr.css" media="screen" />
 <title>Online Risk Register - Delete a Risk Assessment</title>
+
+    <!--#include file="bootstrap.inc"--> 
 </head>
+
+    <!--#include file="HeaderMenu.asp" -->
 <body>
 <%
 Function Escape(sString)
