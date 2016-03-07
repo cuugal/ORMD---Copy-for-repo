@@ -21,7 +21,14 @@ session.LCID = 2057	'English(British) format
         
       <div id="wrapper" class="container">
          <div id="content">
-            <h2 class="pagetitle">Search UTS Risk Assessments</h2>
+
+<table>
+<tr>
+	<td align='left' width='75%'><h2 class="pagetitle">Search UTS Risk Assessments</h2></td>
+	<td align='right'><a href ="http://www.safetyandwellbeing.uts.edu.au/guide/OnlineRiskRegisterInstructions.pdf" target="_blank"><h2 class="pagetitle"><font color="8DAB3D"><u>Instructions for using the ORR</u></font></a></h2></td>
+</tr>
+</table>
+            
             <center>
                 <div style="width:950px">
                     <h3 style="float:left">Search By:</h3>
@@ -30,9 +37,12 @@ session.LCID = 2057	'English(British) format
                 <div style="width:950px">
                     <!--#include file="searchQORA.asp"--> 
                 </div>
+			  	
             </center>
+
              <br />
               <br />
+
          </div>
          <!-- close the content DIV -->
       </div>
