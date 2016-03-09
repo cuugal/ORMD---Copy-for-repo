@@ -140,7 +140,7 @@
                                     &" and tblFaculty.numFacultyID = tblFacilitySupervisor.numFacultyID "_
                                     &" and tblFaculty.numFacultyID = "& numFacultyID&" "_
                                     &" And  tblBuilding.numBuildingId = "& numBuildingId &" "_
-                                    &" order by tblFacility.strRoomName"
+                                    &" order by tblFacility.strRoomNumber"
 
         set rsFillOperation = Server.CreateObject("ADODB.Recordset")
         rsFillOperation.Open strSQL, con, 3, 3
