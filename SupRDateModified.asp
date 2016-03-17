@@ -141,47 +141,80 @@ End Function
     <h2 class="pagetitle">Risk Assessment Search Results &nbsp;&nbsp;&nbsp;<input type="submit" value="Print preview" /></h2>    
   </form>
       <% end if %>
-</div>
+
 
 <% if rsSearchH.EOF <> true then  %>
     
     <% if(searchType="location") then %>
-<table class="suprreportheader">
-	<tr>
-		<th>Campus:</th><td><%=cstr(rsSearchH("strCampusName")) %></td>
-		<th>Building:</th><td><%=cstr(rsSearchH("strBuildingName")) %></td>
-		<th>Room Name:</th><td><%=cstr(rsSearchH("strRoomName"))%></td>
-		<th>Room Number:</th><td><%=cstr(rsSearchH("strRoomNumber"))%></td>
-  
-    </tr>
+<table class="searchResultsFromMenu" width="100%">
+    <tr>    		
+    		<td class="campus">
+    		<strong>Campus: </strong><%=rsSearchH("strCampusName")%>&nbsp;&nbsp;&nbsp;</td>
+    		<td class="campus" colspan="3"><strong>Building: </strong><%=rsSearchH("strBuildingName")%>&nbsp;&nbsp;&nbsp;
+    		<strong>Room Name: </strong><%=rsSearchH("strRoomName")%>&nbsp;&nbsp;&nbsp;</td>
+    		<td class="campus" colspan="3"><strong>Room Number: </strong><%=rsSearchH("strRoomNumber")%>&nbsp;&nbsp;&nbsp;
+    		</td>
+  		</tr>
+
     <tr>
-	<!-- DLJJan2016 appears supervisor is derived from wrong source -->
-    	<!--th>Supervisor:</th><td><%=rsSearchH("strGivenName")&" "&rsSearchH("strSurname")%></td-->
-		<th>Supervisor:</th><td><%=strName%></td>
-    	<th>Faculty:</th><td colspan="5"><%=strFacultyName %></td>
- </tr>
+  			<td class="campus">
+  			<strong>Supervisor: </strong><%=rsSearchH("strGivenName")%>&nbsp;<%=rsSearchH("strSurname")%>&nbsp;&nbsp;&nbsp;</td>
+  			<td class="campus" colspan="3"><strong>Faculty: </strong><%=session("strFacultyName")%>&nbsp;&nbsp;&nbsp;
+  			</td>
+            <%
+            set connControls = Server.CreateObject("ADODB.Connection")
+  			connControls.open constr
+			' setting up the recordset
+   			strControls ="Select count(numQORAId) as numRA, sum(iif(dtReview > Date() , 1 , 0 )) as numCurrent, strRoomName from tblFacility, tblQORA "_
+                &" where tblFacility.numFacilityId = "&rsSearchH("tblQORA.numFacilityId")_
+                &" and tblQORA.numFacilityId = tblFacility.numFacilityId"_
+                &" group by strRoomName"
+
+            'response.write strControls
+  			set rsControls = Server.CreateObject("ADODB.Recordset")
+        	rsControls.Open strControls, connControls, 3, 3
+ 	
+                %>	
+              <td class="campus" colspan="3"><strong>Current Risk Assessments: </strong><%=rsControls("numCurrent")%>/<%=rsControls("numRA")%></td>
+  		<tr>
  </table>
 <% end if
 if (searchType = "operation") then %>
-<table class="suprreportheader">
-	<tr>
-    	<!--th>Supervisor:</th><td><%=rsSearchH("strGivenName")&" "&rsSearchH("strSurname")%></td-->
-		<th>Supervisor:</th><td><%=strName%></td>
-		<th>Operation: </th><td><%=rsSearchH("strOperationName")%></td>	
-	</tr>
+<table class="searchResultsFromMenu" width="100%">
+	
+    <tr>
+  			<td class="campus">
+  			<strong>Supervisor: </strong><%=rsSearchH("strGivenName")%>&nbsp;<%=rsSearchH("strSurname")%>&nbsp;&nbsp;&nbsp;</td>
+  			<td class="campus" colspan="3"><strong>Operation: </strong><%=rsSearchH("strOperationName")%>&nbsp;&nbsp;&nbsp;
+  			</td>	
+             <%
+            set connControls = Server.CreateObject("ADODB.Connection")
+  			connControls.open constr
+			' setting up the recordset
+   			strControls ="Select count(numQORAId) as numRA, sum(iif(dtReview > Date() , 1 , 0 )) as numCurrent, strOperationName from tblOperations, tblQORA "_
+                &" where tblOperations.numOperationId = "&rsSearchH("tblQORA.numOperationId")_
+                &" and tblQORA.numOperationId = tblOperations.numOperationId"_
+                &" group by strOperationName"
+
+            'response.write strControls
+  			set rsControls = Server.CreateObject("ADODB.Recordset")
+        	rsControls.Open strControls, connControls, 3, 3
+ 	
+                %>	
+              <td class="campus" colspan="3"><strong>Current Risk Assessments: </strong><%=rsControls("numCurrent")%>/<%=rsControls("numRA")%></td>
+  			
+  		<tr>
 </table>
 <% end if
    'Response.Write(strSQL) 
   if not rsSearchH.EOF then 
        %>
-    <br />
-    <table class="sortable suprlevel" id="id13">
-     <caption>
-      To sort any column, click on a table heading. 
-      </caption>
+
+    <table class="sortable searchResultsFromMenu" id="id13">
+    
       <thead>
         <tr>
-            <th style="width:130px">&nbsp;</th>
+            <th class="actions">&nbsp;</th>
         	<th class="qoraID">Ra No.</th>
           	<th class="haztaskresult">Task</th>
     		<th class="assochazards">Hazards</th>
@@ -301,7 +334,7 @@ if (searchType = "operation") then %>
 <strong>There are currently no Risk Assessments for this facility or operation</strong>
 <%end if%>
 </div>
-
+    </div>
 
     <%
         

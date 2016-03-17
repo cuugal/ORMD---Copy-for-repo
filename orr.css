@@ -363,14 +363,16 @@ table.searchResultsFromMenu { border: solid 1px #fff; min-width: 760px; font-siz
 .searchResultsFromMenu tr { background-color: #c0c0c0; }
 .searchResultsFromMenu textarea { color: #000; background-color: #fff; font-size: 8pt; font-family: Verdana, Arial, sans-serif;}
 
-.searchResultsFromMenu th.qoraID { width: 5%; color: #000; font-size: 8pt; }
-.searchResultsFromMenu th.haztaskresult { width: 25%; color: #000; font-size: 8pt; }
-.searchResultsFromMenu th.assochazards { width: 10%;  color: #000; font-size: 8pt; }
-.searchResultsFromMenu th.currentcontrols { width: 25%;  color: #000; font-size: 8pt; }
-.searchResultsFromMenu th.risklevel { width: 8%;  color: #000; font-size: 8pt; }
-.searchResultsFromMenu th.furtheraction {  color: #000; font-size: 8pt; }
-.searchResultsFromMenu th.renewaldate { width: 8%;  color: #000; font-size: 8pt; }
-.searchResultsFromMenu th.swms { width: 8%; color: #000; font-size: 8pt; }
+.searchResultsFromMenu th.actions { width: 9%; color: #000; font-size: 8pt; }
+.searchResultsFromMenu th.singleaction { width: 3%; color: #000; font-size: 8pt; }
+.searchResultsFromMenu th.qoraID { width: 3%; color: #000; font-size: 8pt; }
+.searchResultsFromMenu th.haztaskresult { width: 18%; color: #000; font-size: 8pt; }
+.searchResultsFromMenu th.assochazards { width: 18%;  color: #000; font-size: 8pt; }
+.searchResultsFromMenu th.currentcontrols { width: 18%;  color: #000; font-size: 8pt; }
+.searchResultsFromMenu th.risklevel { width: 5%;  color: #000; font-size: 8pt; }
+.searchResultsFromMenu th.furtheraction { width: 18%; color: #000; font-size: 8pt; }
+.searchResultsFromMenu th.renewaldate { width: 6%;  color: #000; font-size: 8pt; }
+.searchResultsFromMenu th.swms { width: 5%; color: #000; font-size: 8pt; }
 
 .searchResultsFromMenu thead .date { text-align: right; vertical-align: top; background-color: #fff; color: #000; vertical-align: top;}
 .searchResultsFromMenu thead { text-align: center; vertical-align: middle; background-color: blue; color: blue; }

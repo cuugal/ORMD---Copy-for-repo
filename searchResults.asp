@@ -472,7 +472,7 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
   		<% rowID = rowID +1 %>
   		<table width="100%" class="sortable searchResultsFromMenu" id="id1<%=rowID%>">
   		<tr>
-              <th class="">&nbsp;</th>
+            <th class="singleaction">&nbsp;</th>
   			<th class="qoraID">Ra No.</th>
     		<th class="haztaskresult">Task</th>
     		<th class="assochazards">Hazards</th>
