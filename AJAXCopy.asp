@@ -59,13 +59,13 @@
 		   &" "& rsFill("boolFurtherActionsGeneralRA") &","_
 		   &" '"& rsFill("strText") &"',"_
 		   &" "& rsFill("numFacultyId") &","_
-		   &" '"& rsFill("strSupervisor") &"',"_
+		   &" '"& session("strLoginID") &"',"_
 		   &" '"& rsFill("strDateActionsCompleted") &"' ,"_
 		   &" '"& rsFill("strConsultation") &"' ,"_
 		   &" "& rsFill("boolSWMSRequired") &" ,"_
 		   &" '"& rsFill("strInherentRisk") &"',"_
            &" '"& rsFill("dtReview") &"',"_
-           &" '"& rsFill("strJobSteps") &"',"_
+           &" '"& Replace(rsFill("strJobSteps"),"'","") &"',"_
 		   & cint(cboOperation)&" ) "
 		   
 		   set rsAdd = Server.CreateObject("ADODB.Recordset")
@@ -155,13 +155,13 @@
 		   &" "& rsFill("boolFurtherActionsGeneralRA") &","_
 		   &" '"& rsFill("strText") &"',"_
 		   &" "& rsFill("numFacultyId") &","_
-		   &" '"& rsFill("strSupervisor") &"',"_
+		   &" '"& session("strLoginID") &"',"_
 		   &" '"& rsFill("strDateActionsCompleted") &"' ,"_
 		   &" '"& rsFill("strConsultation") &"' ,"_
 		   &" "& rsFill("boolSWMSRequired") &" ,"_
 		   &" '"& rsFill("strInherentRisk") &"',"_
            &" '"& rsFill("dtReview") &"',"_
-           &" '"& rsFill("strJobSteps") &"',"_
+           &" '"& Replace(rsFill("strJobSteps"),"'","") &"',"_
 		   &"0 ) "
 		   
 		   set rsAdd = Server.CreateObject("ADODB.Recordset")

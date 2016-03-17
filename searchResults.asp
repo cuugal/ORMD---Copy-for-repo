@@ -472,7 +472,7 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
   		<% rowID = rowID +1 %>
   		<table width="100%" class="sortable searchResultsFromMenu" id="id1<%=rowID%>">
   		<tr>
-            <th class="singleaction">&nbsp;</th>
+            <% if session("LoggedIn") then %><th class="singleaction">&nbsp;</th><% end if %> 
   			<th class="qoraID">Ra No.</th>
     		<th class="haztaskresult">Task</th>
     		<th class="assochazards">Hazards</th>
@@ -495,7 +495,7 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
      dtRDate = cstr(date_d)+"/"+cstr(date_m)+"/"+ cstr(date_y)
      %>
   	<tr>
-          <td><a href="#" data-toggle="modal" data-target="#CopyModal" data-qora="<%=rsFaculty("numQORAID")%>">Copy</a></td>
+         <% if session("LoggedIn") then %> <td><a href="#" data-toggle="modal" data-target="#CopyModal" data-qora="<%=rsFaculty("numQORAID")%>">Copy</a></td> <% end if %>
     	<td><%=Escape(rsFaculty("numQORAId"))%></td>
     	<!--td><a target="Operation" title="Click to edit this Risk Assessment." href="EditQORA.asp?numCQORAId=<%=rsFaculty("numQORAId")%>"><%=rsFaculty("strTaskDescription")		%></td-->
 		<td><%=rsFaculty("strTaskDescription") %></td>
@@ -585,7 +585,7 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
 set rsClear = Server.CreateObject("ADODB.Recordset")
 rsClear.Open "delete from tblQORATemp", conn, 3, 3 
 end if
-
+ if session("LoggedIn") then 
 
     Dim connFaci
 		Dim rsFillFaci
@@ -747,3 +747,5 @@ end if
     });
 
     </script>
+
+<% end if %>
