@@ -301,6 +301,8 @@ dim SQLInsert
 set conn = Server.CreateObject("ADODB.Connection")
 conn.open constr
 
+
+
 while not rsSearch.Eof 
 
 	'Code to fix apostrophe problem. 
@@ -464,11 +466,13 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
   		<tr>
   	</table>
    
+
    
   <% end if %>	
   		<% rowID = rowID +1 %>
   		<table width="100%" class="sortable searchResultsFromMenu" id="id1<%=rowID%>">
   		<tr>
+              <th class="">&nbsp;</th>
   			<th class="qoraID">Ra No.</th>
     		<th class="haztaskresult">Task</th>
     		<th class="assochazards">Hazards</th>
@@ -491,6 +495,7 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
      dtRDate = cstr(date_d)+"/"+cstr(date_m)+"/"+ cstr(date_y)
      %>
   	<tr>
+          <td><a href="#" data-toggle="modal" data-target="#CopyModal" data-qora="<%=rsFaculty("numQORAID")%>">Copy</a></td>
     	<td><%=Escape(rsFaculty("numQORAId"))%></td>
     	<!--td><a target="Operation" title="Click to edit this Risk Assessment." href="EditQORA.asp?numCQORAId=<%=rsFaculty("numQORAId")%>"><%=rsFaculty("strTaskDescription")		%></td-->
 		<td><%=rsFaculty("strTaskDescription") %></td>
@@ -569,6 +574,7 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
  wend
     %>
 
+</table>
 
 </div>
 <!-- close content -->
@@ -580,4 +586,164 @@ set rsClear = Server.CreateObject("ADODB.Recordset")
 rsClear.Open "delete from tblQORATemp", conn, 3, 3 
 end if
 
+
+    Dim connFaci
+		Dim rsFillFaci
+		Dim strSQLFaci
+	  
+		'Database Connectivity Code 
+		set connFaci = Server.CreateObject("ADODB.Connection")
+		connFaci.open constr
+	   
+		' setting up the recordset
+	   
+		strSQLFaci ="Select * from tblFacility "
+
+		if session("numSupervisorId") <> 1 then
+			strSQLFaci =strSQLFaci&" WHERE numFacilitySupervisorId = "& session("numSupervisorId")
+		end if
+		strSQLFaci = strSQLFaci&" order by strRoomNumber"
+		set rsFillFaci = Server.CreateObject("ADODB.Recordset")
+		rsFillFaci.Open strSQLFaci, connFaci, 3, 3
+
+    Dim connProj
+		Dim rsFillProj
+		Dim strSQLProj
+	  
+		'Database Connectivity Code 
+		set connProj = Server.CreateObject("ADODB.Connection")
+		connProj.open constr
+	   
+		' setting up the recordset
+	   
+		strSQLProj ="Select * from tblOperations "
+
+		if session("numSupervisorId") <> 1 then
+			strSQLProj =strSQLProj&" WHERE numFacilitySupervisorId = "& session("numSupervisorId")
+		end if
+		strSQLProj = strSQLProj&" order by strOperationName"
+		set rsFillProj = Server.CreateObject("ADODB.Recordset")
+		rsFillProj.Open strSQLProj, connProj, 3, 3
+        
+
 %>
+
+
+<div class="modal fade" id="CopyModal" tabindex="-1" role="dialog" aria-labelledby="CopyModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+      </div>
+      <div class="modal-body">
+        <form id="copyForm">
+          <input type="hidden" class="form-control" id="qora" name="qora"/>
+            <input type="hidden" name="mode" id="searchType" value=""/>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">To Facility:</label>
+           <select class="form-control" autocomplete="off" id="myfacility" size="1" name="cboFacility" tabindex="1" onchange="$('#searchType').val('location');$('#submitCopy').html('Copy to Location');">
+			<option value="0">Select any one</option>
+			<%
+				while not rsFillFaci.Eof
+					concat = rsFillFaci("strRoomNumber")&" "&rsFillFaci("strRoomName")
+						%>   
+					<option value="<%=rsFillFaci("numFacilityId")%>"><%=concat%></option>
+			<% 
+				rsFillFaci.Movenext	
+				wend 
+			%>
+			</select>  
+          </div>
+            <hr/>
+            <b>OR</b>
+            <hr />
+           <div class="form-group">
+            <label for="recipient-name" class="control-label">To Operation:</label>
+           <select class="form-control" autocomplete="off" id="myoperation" name="cboOperation" id="cboOperation" Onchange="$('#searchType').val('operation');$('#submitCopy').html('Copy to Operation');">
+			<option value="0">Select any one</option>
+			<%
+				while not rsFillProj.Eof
+						%>   
+					<option value="<%=rsFillProj("numOperationId")%>">
+						<%=rsFillProj("strOperationName")%></option>
+			<% 
+				rsFillProj.Movenext	
+				wend 
+			%>
+			</select>  
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" id="submitCopy" class="btn btn-primary">Copy to..</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+    $('#CopyModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var qora = button.data('qora') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text('Copy Risk Assessment: ' + qora)
+        modal.find('.modal-body #qora').val(qora)
+    })
+
+    $(function () {
+        //twitter bootstrap script
+        $("#submitCopy").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "AJAXCopy.asp",
+                data: $('#copyForm').serialize(),
+                success: function (data) {
+                    var obj = jQuery.parseJSON(data);
+                    var newRA = obj.result;
+                    alert("Copied to RA " + newRA);
+                    $("#CopyModal").modal('hide');
+                    $("#refreshResults").submit();
+                },
+                error: function () {
+                    alert("failure");
+                }
+            });
+        });
+    });
+
+    $('#ArchiveModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var qora = button.data('qora') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text('Archive Risk Assessment: ' + qora)
+        modal.find('.modal-body #archiveQora').val(qora)
+    })
+
+    $(function () {
+        //twitter bootstrap script
+        $("#submitArchive").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "AJAXArchive.asp",
+                data: $('#archiveForm').serialize(),
+                success: function (data) {
+                    var obj = jQuery.parseJSON(data);
+                    var newRA = obj.result;
+                    alert("Archived RA " + newRA);
+                    $("#ArchiveModal").modal('hide');
+                    $("#refreshResults").submit();
+                },
+                error: function () {
+                    alert("failure");
+                }
+            });
+        });
+    });
+
+    </script>
