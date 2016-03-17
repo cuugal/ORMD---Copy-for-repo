@@ -323,9 +323,10 @@ strJobSteps = ""
 			todaysDate = cstr(todaysDay) +"/"+cstr(todaysMonth)+"/"+cstr(todaysYear)
 			renewalDate = cstr(todaysDay) +"/"+cstr(todaysMonth)+"/"+cstr(renewal)
 			%>
-        	<th>Assessor / Reviewer</th><td><input type="text" name="txtAssessor" size="35" /></td>
-        	<td>Date Last Modified (dd/mm/yyyy)&nbsp;&nbsp;&nbsp;
-          	<input type="text" name="txtDateCreated" size="9" value="<%=todaysDate%>"/></td>
+        	<th>Assessor / Reviewer</th><td colspan="2"><input type="text" name="txtAssessor" size="35" /></td>
+        	<!--<td>Date Last Modified (dd/mm/yyyy)&nbsp;&nbsp;&nbsp;
+          	<input type="text" name="txtDateCreated" size="9" value="<%=todaysDate%>"/></td>-->
+            <input type="hidden" name="txtDateCreated" size="9" value="<%=todaysDate%>"/>
           	<td>Review Date&nbsp;&nbsp;&nbsp;<%=renewalDate%></td>
         </tr>
 		<tr>
