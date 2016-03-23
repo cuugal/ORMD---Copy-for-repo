@@ -181,9 +181,25 @@ end if
 					</td>
 					
 			    <% End If %>
-					<td>
-					<input type="button" value="Back to Risk Assessment List" name="Back" onclick="history.back();">
-					</td>	
+					
+                  <%
+                      dim action
+                      if Session("mostRecentSearch") <> "" then
+                      %>
+                         <td>
+					        <input type="button" value="Back to Risk Assessment List" name="Back" onclick="$('#refreshResults').submit();">
+                        </td>
+                        <%
+                        action = Session("mostRecentSearch")
+                      else
+                        action = "Home.asp"
+                      end if
+                       %>
+
+                     
+
+
+					
 
       				<td align="center">
 					<!-- <input type="submit" value="Print preview" /> -->		
@@ -327,11 +343,17 @@ if isNull(strJobSteps) then
  </tr> 
 </table>
 
-
-			  <!-- buttons used to live here -->
-
-
   </form>
+
+       <form id="refreshResults" action="<%=action %>" method="post">
+                          <input type="hidden" name="confirmationMsg" value="" />
+                        <input type="hidden" name="searchType" value="<%=session("searchType") %>" />
+                        <input type="hidden" name="cboOperation" value="<%=session("cboOperation")  %>" />
+                        <input type="hidden" name="cboFacility" value="<%=session("cboFacility") %>" />
+                        <input type="hidden" name="hdnFacultyId" value="<%=session("cboFaculty") %>" />
+                          <input type="hidden" name="hdnBuildingId" value="<%=session("hdnBuildingId") %>" />
+                          <input type="hidden" name="hdnCampusId" value="<%=session("hdnCampusId") %>" />
+                    </form>
     <div style="clear:both"></div>  
   	</div>
   </div>

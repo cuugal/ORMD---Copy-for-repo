@@ -79,7 +79,7 @@ if rsShow.EOF <> true then
 <div id="wrapper">
 
 <div id="content">
-<table class="suprlevel" style="width: 100%;">
+<table class="searchResultsFromMenu" style="width: 100%;">
       <caption>
 		To edit a risk assessment, click on its title under the &quot;Hazardous Task&quot; heading.
       </caption>

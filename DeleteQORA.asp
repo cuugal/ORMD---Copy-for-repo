@@ -61,10 +61,34 @@ val = cint(request.form("hdnQORAId"))
   
 'else
 %>
+    <div id="wrapper">
+  <div id="content">
+    <h2 class="pagetitle">Risk Assessment <%=val%> has been deleted successfully</h2>
+	
+    <div class="addAnother">
+ <%
+            dim action
+            if Session("mostRecentSearch") <> "" then   
+                action = Session("mostRecentSearch")
+            else
+                action = "Home.asp"
+            end if
+            %>
 
-<!-- **************************************New Code that displays search results afer deleting -->
+          <form id="refreshResults" action="<%=action %>" method="post">
+            <input type="hidden" name="confirmationMsg" value="" />
+            <input type="hidden" name="searchType" value="<%=session("searchType") %>" />
+            <input type="hidden" name="cboOperation" value="<%=session("cboOperation")  %>" />
+            <input type="hidden" name="cboFacility" value="<%=session("cboFacility") %>" />
+            <input type="hidden" name="hdnFacultyId" value="<%=session("cboFaculty") %>" />
+            <input type="hidden" name="hdnBuildingId" value="<%=session("hdnBuildingId") %>" />
+            <input type="hidden" name="hdnCampusId" value="<%=session("hdnCampusId") %>" />
+             <input type="submit" class="btn btn-primary" value="Next" name="btnAddMore">
+        </form>
+        </div>
 
-
-<!--#include file="reportAfterEdit.asp"-->
+  </div>
+</div>
+<!--used to include file="reportAfterEdit.asp"-->
 </body>
 </html>

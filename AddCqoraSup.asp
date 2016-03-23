@@ -371,20 +371,40 @@ Dim rsAddControls
     <h2 class="pagetitle">Risk Assessment <%=strPrikey%> - "<%response.write(strtaskDesc)%>" has been added successfully</h2>
 	
     <div class="addAnother">
-    <strong>Do you want to add another Risk Assessment? If yes, please click the 'Next' button below.</strong>
-        <form method="POST" action="locationSup.asp">
+
+        <!--<form method="POST" action="locationSup.asp">
               <input type="hidden" name = cboBuilding value ="<%=numBuildingID%>">
               <input type="hidden" name = cboCampus value ="<%=numCampusID%>">
               <input type="hidden" name = cboRoom value ="<%=numFacilityID%>">
               <input type="submit" class="btn btn-primary" href="LocationSup.asp" value="Next" name="btnAddMore">
             </form>
+        -->
+         <%
+            dim action
+            if Session("mostRecentSearch") <> "" then   
+                action = Session("mostRecentSearch")
+            else
+                action = "Home.asp"
+            end if
+            %>
+
+          <form id="refreshResults" action="<%=action %>" method="post">
+            <input type="hidden" name="confirmationMsg" value="" />
+            <input type="hidden" name="searchType" value="<%=session("searchType") %>" />
+            <input type="hidden" name="cboOperation" value="<%=session("cboOperation")  %>" />
+            <input type="hidden" name="cboFacility" value="<%=session("cboFacility") %>" />
+            <input type="hidden" name="hdnFacultyId" value="<%=session("cboFaculty") %>" />
+            <input type="hidden" name="hdnBuildingId" value="<%=session("hdnBuildingId") %>" />
+            <input type="hidden" name="hdnCampusId" value="<%=session("hdnCampusId") %>" />
+             <input type="submit" class="btn btn-primary" value="Next" name="btnAddMore">
+        </form>
     </div>
 
   </div>
 </div>
 </body>
-<!-- **************************************New Code that displays search results afer adding -->
-<!--#include file="reportAfterEdit.asp"-->
+
+<!-- previously used to include file="reportAfterEdit.asp" here to show results list-->
 
 
 </body>
