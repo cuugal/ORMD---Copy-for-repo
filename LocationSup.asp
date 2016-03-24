@@ -89,6 +89,8 @@ Dim rsFillBuilding
    if not session("isAdmin") then 
       strSQL = strSQL &"  and tblFacilitySupervisor.numSupervisorId ="&session("numSupervisorId") 
    end if 
+  strSQL = strSQL &" ORDER BY strBuildingName"
+   'response.Write strSQL
    set rsFillBuilding = Server.CreateObject("ADODB.Recordset")
    rsFillBuilding.Open strSQL, conn, 3, 3
 
@@ -165,7 +167,9 @@ Dim rsFillR
    if not session("isAdmin") then 
       strSQL = strSQL &"  and tblFacilitySupervisor.numSupervisorId ="&session("numSupervisorId") 
    end if 
-   
+     strSQL = strSQL &" ORDER BY strRoomName"
+   'response.Write strSQL
+
    set rsFillR = Server.CreateObject("ADODB.Recordset")
    rsFillR.Open strSQL, connR, 3, 3
 %>
