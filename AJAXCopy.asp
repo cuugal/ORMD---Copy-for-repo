@@ -46,7 +46,7 @@
 		   &" (0,"_
 		   &" '"& rsFill("dtDateCreated") &"',"_
 		   &" '"& rsFill("strAssessor") &"',"_
-		   &" '"& rsFill("strTaskDescription") &"',"_
+		   &" '"& Replace(rsFill("strTaskDescription")&" ","'","''") &"',"_
 
 		   &" '"& rsFill("strAssessRisk") &"',"_
 		   &" '"& rsFill("strConsequence") &"',"_
@@ -65,7 +65,7 @@
 		   &" "& rsFill("boolSWMSRequired") &" ,"_
 		   &" '"& rsFill("strInherentRisk") &"',"_
            &" '"& rsFill("dtReview") &"',"_
-           &" '"& Replace(rsFill("strJobSteps"),"'","") &"',"_
+           &" '"& Replace(rsFill("strJobSteps")&" ","'","''") &"',"_
 		   & cint(cboOperation)&" ) "
 		   
 		   set rsAdd = Server.CreateObject("ADODB.Recordset")
@@ -142,7 +142,7 @@
 		   &" ("&cint(cboFacility)&","_
 		   &" '"& rsFill("dtDateCreated") &"',"_
 		   &" '"& rsFill("strAssessor") &"',"_
-		   &" '"& rsFill("strTaskDescription") &"',"_
+		   &" '"& Replace(rsFill("strTaskDescription")&" ","'","''") &"',"_
 
 		   &" '"& rsFill("strAssessRisk") &"',"_
 		   &" '"& rsFill("strConsequence") &"',"_
@@ -161,7 +161,7 @@
 		   &" "& rsFill("boolSWMSRequired") &" ,"_
 		   &" '"& rsFill("strInherentRisk") &"',"_
            &" '"& rsFill("dtReview") &"',"_
-           &" '"& Replace(rsFill("strJobSteps"),"'","") &"',"_
+           &" '"& Replace(rsFill("strJobSteps")&" ","'","''") &"',"_
 		   &"0 ) "
 		   
 		   set rsAdd = Server.CreateObject("ADODB.Recordset")
