@@ -538,7 +538,7 @@
 									%>
 								 </select>
 							  </td>
-                               <td><input type="submit" size="70" value="Generate Facility Report" class="btn btn-primary" onclick="return checkFacility();" name="btnGenRep" /></td>
+                               <td><input type="submit" size="70" value="List Facility Risk Assessments" class="btn btn-primary" onclick="return checkFacility();" name="btnGenRep" /></td>
 						   </tr>
 						
 						<tr><td colspan="4"><hr /></td></tr>
@@ -560,7 +560,7 @@
 							  </td>
 						   
 							  <td>
-                                   <input type="submit" size="70"value="Generate Operation/Project Report" class="btn btn-primary" onclick="return checkOperation();" name="btnGenRep" /></td>
+                                   <input type="submit" size="70"value="List Operation/Project Risk Assessments" class="btn btn-primary" onclick="return checkOperation();" name="btnGenRep" /></td>
 						   </tr>
 						   
 
@@ -569,7 +569,7 @@
                                <button class="btn btn-primary" type="button" onclick="$('#myfacility').val(0);$('#myoperation').val(0);">Clear</button>
                                    </td></tr>
                                <tr><td colspan="3"></td><td>
-                                   <button  class="btn btn-primary" type="button" onclick="window.location='LocationSup.asp'">Create Risk Assessment</button>
+                                   <button  class="btn btn-primary" type="button" onclick="window.location='LocationSup.asp'">Create New Risk Assessment</button>
                                
                               </td>
                                </tr>
