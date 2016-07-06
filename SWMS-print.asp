@@ -210,7 +210,7 @@ end if
 	 
 %>
 		<tr>
-      		<td colspan="3" align="left"> <strong>Work Activity: </strong><%=rsResults("strTaskDescription")%></td>
+      		<td colspan="3" align="left"> <strong>Work Activity Description: </strong><%=rsResults("strTaskDescription")%></td>
       	</tr>
 		<tr>
       		
@@ -293,7 +293,7 @@ if(rsResults("numOperationId") <> 0) then %>
 	<table class="suprlevel-print" style="margin 0 auto; width:90%; margin-left:40px">
 		<tr>
 		<td style="width: 100%;">
-		<strong>WORK ACTIVITY HAZARDS: </strong><br/>
+		<strong>HAZARDS: </strong><br/>
 <%=Escape(strHazardsDesc)%><br/>
 
 		</td>

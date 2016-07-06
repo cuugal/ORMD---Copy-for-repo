@@ -474,7 +474,7 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
   		<tr>
             <% if session("LoggedIn") then %><th class="singleaction">&nbsp;</th><% end if %> 
   			<th class="qoraID">Ra No.</th>
-    		<th class="haztaskresult">Task</th>
+    		<th class="haztaskresult">Work Activity</th>
     		<th class="assochazards">Hazards</th>
     		<th class="currentcontrols">Current Controls</th>
     		<th class="risklevel">Risk Level</th>

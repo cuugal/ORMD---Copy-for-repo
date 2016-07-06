@@ -216,7 +216,7 @@ if (searchType = "operation") then %>
         <tr>
             <th class="actions">&nbsp;</th>
         	<th class="qoraID">Ra No.</th>
-          	<th class="haztaskresult">Task</th>
+          	<th class="haztaskresult">Work Activity</th>
     		<th class="assochazards">Hazards</th>
     		<th class="currentcontrols">Current Controls</th>
     		<th class="risklevel">Risk Level</th>

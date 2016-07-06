@@ -335,15 +335,15 @@ Dim strSurname
 
     </br>
 	  <table class="reportwarn" style="width: 82%">
-      <tr><td><b>NOTE: All risk assessments should be performed in consultation with staff involved with the task.</b></td></tr>
+      <tr><td><b>NOTE: All risk assessments should be performed in consultation with staff involved with this work activity.</b></td></tr>
 	  </table>
 	</br>
 
- <strong>(1) Describe briefly how the task is performed</strong><br>
+ <strong>(1) Describe briefly how the work is performed</strong><br>
   <br>
   <table class="suprreportheader" style="width: 82%">
     <tr>
-      <th>Task Description</th>
+      <th>Work Activity Description</th>
       <td><!--<input type="text" name="txtTaskDesc" size="100%" value="<%=strTaskDescription%>" />-->
       <textarea rows="4" name="txtTaskDesc" cols="90" ><%=strTaskDescription%></textarea></td>
     </tr>
@@ -355,8 +355,8 @@ Dim strSurname
       <hr style = "width: 82%;" align="left" />
   
   <!--Navigation -->
-  <a name="point1"></a> <strong>(2) Select hazards relating to task</strong>
-  <p style = "width:80%">Select from the menu below all of the hazards that apply to the task.<br />  NOTE: Lists of hazards appear when you put the cursor over this menu. When you click on one it appears in the text box below.</p>
+  <a name="point1"></a> <strong>(2) Select hazards relating to work activity</strong>
+  <p style = "width:80%">Select from the menu below all of the hazards that apply to the work activity.<br />  NOTE: Lists of hazards appear when you put the cursor over this menu. When you click on one it appears in the text box below.</p>
 <div>
  <table class="suprreportheader" style="width: 82%">
  	<tr>
@@ -481,10 +481,9 @@ Dim strSurname
 	</tr>
 
 	<tr>
-    	<td>List hazards below either by using the  menu above or typing directly into the text box.</td>
-      	<td>Describe here inherent risks of the task: <br/>
-      	<strong><u>How</u></strong> these hazards cause harm<br/>
-      	<strong><u>What</u></strong> sort of injury/illness might occur</td>
+    	<td><strong>Hazard List</strong> <br/> List hazards below either by using the  menu above</br> or typing directly into the text box.</td>
+      	<td><strong>Inherent Risks</strong> <br/>List injury/illness that could occur from this work activity and 
+      	<strong><u>how</u></strong> this harm could happen. </br><i>e.g. - Back strain may occur from incorrect lifting.</i></td>
 	</tr>
   	<tr>  
     	<td><!-- textarea box goes in this table cell -->
@@ -523,7 +522,7 @@ Dim strSurname
    
   <BR>
       <hr style = "width: 82%;" align="left" />
-  <strong>(3) Select safety control measures to make task safe</strong>
+  <strong>(3) Select safety control measures to make work activity safe</strong>
       <p style = "width:82%">Select the safety control measures needed to minimise the risk of harm. List the Safety Control Measures that are both 'currently in place' and 'proposed'. NOTE: Lists of safety control measures appear when you put the cursor over this menu.</p>
       
 <div>
@@ -677,7 +676,7 @@ Dim strSurname
       <hr style = "width: 82%;" align="left" />
 
 <strong>(4) Assess level of residual risk</strong>
-  <p style = "width:82%">Use the risk matrix below as a guide to assess the level of risk, based on the hazards identified above and the way that the task is done with safety control measures that are in place.</p>
+  <p style = "width:82%">Use the risk matrix below as a guide to assess the level of risk, based on the hazards identified above and the way that the work is done with safety control measures that are in place.</p>
 <!-- Risk Matrix -->
 
 <TABLE>

@@ -30,8 +30,8 @@ table.eq tr.low { background-color: #FFFF99;}
 
 table.eq td.extreme { background-color: #FF0F00; }
 table.eq td.high { background-color: #FF9000; }
-table.eq td.medium { background-color: #FFE000; }
-table.eq td.low { background-color: #FFFF99;}
+table.eq td.medium { background-color: #FFFF00; }
+table.eq td.low { background-color: #70BF41;}
 
 table.eq td.hed { background-color: #EEEEEE; }
 table.eq td.hedalt { background-color: #edf4f6; }
@@ -41,8 +41,8 @@ table.eq td { text-align: center; padding: 3px;}
 /* SWMS form specifics */
 table.swms td.extreme { background-color: #FF0F00; color: #ffffff}
 table.swms td.high { background-color: #FF9000; }
-table.swms td.medium { background-color: #FFE000; }
-table.swms td.low { background-color: #FFFF99;}
+table.swms td.medium { background-color: #F5D328; }
+table.swms td.low { background-color: #70BF41;}
 table.swms .plainbox { padding: 2px; background-color: #EDF0F6; color: #000000; vertical-align: middle;}
 
 table.sortable a {text-decoration: underline;}

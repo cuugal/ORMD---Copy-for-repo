@@ -163,7 +163,7 @@ end if
        
  <table class="swms" width = 80%>
      	<tr>
-      		<td align="left" class="plainbox" colspan="4"><strong>Work Activity:</strong> <%=rsResults("strTaskDescription")%></td>
+      		<td align="left" class="plainbox" colspan="4"><strong>Work Activity Description:</strong> <%=rsResults("strTaskDescription")%></td>
 		</tr>
 		<tr>
 			
@@ -212,8 +212,8 @@ end if
   </table>
  <table class="swms" width = 80%>
 	<tr>
-      		<% if strAssessRisk="L" then%> <td class="low" align="middle" width="250"> Residual Risk Level: Low </td><%end if%>
-      		<% if strAssessRisk="M" then%> <td class="medium" align="middle" width="250"> Residual Risk Level: Medium </td><%end if%>
+      		<% if strAssessRisk="L" then%> <td class="low" align="middle" width="250"> <strong>Residual Risk Level: Low </strong></td><%end if%>
+      		<% if strAssessRisk="M" then%> <td class="medium" align="middle" width="250"> <strong>Residual Risk Level: Medium</strong> </td><%end if%>
       		<% if strAssessRisk="H" then%> <td class="high" align="right" width="250"> Residual Risk Level: High </td><%end if%>
       		<% if strAssessRisk="E" then%> <td class="extreme" align="right" width="250"> Residual Risk Level: Extreme </td><%end if%>
 	</tr>
@@ -283,7 +283,7 @@ if(rsResults("numOperationId") <> 0) then %>
       <table class="bluebox" style="margin 0 auto; width:80%; padding-left:40px">
 		<tr>  
 			<td>
-				<strong>TASK HAZARDS:</strong><br> <%=strHazardsDesc%>          
+				<strong>HAZARDS:</strong><br> <%=strHazardsDesc%>          
 			</td>
 		</tr> 
 		<tr>
@@ -325,18 +325,37 @@ if(rsResults("numOperationId") <> 0) then %>
 </table>
 
 <br/>       
-<strong> Work Activity steps </strong> <br/>&mdash; These "Work Activity Steps" can be edited directly. 
+
 <% 
-if isNull(strJobSteps) then
-	strJobSteps = "  BEFORE YOU START:"&vbCrLf&"         e.g.inspection or maintenance checks"&vbCrLf&vbCrLf&vbCrLf&"  STEPS IN WORK ACTIVITY (Noting how job is made safe as per the above Control Measures):"&vbCrLf&"  (1)"&vbCrLf&"  (2)"_
-    			 &vbCrLf&"  (3) etc ..."&vbCrLf&vbCrLf&vbCrLf&vbCrLf&"  EMERGENCY PROCEDURES:"&vbCrLf&"  Dial 6"&vbCrLf&vbCrLf&vbCrLf&"  Certificates/Licensing/WorkCover Permits Required:"&vbCrLf&vbCrLf&"  Training Required:"&vbCrLf&vbCrLf&"  Codes or Standards Applicable:"&vbCrLf&vbCrLf
+
+if isNull(strJobSteps) Then
+	strIntro = "The default wording below is a guide only. Please edit and delete example text as needed."
+	strJobSteps = "  BEFORE YOU START:"&vbCrLf&" - Training or qualification required"&vbCrLf&" - Safety equipment and PPE required"&vbCrLf&" - Allocated responsibilities"_
+	&vbCrLf&vbCrLf&"  STEP BY STEP PROCEDURE:"&vbCrLf&" - Pre-check and inspect equipment"&vbCrLf&" - Setting up the activity - e.g. Measure out materials"_
+
+	&vbCrLf&vbCrLf&"   Mechanical equipment example steps e.g. setting up job, starting machine"_
+
+	&vbCrLf&"   Microbiological example steps e.g. culturing liquid, streaking plates, centrifugation, long-term storage, transporting"_
+
+	&vbCrLf&vbCrLf&"  FINISHING UP:"&vbCrLf&" - Clean up / decontamination"_
+
+	&vbCrLf&vbCrLf&"  WASTE DISPOSAL:"&vbCrLf&" - Liquid waste disposal"&vbCrLf&" - Solid waste disposal"_
+
+	&vbCrLf&vbCrLf&"  MAINTENANCE:"_
+
+	&vbCrLf&vbCrLf&"  EMERGENCY PROCEDURES:"&vbCrLf&" - Dial 6 in emergency"&vbCrLf&" - Spill kit and spill response"&vbCrLf&" - Fire control"_
+
+	&vbCrLf&vbCrLf&"  CODES AND STANDARDS APPLICABLE:"
+
    end if %>
-  
+ <strong> Work Activity steps </strong> <br/>&mdash; These "Work Activity Steps" can be edited directly. Refer to control measures listed above. 
+ <br/><strong><%=strIntro%></strong>
+
   <table class="bluebox" style="margin 0 auto; width:80%; padding-left:40px">
   
       	<tr>  
           <td>
-            <textarea rows = "30" style="width:100%;" name="T4" ><%=strJobSteps%>
+            <textarea rows = "40" style="width:100%;" name="T4" ><%=strJobSteps%>
 </textarea> 
           
 </td>
