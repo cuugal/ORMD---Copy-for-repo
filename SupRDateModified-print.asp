@@ -120,13 +120,14 @@ End Function
   &" ORDER BY tblFacilitySupervisor.numFacultyId, tblRiskLevel.numGrade, strTaskDescription"
  end if
  
+ 'DLJ July2016 changed numOperationId to cboOperation
  
  if(searchType = "operation") then
 	 strSQL = "SELECT * FROM tblQORA, tblOperations, tblRiskLevel ,tblFacilitySupervisor, tblFaculty "_
   &" WHERE tblQORA.numOperationId = tblOperations.numOperationId and "_
   &" tblFacilitySupervisor.numSupervisorID = tblOperations.numFacilitySupervisorID and"_
   
-  &" tblQORA.numOperationId = "& numOperationID &" and "_
+  &" tblQORA.numOperationId = "& cboOperation &" and "_
   &" tblFacilitySupervisor.numFacultyId = tblFaculty.numFacultyId and "_
   &" tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel  "_ 
   &" ORDER BY tblFacilitySupervisor.numFacultyId, tblRiskLevel.numGrade, strTaskDescription"
@@ -156,7 +157,7 @@ if(searchType = "location") then %>
 if(searchType = "operation") then %>
 		<tr>
   			<td class="campus">
-  			<strong>Supervisor: </strong><%=rsSearchH("strGivenName")&" "&rsSearchH("strSurname")%>>&nbsp;&nbsp;&nbsp;</td>
+  			<strong>Supervisor: </strong><%=rsSearchH("strGivenName")&" "&rsSearchH("strSurname")%>&nbsp;&nbsp;&nbsp;</td>
   			<td class="campus" colspan="6"><strong>Operation: </strong><%=rsSearchH("strOperationName")%>&nbsp;&nbsp;&nbsp;
   			</td>		
   		</tr>
@@ -273,13 +274,13 @@ if not rsSearchH.EOF then
 
 
 
-    <div>
+    <!--div>
       <h4>Declaration</h4>
       I certify that all hazards have been identified and addressed in this facility.<br />
       <br />
       Signed: ___________________________ <br />
       <br />
-      Date: ____________________________ </div>
+      Date: ____________________________ </div-->
 
 
 </div>

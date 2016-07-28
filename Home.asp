@@ -25,7 +25,7 @@ session.LCID = 2057	'English(British) format
 <table>
 <tr>
 	<td align='left' width='75%'><h2 class="pagetitle">Search UTS Risk Assessments</h2></td>
-	<td align='right'><a href ="http://www.safetyandwellbeing.uts.edu.au/guide/OnlineRiskRegisterInstructions.pdf" target="_blank"><h2 class="pagetitle"><font color="8DAB3D"><u>Instructions for using this Risk Register</u></font></a></h2></td>
+	<td align='right'><a href ="OnlineRiskRegisterInstructions.pdf" target="_blank"><h2 class="pagetitle"><font color="8DAB3D"><u>Instructions for using this Risk Register</u></font></a></h2></td>
 </tr>
 </table>
             

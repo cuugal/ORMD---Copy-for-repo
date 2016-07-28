@@ -1,17 +1,23 @@
 
 <link rel="SHORTCUT ICON" href="favicon.ico" type="image/x-icon" />
 
-<img src="images/UTS_logo.png" alt="UTS" width="142" height="58" style="border: 1px; vertical-align:top; float:right;">
+<!--img src="images/UTS_logo.png" alt="UTS" width="142" height="58" style="border: 1px; vertical-align:top; float:right;"-->
+
+<div id="logo">
+<img src="images/UTS_logo.png" alt="UTS" width="152" height="50" style="border: 1px; vertical-align:top; float:left;">
+</div>
+
+
 <div id="wrappertop">
 <div id="content">
 <% if session("LoggedIn") then %>
     <% if session("isAdmin") then %>
-    <h1 class="pagetitle">Health and Safety Risk Register V2.2 - Administration Menu</h1>
+    <br /> <h1 class="pagetitle">Health and Safety Risk Register V2.2 - Administration Menu</h1>
     <% else %>
-        <h1 class="pagetitle">Health and Safety Risk Register V2.2 - Supervisor Menu</h1>
+     <br /> <h1 class="pagetitle">Health and Safety Risk Register V2.2 - Supervisor Menu</h1>
     <% end if %>
 <% else %>
-     <h1 class="pagetitle">Health and Safety Risk Register V2.2</h1>
+    <br /> <h1 class="pagetitle">Health and Safety Risk Register V2.2</h1>
 <% end if %>
 
 <% if session("LoggedIn") then %>
@@ -46,7 +52,6 @@
 	 </ul>
 	</div>
 <% end if %>
-
 
 
 </div><!-- close the content DIV -->
