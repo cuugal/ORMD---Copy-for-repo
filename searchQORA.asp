@@ -554,6 +554,8 @@
                                </tr>
 						
 						<tr><td colspan="4"><hr /></td></tr>
+						<tr><td colspan="4" style="text-align: center;"><strong> OR </strong></td></tr>
+						<tr><td colspan="4"><hr /></td></tr>
 						   <tr>
 							  <th>Operation/Project</th>
 							  <td colspan="2">
@@ -583,11 +585,14 @@
                                  <!--  <button  class="btn btn-primary" type="button" onclick="window.location='LocationSup.asp'">Create New Risk Assessment</button>
                                 -->
                                 <div style="text-align: center;">
-                                <input type="submit" size="70" value="Search" class="btn btn-primary" onclick="return checkSearch();" name="btnGenRep" />
+                                <input type="submit" size="70" value="Search" class="btn btn-primary" title="List all Risk Assessments for the selected Location/Operation"
+                                onclick="return checkSearch();" name="btnGenRep" />
 
-                                <button class="btn btn-primary" type="button" onclick="$('#myfacility').val(0);$('#myoperation').val(0);">Clear Form</button>
+                                <button class="btn btn-primary" type="button" title="Reset the form"
+                                onclick="$('#myfacility').val(0);$('#myoperation').val(0);">Clear Form</button>
 
-                                <button  class="btn btn-primary" type="button" onclick="checkAndSubmit();">New Risk Assessment</button>
+                                <button  class="btn btn-primary" type="button" title="Create a New Risk Assessment for the selected Location/Operation"
+                                onclick="checkAndSubmit();">New Risk Assessment</button>
                                 </div>
                               </td>
                                </tr>
