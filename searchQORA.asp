@@ -383,7 +383,8 @@
 						   <tr>
 							  <td colspan="2">
 								 <center>
-									<input type="Submit" class="btn btn-primary" value="Search" name="btnSearch" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Clear Form" class="btn btn-primary" name="btnClear" onclick="    clearform()" />&nbsp;&nbsp;&nbsp;&nbsp;<!--input type="Submit" value="Action Status Report" name="btnSearch" onclick="FillSearch()" /-->
+									<input type="Submit" class="btn btn-primary" value="Search" name="btnSearch" />&nbsp;
+									&nbsp;&nbsp;&nbsp;<input type="button" value="Clear Form" class="btn btn-primary" name="btnClear" onclick="    clearform()" />&nbsp;&nbsp;&nbsp;&nbsp;<!--input type="Submit" value="Action Status Report" name="btnSearch" onclick="FillSearch()" /-->
 									<!--DLJ Removed this button from common search 22July2011-->
 						</form>
 						</center></td>
@@ -506,6 +507,17 @@
                                                 }
                                                 return true;
                                             }
+                                            function checkSearch() {
+                                                if($("#myoperation").val() == 0 && $("#myfacility").val() == 0) {
+                                                     alert("Please select a Location or an Operation");
+                                                     return false;
+                                                }
+                                                else if($("#myoperation").val() > 0 && $("#myfacility").val() > 0) {
+                                                    alert("Please select a Location or an Operation (not both)");
+                                                    return false;
+                                                }
+                                                 return true;
+                                            }
                                         </script>
 
 					       <table class="adminfn">
@@ -538,8 +550,8 @@
 									%>
 								 </select>
 							  </td>
-                               <td><input type="submit" size="70" value="List Facility Risk Assessments" class="btn btn-primary" onclick="return checkFacility();" name="btnGenRep" /></td>
-						   </tr>
+                               <td>
+                               </tr>
 						
 						<tr><td colspan="4"><hr /></td></tr>
 						   <tr>
@@ -560,17 +572,23 @@
 							  </td>
 						   
 							  <td>
-                                   <input type="submit" size="70"value="List Operation/Project Risk Assessments" class="btn btn-primary" onclick="return checkOperation();" name="btnGenRep" /></td>
-						   </tr>
+                           </tr>
 						   
 
                                <tr><td colspan="4"><hr /></td></tr>
                                <tr><td colspan="3"></td><td>
-                               <button class="btn btn-primary" type="button" onclick="$('#myfacility').val(0);$('#myoperation').val(0);">Clear</button>
-                                   </td></tr>
-                               <tr><td colspan="3"></td><td>
-                                   <button  class="btn btn-primary" type="button" onclick="window.location='LocationSup.asp'">Create New Risk Assessment</button>
-                               
+                                  </td></tr>
+                               <tr>
+                               <td colspan="6">
+                                 <!--  <button  class="btn btn-primary" type="button" onclick="window.location='LocationSup.asp'">Create New Risk Assessment</button>
+                                -->
+                                <div style="text-align: center;">
+                                <input type="submit" size="70" value="Search" class="btn btn-primary" onclick="return checkSearch();" name="btnGenRep" />
+
+                                <button class="btn btn-primary" type="button" onclick="$('#myfacility').val(0);$('#myoperation').val(0);">Clear Form</button>
+
+                                <button  class="btn btn-primary" type="button" onclick="checkAndSubmit();">New Risk Assessment</button>
+                                </div>
                               </td>
                                </tr>
 						<tr>
@@ -578,6 +596,40 @@
 						</tr>
 					 </table>
                           </form>
+                          <form method="post" autocomplete="false" action="cqoraSup.asp"  id="NewRA" name="NewRA" enctype="application/x-www-form-urlencoded">
+
+                            <script type="text/javascript">
+                            function checkAndSubmit() {
+                                if ($("#myfacility").val() == 0 && $('#myoperation').val() == 0) {
+                                    alert("Please select a Facility or Operation");
+                                    return false;
+                                }
+                                else if ($("#myfacility").val() != 0 && $('#myoperation').val() != 0) {
+                                    alert("Please select a Facility or Operation (not both)");
+                                    return false;
+                                }
+                                else if($("#myfacility").val() > 0){
+                                    $('#newSearchType').val("location");
+                                    $('#newcboOperation').val("");
+                                    $('#newcboFacility').val($("#myfacility").val());
+                                    $('#NewRA').submit();
+                                }
+                                else{
+                                    $('#newSearchType').val("operation");
+                                    $('#newcboFacility').val("");
+                                    $('#newcboOperation').val($('#myoperation').val());
+                                    $('#NewRA').submit();
+                                }
+                                return true;
+                            }
+                            </script>
+                            <input type="hidden" id="newcboFacility" name="cboRoom" value="" />
+                            <input type="hidden" id="newcboOperation" name="cboOperation" value=""/>
+                            <input type="hidden" id="newSearchType" name="searchType" value=""/>
+                            <input type="hidden" name="fromSearchQORA" value="true"/>
+                          </form>
+
+
 				  </div>
 				   <% end if %>
 				   <%'************************************************  END MY RA OPERATION ***************************************************** %>

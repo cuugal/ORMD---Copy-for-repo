@@ -67,6 +67,17 @@ Dim numFacultyId
 	session("LastRACreatednumBuildingID") = numBuildingId
     session("LastRACreatednumCampusID") = numCampusId
 
+    fromSearchQORA=request.form("fromSearchQORA")
+    if(fromSearchQORA = "true" and searchType = "location") then
+          set connPre = Server.CreateObject("ADODB.Connection")
+          connPre.open constr
+          strSQL ="Select * from tblFacility, tblBuilding  where tblFacility.numBuildingId = tblBuilding.numBuildingId and numFacilityId ="& numFacilityId
+          set rsFillPre = Server.CreateObject("ADODB.Recordset")
+          rsFillPre.Open strSQL, connPre, 3, 3
+          numBuildingId = rsFillPre("tblBuilding.numBuildingId")
+          numCampusId = rsFillPre("numCampusId")
+    end if
+
 if(searchType = "location") then   
  'code for Campus Name
   set connCampus = Server.CreateObject("ADODB.Connection")
@@ -146,7 +157,9 @@ if(searchType = "operation") then
  	numFacilityID =0
 end if
 
+
 strSQL ="Select * from tblFacilitysupervisor where strLoginId = '"& strLogin &"'"
+
 
 set rsFillAdmin = Server.CreateObject("ADODB.Recordset")
 rsFillAdmin.Open strSQL, connAdmin, 3, 3
@@ -156,7 +169,8 @@ if rsFillAdmin.EOF = False then
   strSurName = rsFillAdmin("strSurName") 
   
   strSupervisorName = cstr(strGivenName) +" "+ cstr(strSurname)  
-  numFacultyId = rsFillAdmin("numFacultyId") 
+  numFacultyId = rsFillAdmin("numFacultyId")
+
 else
 response.write("exception caught !")  
 end if
