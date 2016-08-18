@@ -279,121 +279,176 @@ strJobSteps = ""
  	<tr>
 		<td colspan="2">
 
-  			<div id="tab-navigation-wrapper">
-				<div id="tab-navigation">
-					<div id="tab-nav">
-						<ul>
-							<li class="blank-group"><div id="groupNone" class="groups">&nbsp;
-					</div></li>
-					
-<!-- Working Environment-->
-<li class="tab-env"><a href="#point1" name="tab0" id="tablink-env" class="env" onmouseover="switchTab(0);" onkeypress="switchTab(0);" onfocus="switchTab(0);" onmouseout="hideAllTabs();">Working Environment</a></li>
-<li id="group-env"><div id="group0" class="groups"><ul class="section-list">
-<li><a href="#point1" onClick="Populate('Working Environment - Working in Remote Locations\r\n')" title="Click to add 'Working in Remote Locations' as a Hazard in this Risk Assessment.">Working in Remote Locations</a></li>
-<li><a href="#point1" onClick="Populate('Working Environment - Working Outdoors\r\n')" title="Click to add 'Working Outdoors' as a Hazard in this Risk Assessment.">Working Outdoors</a></li>
-<li><a href="#point1" onClick="Populate('Working Environment - Clinical/Industrial Placements\r\n')" title="Click to add 'Clinical/Industrial Placements' as a Hazard in this Risk Assessment.">Clinical/Industrial Placements</a></li>
-<li><a href="#point1" onClick="Populate('Working Environment - Violent or Volatile Clients/Interviewees\r\n')" title="Click to add 'Violent or Volatile Clients/Interviewees' as a Hazard in this Risk Assessment.">Violent or Volatile Clients/Interviewees</a></li>
-<li><a href="#point1" onClick="Populate('Working Environment - Poor Ventilation/Air Quality\r\n')" title="Click to add 'Poor Ventilation/Air Quality' as a Hazard in this Risk Assessment.">Poor Ventilation/Air Quality</a></li>
-<li><a href="#point1" onClick="Populate('Working Environment - Work Area Not Suited to Task\r\n')" title="Click to add 'Work Area Not Suited to Task' as a Hazard in this Risk Assessment.">Work Area Not Suited to Task</a></li>
-<li><a href="#point1" onClick="Populate('Working Environment - Extremes in Temperature\r\n')" title="Click to add 'Extremes in Temperature' as a Hazard in this Risk Assessment.">Extremes in Temperature</a></li>
-<li><a href="#point1" onClick="Populate('Working Environment - Confined Space\r\n')" title="Click to add 'Confined Space' as a Hazard in this Risk Assessment.">Confined Space</a></li>
-<li><a href="#point1" onClick="Populate('Working Environment - Isolation\r\n')" title="Click to add 'Isolation' as a Hazard in this Risk Assessment.">Isolation</a></li>
-<li><a href="#point1" onClick="Populate('Working Environment - Fieldwork\r\n')" title="Click to add 'Fieldwork' as a Hazard in this Risk Assessment.">Fieldwork</a></li>
-<li><a href="#point1" onClick="Populate('Working Environment - Working at a Height\r\n')" title="Click to add 'Working at a Height' as a Hazard in this Risk Assessment.">Working at a Height</a></li>
-<li><a href="#point1" onClick="Populate('Working Environment - Slip and Trip Hazards\r\n')" title="Click to add 'Dangerous Goods' as a Hazard in this Risk Assessment.">Slip and Trip Hazards</a></li>
-<li><a href="#point1" onClick="Populate('Working Environment - Dangerous Goods\r\n')" title="Click to add 'Dangerous Goods' as a Hazard in this Risk Assessment.">Dangerous Goods</a></li>
-</ul></div></li>
 
+<!-- start new style tabs grid -->
+<ul class="nav nav-tabs" >
+   <li class="active"><a data-toggle="tab" href="#environment">Working Environment</a></li>
+   <li><a data-toggle="tab" href="#ergonomic">Ergonomic /Manual Handling</a></li>
+   <li><a data-toggle="tab" href="#plant">Plant</a></li>
+   <li><a data-toggle="tab" href="#electrical">Electrical</a></li>
+   <li><a data-toggle="tab" href="#chemical">Chemical</a></li>
+   <li><a data-toggle="tab" href="#biological">Biological</a></li>
+   <li><a data-toggle="tab" href="#radiation">Radiation</a></li>
+</ul>
+<style type="text/css">
+   .nav::after{
+   display:block !important;
+   }
+   .tab-content ul{
+   list-style: outside none none;
+   }
+   .tab-content ul li{
+   padding:5px 0 5px 0;
+   }
+   .tab-content ul li a:link, .tab-content ul li a:visited {
+   background: transparent url("images/link_dot.gif") no-repeat scroll left top;
+   color: #000;
+   padding-left: 15px;
+   }
+</style>
+<div class="tab-content">
+   <div id="environment" class="tab-pane fade in active">
+      <div class="row">
+         <div class="col-xs-4">
+            <ul>
+               <li><a href="#point1" onClick="Populate('Working Environment - Working in Remote Locations\r\n')" title="Click to add 'Working in Remote Locations' as a Hazard in this Risk Assessment.">Working in Remote Locations</a></li>
+               <li><a href="#point1" onClick="Populate('Working Environment - Working Outdoors\r\n')" title="Click to add 'Working Outdoors' as a Hazard in this Risk Assessment.">Working Outdoors</a></li>
+               <li><a href="#point1" onClick="Populate('Working Environment - Clinical/Industrial Placements\r\n')" title="Click to add 'Clinical/Industrial Placements' as a Hazard in this Risk Assessment.">Clinical/Industrial Placements</a></li>
+               <li><a href="#point1" onClick="Populate('Working Environment - Violent or Volatile Clients/Interviewees\r\n')" title="Click to add 'Violent or Volatile Clients/Interviewees' as a Hazard in this Risk Assessment.">Violent or Volatile Clients/Interviewees</a></li>
+               <li><a href="#point1" onClick="Populate('Working Environment - Poor Ventilation/Air Quality\r\n')" title="Click to add 'Poor Ventilation/Air Quality' as a Hazard in this Risk Assessment.">Poor Ventilation/Air Quality</a></li>
+            </ul>
+         </div>
+         <div class="col-xs-4">
+            <ul >
+               <li><a href="#point1" onClick="Populate('Working Environment - Work Area Not Suited to Task\r\n')" title="Click to add 'Work Area Not Suited to Task' as a Hazard in this Risk Assessment.">Work Area Not Suited to Task</a></li>
+               <li><a href="#point1" onClick="Populate('Working Environment - Extremes in Temperature\r\n')" title="Click to add 'Extremes in Temperature' as a Hazard in this Risk Assessment.">Extremes in Temperature</a></li>
+               <li><a href="#point1" onClick="Populate('Working Environment - Confined Space\r\n')" title="Click to add 'Confined Space' as a Hazard in this Risk Assessment.">Confined Space</a></li>
+               <li><a href="#point1" onClick="Populate('Working Environment - Isolation\r\n')" title="Click to add 'Isolation' as a Hazard in this Risk Assessment.">Isolation</a></li>
+            </ul>
+         </div>
+         <div class="col-xs-4">
+            <ul>
+               <li><a href="#point1" onClick="Populate('Working Environment - Fieldwork\r\n')" title="Click to add 'Fieldwork' as a Hazard in this Risk Assessment.">Fieldwork</a></li>
+               <li><a href="#point1" onClick="Populate('Working Environment - Working at a Height\r\n')" title="Click to add 'Working at a Height' as a Hazard in this Risk Assessment.">Working at a Height</a></li>
+               <li><a href="#point1" onClick="Populate('Working Environment - Slip and Trip Hazards\r\n')" title="Click to add 'Dangerous Goods' as a Hazard in this Risk Assessment.">Slip and Trip Hazards</a></li>
+               <li><a href="#point1" onClick="Populate('Working Environment - Dangerous Goods\r\n')" title="Click to add 'Dangerous Goods' as a Hazard in this Risk Assessment.">Dangerous Goods</a></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+   <div id="ergonomic" class="tab-pane fade">
+      <div class="row">
+         <div class="col-xs-4">
+            <ul class="section-list">
+               <li><a href="#point1" onClick="Populate('Ergonomic/Manual Handling - Repetitive or Awkward Movements\r\n')" title="Click to add 'Repetitive or Awkward Movements' as a Hazard in this Risk Assessment.">Repetitive or Awkward Movements</a></li>
+               <li><a href="#point1" onClick="Populate('Ergonomic/Manual Handling - Lifting Heavy Objects\r\n')" title="Click to add 'Lifting Heavy Objects' as a Hazard in this Risk Assessment.">Lifting Heavy Objects</a></li>
+               <li><a href="#point1" onClick="Populate('Ergonomic/Manual Handling - Lifting Awkward Objects\r\n')" title="Click to add 'Lifting Awkward Objects' as a Hazard in this Risk Assessment.">Lifting Awkward Objects</a></li>
+               <li><a href="#point1" onClick="Populate('Ergonomic/Manual Handling - Overreaching\r\n')" title="Click to add 'Overreaching' as a Hazard in this Risk Assessment.">Overreaching</a></li>
+               <li><a href="#point1" onClick="Populate('Ergonomic/Manual Handling - Working Above Shoulder Height\r\n')" title="Click to add 'Working Above Shoulder Height' as a Hazard in this Risk Assessment.">Working Above Shoulder Height</a></li>
+            </ul>
+         </div>
+         <div class="col-xs-4">
+            <ul>
+               <li><a href="#point1" onClick="Populate('Ergonomic/Manual Handling - Working Below Knee Height\r\n')" title="Click to add 'Working Below Knee Height' as a Hazard in this Risk Assessment.">Working Below Knee Height</a></li>
+               <li><a href="#point1" onClick="Populate('Ergonomic/Manual Handling - Handling Hot Items\r\n')" title="Click to add 'Handling Hot Items' as a Hazard in this Risk Assessment.">Handling Hot Items</a></li>
+               <li><a href="#point1" onClick="Populate('Ergonomic/Manual Handling - Cramped/Awkward Positioning\r\n')" title="Click to add 'Cramped/Awkward Positioning' as a Hazard in this Risk Assessment.">Cramped / Awkward Positioning</a></li>
+               <li><a href="#point1" onClick="Populate('Ergonomic/Manual Handling - Desktop/Bench Height Inappropriate\r\n')" title="Click to add 'Desktop/Bench Height Inappropriate' as a Hazard in this Risk Assessment.">Desktop / Bench Height Inappropriate</a></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+   <div id="plant" class="tab-pane fade">
+      <div class="row">
+         <div class="col-xs-4">
+            <ul class="section-list">
+               <li><a href="#point1" onClick="Populate('Plant - Noise\r\n')" title="Click to add 'Noise' as a Hazard in this Risk Assessment.">Noise</a></li>
+               <li><a href="#point1" onClick="Populate('Plant - Vibration\r\n')" title="Click to add 'Vibration' as a Hazard in this Risk Assessment.">Vibration</a></li>
+               <li><a href="#point1" onClick="Populate('Plant - Compressed Gas\r\n')" title="Click to add 'Compressed Gas' as a Hazard in this Risk Assessment.">Compressed Gas</a></li>
+               <li><a href="#point1" onClick="Populate('Plant - Lifts\r\n')" title="Click to add 'Lifts' as a Hazard in this Risk Assessment.">Lifts</a></li>
+               <li><a href="#point1" onClick="Populate('Plant - Hoists\r\n')" title="Click to add 'Hoists' as a Hazard in this Risk Assessment.">Hoists</a></li>
+            </ul>
+         </div>
+         <div class="col-xs-4">
+            <ul>
+               <li><a href="#point1" onClick="Populate('Plant - Cranes\r\n')" title="Click to add 'Cranes' as a Hazard in this Risk Assessment.">Cranes</a></li>
+               <li><a href="#point1" onClick="Populate('Plant - Sharps/Needles\r\n')" title="Click to add 'Sharps/Needles' as a Hazard in this Risk Assessment.">Sharps/Needles</a></li>
+               <li><a href="#point1" onClick="Populate('Plant - Moving Parts (Crushing, Friction, Stab, Cut, Shear)\r\n')" title="Click to add 'Moving Parts (Crushing, Friction, Stab, Cut, Shear)' as a Hazard in this Risk Assessment.">Moving Parts (Crushing, Friction, Stab, Cut, Shear)</a></li>
+               <li><a href="#point1" onClick="Populate('Plant - Pressure Vessels and Boilers\r\n')" title="Click to add 'Pressure Vessels and Boilers' as a Hazard in this Risk Assessment.">Pressure Vessels and Boilers</a></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+   <div id="electrical" class="tab-pane fade">
+      <div class="row">
+         <div class="col-xs-4">
+            <ul class="section-list">
+               <li><a href="#point1" onClick="Populate('Electrical - Plug-In Equipment\r\n')" title="Click to add 'Plug-In Equipment' as a Hazard in this Risk Assessment.">Plug-In Equipment</a></li>
+               <li><a href="#point1" onClick="Populate('Electrical - High Voltage\r\n')" title="Click to add 'High Voltage' as a Hazard in this Risk Assessment.">High Voltage</a></li>
+               <li><a href="#point1" onClick="Populate('Electrical - Exposed Conductors\r\n')" title="Click to add 'Exposed Conductors' as a Hazard in this Risk Assessment.">Exposed Conductors</a></li>
+               <li><a href="#point1" onClick="Populate('Electrical - Electrical Wiring\r\n')" title="Click to add 'Electrical Wiring' as a Hazard in this Risk Assessment.">Electrical Wiring</a></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+   <div id="chemical" class="tab-pane fade">
+      <div class="row">
+         <div class="col-xs-4">
+            <ul class="section-list">
+               <li><a href="#point1" onClick="Populate('Chemical - Hazardous Substances or Dangerous Goods\r\n'); " title="Click to add 'Hazardous Substances or Dangerous Goods' as a Hazard in this Risk Assessment.">Hazardous Substances or Dangerous Goods</a></li>
+               <li><a href="#point1" onClick="Populate('Chemical - Hazardous Waste\r\n'); " title="Click to add 'Hazardous Waste' as a Hazard in this Risk Assessment.">Hazardous Waste</a></li>
+               <li><a href="#point1" onClick="Populate('Chemical - Fumes\r\n');" title="Click to add 'Fumes' as a Hazard in this Risk Assessment.">Fumes</a></li>
+               <li><a href="#point1" onClick="Populate('Chemical - Dust\r\n'); " title="Click to add 'Dust' as a Hazard in this Risk Assessment.">Dust</a></li>
+            </ul>
+         </div>
+         <div class="col-xs-4">
+            <ul class="section-list">
+               <li><a href="#point1" onClick="Populate('Chemical - Vapours\r\n'); " title="Click to add 'Vapours' as a Hazard in this Risk Assessment.">Vapours</a></li>
+               <li><a href="#point1" onClick="Populate('Chemical - Gases\r\n'); " title="Click to add 'Gases' as a Hazard in this Risk Assessment.">Gases</a></li>
+               <li><a href="#point1" onClick="Populate('Chemical - Fire/Explosion Risk\r\n'); " title="Click to add 'Fire/Explosion Risk' as a Hazard in this Risk Assessment.">Fire/Explosion Risk</a></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+   <div id="biological" class="tab-pane fade">
+      <div class="row">
+         <div class="col-xs-4">
+            <ul class="section-list">
+               <li><a href="#point1" onClick="Populate('Biological - Imported Biomaterials\r\n')" title="Click to add 'Imported Biomaterials' as a Hazard in this Risk Assessment.">Imported Biomaterials</a></li>
+               <li><a href="#point1" onClick="Populate('Biological - Cytotoxins\r\n')" title="Click to add 'Cytotoxins' as a Hazard in this Risk Assessment.">Cytotoxins</a></li>
+               <li><a href="#point1" onClick="Populate('Biological - Pathogens\r\n')" title="Click to add 'Pathogens' as a Hazard in this Risk Assessment.">Pathogens</a></li>
+               <li><a href="#point1" onClick="Populate('Biological - Infectious Materials\r\n')" title="Click to add 'Infectious Materials' as a Hazard in this Risk Assessment.">Infectious Materials</a></li>
+            </ul>
+         </div>
+         <div class="col-xs-4">
+            <ul class="section-list">
+               <li><a href="#point1" onClick="Populate('Biological - Blood/Bodily Fluids\r\n')" title="Click to add 'Blood/Bodily Fluids' as a Hazard in this Risk Assessment.">Blood/Bodily Fluids</a></li>
+               <li><a href="#point1" onClick="Populate('Biological - Genetically Modified Organisms\r\n')" title="Click to add 'Genetically Modified Organisms' as a Hazard in this Risk Assessment.">Genetically Modified Organisms</a></li>
+               <li><a href="#point1" onClick="Populate('Biological - Communicable Diseases\r\n')" title="Click to add 'Communicable Diseases' as a Hazard in this Risk Assessment.">Communicable Diseases</a></li>
+               <li><a href="#point1" onClick="Populate('Biological - Animal bites and scratches\r\n')" title="Click to add 'Animal bites and scratches' as a Hazard in this Risk Assessment.">Animal bites and scratches</a></li>
+            </ul>
+         </div>
+         <div class="col-xs-4">
+            <ul class="section-list">
+               <li><a href="#point1" onClick="Populate('Biological - Allergies to Animal Bedding, Dander and Fluids\r\n')" title="Click to add 'Allergies to Animal Bedding, Dander and Fluids' as a Hazard in this Risk Assessment.">Allergies to Animal Bedding, Dander and Fluids</a></li>
+               <li><a href="#point1" onClick="Populate('Biological - Working with Insects\r\n')" title="Click to add 'Working with Insects' as a Hazard in this Risk Assessment.">Working with Insects</a></li>
+               <li><a href="#point1" onClick="Populate('Biological - Working with Fungi/Bacteria/Viruses\r\n')" title="Click to add 'Working with Fungi/Bacteria/Viruses' as a Hazard in this Risk Assessment.">Working with Fungi/Bacteria/Viruses</a></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+   <div id="radiation" class="tab-pane fade">
+      <div class="row">
+         <div class="col-xs-4">
+            <ul class="section-list">
+               <li><a href="#point1" onClick="Populate('Radiation - Ionising Radiation Sources/Equipment\r\n')" title="Click to add 'Ionising Radiation Sources/Equipment' as a Hazard in this Risk Assessment.">Ionising Radiation Sources/Equipment</a></li>
+               <li><a href="#point1" onClick="Populate('Radiation - Non-Ionising Radiation (Lasers, Microwaves, Ultraviolet Light)\r\n')" title="Click to add 'Non-Ionising Radiation (Lasers, Microwaves, Ultraviolet Light)' as a Hazard in this Risk Assessment.">Non-Ionising Radiation (Lasers, Microwaves, Ultraviolet Light)</a></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</div>
+<!---- end new style grid -->
 
-<!-- Ergonomic /Manual Handling-->
-<li class="tab-erg"><a href="#point1" name="tab1" id="tablink-erg" class="erg" onmouseover="switchTab(1);" onkeypress="switchTab(1);" onfocus="switchTab(1);" onmouseout="hideAllTabs();">Ergonomic /Manual Handling</a></li>
-<li id="group-erg"><div id="group1" class="groups"><ul class="section-list">
-<li><a href="#point1" onClick="Populate('Ergonomic/Manual Handling - Repetitive or Awkward Movements\r\n')" title="Click to add 'Repetitive or Awkward Movements' as a Hazard in this Risk Assessment.">Repetitive or Awkward Movements</a></li>
-<li><a href="#point1" onClick="Populate('Ergonomic/Manual Handling - Lifting Heavy Objects\r\n')" title="Click to add 'Lifting Heavy Objects' as a Hazard in this Risk Assessment.">Lifting Heavy Objects</a></li>
-<li><a href="#point1" onClick="Populate('Ergonomic/Manual Handling - Lifting Awkward Objects\r\n')" title="Click to add 'Lifting Awkward Objects' as a Hazard in this Risk Assessment.">Lifting Awkward Objects</a></li>
-<li><a href="#point1" onClick="Populate('Ergonomic/Manual Handling - Overreaching\r\n')" title="Click to add 'Overreaching' as a Hazard in this Risk Assessment.">Overreaching</a></li>
-<li><a href="#point1" onClick="Populate('Ergonomic/Manual Handling - Working Above Shoulder Height\r\n')" title="Click to add 'Working Above Shoulder Height' as a Hazard in this Risk Assessment.">Working Above Shoulder Height</a></li>
-<li><a href="#point1" onClick="Populate('Ergonomic/Manual Handling - Working Below Knee Height\r\n')" title="Click to add 'Working Below Knee Height' as a Hazard in this Risk Assessment.">Working Below Knee Height</a></li>
-<li><a href="#point1" onClick="Populate('Ergonomic/Manual Handling - Handling Hot Items\r\n')" title="Click to add 'Handling Hot Items' as a Hazard in this Risk Assessment.">Handling Hot Items</a></li>
-<li><a href="#point1" onClick="Populate('Ergonomic/Manual Handling - Cramped/Awkward Positioning\r\n')" title="Click to add 'Cramped/Awkward Positioning' as a Hazard in this Risk Assessment.">Cramped / Awkward Positioning</a></li>
-<li><a href="#point1" onClick="Populate('Ergonomic/Manual Handling - Desktop/Bench Height Inappropriate\r\n')" title="Click to add 'Desktop/Bench Height Inappropriate' as a Hazard in this Risk Assessment.">Desktop / Bench Height Inappropriate</a></li>
-</ul></div></li>
-
-
-
-<!-- Plant -->
-<li class="tab-pla"><a href="#point1" name="tab2" id="tablink-pla" class="pla" onmouseover="switchTab(2);" onkeypress="switchTab(2);" onfocus="switchTab(2);" onmouseout="hideAllTabs();">Plant</a></li>
-<li id="group-pla"><div id="group2" class="groups"><ul class="section-list">
-<li><a href="#point1" onClick="Populate('Plant - Noise\r\n')" title="Click to add 'Noise' as a Hazard in this Risk Assessment.">Noise</a></li>
-<li><a href="#point1" onClick="Populate('Plant - Vibration\r\n')" title="Click to add 'Vibration' as a Hazard in this Risk Assessment.">Vibration</a></li>
-<li><a href="#point1" onClick="Populate('Plant - Compressed Gas\r\n')" title="Click to add 'Compressed Gas' as a Hazard in this Risk Assessment.">Compressed Gas</a></li>
-<li><a href="#point1" onClick="Populate('Plant - Lifts\r\n')" title="Click to add 'Lifts' as a Hazard in this Risk Assessment.">Lifts</a></li>
-<li><a href="#point1" onClick="Populate('Plant - Hoists\r\n')" title="Click to add 'Hoists' as a Hazard in this Risk Assessment.">Hoists</a></li>
-<li><a href="#point1" onClick="Populate('Plant - Cranes\r\n')" title="Click to add 'Cranes' as a Hazard in this Risk Assessment.">Cranes</a></li>
-<li><a href="#point1" onClick="Populate('Plant - Sharps/Needles\r\n')" title="Click to add 'Sharps/Needles' as a Hazard in this Risk Assessment.">Sharps/Needles</a></li>
-<li><a href="#point1" onClick="Populate('Plant - Moving Parts (Crushing, Friction, Stab, Cut, Shear)\r\n')" title="Click to add 'Moving Parts (Crushing, Friction, Stab, Cut, Shear)' as a Hazard in this Risk Assessment.">Moving Parts (Crushing, Friction, Stab, Cut, Shear)</a></li>
-<li><a href="#point1" onClick="Populate('Plant - Pressure Vessels and Boilers\r\n')" title="Click to add 'Pressure Vessels and Boilers' as a Hazard in this Risk Assessment.">Pressure Vessels and Boilers</a></li>
-</ul></div></li>
-
-
-<!-- Electrical-->
-<li class="tab-ele"><a href="#point1" name="tab3" id="tablink-ele" class="ele" onmouseover="switchTab(3);" onkeypress="switchTab(3);" onfocus="switchTab(3);" onmouseout="hideAllTabs();">Electrical</a></li>
-<li id="group-ele"><div id="group3" class="groups"><ul class="section-list">
-<li><a href="#point1" onClick="Populate('Electrical - Plug-In Equipment\r\n')" title="Click to add 'Plug-In Equipment' as a Hazard in this Risk Assessment.">Plug-In Equipment</a></li>
-<li><a href="#point1" onClick="Populate('Electrical - High Voltage\r\n')" title="Click to add 'High Voltage' as a Hazard in this Risk Assessment.">High Voltage</a></li>
-<li><a href="#point1" onClick="Populate('Electrical - Exposed Conductors\r\n')" title="Click to add 'Exposed Conductors' as a Hazard in this Risk Assessment.">Exposed Conductors</a></li>
-<li><a href="#point1" onClick="Populate('Electrical - Electrical Wiring\r\n')" title="Click to add 'Electrical Wiring' as a Hazard in this Risk Assessment.">Electrical Wiring</a></li>
-</ul></div></li>
-
-
-
-<!-- Chemical -->
-<li class="tab-chm"><a href="#point1" name="tab4" id="tablink-chm" class="chm" onmouseover="switchTab(4);" onkeypress="switchTab(4);" onfocus="switchTab(4);" onmouseout="hideAllTabs();">Chemical</a></li>
-<li id="group-chm"><div id="group4" class="groups"><ul class="section-list">
-<li><a href="#point1" onClick="Populate('Chemical - Hazardous Substances or Dangerous Goods\r\n'); " title="Click to add 'Hazardous Substances or Dangerous Goods' as a Hazard in this Risk Assessment.">Hazardous Substances or Dangerous Goods</a></li>
-<li><a href="#point1" onClick="Populate('Chemical - Hazardous Waste\r\n'); " title="Click to add 'Hazardous Waste' as a Hazard in this Risk Assessment.">Hazardous Waste</a></li>
-<li><a href="#point1" onClick="Populate('Chemical - Fumes\r\n'); " title="Click to add 'Fumes' as a Hazard in this Risk Assessment.">Fumes</a></li>
-<li><a href="#point1" onClick="Populate('Chemical - Dust\r\n'); " title="Click to add 'Dust' as a Hazard in this Risk Assessment.">Dust</a></li>
-<li><a href="#point1" onClick="Populate('Chemical - Vapours\r\n'); " title="Click to add 'Vapours' as a Hazard in this Risk Assessment.">Vapours</a></li>
-<li><a href="#point1" onClick="Populate('Chemical - Gases\r\n'); " title="Click to add 'Gases' as a Hazard in this Risk Assessment.">Gases</a></li>
-<li><a href="#point1" onClick="Populate('Chemical - Fire/Explosion Risk\r\n');" title="Click to add 'Fire/Explosion Risk' as a Hazard in this Risk Assessment.">Fire/Explosion Risk</a></li>
-</ul></div></li>
-
-
-
-<!-- Biological -->
-<li class="tab-bio"><a href="#point1" name="tab5" id="tablink-bio" class="bio" onmouseover="switchTab(5);" onkeypress="switchTab(5);" onfocus="switchTab(5);" onmouseout="hideAllTabs();">Biological</a></li>
-<li id="group-bio"><div id="group5" class="groups"><ul class="section-list">
-<li><a href="#point1" onClick="Populate('Biological - Imported Biomaterials\r\n')" title="Click to add 'Imported Biomaterials' as a Hazard in this Risk Assessment.">Imported Biomaterials</a></li>
-<li><a href="#point1" onClick="Populate('Biological - Cytotoxins\r\n')" title="Click to add 'Cytotoxins' as a Hazard in this Risk Assessment.">Cytotoxins</a></li>
-<li><a href="#point1" onClick="Populate('Biological - Pathogens\r\n')" title="Click to add 'Pathogens' as a Hazard in this Risk Assessment.">Pathogens</a></li>
-<li><a href="#point1" onClick="Populate('Biological - Infectious Materials\r\n')" title="Click to add 'Infectious Materials' as a Hazard in this Risk Assessment.">Infectious Materials</a></li>
-<li><a href="#point1" onClick="Populate('Biological - Blood/Bodily Fluids\r\n')" title="Click to add 'Blood/Bodily Fluids' as a Hazard in this Risk Assessment.">Blood/Bodily Fluids</a></li>
-<li><a href="#point1" onClick="Populate('Biological - Genetically Modified Organisms\r\n')" title="Click to add 'Genetically Modified Organisms' as a Hazard in this Risk Assessment.">Genetically Modified Organisms</a></li>
-<li><a href="#point1" onClick="Populate('Biological - Communicable Diseases\r\n')" title="Click to add 'Communicable Diseases' as a Hazard in this Risk Assessment.">Communicable Diseases</a></li>
-<li><a href="#point1" onClick="Populate('Biological - Animal bites and scratches\r\n')" title="Click to add 'Animal bites and scratches' as a Hazard in this Risk Assessment.">Animal bites and scratches</a></li>
-<li><a href="#point1" onClick="Populate('Biological - Allergies to Animal Bedding, Dander and Fluids\r\n')" title="Click to add 'Allergies to Animal Bedding, Dander and Fluids' as a Hazard in this Risk Assessment.">Allergies to Animal Bedding, Dander and Fluids</a></li>
-<li><a href="#point1" onClick="Populate('Biological - Working with Insects\r\n')" title="Click to add 'Working with Insects' as a Hazard in this Risk Assessment.">Working with Insects</a></li>
-<li><a href="#point1" onClick="Populate('Biological - Working with Fungi/Bacteria/Viruses\r\n')" title="Click to add 'Working with Fungi/Bacteria/Viruses' as a Hazard in this Risk Assessment.">Working with Fungi/Bacteria/Viruses</a></li>
-</ul></div></li>
-
-<!-- Radiation-->
-<li class="tab-rad"><a href="#point1" name="tab6" id="tablink-rad" class="rad" onmouseover="switchTab(6);" onkeypress="switchTab(6);" onfocus="switchTab(6);" onmouseout="hideAllTabs();">Radiation</a></li>
-<li id="group-rad"><div id="group6" class="groups"><ul class="section-list">
-<li><a href="#point1" onClick="Populate('Radiation - Ionising Radiation Sources/Equipment\r\n')" title="Click to add 'Ionising Radiation Sources/Equipment' as a Hazard in this Risk Assessment.">Ionising Radiation Sources/Equipment</a></li>
-<li><a href="#point1" onClick="Populate('Radiation - Non-Ionising Radiation (Lasers, Microwaves, Ultraviolet Light)\r\n')" title="Click to add 'Non-Ionising Radiation (Lasers, Microwaves, Ultraviolet Light)' as a Hazard in this Risk Assessment.">Non-Ionising Radiation (Lasers, Microwaves, Ultraviolet Light)</a></li>
-</ul></div></li>
-
-						</ul>
-
-						<script type="text/javascript">
-					
-						switchTab(-1);
-						
-						</script>
-                
-				</div>
-			</div>
 		</td>
 	</tr>
 
@@ -462,82 +517,111 @@ strJobSteps = ""
 	<table class="suprreportheader" name="controls" id="tblControls" style="width: 82%">
 	<tr>
 		<td colspan="4">
-			<div id="tab-navigation-wrapper">
-				<div id="tab-navigation">
-					<div id="tab-nav">
-						<ul>
-							<li class="blank-group"><div id="groupNone" class="groups">&nbsp;
-					</div></li>
 
-<!-- Tab 0 -->
-<li class="tab-elim"><a href="#point2" name="tabc0" id="tablinkc-elim" class="elim" onmouseover="switchTabControl(0);" onkeypress="switchTabControl(0);" onfocus="switchTabControl(0);" onmouseout="hideAllTabsControl();">Eliminate / Isolate / Substitute / Engineering controls</a></li>
-<li id="groupc-elim"><div id="groupc0" class="groups"><ul class="section-list">
-<li><a href="#point2" onClick="PopulateNext('- Remove Hazard\r\n')" title="Add the control 'Remove Hazard' to this Risk Assessment.">Remove Hazard</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Restricted Access\r\n')" title="Add the control 'Restricted Access' to this Risk Assessment.">Restricted Access</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Use safer materials or chemicals\r\n')" title="Add the control 'Use safer materials or chemicals' to this Risk Assessment.">Use safer materials or chemicals</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Redesign the equipment\r\n')" title="Add the control 'Redesign the equipment' to this Risk Assessment.">Redesign the equipment</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Guarding/Barriers\r\n')" title="Add the control 'Guarding/Barriers' to this Risk Assessment.">Guarding/Barriers</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Biosafety Cabinet\r\n')" title="Add the control 'Biosafety Cabinet' to this Risk Assessment.">BioSafety Cabinet</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Fume Cupboard/Local Exhaust Ventillation\r\n')" title="Add the control 'Fume Cupboard/Local Exhaust Ventillation' to this Risk Assessment.">Fume Cupboard/Local Exhaust Ventilation</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Redesign the Workspace/Workflow\r\n')" title="Add the control 'Redesign the Workspace/Workflow' to this Risk Assessment.">Redesign the Workspace/Workflow</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Lifting Equipment/Trolleys\r\n')" title="Add the control 'Lifting Equipment/Trolleys' to this Risk Assessment.">Lifting Equipment/Trolleys</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Regular Maintenance of Equipment\r\n')" title="Add the control 'Regular Maintenance of Equipment' to this Risk Assessment.">Regular Maintenance of Equipment</a></li>
-</ul></div></li>
 
-<!-- Tab 1 -->
-<li class="tab-admin"><a href="#point2" name="tabc1" id="tablinkc-admin" class="admin" onmouseover="switchTabControl(1);" onkeypress="switchTabControl(1);" onfocus="switchTabControl(1);" onmouseout="hideAllTabsControl();">Admin. Specific: Assessments / Licences / Work Methods</a></li>
-<li id="groupc-admin"><div id="groupc1" class="groups"><ul class="section-list">
+<!-- start new style tabs -->
+<ul class="nav nav-tabs" >
+   <li class="active"><a data-toggle="tab" href="#eliminate">Eliminate / Isolate / Substitute <br/>/ Engineering controls</a></li>
+   <li><a data-toggle="tab" href="#assess">Admin. Specific: Assessments <br/>/ Licences / Work Methods</a></li>
+   <li><a data-toggle="tab" href="#ppe">Personal Protective Equipment (PPE)<br/>&nbsp;</a></li>
+   <li><a data-toggle="tab" href="#emergency">Emergency Response Systems<br/>&nbsp;</a></li>
+</ul>
+<div class="tab-content">
+   <div id="eliminate" class="tab-pane fade in active">
+      <div class="row">
+         <div class="col-xs-4">
+            <ul class="section-list">
+               <li><a href="#point2" onClick="PopulateNext('- Remove Hazard\r\n')" title="Add the control 'Remove Hazard' to this Risk Assessment.">Remove Hazard</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Restricted Access\r\n')" title="Add the control 'Restricted Access' to this Risk Assessment.">Restricted Access</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Use safer materials or chemicals\r\n')" title="Add the control 'Use safer materials or chemicals' to this Risk Assessment.">Use safer materials or chemicals</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Redesign the equipment\r\n')" title="Add the control 'Redesign the equipment' to this Risk Assessment.">Redesign the equipment</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Guarding/Barriers\r\n')" title="Add the control 'Guarding/Barriers' to this Risk Assessment.">Guarding / Barriers</a></li>
+            </ul>
+         </div>
+         <div class="col-xs-4">
+            <ul>
+               <li><a href="#point2" onClick="PopulateNext('- Biosafety Cabinet\r\n')" title="Add the control 'Biosafety Cabinet' to this Risk Assessment.">BioSafety Cabinet</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Fume Cupboard/Local Exhaust Ventillation\r\n')" title="Add the control 'Fume Cupboard/Local Exhaust Ventillation' to this Risk Assessment.">Fume Cupboard / Local Exhaust Ventilation</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Redesign the Workspace/Workflow\r\n')" title="Add the control 'Redesign the Workspace/Workflow' to this Risk Assessment.">Redesign the Workspace / Workflow</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Lifting Equipment/Trolleys\r\n')" title="Add the control 'Lifting Equipment/Trolleys' to this Risk Assessment.">Lifting Equipment / Trolleys</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Regular Maintenance of Equipment\r\n')" title="Add the control 'Regular Maintenance of Equipment' to this Risk Assessment.">Regular Maintenance of Equipment</a></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+   <div id="assess" class="tab-pane fade">
+      <div class="row">
+         <div class="col-xs-4">
+            <ul>
+               <li><a href="#point2" onClick="PopulateNext('- Training/Information/Instruction\r\n')" title="Click to add the administrative control 'Training/Information/Instruction' to this Risk Assessment.">Training / Information / Instruction</a></li>
+               <!--li><a href="#point2" onClick="PopulateNext('- SWMS (Safe Work Method Statement)\r\n')" title="Click to add the administrative control 'SWMS (Safe Work Method Statement)' to this Risk Assessment.">SWMS (Safe Work Method Statement)</a></li-->
+               <li><a href="#point2" onClick="PopulateNext('- Chemical Risk Assessment\r\n')" title="Click to add the administrative control 'Chemical Risk Assessment' to this Risk Assessment.">Chemical Risk Assessment</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Licensing/Certification of Operators\r\n')" title="Click to add the administrative control 'Licensing/Certification of Operators' to this Risk Assessment.">Licensing/Certification of Operators</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Test and Tag Electrical Equipment\r\n')" title="Click to add the administrative control 'Test and Tag Electrical Equipment' to this Risk Assessment.">Test and Tag Electrical Equipment</a></li>
+            </ul>
+         </div>
+         <div class="col-xs-4">
+            <ul>
+               <li><a href="#point2" onClick="PopulateNext('- Monitor Exposure Level (Sound/Substance/Radiation)\r\n')" title="Click to add the administrative control 'Monitor Exposure Level (Sound/Substance/Radiation)' to this Risk Assessment.">Monitor Exposure Level</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Licences (Lifts, Boilers, Pressure Vessles, Radiation)\r\n')" title="Click to add the administrative control 'Licences (Lifts, Boilers, Pressure Vessles, Radiation)' to this Risk Assessment.">Licences (Lifts, Boilers, Pressure Vessels, Radiation)</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Biosafety Committe Assessment (GMOs, pathogens, radiation, cytotoxins, imported biologicals)\r\n')" title="Click to add the administrative control 'Biosafety Committe Assessment (GMOs, pathogens, radiation, cytotoxins, imported biologicals)' to this Risk Assessment.">BioSafety Committee Assessment (GMOs, pathogens, radiation, cytotoxins, imported biologicals)</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- UTS Fieldwork Guidelines for overnight excursions in the field\r\n')" title="Click to add the administrative control 'UTS Fieldwork Guidelines for overnight excursions in the field' to this Risk Assessment.">UTS Fieldwork Guidelines for overnight excursions in the field</a></li>
+             </ul>
+         </div>
+         <div class="col-xs-4">
+            <ul>
+               <li><a href="#point2" onClick="PopulateNext('- Regular Breaks & Task Rotation\r\n')" title="Click to add the administrative control 'Regular Breaks & Task Rotation' to this Risk Assessment.">Regular Breaks & Task Rotation</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Supervision\r\n'); " title="Click to add the administrative control 'Supervision' to this Risk Assessment.">Supervision</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Ladder/Sling Register\r\n'); " title="Click to add the administrative control 'Ladder/Sling Register' to this Risk Assessment.">Ladder / Sling Register</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Work in Pairs\r\n')" title="Click to add the administrative control 'Work in Pairs' to this Risk Assessment.">Work in Pairs</a></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+   <div id="ppe" class="tab-pane fade">
+      <div class="row">
+         <div class="col-xs-4">
+            <ul >
+               <li><a href="#point2" onClick="PopulateNext('- Gloves\r\n')" title="Click to add the risk control 'Gloves' to this Risk Assessment.">Gloves</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Safety Footwear\r\n')" title="Click to add the risk control 'Safety Footwear' to this Risk Assessment.">Safety Footwear</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Safety Glasses/Goggles\r\n')" title="Click to add the risk control 'Safety Glasses/Goggles' to this Risk Assessment.">Safety Glasses / Goggles</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Face Shield\r\n')" title="Click to add the risk control 'Face Shield' to this Risk Assessment.">Face Shield</a></li>
+            </ul>
+         </div>
+         <div class="col-xs-4">
+            <ul>
+               <li><a href="#point2" onClick="PopulateNext('- Hard Hat\r\n')" title="Click to add the risk control 'Hard Hat' to this Risk Assessment.">Hard Hat</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Respirator/Dust Mask\r\n')" title="Click to add the risk control 'Respirator/Dust Mask' to this Risk Assessment.">Respirator / Dust Mask</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Hearing Protection\r\n')" title="Click to add the risk control 'Hearing Protection' to this Risk Assessment.">Hearing Protection</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Protective Clothing/Apron/Overalls\r\n')" title="Click to add the risk control 'Protective Clothing/Apron/Overalls' to this Risk Assessment.">Protective Clothing / Apron / Overalls</a></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+   <div id="emergency" class="tab-pane fade">
+      <div class="row">
+         <div class="col-xs-4">
+            <ul>
+               <li><a href="#point2" onClick="PopulateNext('- First Aid Kit\r\n')" title="Click to add the risk control 'First Aid Kit' to this Risk Assessment.">First Aid Kit</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Chemical Spill Kit\r\n')" title="Click to add the risk control 'Chemical Spill Kit' to this Risk Assessment.">Chemical Spill Kit</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Extended First Aid Kit\r\n')" title="Click to add the risk control 'Extended First Aid Kit' to this Risk Assessment.">Extended First Aid Kit</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Evacuation/Fire Control\r\n')" title="Click to add the risk control 'Evacuation/Fire Control' to this Risk Assessment.">Evacuation / Fire Control</a></li>
+            </ul>
+         </div>
+         <div class="col-xs-4">
+            <ul>
+               <li><a href="#point2" onClick="PopulateNext('- Safety Shower\r\n')" title="Click to add the risk control 'Safety Shower' to this Risk Assessment.">Safety Shower</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Eye Wash Station\r\n')" title="Click to add the risk control 'Eye Wash Station' to this Risk Assessment.">Eye Wash Station</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Emergency Stop Button\r\n')" title="Click to add the risk control 'Emergency Stop Button' to this Risk Assessment.">Emergency Stop Button</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Remote Communication Mechanism\r\n')" title="Click to add the risk control 'Remote Communication Mechanism' to this Risk Assessment.">Remote Communication Mechanism</a></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- end new style tabs -->
 
-<li><a href="#point2" onClick="PopulateNext('- Training/Information/Instruction\r\n')" title="Click to add the administrative control 'Training/Information/Instruction' to this Risk Assessment.">Training / Information / Instruction</a></li>
-<!--li><a href="#point2" onClick="PopulateNext('- SWMS (Safe Work Method Statement)\r\n')" title="Click to add the administrative control 'SWMS (Safe Work Method Statement)' to this Risk Assessment.">SWMS (Safe Work Method Statement)</a></li-->
-<li><a href="#point2" onClick="PopulateNext('- Chemical Risk Assessment\r\n')" title="Click to add the administrative control 'Chemical Risk Assessment' to this Risk Assessment.">Chemical Risk Assessment</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Licensing/Certification of Operators\r\n')" title="Click to add the administrative control 'Licensing/Certification of Operators' to this Risk Assessment.">Licensing/Certification of Operators</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Test and Tag Electrical Equipment\r\n')" title="Click to add the administrative control 'Test and Tag Electrical Equipment' to this Risk Assessment.">Test and Tag Electrical Equipment</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Monitor Exposure Level (Sound/Substance/Radiation)\r\n')" title="Click to add the administrative control 'Monitor Exposure Level (Sound/Substance/Radiation)' to this Risk Assessment.">Monitor Exposure Level (Sound / Substance / Radiation)</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Licences (Lifts, Boilers, Pressure Vessles, Radiation)\r\n')" title="Click to add the administrative control 'Licences (Lifts, Boilers, Pressure Vessles, Radiation)' to this Risk Assessment.">Licences (Lifts, Boilers, Pressure Vessels, Radiation)</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Biosafety Committe Assessment (GMOs, pathogens, radiation, cytotoxins, imported biologicals)\r\n')" title="Click to add the administrative control 'Biosafety Committe Assessment (GMOs, pathogens, radiation, cytotoxins, imported biologicals)' to this Risk Assessment.">BioSafety Committee Assessment (GMOs, pathogens, radiation, cytotoxins, imported biologicals)</a></li>
-<li><a href="#point2" onClick="PopulateNext('- UTS Fieldwork Guidelines for overnight excursions in the field\r\n')" title="Click to add the administrative control 'UTS Fieldwork Guidelines for overnight excursions in the field' to this Risk Assessment.">UTS Fieldwork Guidelines for overnight excursions in the field</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Work in Pairs\r\n')" title="Click to add the administrative control 'Work in Pairs' to this Risk Assessment.">Work in Pairs</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Regular Breaks & Task Rotation\r\n')" title="Click to add the administrative control 'Regular Breaks & Task Rotation' to this Risk Assessment.">Regular Breaks & Task Rotation</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Supervision\r\n'); " title="Click to add the administrative control 'Supervision' to this Risk Assessment.">Supervision</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Ladder/Sling Register\r\n'); " title="Click to add the administrative control 'Ladder/Sling Register' to this Risk Assessment.">Ladder / Sling Register</a></li>
-</ul></div></li>
 
-<!-- Tab 2 -->
-<li class="tab-ppa"><a href="#point2" name="tabc2" id="tablinkc-ppa" class="ppa" onmouseover="switchTabControl(2);" onkeypress="switchTabControl(2);" onfocus="switchTabControl(2);" onmouseout="hideAllTabsControl();">Personal Protective Equipment (PPE) </a></li>
-<li id="groupc-ppa"><div id="groupc2" class="groups"><ul class="section-list">
-<li><a href="#point2" onClick="PopulateNext('- Gloves\r\n')" title="Click to add the risk control 'Gloves' to this Risk Assessment.">Gloves</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Safety Footwear\r\n')" title="Click to add the risk control 'Safety Footwear' to this Risk Assessment.">Safety Footwear</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Safety Glasses/Goggles\r\n')" title="Click to add the risk control 'Safety Glasses/Goggles' to this Risk Assessment.">Safety Glasses/Goggles</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Face Shield\r\n')" title="Click to add the risk control 'Face Shield' to this Risk Assessment.">Face Shield</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Hard Hat\r\n')" title="Click to add the risk control 'Hard Hat' to this Risk Assessment.">Hard Hat</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Respirator/Dust Mask\r\n')" title="Click to add the risk control 'Respirator/Dust Mask' to this Risk Assessment.">Respirator/Dust Mask</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Hearing Protection\r\n')" title="Click to add the risk control 'Hearing Protection' to this Risk Assessment.">Hearing Protection</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Protective Clothing/Apron/Overalls\r\n')" title="Click to add the risk control 'Protective Clothing/Apron/Overalls' to this Risk Assessment.">Protective Clothing/Apron/Overalls</a></li>
-</ul></div></li>
-
-<!-- Tab 4 -->
-<li class="tab-emer"><a href="#point2" name="tabc3" id="tablinkc-emer" class="emer" onmouseover="switchTabControl(3);" onkeypress="switchTabControl(3);" onfocus="switchTabControl(3);" onmouseout="hideAllTabsControl();">Emergency Response Systems</a></li>
-<li id="groupc-emer"><div id="groupc3" class="groups"><ul class="section-list">
-<li><a href="#point2" onClick="PopulateNext('- First Aid Kit\r\n')" title="Click to add the risk control 'First Aid Kit' to this Risk Assessment.">First Aid Kit</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Chemical Spill Kit\r\n')" title="Click to add the risk control 'Chemical Spill Kit' to this Risk Assessment.">Chemical Spill Kit</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Extended First Aid Kit\r\n')" title="Click to add the risk control 'Extended First Aid Kit' to this Risk Assessment.">Extended First Aid Kit</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Evacuation/Fire Control\r\n')" title="Click to add the risk control 'Evacuation/Fire Control' to this Risk Assessment.">Evacuation/Fire Control</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Safety Shower\r\n')" title="Click to add the risk control 'Safety Shower' to this Risk Assessment.">Safety Shower</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Eye Wash Station\r\n')" title="Click to add the risk control 'Eye Wash Station' to this Risk Assessment.">Eye Wash Station</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Emergency Stop Button\r\n')" title="Click to add the risk control 'Emergency Stop Button' to this Risk Assessment.">Emergency Stop Button</a></li>
-<li><a href="#point2" onClick="PopulateNext('- Remote Communication Mechanism\r\n')" title="Click to add the risk control 'Remote Communication Mechanism' to this Risk Assessment.">Remote Communication Mechanism</a></li>
-</ul></div></li>
-						</ul>
-
-						<script type="text/javascript">
-					
-						switchTabControl(-1);
-						
-						</script>
-                
-				</div>
-			</div>
 		</td>
 	</tr>
 	
