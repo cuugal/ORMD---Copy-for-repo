@@ -122,7 +122,7 @@ table.cqoraSup_1 th { padding: 5px; border: none; background-color: #ffcf00; }
 
 .cqoraSup_sectionheading { background-color: #12fff9; font-size: 10pt; color: #000;}
 
-/* Styles the table for the cqoraSup.asp (create a new QORA) file */
+/* Styles the table for the CreateQORA.asp (create a new QORA) file */
 table.cqoraSup { margin-bottom: 5px; padding: 0; width: 80%; background-color: #edf4f6; color: #000; border-collapse: separate; border: solid 1px #bcd7de; }
 table.cqoraSup hr { background-color: #bcd7de; color: #bcd7de; height: 1px; border: 0; margin-top: 10px; margin-bottom: 10px; }
 table.cqoraSup th { text-align: left; font-size: 10pt; font-weight: 100; color: #000; background-color: #bcd7de; padding: 3px; }

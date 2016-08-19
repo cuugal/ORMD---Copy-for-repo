@@ -601,7 +601,7 @@
 						</tr>
 					 </table>
                           </form>
-                          <form method="post" autocomplete="false" action="cqoraSup.asp"  id="NewRA" name="NewRA" enctype="application/x-www-form-urlencoded">
+                          <form method="post" autocomplete="false" action="CreateQORA.asp"  id="NewRA" name="NewRA" enctype="application/x-www-form-urlencoded">
 
                             <script type="text/javascript">
                             function checkAndSubmit() {
