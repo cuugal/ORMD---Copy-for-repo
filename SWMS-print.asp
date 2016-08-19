@@ -109,6 +109,10 @@ End Function
 
  <%
 
+ Function FormatDate(input)
+     FormatDate = Day(CDate(input)) &" "& MonthName(Month(CDate(input)))&" " & (Year(CDate(input))-1)
+ End Function
+
 	testval = request.form("hdnQORAID")
 	'Response.write(testval)
 	set dcnDb = server.CreateObject("ADODB.Connection")
@@ -210,14 +214,15 @@ end if
 	 
 %>
 		<tr>
-      		<td colspan="3" align="left"> <strong>Work Activity Description: </strong><%=rsResults("strTaskDescription")%></td>
+      		<td colspan="3" align="left"> <strong>Work Activity Description: </strong></td>
       	</tr>
+      	<tr><td colspan="3" class="box"><%=rsResults("strTaskDescription")%></td></tr>
 		<tr>
       		
-      		<% if strAssessRisk="L" then%> <td class="low" align="left" width="250"><strong>Residual Risk Level: LOW</strong></td><%end if%>
-      		<% if strAssessRisk="M" then%> <td class="medium" align="left" width="250"><strong>Residual Risk Level: MEDIUM</strong> </td><%end if%>
-      		<% if strAssessRisk="H" then%> <td class="high" align="left" width="250"><strong>Residual Risk Level: HIGH</strong></td><%end if%>
-      		<% if strAssessRisk="E" then%> <td class="extreme" align="left" width="250"><strong>Residual Risk Level: EXTREME<strong></td><%end if%>
+      		<% if strAssessRisk="L" then%> <td colspan="3" class="low box" align="center" width="250"><strong>Residual Risk Level: LOW</strong></td><%end if%>
+      		<% if strAssessRisk="M" then%> <td colspan="3" class="medium box" align="center" width="250"><strong>Residual Risk Level: MEDIUM</strong> </td><%end if%>
+      		<% if strAssessRisk="H" then%> <td colspan="3" class="high box" align="center" width="250"><strong>Residual Risk Level: HIGH</strong></td><%end if%>
+      		<% if strAssessRisk="E" then%> <td colspan="3" class="extreme box" align="center" width="250"><strong>Residual Risk Level: EXTREME<strong></td><%end if%>
       	</tr>
 
 		<tr>
@@ -267,7 +272,7 @@ if(rsResults("numOperationId") <> 0) then %>
 			renewalDate = cstr(todaysDay) +"/"+cstr(todaysMonth)+"/"+cstr(renewal)
 			%>
         	<Strong>Assessor:</strong> <%=strAssessor%></td>
-        	<td class="campus" colspan="6"><strong>Date Last Modified (dd/mm/yyyy):</strong>&nbsp;&nbsp;&nbsp;<%=dtDateCreated%></td>
+        	<td class="campus" colspan="6"><strong>Date Last Modified (dd/mm/yyyy):</strong>&nbsp;&nbsp;&nbsp;<%=FormatDate(dtDateCreated)%></td>
         </tr>
 	</table>
 
@@ -290,7 +295,7 @@ if(rsResults("numOperationId") <> 0) then %>
 	<td colspan = "4">
 	<br/>
 	<strong>Hazards Relating to this Work Activity</strong>
-	<table class="suprlevel-print" style="margin 0 auto; width:90%; margin-left:40px">
+	<table class="suprlevel-print" >
 		<tr>
 		<td style="width: 100%;">
 		<strong>HAZARDS: </strong><br/>
@@ -298,11 +303,19 @@ if(rsResults("numOperationId") <> 0) then %>
 
 		</td>
 		</tr>
+	</table>
+	</td>
+	</tr>
+	<tr>
+		<td colspan = "4">
+    	<br/>
+    	<strong>CAUTION</strong>
+    	<table class="suprlevel-print">
 		<tr>
-		<td style="width: 100%;">
-		<strong>INHERENT RISKS:</strong><br/>
+		<td class="medium box" style="width: 100%;">
+		<strong>
 <%=Escape(strInherentRisk)%><br/>
-	
+	</strong>
 		</td>
 		</tr>
 		</table>
@@ -313,11 +326,16 @@ if(rsResults("numOperationId") <> 0) then %>
 	<td colspan = "4">
 	<br/>
 	<strong>Control Measures (Safety Equipment, Training, Signage and Information)</strong>
-	<table style="margin 0 auto; width:90%; margin-left:40px">
+	<table class="suprlevel-print">
 		<tr>
 		<td class="suprlevel-print" style="width: 100%;">
+		<!--#include file="pictogram.asp" -->
 
 <% 'here we need to populate the textarea with any existing controls we can locate
+
+            Set ppeImageURLs = CreateObject("System.Collections.ArrayList")
+            Set eqImageUrls = CreateObject("System.Collections.ArrayList")
+
         	set connControls = Server.CreateObject("ADODB.Connection")
   			connControls.open constr
 			' setting up the recordset
@@ -326,10 +344,27 @@ if(rsResults("numOperationId") <> 0) then %>
         	rsControls.Open strControls, connControls, 3, 3
         	strControlsImplemented =""
         	while not rsControls.EOF 
-         		strControlsImplemented = strControlsImplemented +rsControls("strControlMeasures")& vbCrLf
+         		'get the images we need to display
+                dim thisControl
+                thisControl = rsControls("strControlMeasures")
+                thisControl = Replace(thisControl, "-", "")
+                thisControl = Trim(thisControl)
+                if ppe.Exists(thisControl)= true then
+                    ppeImageURLs.Add ppe.item(thisControl)
+                    strPPE = strPPE &thisControl&", "
+                elseif eq.Exists(thisControl)= true then
+                    eqImageUrls.Add eq.item(thisControl)
+                    strEq = strEq&thisControl&", "
+                else
+                    strControlsImplemented = strControlsImplemented &rsControls("strControlMeasures")& "<BR>"
+                end if
+
      		' get the next record
            rsControls.MoveNext
-     		wend %>
+     		wend
+     		strPPE = LEFT(strPPE, (LEN(strPPE)-2))
+            strEq = LEFT(strEq, (LEN(strEq)-2))
+                 		%>
 <%=Escape(strControlsImplemented)%><br/>
 
 		</td>
@@ -338,12 +373,63 @@ if(rsResults("numOperationId") <> 0) then %>
 	</td>
 	</tr>
 
+	<tr>
+        <td colspan = "4">
+        <br/>
+        <strong>PPE Required for this activity</strong>
+        <table class="suprlevel-print">
+            <tr>
+            <td class="suprlevel-print" style="width: 100%;">
+            <%=strPPE%>
+              <br/>
+              <br/>
+            <%
+            dim str
+            for each str in ppeImageURLs
+            %>
+              <image width="100px" src="images/<%=str%>"/>
+              <%
+            next
+            %>
+
+            </td>
+            </tr>
+            </table>
+        </td>
+     </tr>
+
+     <tr>
+            <td colspan = "4">
+            <br/>
+            <strong>Emergency Equipment required for this activity</strong>
+            <table class="suprlevel-print">
+                <tr>
+                <td class="suprlevel-print" style="width: 100%;">
+                <%=strEq%>
+                  <br/>
+                  <br/>
+                <%
+
+                for each str in eqImageURLs
+                %>
+                  <image width="100px" src="images/<%=str%>"/>
+                  <%
+                next
+                %>
+                </td>
+                </tr>
+                </table>
+            </td>
+         </tr>
+
+
+
 
 <tr>
 	<td colspan = "4">
 	<br/>
 	<strong>Work Activity Steps</strong>
-		<table class="suprlevel-print" style="margin 0 auto; width:90%; margin-left:40px">
+		<table class="suprlevel-print" >
 			<tr>
 				<td style="width: 100%;">
 					<%= Escape(strJobSteps)%>

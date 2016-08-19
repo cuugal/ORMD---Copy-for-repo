@@ -8,6 +8,7 @@ a:link{color:#445c2c; /* text-decoration:none; */}
 a:hover{text-decoration:underline;}
 strong{color:#0099cc;}
 
+.disable {  background-color: rgba(211, 211, 211, 0.29); color: rgba(0, 0, 0, 0.71); border:1px solid gray;}
 /* For warning message table */
 .reportwarn { padding: 1px; width:98%; border: solid 1px #445c2c; font-size: 11px; border-collapse: separate;  text-align: left; }
 .reportwarn td { padding: 1px 5px 5px 5px; background-color: #F9EDB6; color: #000; vertical-align: middle; }

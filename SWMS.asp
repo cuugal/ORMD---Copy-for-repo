@@ -304,8 +304,13 @@ if(rsResults("numOperationId") <> 0) then %>
   
       	<tr>  
           <td>
+           <!--#include file="pictogram.asp" -->
             <!--textarea rows = "8" style="width:100%;" name="T3" readonly-->
 <% 'here we need to populate the textarea with any existing controls we can locate
+
+            Set ppeImageURLs = CreateObject("System.Collections.ArrayList")
+            Set eqImageUrls = CreateObject("System.Collections.ArrayList")
+
         	set connControls = Server.CreateObject("ADODB.Connection")
   			connControls.open constr
 			' setting up the recordset
@@ -313,19 +318,72 @@ if(rsResults("numOperationId") <> 0) then %>
   			set rsControls = Server.CreateObject("ADODB.Recordset")
         	rsControls.Open strControls, connControls, 3, 3
         	strControlsImplemented =""
+        	strPPE = ""
+        	strEq = ""
         	while not rsControls.EOF 
-         		strControlsImplemented = strControlsImplemented +rsControls("strControlMeasures")& "<BR>"
+
+         		'get the images we need to display
+         		dim thisControl
+         		thisControl = rsControls("strControlMeasures")
+                thisControl = Replace(thisControl, "-", "")
+                thisControl = Trim(thisControl)
+                if ppe.Exists(thisControl)= true then
+                    ppeImageURLs.Add ppe.item(thisControl)
+                    strPPE = strPPE &thisControl&", "
+                elseif eq.Exists(thisControl)= true then
+                    eqImageUrls.Add eq.item(thisControl)
+                    strEq = strEq&thisControl&", "
+                else
+                    strControlsImplemented = strControlsImplemented &rsControls("strControlMeasures")& "<BR>"
+                end if
      		' get the next record
            rsControls.MoveNext
-     		wend %>
+     		wend
+
+     		'remove extra comma at end
+     		strPPE = LEFT(strPPE, (LEN(strPPE)-2))
+     		strEq = LEFT(strEq, (LEN(strEq)-2))
+     		%>
      		<%=strControlsImplemented%>
 <!--/textarea-->           
 </td>
 </tr> 
 </table>
 
+<strong>PPE Required for this activity</strong>
+<table class="bluebox" style="margin: 0; width:80%; padding-left:40px">
+  <tr><td>
+  <%=strPPE%>
+  <br/>
+  <br/>
+<%
+dim str
+for each str in ppeImageURLs
+%>
+  <image width="100px" src="images/<%=str%>"/>
+  <%
+next
+%>
+</td></tr>
+</table>
 <br/>       
+<strong>Emergency Equipment required for this activity</strong>
+<table class="bluebox" style="margin: 0; width:80%; padding-left:40px">
+  <tr><td>
+  <%=strEq%>
+  <br/>
+  <br/>
+<%
 
+for each str in eqImageURLs
+%>
+  <image width="100px" src="images/<%=str%>"/>
+  <%
+next
+%>
+</td></tr>
+</table>
+<br/>
 <% 
 
 if isNull(strJobSteps) Then

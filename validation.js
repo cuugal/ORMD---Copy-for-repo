@@ -42,27 +42,6 @@ if(needSWMS == "Yes" && document.Form1.hasSWMS.value == "" && document.Form1.act
 	return(false);
 }
 
-
-
-// check required fields are completed
-// DLJ commented out and replaced with code below to separate out  validation responses 19 April2010
-/*if (document.Form1.txtAssessor.value != "" && document.Form1.txtTaskDesc.value !="" && document.Form1.T1.value !="" && document.Form1.T3.value !="" ){
-	answer = confirm("Do you want to save this Risk Assessment to the database?")
-	if (answer == true) { 
-    	return ;
-	} 
-	else{ 
-		return (false);
-	}
-
-}
-else{
-    alert ("Please enter information in the Assessor, Task Description, Hazards and Inherent Risks fields of the Risk Assessment Form");
-	return(false);
-	}
-}
-	*/
-
 if (document.Form1.txtAssessor.value != "" && document.Form1.txtTaskDesc.value !="" && document.Form1.T1.value !="" && document.Form1.T3.value !="" ){
 	answer = confirm("Do you want to save this Risk Assessment to the database?")
 		if (answer == true) { 
@@ -131,13 +110,13 @@ function Populate(val)
 function PopulateNext(val)
 {
   //document.all.T2.value = document.all.T2.value + val;
-  addRowToTable(val);
+  addRowToTable(val, true);
 }
   /****************************************************************************************************************************/
   /*****Dynamic line generator for Risk controls *********************/
  // Last updated 2009-12-05
 
-function addRowToTable(val)
+function addRowToTable(val, readOnly)
 {
   val = typeof(val) != 'undefined' ? val : '';
   var tbl = document.getElementById('tblControls');
@@ -154,6 +133,10 @@ function addRowToTable(val)
   el.id = 'txtRow' + iteration;
   el.value = val;
   el.size = 65;
+    if(readOnly) {
+        el.setAttribute('readonly', true);
+        el.setAttribute('class', 'disable');
+    }
   cellLeft.setAttribute('colspan','1');
   cellLeft.appendChild(el);
   

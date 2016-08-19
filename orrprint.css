@@ -2,83 +2,281 @@
 
 /* Remove the styling from hyperlinks in the printed version */
 a:link, a:visited {
-	color: #000;
-	background: transparent;
-	font-weight: bold;
-	text-decoration: underline;
-	}
+    color: #000;
+    background: transparent;
+    font-weight: bold;
+    text-decoration: underline;
+}
 
+#declaration {
+    display: block;
+    color: #000;
+    background-color: #fff;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 10pt;
+    float: none;
+    border: solid 1px black;
+    width: 55%;
+    margin-top: 10px;
+    padding: 6px;
+}
 
-#declaration { display: block; color: #000; background-color: #fff; font-family: Verdana, Arial, sans-serif; font-size: 10pt; float: none; 
-border: solid 1px black; width: 55%; margin-top: 10px; padding: 6px; }
-#declaration h4 { font-size: 11pt;}
-#declaration p { font-size: 10pt}
+#declaration h4 {
+    font-size: 11pt;
+}
 
+#declaration p {
+    font-size: 10pt
+}
 
-#body, #wrapper, #content {float: none; font-family: "arial";}
-#wrapper {width: auto; margin: 0; padding: 1em; background: none #fff; float: none;}
+#body, #wrapper, #content {
+    float: none;
+    font-family: "arial";
+}
+
+#wrapper {
+    width: auto;
+    margin: 0;
+    padding: 1em;
+    background: none #fff;
+    float: none;
+}
 
 /* For the SupervisorMenu.asp file (i.e. the menu at the top), don't display when printing. */
-div.loginlist { display: none; float: none;}
+div.loginlist {
+    display: none;
+    float: none;
+}
 
-table.mainprintable { border: solid 1px black; }
+table.mainprintable {
+    border: solid 1px black;
+}
+
+table td.box {
+    border: solid 1px black;
+    padding: 5px;
+}
+table td.medium {
+    background-color: #F5D328;
+}
+
+table td.low {
+    background-color: #70BF41;
+}
+
 /* table.mainprintable tr { background-color: #fff; color: #000; } */
-table.mainprintable h1 { font-size: 14pt; vertical-align: top; font-weight: bold;}
-table.mainprintable td.date { background-color: #fff; color: #000; font-size: 9pt; padding-top: 0; vertical-align: middle;}
-.small-font {font-size: 8pt; vertical-align: middle;}
+table.mainprintable h1 {
+    font-size: 14pt;
+    vertical-align: top;
+    font-weight: bold;
+}
 
+table.mainprintable td.date {
+    background-color: #fff;
+    color: #000;
+    font-size: 9pt;
+    padding-top: 0;
+    vertical-align: middle;
+}
 
+.small-font {
+    font-size: 8pt;
+    vertical-align: middle;
+}
 
 /* This works fine in Mozilla, but not in IE6 */
-.suprlevel { width: 99%; padding: 1px; border: solid 1px #d4e5fe; font-size: 11pt; border-collapse: separate; background-color: #fff; text-align: left;}
-.suprlevel caption { display: none;  }
-.suprlevel strong { font-weight: bolder; }
+.suprlevel {
+    width: 99%;
+    padding: 1px;
+    border: solid 1px #d4e5fe;
+    font-size: 11pt;
+    border-collapse: separate;
+    background-color: #fff;
+    text-align: left;
+}
+
+.suprlevel caption {
+    display: none;
+}
+
+.suprlevel strong {
+    font-weight: bolder;
+}
+
 /* Width of the header columns for the first instance of this table */
-.suprlevel thead th {text-align: left;}
+.suprlevel thead th {
+    text-align: left;
+}
 
 /* Width of the header columns */
 /* .suprlevel th.haztask { width: 40%; } */
-.suprlevel th.location { width: 37%; }
-.suprlevel .centrecontent { width: 9%; text-align: center; }
-.suprlevel td { padding: 5px; background-color: #edf4f6; color: #000; vertical-align: top; }
-.suprlevel td.blank { background-color: #fff; }
-.suprlevel th { padding: 5px; color: #000; background-color: #cae3e8; text-align: left; vertical-align: middle; }
-.suprlevel td.centered { text-align: center;}
+.suprlevel th.location {
+    width: 37%;
+}
 
+.suprlevel .centrecontent {
+    width: 9%;
+    text-align: center;
+}
 
+.suprlevel td {
+    padding: 5px;
+    background-color: #edf4f6;
+    color: #000;
+    vertical-align: top;
+}
 
-form, input {display: none; }
+.suprlevel td.blank {
+    background-color: #fff;
+}
 
+.suprlevel th {
+    padding: 5px;
+    color: #000;
+    background-color: #cae3e8;
+    text-align: left;
+    vertical-align: middle;
+}
 
-.hidden {display: none; }
+.suprlevel td.centered {
+    text-align: center;
+}
 
+form, input {
+    display: none;
+}
 
+.hidden {
+    display: none;
+}
 
-table.suprreportheader { padding: 1px; border: solid 1px #d4e5fe; font-size: 11pt; border-collapse: separate; background-color: #fff; text-align: left; display: table;}
-table.suprreportheader td, table.suprreportheader th { padding: 5px 25px 5px 5px; background-color: #edf4f6; color: #000; vertical-align: middle; }
-table.suprreportheader th {background-color: #cae3e8; color: #000; vertical-align: middle; font-weight: bold;}
+table.suprreportheader {
+    padding: 1px;
+    border: solid 1px #d4e5fe;
+    font-size: 11pt;
+    border-collapse: separate;
+    background-color: #fff;
+    text-align: left;
+    display: table;
+}
+
+table.suprreportheader td, table.suprreportheader th {
+    padding: 5px 25px 5px 5px;
+    background-color: #edf4f6;
+    color: #000;
+    vertical-align: middle;
+}
+
+table.suprreportheader th {
+    background-color: #cae3e8;
+    color: #000;
+    vertical-align: middle;
+    font-weight: bold;
+}
 
 /* The print styles for the SupRDateModified-print.asp file */
-.suprreportheader-print { padding: 0; border: solid 1px #000; font-size: 11px; border-collapse: separate; background-color: #000; color: #fff; text-align: left; width: 40%;}
-.suprreportheader-print td, .suprreportheader-print th { padding: 5px 25px 5px 5px; background-color: #fff; color: #000; vertical-align: middle; }
-.suprreportheader-print th {background-color: #fff; color: #000; vertical-align: middle; font-weight: bold;}
+.suprreportheader-print {
+    padding: 0;
+    border: solid 1px #000;
+    font-size: 11px;
+    border-collapse: separate;
+    background-color: #000;
+    color: #fff;
+    text-align: left;
+    width: 40%;
+}
 
+.suprreportheader-print td, .suprreportheader-print th {
+    padding: 5px 25px 5px 5px;
+    background-color: #fff;
+    color: #000;
+    vertical-align: middle;
+}
+
+.suprreportheader-print th {
+    background-color: #fff;
+    color: #000;
+    vertical-align: middle;
+    font-weight: bold;
+}
 
 /* Print CSS for MyQORA table */
-.suprlevel-print { width: 99%; padding: 2px; border: solid 1px #000; font-size: 10pt; border-collapse: collapse; text-align: left;}
-.suprlevel-print caption { font-size: 10px; text-align: left; color: #000; padding-left: 2px; padding-bottom: 0; margin-bottom: 2px; }
-.suprlevel-print strong { font-weight: bolder; }
+.suprlevel-print {
+    width: 99%;
+    padding: 2px;
+    border: solid 1px #000;
+    font-size: 10pt;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.suprlevel-print caption {
+    font-size: 10px;
+    text-align: left;
+    color: #000;
+    padding-left: 2px;
+    padding-bottom: 0;
+    margin-bottom: 2px;
+}
+
+.suprlevel-print strong {
+    font-weight: bolder;
+}
+
 /* Width of the header columns for the first instance of this table */
 
-.suprlevel-print th { background-color: #000; color: #fff; padding: 5px; text-align: left; vertical-align: middle; font-size: 9pt; border: solid 1px black; }
-.suprlevel-print th.haztaskresult { width: 30%; }
-.suprlevel-print th.assochazards { width: 18%; }
-.suprlevel-print th.currentcontrols { width: 26%; }
-.suprlevel-print th.location { width: 37%; }
-.suprlevel-print th.risklevel { width: 9%; font-size: 8pt; }
-.suprlevel-print th.furtheraction { font-size: 8pt; }
-.suprlevel-print th.comments { font-size: 8pt; }
-.suprlevel-print th.dac { font-size: 8pt; }
-.suprlevel-print th.renewaldate { width: 9%; }
+.suprlevel-print th {
+    background-color: #000;
+    color: #fff;
+    padding: 5px;
+    text-align: left;
+    vertical-align: middle;
+    font-size: 9pt;
+    border: solid 1px black;
+}
 
-.suprlevel-print td { padding: 2px; background-color: #fff; color: #000; vertical-align: top; border: solid 1px black; font-size: 9pt;}
+.suprlevel-print th.haztaskresult {
+    width: 30%;
+}
+
+.suprlevel-print th.assochazards {
+    width: 18%;
+}
+
+.suprlevel-print th.currentcontrols {
+    width: 26%;
+}
+
+.suprlevel-print th.location {
+    width: 37%;
+}
+
+.suprlevel-print th.risklevel {
+    width: 9%;
+    font-size: 8pt;
+}
+
+.suprlevel-print th.furtheraction {
+    font-size: 8pt;
+}
+
+.suprlevel-print th.comments {
+    font-size: 8pt;
+}
+
+.suprlevel-print th.dac {
+    font-size: 8pt;
+}
+
+.suprlevel-print th.renewaldate {
+    width: 9%;
+}
+
+.suprlevel-print td {
+    padding: 2px;
+    background-color: #fff;
+    color: #000;
+    vertical-align: top;
+    border: solid 1px black;
+    font-size: 9pt;
+}

@@ -127,84 +127,6 @@ rsOper.Open strSQL, dcnDb, 3, 3
 <SCRIPT type="text/javascript" language="Javascript" SRC="tabbed.js">
 </SCRIPT>
 
-<style type="text/css">
-/*  Code for the hazards menu */
-div#hazardsmenu ul { font-size: 8pt; margin: 0; padding: 0; list-style: none; width: 150px; /* Width of Menu Items */ border-bottom: 1px solid #ccc; float: left; position: relative; top: 10px; z-index: 1000; }
-
-div#hazardsmenu ul li { position: relative; }
-
-div#hazardsmenu ul li a {
-    display: block;
-    text-decoration: none;
-    color: #777;
-    background: #fff; /* IE6 Bug */
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-bottom: 0;
-    }
-
-/* Fix IE. Hide from IE Mac \*/
-* html div#hazardsmenu ul li { float: left; height: 1%; }
-* html div#hazardsmenu ul li a { height: 1%; }
-/* End */
-
-div#hazardsmenu ul li a:hover { color: #E2144A; background: #f9f9f9; } /* Hover Styles */
-
-div#hazardsmenu ul ul {
-    position:absolute;
-    display:none;
-    left: 149px; /* Set 1px less than menu width */
-    top: 0; }
-
-li ul li a { padding: 2px 5px; } /* Sub Menu Styles */
-
-li:hover ul ul, li.over ul ul { display:none; }
-
-div#hazardsmenu li:hover ul, div#hazardsmenu li li:hover ul, div#hazardsmenu li.over ul, div#hazardsmenu li li.over ul { display: block; } /* The magic */
-
-/*  Code for the Controls hover menu */
-div#forcontrols ul {
- font: normal 11px arial, sans-serif;
- margin: 0;
- padding: 0;
- list-style: none;
- width: 225px; /* Width of Menu Items */
- border-bottom: 1px solid #ccc; }
-
-div#forcontrols ul li {
- position:relative;
- }
-
-div#forcontrols ul li a {
- display: block;
- text-decoration: none;
- color: #777;
- background: #fff; /* IE6 Bug */
- padding: 5px;
- border: 1px solid #ccc;
- border-bottom: 0;
- }
-
-/* Fix IE. Hide from IE Mac \*/
-* html div#forcontrols ul li { float: left; height: 1%; }
-* html div#forcontrols ul li a { height: 1%; }
-/* End */
-
-div#forcontrols ul li a:hover { color: #E2144A; background: #f9f9f9; } /* Hover Styles */
-
-div#forcontrols ul ul {
- position:absolute;
- display:none;
- left: 224px; /* Set 1px less than menu width */
- top: 0; }
-
-li ul li a { padding: 2px 5px; } /* Sub Menu Styles */
-
-li:hover ul ul, li.overforcontrols ul ul { display:none; }
-
-div#forcontrols li:hover ul, div#forcontrols li li:hover ul, div#forcontrols li.overforcontrols ul, div#forcontrols li li.overforcontrols ul { display: block; } /* The magic */
-
-</style>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <meta http-equiv="Content-Language" content="en-au" />
 <link rel="stylesheet" type="text/css" href="orr.css" media="screen" />
@@ -728,7 +650,7 @@ Dim strSurname
         	i=3
         	while not rsControls.EOF %>
          	<tr>
-          		<td colspan="1" ><input type="text" id="<%="txtRow"&i%>" name="<%="txtRow"&i%>" size="65" value="<%=rsControls("strControlMeasures")%>" /></td>
+          		<td colspan="1" ><input type="text" readonly="true" class='disable' id="<%="txtRow"&i%>" name="<%="txtRow"&i%>" size="65" value="<%=rsControls("strControlMeasures")%>" /></td>
           		<td align="center"><input type="checkbox" id="<%="selRow"&i%>" name = "<%="selRow"&i%>"<%if rsControls("boolImplemented") then%>checked <%end if%> 
           		onclick="disableProposed(<%=i%>)" /></td>
 				<!--DLJ just put this textbox in as a dummy placeholder -->
@@ -750,7 +672,7 @@ Dim strSurname
        			<td style="min-width:240px" colspan="1">&nbsp;&nbsp;&nbsp;</td>
        			
        			<td style="text-align:right">
-       			<input type="button" value="Add Row" onclick="addRowToTable();" style="margin-right:85px" />
+       			<input type="button" value="Add Row" onclick="addRowToTable('', false);" style="margin-right:85px" />
        			<input type="button" value="Remove" onclick="deleteRow();" style="margin-right:35px" /></td>
        		</tr></tfoot>
 		</table>
