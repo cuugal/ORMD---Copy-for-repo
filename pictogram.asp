@@ -5,11 +5,6 @@ eq.Add "Eye Wash Station",       "/pictograms/equipment/eyewash.png"
 eq.Add "Safety Shower",          "/pictograms/equipment/shower.png"
 eq.Add "Chemical Spill Kit",     "/pictograms/equipment/spill.png"
 
-Dim haz
-Set haz=Server.CreateObject("Scripting.Dictionary")
-haz.Add "Eye Wash Station",       "/pictograms/equipment/corrosive.png"
-haz.Add "Safety Shower",          "/pictograms/equipment/electric.png"
-haz.Add "Chemical Spill Kit",     "/pictograms/equipment/exclamation.png"
 
 Dim ppe
 Set ppe=Server.CreateObject("Scripting.Dictionary")

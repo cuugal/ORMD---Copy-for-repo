@@ -341,8 +341,12 @@ if(rsResults("numOperationId") <> 0) then %>
      		wend
 
      		'remove extra comma at end
-     		strPPE = LEFT(strPPE, (LEN(strPPE)-2))
-     		strEq = LEFT(strEq, (LEN(strEq)-2))
+     		if not strPPE = "" then
+     		    strPPE = LEFT(strPPE, (LEN(strPPE)-2))
+     		end if
+     		if not strEq = "" then
+     		    strEq = LEFT(strEq, (LEN(strEq)-2))
+     		end if
      		%>
      		<%=strControlsImplemented%>
 <!--/textarea-->           

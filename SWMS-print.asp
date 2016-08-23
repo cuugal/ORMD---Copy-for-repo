@@ -362,9 +362,14 @@ if(rsResults("numOperationId") <> 0) then %>
      		' get the next record
            rsControls.MoveNext
      		wend
-     		strPPE = LEFT(strPPE, (LEN(strPPE)-2))
-            strEq = LEFT(strEq, (LEN(strEq)-2))
-                 		%>
+
+                'remove extra comma at end
+                if not strPPE = "" then
+                    strPPE = LEFT(strPPE, (LEN(strPPE)-2))
+                end if
+                if not strEq = "" then
+                    strEq = LEFT(strEq, (LEN(strEq)-2))
+                end if
 <%=Escape(strControlsImplemented)%><br/>
 
 		</td>
