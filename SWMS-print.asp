@@ -370,6 +370,7 @@ if(rsResults("numOperationId") <> 0) then %>
                 if not strEq = "" then
                     strEq = LEFT(strEq, (LEN(strEq)-2))
                 end if
+                %>
 <%=Escape(strControlsImplemented)%><br/>
 
 		</td>
