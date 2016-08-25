@@ -1,6 +1,6 @@
 <%@Language = VBscript%>
 <!--#INCLUDE FILE="DbConfig.asp"-->
-
+<!--#include file="aspJSON.asp" -->
 <%strLoginId = session("strLoginId")%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <link rel="SHORTCUT ICON" href="favicon.ico" type="image/x-icon" />
@@ -75,6 +75,9 @@ end if
 	boolGRA = rsResults("boolFurtherActionsGeneralRA")
 	strConsultation = rsResults("strConsultation")
 	boolSWMSRequired = rsResults("boolSWMSRequired")
+
+	strPPE = rsResults("ppe")
+	strEq = rsResults("emergency")
 	
 	set rsSupervisor = server.CreateObject("ADODB.Recordset")
 	strSQL = "select strGivenName,strSurName from tblFacilitySupervisor where strLoginId = '"& strSuperv &"'"
@@ -318,8 +321,7 @@ if(rsResults("numOperationId") <> 0) then %>
   			set rsControls = Server.CreateObject("ADODB.Recordset")
         	rsControls.Open strControls, connControls, 3, 3
         	strControlsImplemented =""
-        	strPPE = ""
-        	strEq = ""
+
         	while not rsControls.EOF 
 
          		'get the images we need to display
@@ -327,26 +329,14 @@ if(rsResults("numOperationId") <> 0) then %>
          		thisControl = rsControls("strControlMeasures")
                 thisControl = Replace(thisControl, "-", "")
                 thisControl = Trim(thisControl)
-                if ppe.Exists(thisControl)= true then
-                    ppeImageURLs.Add ppe.item(thisControl)
-                    strPPE = strPPE &thisControl&", "
-                elseif eq.Exists(thisControl)= true then
-                    eqImageUrls.Add eq.item(thisControl)
-                    strEq = strEq&thisControl&", "
-                else
-                    strControlsImplemented = strControlsImplemented &rsControls("strControlMeasures")& "<BR>"
-                end if
+
+                strControlsImplemented = strControlsImplemented &rsControls("strControlMeasures")& "<BR>"
+
      		' get the next record
            rsControls.MoveNext
      		wend
 
-     		'remove extra comma at end
-     		if not strPPE = "" then
-     		    strPPE = LEFT(strPPE, (LEN(strPPE)-2))
-     		end if
-     		if not strEq = "" then
-     		    strEq = LEFT(strEq, (LEN(strEq)-2))
-     		end if
+
      		%>
      		<%=strControlsImplemented%>
 <!--/textarea-->           
@@ -354,39 +344,97 @@ if(rsResults("numOperationId") <> 0) then %>
 </tr> 
 </table>
 
+<script type="text/javascript">
+
+    function addPPE(){
+        ppeItems = [];
+        $('input.ppeClass:checked').each(function(){
+            ppeItems.push($(this).attr('name'));
+        });
+        document.getElementById("ppe").value = JSON.stringify(ppeItems);
+    }
+    function addEq(){
+         eqItems = [];
+         $('input.eqClass:checked').each(function(){
+            eqItems.push($(this).attr('name'));
+         });
+        document.getElementById("eq").value = JSON.stringify(eqItems);
+    }
+
+</script>
+
+
 <strong>PPE Required for this activity</strong>
 <table class="bluebox" style="margin: 0; width:80%; padding-left:40px">
   <tr><td>
-  <%=strPPE%>
-  <br/>
-  <br/>
-<%
-dim str
-for each str in ppeImageURLs
-%>
-  <image width="100px" src="images/<%=str%>"/>
   <%
-next
-%>
+  For Each key In ppe.keys
+  %>
+  <div style="float:left;padding-right:5px" align="center">
+        <image width="100px" src="images/<%=ppe.item(key)%>"/><br/>
+        <input type="checkbox" class="ppeClass" name="<%=key%>" onclick="addPPE();"/>
+  </div>
+  <%
+  Next
+  %>
 </td></tr>
+
 </table>
 <br/>       
 <strong>Emergency Equipment required for this activity</strong>
 <table class="bluebox" style="margin: 0; width:80%; padding-left:40px">
-  <tr><td>
-  <%=strEq%>
-  <br/>
-  <br/>
-<%
-
-for each str in eqImageURLs
-%>
-  <image width="100px" src="images/<%=str%>"/>
-  <%
-next
-%>
-</td></tr>
+ <tr><td>
+   <%
+   For Each key In eq.keys
+   %>
+   <div style="float:left;padding-right:5px" align="center">
+        <image width="100px" src="images/<%=eq.item(key)%>"/><br/>
+        <input type="checkbox" class="eqClass" name="<%=key%>" onclick="addEq();"/>
+   </div>
+   <%
+   Next
+   %>
+ </td></tr>
 </table>
+<script type="text/javascript">
+
+    str1 = '<%=strppe%>';
+    str2 = '<%=streq%>';
+
+    if(str1 != ''){
+        var ppeItems =  JSON.parse(str1);
+    }
+    else{
+        var ppeItems = [];
+    }
+    if(str2 != ''){
+        var eqItems =  JSON.parse(str2);
+    }
+    else{
+        var eqItems = [];
+    }
+
+    $('input.ppeClass').each(function(){
+
+        if($.inArray($(this).attr('name'), ppeItems)!== -1){
+            $(this).prop( "checked", true );
+        }
+        else{
+            $(this).prop( "checked", false );
+        }
+     });
+     $('input.eqClass').each(function(){
+             if($.inArray($(this).attr('name'), eqItems)!== -1){
+                 $(this).prop( "checked", true );
+             }
+             else{
+                 $(this).prop( "checked", false );
+             }
+      });
+</script>
+
+                           <input type="hidden" name="ppe" id="ppe"/>
+                          <input type="hidden" name="eq" id="eq"/>
 <br/>
 <% 
 
@@ -434,6 +482,7 @@ if isNull(strJobSteps) Then
                         <input type="hidden" name="hdnFacultyId" value="<%=session("cboFaculty") %>" />
                           <input type="hidden" name="hdnBuildingId" value="<%=session("hdnBuildingId") %>" />
                           <input type="hidden" name="hdnCampusId" value="<%=session("hdnCampusId") %>" />
+
                     </form>
     <div style="clear:both"></div>  
   	</div>

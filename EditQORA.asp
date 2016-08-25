@@ -650,7 +650,7 @@ Dim strSurname
         	i=3
         	while not rsControls.EOF %>
          	<tr>
-          		<td colspan="1" ><input type="text" readonly="true" class='disable' id="<%="txtRow"&i%>" name="<%="txtRow"&i%>" size="65" value="<%=rsControls("strControlMeasures")%>" /></td>
+          		<td colspan="1" ><input type="text" id="<%="txtRow"&i%>" name="<%="txtRow"&i%>" size="65" value="<%=rsControls("strControlMeasures")%>" /></td>
           		<td align="center"><input type="checkbox" id="<%="selRow"&i%>" name = "<%="selRow"&i%>"<%if rsControls("boolImplemented") then%>checked <%end if%> 
           		onclick="disableProposed(<%=i%>)" /></td>
 				<!--DLJ just put this textbox in as a dummy placeholder -->

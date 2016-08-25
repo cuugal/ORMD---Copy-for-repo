@@ -134,8 +134,8 @@ function addRowToTable(val, readOnly)
   el.value = val;
   el.size = 65;
     if(readOnly) {
-        el.setAttribute('readonly', true);
-        el.setAttribute('class', 'disable');
+        //el.setAttribute('readonly', true);
+        //el.setAttribute('class', 'disable');
     }
   cellLeft.setAttribute('colspan','1');
   cellLeft.appendChild(el);

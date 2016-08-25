@@ -13,7 +13,7 @@ End If
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 <link rel="stylesheet" type="text/css" href="orr.css" media="screen" />
 <title>Save SWMS</title>
-     <!--#include file="bootstrap.inc"--> 
+     <!--#include file="bootstrap.inc"-->
 </head>
 <%
 
@@ -27,6 +27,8 @@ temp = instr(1,strT4,"'",vbTextCompare)
          strT4 = Replace(strT4,"'","''",1)
       end if
 
+ppe = request.form("ppe")
+eq = request.form("eq")
 '*************************Database connectivity Code***********************************************************
 
 Dim conn
@@ -42,7 +44,7 @@ Dim conn2
   ' setting up the recordset
 '***************************Insert into database**************************************************************
    ' DLJ 14April2010 added set boolSWMSRequired to catch saved SWMS even though not originaly selected as requiring one
-   strSql = "Update tblQORA set strJobSteps = '"&strT4&"', boolSWMSRequired = true, dtDateCreated = '"&dte&"' where numQORAId = "&testval
+   strSql = "Update tblQORA set strJobSteps = '"&strT4&"', boolSWMSRequired = true, dtDateCreated = '"&dte&"', ppe = '"&ppe&"', emergency = '"&eq&"' where numQORAId = "&testval
    set rsAdd = Server.CreateObject("ADODB.Recordset")
   rsAdd.Open strSQL, conn, 3, 3
   

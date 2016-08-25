@@ -1,10 +1,6 @@
 <%@Language = VBscript%>
 <!--#INCLUDE FILE="DbConfig.asp"-->
-<!-- deleted by DLJ %
-If Trim(Session("strLoginId")) = "" Then
-Response.Redirect("Invalid.asp")
-End If
-%-->
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -15,6 +11,8 @@ loginId = session("strLoginId")
 testval = request.form("hdnQORAID")
 'Response.Write(loginId)
 %>
+<script src="bootstrap/js/jQuery-1.11.3.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
  <meta http-equiv="Content-Language" content="en-au" />
@@ -176,6 +174,9 @@ end if
 	boolGRA = rsResults("boolFurtherActionsGeneralRA")
 	strConsultation = rsResults("strConsultation")
 	boolSWMSRequired = rsResults("boolSWMSRequired")
+
+	strPPE = rsResults("ppe")
+    strEq = rsResults("emergency")
 
 	'----------------------------------------------------------
 	set rsSupervisor = server.CreateObject("ADODB.Recordset")
@@ -349,27 +350,14 @@ if(rsResults("numOperationId") <> 0) then %>
                 thisControl = rsControls("strControlMeasures")
                 thisControl = Replace(thisControl, "-", "")
                 thisControl = Trim(thisControl)
-                if ppe.Exists(thisControl)= true then
-                    ppeImageURLs.Add ppe.item(thisControl)
-                    strPPE = strPPE &thisControl&", "
-                elseif eq.Exists(thisControl)= true then
-                    eqImageUrls.Add eq.item(thisControl)
-                    strEq = strEq&thisControl&", "
-                else
-                    strControlsImplemented = strControlsImplemented &rsControls("strControlMeasures")& "<BR>"
-                end if
+
+                strControlsImplemented = strControlsImplemented &rsControls("strControlMeasures")& "<BR>"
 
      		' get the next record
            rsControls.MoveNext
      		wend
 
-                'remove extra comma at end
-                if not strPPE = "" then
-                    strPPE = LEFT(strPPE, (LEN(strPPE)-2))
-                end if
-                if not strEq = "" then
-                    strEq = LEFT(strEq, (LEN(strEq)-2))
-                end if
+
                 %>
 <%=Escape(strControlsImplemented)%><br/>
 
@@ -386,18 +374,16 @@ if(rsResults("numOperationId") <> 0) then %>
         <table class="suprlevel-print">
             <tr>
             <td class="suprlevel-print" style="width: 100%;">
-            <%=strPPE%>
-              <br/>
-              <br/>
-            <%
-            dim str
-            for each str in ppeImageURLs
-            %>
-              <image width="100px" src="images/<%=str%>"/>
               <%
-            next
-            %>
-
+              For Each key In ppe.keys
+              %>
+              <div style="float:left;padding-right:5px" align="center">
+                    <image width="100px" src="images/<%=ppe.item(key)%>"/><br/>
+                    <input type="checkbox" style="display:block" disabled="disabled" class="ppeClass" name="<%=key%>" />
+              </div>
+              <%
+              Next
+              %>
             </td>
             </tr>
             </table>
@@ -405,29 +391,65 @@ if(rsResults("numOperationId") <> 0) then %>
      </tr>
 
      <tr>
-            <td colspan = "4">
-            <br/>
-            <strong>Emergency Equipment required for this activity</strong>
-            <table class="suprlevel-print">
-                <tr>
-                <td class="suprlevel-print" style="width: 100%;">
-                <%=strEq%>
-                  <br/>
-                  <br/>
-                <%
-
-                for each str in eqImageURLs
-                %>
-                  <image width="100px" src="images/<%=str%>"/>
-                  <%
-                next
-                %>
-                </td>
-                </tr>
-                </table>
+        <td colspan = "4">
+        <br/>
+        <strong>Emergency Equipment required for this activity</strong>
+        <table class="suprlevel-print">
+            <tr>
+            <td class="suprlevel-print" style="width: 100%;">
+             <%
+               For Each key In eq.keys
+               %>
+               <div style="float:left;padding-right:5px" align="center">
+                    <image width="100px" src="images/<%=eq.item(key)%>"/><br/>
+                    <input type="checkbox" style="display:block" disabled="disabled" class="eqClass" name="<%=key%>" />
+               </div>
+               <%
+               Next
+               %>
             </td>
-         </tr>
+            </tr>
+            </table>
+        </td>
+     </tr>
+<script type="text/javascript">
 
+    str1 = '<%=strppe%>';
+    str2 = '<%=streq%>';
+
+    if(str1 != ''){
+        var ppeItems =  JSON.parse(str1);
+    }
+    else{
+        var ppeItems = [];
+    }
+    if(str2 != ''){
+        var eqItems =  JSON.parse(str2);
+    }
+    else{
+        var eqItems = [];
+    }
+
+    $('input.ppeClass').each(function(){
+
+        if($.inArray($(this).attr('name'), ppeItems)!== -1){
+            $(this).prop( "checked", true );
+        }
+        else{
+            $(this).prop( "checked", false );
+        }
+
+     });
+     $('input.eqClass').each(function(){
+             if($.inArray($(this).attr('name'), eqItems)!== -1){
+                 $(this).prop( "checked", true );
+             }
+             else{
+                 $(this).prop( "checked", false );
+             }
+
+      });
+</script>
 
 
 
