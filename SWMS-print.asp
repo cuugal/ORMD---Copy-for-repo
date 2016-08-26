@@ -61,6 +61,7 @@ End Function
   numPageStatus = request.querystring("cboValDummy")
   numPageStatus = request.querystring("cboValDummy")
   numOptionId = Request.QueryString("numOptionID")
+  canEdit = Request.form("canEdit")
   'Response.write(numOptionID)
       
   '*********************Setting up the database connectivity***********
@@ -80,12 +81,12 @@ End Function
   eq = request.form("eq")
    Dim dte
       dte = Date()
-
-  strSql = "Update tblQORA set strJobSteps = '"&strT4&"', boolSWMSRequired = true, dtDateCreated = '"&dte&"', ppe = '"&ppe&"', emergency = '"&eq&"' where numQORAId = "&testval
-     'response.write(strSQL)
-     set rsAdd = Server.CreateObject("ADODB.Recordset")
-    rsAdd.Open strSQL, conn, 3, 3
-  
+   if canEdit = "True" then
+      strSql = "Update tblQORA set strJobSteps = '"&strT4&"', boolSWMSRequired = true, dtDateCreated = '"&dte&"', ppe = '"&ppe&"', emergency = '"&eq&"' where numQORAId = "&testval
+         'response.write(strSQL)
+         set rsAdd = Server.CreateObject("ADODB.Recordset")
+        rsAdd.Open strSQL, conn, 3, 3
+  end if
   '*********************writting the SQL ******************************
       
   '------------------------get the faculty for the login ---------------

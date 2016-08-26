@@ -210,6 +210,7 @@ end if
 					<input type="hidden" name="hdnQORAId" value="<%=testval%>" /> 
 					<input type="hidden" name="hdnFacilityId" value="<%=numFacilityID%>" />
 					<input type="hidden" name="operationId" value="<%=numOperationID%>" />
+					<input type="hidden" name="canEdit" value="<%=canEdit%>"/>
 	  				</td>
 		</tr>
   </table>
@@ -465,7 +466,7 @@ if isNull(strJobSteps) Then
   
       	<tr>  
           <td>
-            <textarea rows = "40" style="width:100%;" name="T4" ><%=strJobSteps%>
+            <textarea rows = "40" style="width:100%;" id="T4" name="T4" ><%=strJobSteps%>
 </textarea> 
           
 </td>
@@ -473,6 +474,22 @@ if isNull(strJobSteps) Then
 </table>
 
   </form>
+
+  <% 'only allow edit if the user is logged in, and has write access to the record, or is a admin.
+  				If not canEdit Then %>
+  				<script type="text/javascript">
+  				    $('input.ppeClass').each(function(){
+                        $(this).prop( "disabled", true );
+
+                     });
+                     $('input.eqClass').each(function(){
+                        $(this).prop( "disabled", true );
+
+                      });
+                     $('#T4').prop('readonly', true);
+
+  				</script>
+  				<% end if %>
 
        <form id="refreshResults" action="<%=action %>" method="post">
                           <input type="hidden" name="confirmationMsg" value="" />
