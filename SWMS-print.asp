@@ -68,7 +68,7 @@ End Function
   set Conn = Server.CreateObject("ADODB.Connection")
   Conn.open constr
 
-  
+
   '*********************writting the SQL ******************************
       
   '------------------------get the faculty for the login ---------------

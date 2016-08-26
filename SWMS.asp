@@ -346,6 +346,8 @@ if(rsResults("numOperationId") <> 0) then %>
 </table>
 
 <script type="text/javascript">
+    var ppeItems = [];
+    var eqItems = [];
 
     function addPPE(){
         ppeItems = [];
@@ -397,23 +399,21 @@ if(rsResults("numOperationId") <> 0) then %>
    %>
  </td></tr>
 </table>
+                            <input type="hidden" name="ppe" id="ppe" value=""/>
+                          <input type="hidden" name="eq" id="eq" value=""/>
 <script type="text/javascript">
 
     str1 = '<%=strppe%>';
     str2 = '<%=streq%>';
 
     if(str1 != ''){
-        var ppeItems =  JSON.parse(str1);
+         ppeItems =  JSON.parse(str1);
     }
-    else{
-        var ppeItems = [];
-    }
+
     if(str2 != ''){
-        var eqItems =  JSON.parse(str2);
+         eqItems =  JSON.parse(str2);
     }
-    else{
-        var eqItems = [];
-    }
+
 
     $('input.ppeClass').each(function(){
 
@@ -432,10 +432,11 @@ if(rsResults("numOperationId") <> 0) then %>
                  $(this).prop( "checked", false );
              }
       });
+      $('#ppe').val(JSON.stringify(ppeItems));
+      $('#eq').val(JSON.stringify(eqItems));
 </script>
 
-                           <input type="hidden" name="ppe" id="ppe"/>
-                          <input type="hidden" name="eq" id="eq"/>
+
 <br/>
 <% 
 
