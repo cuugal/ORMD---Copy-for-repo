@@ -66,6 +66,25 @@ End Function
   '*********************Setting up the database connectivity***********
   set Conn = Server.CreateObject("ADODB.Connection")
   Conn.open constr
+
+  '*********************perform save before render*********************
+  testval = request.form("hdnQORAID")
+  //Job Steps
+  strT4 = Request.form("T4")
+  temp = instr(1,strT4,"'",vbTextCompare)
+        if temp <> 0 then
+           strT4 = Replace(strT4,"'","''",1)
+        end if
+
+  ppe = request.form("ppe")
+  eq = request.form("eq")
+   Dim dte
+      dte = Date()
+
+  strSql = "Update tblQORA set strJobSteps = '"&strT4&"', boolSWMSRequired = true, dtDateCreated = '"&dte&"', ppe = '"&ppe&"', emergency = '"&eq&"' where numQORAId = "&testval
+     'response.write(strSQL)
+     set rsAdd = Server.CreateObject("ADODB.Recordset")
+    rsAdd.Open strSQL, conn, 3, 3
   
   '*********************writting the SQL ******************************
       
@@ -378,8 +397,8 @@ if(rsResults("numOperationId") <> 0) then %>
               For Each key In ppe.keys
               %>
               <div style="float:left;padding-right:5px" align="center">
-                    <image width="100px" src="images/<%=ppe.item(key)%>"/><br/>
-                    <input type="checkbox" style="display:block" disabled="disabled" class="ppeClass" name="<%=key%>" />
+                    <image width="100px" class="ppeClass" id="<%=key%>"  src="images/<%=ppe.item(key)%>"/><br/>
+
               </div>
               <%
               Next
@@ -401,8 +420,8 @@ if(rsResults("numOperationId") <> 0) then %>
                For Each key In eq.keys
                %>
                <div style="float:left;padding-right:5px" align="center">
-                    <image width="100px" src="images/<%=eq.item(key)%>"/><br/>
-                    <input type="checkbox" style="display:block" disabled="disabled" class="eqClass" name="<%=key%>" />
+                    <image width="100px"  class="eqClass" id="<%=key%>" src="images/<%=eq.item(key)%>"/><br/>
+
                </div>
                <%
                Next
@@ -430,22 +449,22 @@ if(rsResults("numOperationId") <> 0) then %>
         var eqItems = [];
     }
 
-    $('input.ppeClass').each(function(){
+    $('.ppeClass').each(function(){
 
-        if($.inArray($(this).attr('name'), ppeItems)!== -1){
-            $(this).prop( "checked", true );
+        if($.inArray($(this).attr('id'), ppeItems)!== -1){
+            $(this).show();
         }
         else{
-            $(this).prop( "checked", false );
+            $(this).hide();
         }
 
      });
-     $('input.eqClass').each(function(){
-             if($.inArray($(this).attr('name'), eqItems)!== -1){
-                 $(this).prop( "checked", true );
+     $('.eqClass').each(function(){
+             if($.inArray($(this).attr('id'), eqItems)!== -1){
+                 $(this).show();
              }
              else{
-                 $(this).prop( "checked", false );
+                 $(this).hide();
              }
 
       });
