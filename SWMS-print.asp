@@ -68,25 +68,7 @@ End Function
   set Conn = Server.CreateObject("ADODB.Connection")
   Conn.open constr
 
-  '*********************perform save before render*********************
-  testval = request.form("hdnQORAID")
-  //Job Steps
-  strT4 = Request.form("T4")
-  temp = instr(1,strT4,"'",vbTextCompare)
-        if temp <> 0 then
-           strT4 = Replace(strT4,"'","''",1)
-        end if
-
-  ppe = request.form("ppe")
-  eq = request.form("eq")
-   Dim dte
-      dte = Date()
-   if canEdit = "True" then
-      strSql = "Update tblQORA set strJobSteps = '"&strT4&"', boolSWMSRequired = true, dtDateCreated = '"&dte&"', ppe = '"&ppe&"', emergency = '"&eq&"' where numQORAId = "&testval
-         'response.write(strSQL)
-         set rsAdd = Server.CreateObject("ADODB.Recordset")
-        rsAdd.Open strSQL, conn, 3, 3
-  end if
+  
   '*********************writting the SQL ******************************
       
   '------------------------get the faculty for the login ---------------
