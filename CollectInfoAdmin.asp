@@ -46,6 +46,7 @@
    Session("hdnFacilityId") = numFacilityId
    Session("hdnSupervisor") = strSupervisor
    Session("hdnOperationID") = strOperation
+   Session("cboSupervisorName") = strSupervisor
 
     'persist these in session so that we can easily replicate the search results
     session("cboOperation") = strOperation

@@ -500,7 +500,8 @@ if isNull(strJobSteps) Then
                         <input type="hidden" name="hdnFacultyId" value="<%=session("cboFaculty") %>" />
                           <input type="hidden" name="hdnBuildingId" value="<%=session("hdnBuildingId") %>" />
                           <input type="hidden" name="hdnCampusId" value="<%=session("hdnCampusId") %>" />
-
+                        <input type="hidden" name="txtHazardoustask" value="<%=session("hdnHTask") %>" />
+                        <input type="hidden" name="cboSupervisorName" value="<%=session("cboSupervisorName") %>" />
                     </form>
     <div style="clear:both"></div>  
   	</div>
