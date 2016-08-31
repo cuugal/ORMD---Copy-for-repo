@@ -395,6 +395,7 @@ Dim rsAddControls
             <input type="hidden" name="cboFacility" value="<%=session("cboFacility") %>" />
             <input type="hidden" name="hdnFacultyId" value="<%=session("cboFaculty") %>" />
             <input type="hidden" name="hdnBuildingId" value="<%=session("hdnBuildingId") %>" />
+            <input type="hidden" name="hdnFacilityId" value="<%=session("hdnFacilityId") %>" />
             <input type="hidden" name="hdnCampusId" value="<%=session("hdnCampusId") %>" />
              <input type="hidden" name="txtHazardoustask" value="<%=session("hdnHTask") %>" />
              <input type="hidden" name="cboSupervisorName" value="<%=session("cboSupervisorName") %>" />

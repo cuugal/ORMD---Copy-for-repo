@@ -317,7 +317,7 @@
 							  <th>Room No. / Name</th>
 							 
 							  <td>
-								 <select autocomplete="false" class="form-control" size="1" name="cboRoom" id="cboRoom" tabindex="5">
+								 <select autocomplete="false" class="form-control" size="1" name="hdnFacilityId" id="cboRoom" tabindex="5">
 									<option value="0">Select any one</option>
 									
 								 </select>

@@ -59,7 +59,7 @@ numBuildingId = cint(Request.form("hdnBuildingId"))
 numCampusId = cint(Request.form("hdnCampusId"))
 strSupervisor = Request.form("hdnSuperV")
 numFacultyId = cint(Request.form("hdnFacultyId"))
-numFacilityId = cint(Request.form("cboRoom"))
+numFacilityId = cint(Request.form("hdnFacilityId"))
 
 strHTask = Session("hdnHTask") 
 numBuildingId =  cint(Session("hdnBuildingId"))

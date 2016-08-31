@@ -23,7 +23,7 @@
        numCampusId = cint(Request.QueryString("hdnCampusId"))
        strSupervisor = Request.QueryString("cboSupervisorName")
        numFacultyId = cint(Request.QueryString("hdnFacultyId"))
-       numFacilityId = cint(Request.QueryString("cboRoom"))
+       numFacilityId = cint(Request.QueryString("hdnFacilityId"))
        strOperation = cint(Request.QueryString("cboOperation"))
        searchType = request.QueryString("searchType")
     else
@@ -32,7 +32,7 @@
        numCampusId = cint(Request.form("hdnCampusId"))
        strSupervisor = Request.form("cboSupervisorName")
        numFacultyId = cint(Request.form("hdnFacultyId"))
-       numFacilityId = cint(Request.form("cboRoom"))
+       numFacilityId = cint(Request.form("hdnFacilityId"))
        strOperation = cint(Request.Form("cboOperation"))
        searchType = request.form("searchType")
     end if
