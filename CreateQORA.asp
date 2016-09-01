@@ -568,7 +568,7 @@ strJobSteps = ""
             <ul>
                <li><a href="#point2" onClick="PopulateNext('- Training/Information/Instruction\r\n')" title="Click to add the administrative control 'Training/Information/Instruction' to this Risk Assessment.">Training / Information / Instruction</a></li>
                <!--li><a href="#point2" onClick="PopulateNext('- SWMS (Safe Work Method Statement)\r\n')" title="Click to add the administrative control 'SWMS (Safe Work Method Statement)' to this Risk Assessment.">SWMS (Safe Work Method Statement)</a></li-->
-               <li><a href="#point2" onClick="PopulateNext('- Chemical Risk Assessment\r\n')" title="Click to add the administrative control 'Chemical Risk Assessment' to this Risk Assessment.">Chemical Risk Assessment</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Document Chemical Risk Assessment in OCID\r\n')" title="Click to add the administrative control 'Chemical Risk Assessment' to this Risk Assessment.">Document Chemical Risk Assessment in OCID</a></li>
                <li><a href="#point2" onClick="PopulateNext('- Licensing/Certification of Operators\r\n')" title="Click to add the administrative control 'Licensing/Certification of Operators' to this Risk Assessment.">Licensing/Certification of Operators</a></li>
                <li><a href="#point2" onClick="PopulateNext('- Test and Tag Electrical Equipment\r\n')" title="Click to add the administrative control 'Test and Tag Electrical Equipment' to this Risk Assessment.">Test and Tag Electrical Equipment</a></li>
             </ul>

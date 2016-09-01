@@ -235,6 +235,14 @@ table.suprreportheader th {
     border: solid 1px black;
 }
 
+.hazard-column {
+  width: 20%;
+}
+
+.controls-column {
+  width: 20%;
+}
+
 .suprlevel-print th.haztaskresult {
     width: 30%;
 }

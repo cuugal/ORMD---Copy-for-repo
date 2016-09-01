@@ -89,7 +89,7 @@ End Function
 <table class="mainprintable">
 <tr>
 <td>
-  <img src="utslogo.gif" width="184" height="41" alt="" align="left" />
+  			<img src="blackutslogo.png" width="92" height="41" alt="" align="left" />
 </td>
 <td>
 <h1>Risk Assessment Register</h1>

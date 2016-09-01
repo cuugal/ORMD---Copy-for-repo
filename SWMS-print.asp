@@ -91,7 +91,7 @@ End Function
 <table class="mainprintable" >
 	<tr>
 		<td>
-			<img src="utslogo.gif" width="184" height="41" alt="" align="left" />
+			<img src="blackutslogo.png" width="92" height="41" alt="" align="left" />
 		</td>
 		<td align="center">
 			<h1>SAFE WORK METHOD<br />STATEMENT (SWMS)</h1>
