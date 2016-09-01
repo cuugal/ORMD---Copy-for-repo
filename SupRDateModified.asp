@@ -138,7 +138,7 @@ End Function
   <!-- Break out of frame --> 
       <%if rsSearchH.EOF <> true then  %>
   <form target="_blank" action="SupRDateModified-print.asp">
-    <h2 class="pagetitle">Risk Assessment Search Results &nbsp;&nbsp;&nbsp;<input type="submit" value="Print preview" /></h2>    
+    <h2 class="pagetitle">Risk Assessment Search Results &nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-primary" value="Print preview" />Print Preview</button></h2>    
   </form>
       <% end if %>
 
@@ -178,6 +178,7 @@ End Function
               <td class="campus" colspan="3"><strong>Current Risk Assessments: </strong><%=rsControls("numCurrent")%>/<%=rsControls("numRA")%></td>
   		<tr>
  </table>
+&nbsp;&nbsp;&nbsp;Click on column header to sort column.
 <% end if
 if (searchType = "operation") then %>
 <table class="searchResultsFromMenu" width="100%">

@@ -312,7 +312,7 @@ if(rsResults("numOperationId") <> 0) then %>
 	<tr>
 		<td colspan = "4">
     	<br/>
-    	<strong>CAUTION</strong>
+    	<strong>CAUTION !</strong>
     	<table class="suprlevel-print">
 		<tr>
 		<td class="medium box" style="width: 100%;">
@@ -403,7 +403,7 @@ if(rsResults("numOperationId") <> 0) then %>
                For Each key In eq.keys
                %>
                <div style="float:left;padding-right:5px" align="center">
-                    <image width="100px"  class="eqClass" id="<%=key%>" src="images/<%=eq.item(key)%>"/><br/>
+                    <image width="90px"  class="eqClass" id="<%=key%>" src="images/<%=eq.item(key)%>"/><br/>
 
                </div>
                <%

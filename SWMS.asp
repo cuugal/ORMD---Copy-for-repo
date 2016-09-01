@@ -174,12 +174,15 @@ end if
 				If canEdit Then %>
 					
 					<td> 
-					<input type="submit" value="To Risk Assessment" onclick="Form1.action='EditQORA.asp?numCQORAId=<%=testval%>'; Form1.target='_self'; return true;">
+					<!--input type="submit" value="To Risk Assessment" onclick="Form1.action='EditQORA.asp?numCQORAId=<%=testval%>'; Form1.target='_self'; return true;"-->
+					<button type="submit" class="otherswms" value="To Risk Assessment" onclick="Form1.action='EditQORA.asp?numCQORAId=<%=testval%>'; Form1.target='_self'; return true;">To Risk Assessment</button>
+
 					</td>
 
 					<td >
 					<!-- 9April2010 DLJ added target=self -->
-					<input type="submit" value="Save SWMS" target="_self" onclick="Form1.action='AddSWMS.asp'; Form1.target='_self'; return true;"/>
+					<!--input type="submit" value="Save SWMS" target="_self" onclick="Form1.action='AddSWMS.asp'; Form1.target='_self'; return true;"/-->
+					<button type="submit" class="btn btn-primary" value="Save SWMS" target="_self" onclick="Form1.action='AddSWMS.asp'; Form1.target='_self'; return true;"/>Save SWMS</button>
 					<!--</form>-->
 					</td>
 					
@@ -190,7 +193,8 @@ end if
                       if Session("mostRecentSearch") <> "" then
                       %>
                          <td>
-					        <input type="button" value="Back to Risk Assessment List" name="Back" onclick="$('#refreshResults').submit();">
+					        <!--input type="button" value="Back to Risk Assessment List" name="Back" onclick="$('#refreshResults').submit();"-->
+							<button type="button" class="otherswms" value="Back to Risk Assessment List" name="Back" onclick="$('#refreshResults').submit();">Back to risk Assessment List</button>
                         </td>
                         <%
                         action = Session("mostRecentSearch")
@@ -206,7 +210,11 @@ end if
 
       				<td align="center">
 					<!-- <input type="submit" value="Print preview" /> -->		
-					<input type="submit" value="Print Preview" target="_blank" onclick="Form1.action='SWMS-print.asp'; Form1.target='_blank'; return true;" />			
+					<!--input type="submit" value="Print Preview" target="_blank" onclick="Form1.action='SWMS-print.asp'; Form1.target='_blank'; return true;" /-->	
+					
+					<button type="submit" class="btn btn-primary" value="Print Preview" target="_blank" onclick="Form1.action='SWMS-print.asp'; Form1.target='_blank'; return true;" />Print Preview</button>
+					
+					
 					<input type="hidden" name="hdnQORAId" value="<%=testval%>" /> 
 					<input type="hidden" name="hdnFacilityId" value="<%=numFacilityID%>" />
 					<input type="hidden" name="operationId" value="<%=numOperationID%>" />
@@ -367,14 +375,14 @@ if(rsResults("numOperationId") <> 0) then %>
 </script>
 
 
-<strong>PPE Required for this activity</strong>
-<table class="bluebox" style="margin: 0; width:80%; padding-left:40px">
+<strong>Personal Protective Equipment (PPE) required for this activity</strong><br/>&mdash; Pictograms selected via checkbox.
+<table class="greenbox" style="margin: 0; width:80%; padding-left:40px">
   <tr><td>
   <%
   For Each key In ppe.keys
   %>
   <div style="float:left;padding-right:5px" align="center">
-        <image width="100px" src="images/<%=ppe.item(key)%>"/><br/>
+        <image width="70px" src="images/<%=ppe.item(key)%>"/><br/>
         <input type="checkbox" class="ppeClass" name="<%=key%>" onclick="addPPE();"/>
   </div>
   <%
@@ -384,14 +392,14 @@ if(rsResults("numOperationId") <> 0) then %>
 
 </table>
 <br/>       
-<strong>Emergency Equipment required for this activity</strong>
-<table class="bluebox" style="margin: 0; width:80%; padding-left:40px">
+<strong>Emergency Equipment required for this activity</strong><br/>&mdash; Pictograms selected via checkbox.
+<table class="greenbox" style="margin: 0; width:80%; padding-left:40px">
  <tr><td>
    <%
    For Each key In eq.keys
    %>
    <div style="float:left;padding-right:5px" align="center">
-        <image width="100px" src="images/<%=eq.item(key)%>"/><br/>
+        <image width="65px" src="images/<%=eq.item(key)%>"/><br/>
         <input type="checkbox" class="eqClass" name="<%=key%>" onclick="addEq();"/>
    </div>
    <%
@@ -498,7 +506,7 @@ if isNull(strJobSteps) Then
                         <input type="hidden" name="cboOperation" value="<%=session("cboOperation")  %>" />
                         <input type="hidden" name="cboFacility" value="<%=session("cboFacility") %>" />
                         <input type="hidden" name="hdnFacultyId" value="<%=session("cboFaculty") %>" />
-                        <input type="hidden" name="hdnFacilityId" value="<%=session("hdnFacilityId") %>" />
+						<input type="hidden" name="hdnFacilityId" value="<%=session("hdnFacilityId") %>" />
                           <input type="hidden" name="hdnBuildingId" value="<%=session("hdnBuildingId") %>" />
                           <input type="hidden" name="hdnCampusId" value="<%=session("hdnCampusId") %>" />
                         <input type="hidden" name="txtHazardoustask" value="<%=session("hdnHTask") %>" />

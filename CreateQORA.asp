@@ -476,8 +476,7 @@ strJobSteps = ""
 
 	<tr>
     	<td><strong>Hazard List</strong> <br/> List hazards below either by using the  menu above</br> or typing directly into the text box.</td>
-      	<td><strong>Inherent Risks</strong> <br/>List injury/illness that could occur from this work activity and 
-      	<strong><u>how</u></strong> this harm could happen. </br><i>e.g. - Back strain may occur from incorrect lifting.</i></td>
+      	<td><strong>Potential Harm</strong> <br/>List <strong>injury/illness</strong> that could occur from this work activity and <strong> <u>how</u></strong> this injury/illness could happen.</br> <i>e.g. - Back strain may occur from incorrect lifting.</i></td>
 	</tr>
 
 
@@ -644,7 +643,7 @@ strJobSteps = ""
 	</tr>
 	<tr>
 		<th colspan="1" style="text-align:center"><strong>Currently in Place and Proposed</strong></th>
-		<th colspan="2" style="text-align:center"><strong>Currently In Place &nbsp &nbsp OR &nbsp &nbsp  Proposed Implementation Date</strong></th>
+		<th colspan="2" style="text-align:center"><strong>Currently In Place &nbsp &nbsp OR &nbsp &nbsp  Proposed Implementation Date (dd/mm/yyyy)</strong></th>
 		<th style="text-align:center"><strong>Remove</strong></th>
 	</tr>
     <tr>

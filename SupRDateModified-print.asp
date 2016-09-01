@@ -174,8 +174,8 @@ if not rsSearchH.EOF then
 	<tr>
 		 <th>Ra No.</th>
 		 <th>Task</th>
-		 <th>Hazards</th>
-		 <th>Current Controls</th>
+		 <th class="hazard-column">Hazards</th>
+		 <th class="controls-column">Current Controls</th>
 		 <th>Risk Level</th>
 		 <th>Proposed Controls</th>
 		 <th>Review Date</th> 

@@ -360,6 +360,22 @@ span.right {position: absolute; }
 
 
 
+/* Styles the Administrator and Supervisor login table */
+.greenbox { margin: 3px 3px 3px 0; width: 98%; background-color: #ffffff; color: #000; border-collapse: separate; border: solid 1px #445c2c; font-size: 1em; }
+.greenbox hr { color: #bcd7de; height: 1px; border: 0; margin-top: 10px; margin-bottom: 10px;}
+.greenbox .sublist { text-align: right; }
+.greenbox td { color: #000; }
+.greenbox th { text-align: right; width: 30%; font-size: 10pt; font-weight: 100; }
+.greenbox input[type="button"],
+.greenbox input[type="radio"],
+.greenbox input[type="password"],
+.greenbox input[type="text"],
+.greenbox select { font-size: 10pt; font-weight: normal; border: solid 1px #ffcf00; text-align: left; margin: 3px; color: #000; background-color: #f8e9ad; }
+
+
+
+
+
 /* resultsFrameFromAdmin.asp styling */
 /* This was also originally used for styling the locationSup.asp file - but have replaced with bluebox styling instead. */
 .searchResultsFromMenu .strong1 { font-size: 1.05em; font-weight: bolder; color: #000; background-color: #F8E9AD; font-size: 10pt; font-weight: bolder; }
@@ -849,6 +865,24 @@ color: #fff;
 }
 
 
+button.saveswms {
+	color: #fff;
+    background-color: #A2B63A;
+    border-color: #80986C;
+	padding: 6px 12px;
+    font-size: 14px;
+    font-weight: normal;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
 
-
-
+button.otherswms {
+	color: #fff;
+    background-color: #0099cc;
+    border-color: #80986C;
+	padding: 6px 12px;
+    font-size: 14px;
+    font-weight: normal;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
