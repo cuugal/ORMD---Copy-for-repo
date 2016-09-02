@@ -474,7 +474,7 @@ if(rsResults("numOperationId") <> 0) then %>
 	<tr>
 	<td colspan = "4">	
 				<tr>
-					<td colspan = "3" class= "small-font">This SWMS has been developed through consultation with our employees and has been read, understood and signed by all employees undertaking the works.</td>
+					<td colspan = "3" class= "small-font">This SWMS has been developed through consultation with our workers and has been read, understood and signed by persons undertaking the activity.</td>
 				</tr>
 				<tr>
 					<td>Print Names:</td><td>Signatures:</td><td>Dates:</td>
@@ -495,7 +495,7 @@ if(rsResults("numOperationId") <> 0) then %>
 					<td><br/></td> <td><br/></td> <td><br/></td>
 				</tr>
 				<tr>
-					<td colspan = "3" class= "small-font">Any changes, additions or deletions made to this SWMS are to be covered at a Tool Box meeting with all employees undertaking the works.</td>
+					<td colspan = "3" class= "small-font">Any changes, additions or deletions made to this SWMS will be done in consultation with workers undertaking the activity.</td>
 				</tr>
 	</td>
 	</tr>
