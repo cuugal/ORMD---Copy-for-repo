@@ -19,21 +19,21 @@
 
    if Request.QueryString("searchType") <> "" then
        strTask = Request.QueryString("txtHazardousTask")
-       numBuildingId = cint(Request.QueryString("hdnBuildingId"))
-       numCampusId = cint(Request.QueryString("hdnCampusId"))
+       numBuildingId = cint("0"&Request.QueryString("hdnBuildingId"))
+       numCampusId = cint("0"&Request.QueryString("hdnCampusId"))
        strSupervisor = Request.QueryString("cboSupervisorName")
-       numFacultyId = cint(Request.QueryString("hdnFacultyId"))
-       numFacilityId = cint(Request.QueryString("hdnFacilityId"))
-       strOperation = cint(Request.QueryString("cboOperation"))
+       numFacultyId = cint("0"&Request.QueryString("hdnFacultyId"))
+       numFacilityId = cint("0"&Request.QueryString("hdnFacilityId"))
+       strOperation = cint("0"&Request.QueryString("cboOperation"))
        searchType = request.QueryString("searchType")
     else
        strTask = Request.Form("txtHazardousTask")
-       numBuildingId = cint(Request.form("hdnBuildingId"))
-       numCampusId = cint(Request.form("hdnCampusId"))
+       numBuildingId = cint("0"&Request.form("hdnBuildingId"))
+       numCampusId = cint("0"&Request.form("hdnCampusId"))
        strSupervisor = Request.form("cboSupervisorName")
-       numFacultyId = cint(Request.form("hdnFacultyId"))
-       numFacilityId = cint(Request.form("hdnFacilityId"))
-       strOperation = cint(Request.Form("cboOperation"))
+       numFacultyId = cint("0"&Request.form("hdnFacultyId"))
+       numFacilityId = cint("0"&Request.form("hdnFacilityId"))
+       strOperation = cint("0"&Request.Form("cboOperation"))
        searchType = request.form("searchType")
     end if
 
