@@ -110,7 +110,7 @@ End Function
  <%
 
  Function FormatDate(input)
-     FormatDate = Day(CDate(input)) &" "& MonthName(Month(CDate(input)))&" " & (Year(CDate(input))-1)
+     FormatDate = Day(CDate(input)) &" "& MonthName(Month(CDate(input)))&" " & (Year(CDate(input)))
  End Function
 
 	testval = request.form("hdnQORAID")
