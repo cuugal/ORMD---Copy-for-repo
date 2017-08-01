@@ -53,19 +53,19 @@ if (document.Form1.txtAssessor.value != "" && document.Form1.txtTaskDesc.value !
 }
 	else{
 			if (document.Form1.txtAssessor.value == "") { 
-			alert ("Please enter information in the Assessor field of the Risk Assessment Form");
+			alert ("Please enter information in the Assessor feild of the Risk Assessment Form");
 			return(false);
 			}
 			if (document.Form1.txtTaskDesc.value == "") {
-			alert ("Please enter information in the Task Description field of the Risk Assessment Form");
+			alert ("Please enter information in the Work Activity feild of the Risk Assessment Form");
 			return(false);
 			}
 			if (document.Form1.T1.value == "") {
-			alert ("Please enter information in the Hazards field of the Risk Assessment Form");
+			alert ("Please enter information in the Hazard List box of the Risk Assessment Form");
 			return(false);
 			}
 			if (document.Form1.T3.value == "") {
-			alert ("Please enter information in the Inherent Risks field of the Risk Assessment Form");
+			alert ("Please enter information in the Potential Harm box of the Risk Assessment Form");
 			return(false);
 			}
 	}
