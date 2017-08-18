@@ -8,6 +8,13 @@
 <%
 testval = request.form("hdnQORAID")
 NoSaveBeforeSWMS = request.form("hdnNoSaveBeforeSWMS")
+
+soc = Request.QueryString("numQORAId")
+if(soc <> "") then
+    testval = soc
+    NoSaveBeforeSWMS = "nosave"
+end if
+
 'This file will check if a record exists, and then create, or find a record and update,
 ' so long as the fields in POST are appropriately named.
  %>
