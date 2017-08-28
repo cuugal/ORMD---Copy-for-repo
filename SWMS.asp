@@ -176,6 +176,10 @@ end if
       		<td align="left" class="plainbox" colspan="4"><strong>Work Activity Description:</strong> <%=rsResults("strTaskDescription")%></td>
 		</tr>
 		<tr>
+			<td align="left" style="font-size:12px"><strong>Direct link for copy and paste:</strong> www.orr.uts.edu.au/SWMS.asp?numQORAId=<%=testval%></td>
+		</tr>
+		
+		<tr>
 			
 			<% 'only display save button if the user is logged in, and has write access to the record, or is a admin.
 				If canEdit Then %>
