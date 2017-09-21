@@ -12,7 +12,8 @@ session.LCID = 2057	'English(British) format
 
 <head>
 <title>Health and Safety Risk Register</title>
-<link rel="SHORTCUT ICON" href="favicon.ico" type="image/x-icon" />
+<link rel="SHORTCUT ICON" href="/images/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png"/>
     <!--#include file="bootstrap.inc"--> 
 </head>
     <body>
