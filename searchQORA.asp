@@ -696,9 +696,9 @@
 <div style="clear:both"></div>
 <ul class="nav nav-tabs" >
                  
-	<li class="active"><a data-toggle="tab" href="#faculty_list">By Faculty</a></li>
-	<li><a data-toggle="tab" href="#fac_oper_list">By Facility/Operation</a></li>
-
+	<li class="active"><a data-toggle="tab" href="#faculty_list">By Faculty/Unit</a></li>
+	<!--li><a data-toggle="tab" href="#fac_oper_list">By Facility/Operation</a></li-->
+<!--removed - not a benefit and a not working well-->
                   
 </ul>
 <div class="tab-content" style="padding:5px;">
@@ -706,7 +706,7 @@
      <table id="factable" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <th>Faculty Name</th>
+                <th>Faculty/Unit Name</th>
                 <th>Facility/Operation</th>
                 <th>Current RA</th>
                 <th>Total RA</th>
@@ -727,6 +727,7 @@
                     end if
                     %>
                 <td><a style="text-decoration: underline;" href="<%=link %>"><%=rsFillFaculty("strFacultyName") %></a></td>
+
                 <td><%=rsFillFaculty("searchType") %></td>
                  <td><%=rsFillFaculty("numCurr") %></td>
                 <td><%=rsFillFaculty("numRA") %></td>
