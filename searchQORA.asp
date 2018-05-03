@@ -189,6 +189,7 @@
 				  <li><a data-toggle="tab" href="#operations">Operations/Projects</a></li>
 				  <li><a data-toggle="tab" href="#supervisors">Supervisors</a></li>
 				  <li><a data-toggle="tab" href="#ra">Keyword Search</a></li>
+				<li><a data-toggle="tab" href="#templates">Templates</a></li>
              
 				   <% if session("LoggedIn")= true then %>
 				   <li><a data-toggle="tab" href="#my"><font color="#E60A0A">My Risk Assessments</font></a></li>
@@ -445,6 +446,64 @@
 				  </div>
 				  <%'************************************************  END TASK OPERATION ***************************************************** %>
                  
+
+
+<!-- added 3may18 DLJ -->
+
+				  <%'************************************************  SEARCH TEMPLATES ******************************************************** %>
+				  <div id="templates" class="tab-pane fade">
+					 
+						<table class="adminfn">
+					   
+						
+						<form method="post" autocomplete="false"  name="SubmitTemplate" action="CollectInfoAdmin.asp" name="f1" enctype="application/x-www-form-urlencoded">
+						   <input type="hidden" name="hdnSuperV" value="<%=strsuperV%>" />
+						   <input type="hidden" name="hdnHazardousTask" value="<%=strHazardousTask%>" />
+						   <input type="hidden" name="hdnBuildingId" value="0" />
+						   <input type="hidden" name="hdnCampusID" value="0" />
+						   <input type="hidden" name="hdnFacultyId" value="0" />
+						   <input type="hidden" name="cboFaculty" value="0" />
+						   <input type="hidden" name="searchType" value="templates" />
+						   <!--tr>
+							  <th>RA Number/Task</th>
+							  <td>
+								 <input type="text" class="form-control" id="txtHazardousTask" name="txtHazardousTask" size="40" tabindex="0" />
+							  </td>
+						   </tr-->
+						   <tr>
+							  <td></td>
+						   </tr >
+						   <tr>
+							  <td colspan="2">
+								 <center>
+									<input type="Submit" class="btn btn-primary" value="Search" id="templateSearch" name="btnSearch"  />&nbsp;&nbsp;&nbsp;&nbsp;
+									<!--input type="button" class="btn btn-primary" value="Clear Form" name="btnClear" onclick="clearform()" /-->&nbsp;&nbsp;&nbsp;&nbsp;
+									<!--DLJ Removed this button from common search 22July2011-->
+								</center></td>
+						</form>
+
+
+						</tr>
+						<tr>
+						   <td>&nbsp;</td>
+						</tr>
+					 </table>
+				  </div>
+				  <%'************************************************  END TEMPLATE OPERATION ***************************************************** %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 				  <%'************************************************  START MY RA OPERATION ***************************************************** %>
 				    <% if session("LoggedIn") then 
 						  Dim connFaci

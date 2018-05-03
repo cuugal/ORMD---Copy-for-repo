@@ -168,7 +168,35 @@ if(searchType = "operation") then
 	end if
 	strSQL = strSQL+ " Order by tblQORA.strSupervisor, tblRiskLevel.numGrade, tblQORA.strTaskDescription "
     'Response.write(strSQL)
+end If
+
+
+
+
+
+' added 3may18 DLJ
+if(searchType = "templates") Then
+strOperation = 75
+numFacultyId = 28
+'these two values correspond to david lloyd-jones TEMPLATES
+
+	strSQL = "Select distinct(tblQORA.numQORAId) as numQORAId, tblQORA.*, tblRiskLevel.* "
+	strSQL = strSQL+" from tblQORA, tblRiskLevel, tblOperations, tblFacilitySupervisor"
+
+	strSQL = strSQL+" Where tblOperations.numFacilitySupervisorID = tblFacilitySupervisor.numSupervisorId"
+	strSQL = strSQL+" and tblQORA.numOperationID = tblOperations.numOperationID"
+	strSQL = strSQL+" and tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel"
+	strSQL = strSQL+" and tblOperations.numOperationID = "&strOperation
+	strSQL = strSQL+" and tblFacilitySupervisor.numFacultyID = "&numFacultyId
+	strSQL = strSQL+ " Order by tblQORA.strSupervisor, tblRiskLevel.numGrade, tblQORA.strTaskDescription "
+   ' Response.write(strSQL)
 end if
+
+
+
+
+
+
 
 
 if(searchType = "task") then
