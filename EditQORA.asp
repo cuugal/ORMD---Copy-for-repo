@@ -261,16 +261,15 @@ Dim strSurname
 	  </table>
 	</br>
 
- <strong>(1) Describe briefly how the work is performed</strong><br>
-  <br>
-  <table class="suprreportheader" style="width: 82%">
-    <tr>
-      <th>Work Activity Description</th>
-      <td><!--<input type="text" name="txtTaskDesc" size="100%" value="<%=strTaskDescription%>" />-->
-      <textarea rows="4" name="txtTaskDesc" cols="90" ><%=strTaskDescription%></textarea></td>
-    </tr>
-  </table>
-  
+        	<strong>(1) Work activity description.</strong><br>
+      <br>
+      <table class="suprreportheader" style="width: 82%">
+        <tr>
+		  <td width = 30%><b>Describe hazardous activities related to the work area or operation:</b> </br>include names of hazardous equipment, substances or materials used, </br> and any quantities and concentrations of substance(s) or reaction products</td>
+          <td><!--<input type="text" name="txtTaskDesc" size="100%" />-->
+          <textarea rows="4" name="txtTaskDesc" cols="100" ></textarea></td>
+        </tr>
+      </table>
   
   
   <BR>
@@ -397,25 +396,42 @@ Dim strSurname
       </div>
    </div>
    <div id="chemical" class="tab-pane fade">
-      <div class="row">
-         <div class="col-xs-4">
-            <ul class="section-list">
-               <li><a href="#point1" onClick="Populate('Chemical - Hazardous Substances or Dangerous Goods\r\n'); " title="Click to add 'Hazardous Substances or Dangerous Goods' as a Hazard in this Risk Assessment.">Hazardous Substances or Dangerous Goods</a></li>
-               <li><a href="#point1" onClick="Populate('Chemical - Hazardous Waste\r\n'); " title="Click to add 'Hazardous Waste' as a Hazard in this Risk Assessment.">Hazardous Waste</a></li>
-               <li><a href="#point1" onClick="Populate('Chemical - Fumes\r\n');" title="Click to add 'Fumes' as a Hazard in this Risk Assessment.">Fumes</a></li>
-               <li><a href="#point1" onClick="Populate('Chemical - Dust\r\n'); " title="Click to add 'Dust' as a Hazard in this Risk Assessment.">Dust</a></li>
-            </ul>
-         </div>
-         <div class="col-xs-4">
-            <ul class="section-list">
-               <li><a href="#point1" onClick="Populate('Chemical - Vapours\r\n'); " title="Click to add 'Vapours' as a Hazard in this Risk Assessment.">Vapours</a></li>
-               <li><a href="#point1" onClick="Populate('Chemical - Gases\r\n'); " title="Click to add 'Gases' as a Hazard in this Risk Assessment.">Gases</a></li>
-               <li><a href="#point1" onClick="Populate('Chemical - Fire/Explosion Risk\r\n'); " title="Click to add 'Fire/Explosion Risk' as a Hazard in this Risk Assessment.">Fire/Explosion Risk</a></li>
-            </ul>
-         </div>
-      </div>
-   </div>
-   <div id="biological" class="tab-pane fade">
+		  <div class="row">
+			 <div class="col-xs-4">
+				<ul class="section-list">
+				   <li><a href="#point1" onClick="Populate('Chemical - Explosive\r\n'); " title="Click to add 'Explosive' as a Hazard in this Risk Assessment.">Explosive</a></li>
+				   <li><a href="#point1" onClick="Populate('Chemical - Flammable gas\r\n'); " title="Click to add 'Flammable gas' as a Hazard in this Risk Assessment.">Flammable gas</a></li>
+				   <li><a href="#point1" onClick="Populate('Chemical - Oxidising Gas\r\n'); " title="Click to add 'Oxidising Gas' as a Hazard in this Risk Assessment.">Oxidising Gas</a></li>
+				   <li><a href="#point1" onClick="Populate('Chemical - Gas under Pressure\r\n'); " title="Click to add 'Gas under Pressure' as a Hazard in this Risk Assessment.">Gas under Pressure</a></li>
+				   <li><a href="#point1" onClick="Populate('Chemical - Flammable liquid\r\n');" title="Click to add 'Flammable liquid' as a Hazard in this Risk Assessment.">Flammable liquid</a></li>
+				   <li><a href="#point1" onClick="Populate('Chemical - Flammable Solid\r\n'); " title="Click to add 'Flammable Solid' as a Hazard in this Risk Assessment.">Flammable Solid</a></li>
+					<li><a href="#point1" onClick="Populate('Chemical - Self-reactive substance\r\n'); " title="Click to add 'Self-reactive substance' as a Hazard in this Risk Assessment.">Self-reactive substance</a></li>
+				</ul>
+			 </div>
+			 <div class="col-xs-4">
+				<ul class="section-list">               
+				   <li><a href="#point1" onClick="Populate('Chemical - Pyrophoric Substance\r\n'); " title="Click to add 'Pyrophoric Substance' as a Hazard in this Risk Assessment.">Pyrophoric Substance</a></li>
+				   <li><a href="#point1" onClick="Populate('Chemical - Oxidising Solid\r\n'); " title="Click to add 'Oxidising Solid' as a Hazard in this Risk Assessment.">Oxidising Solid</a></li>
+				   <li><a href="#point1" onClick="Populate('Chemical - Oxidising liquid\r\n'); " title="Click to add 'Oxidising liquid' as a Hazard in this Risk Assessment.">Oxidising liquid</a></li>
+				   <li><a href="#point1" onClick="Populate('Chemical - Dangerous when Wet\r\n'); " title="Click to add 'Dangerous when Wet' as a Hazard in this Risk Assessment.">Dangerous when Wet</a></li>
+				   <li><a href="#point1" onClick="Populate('Chemical - Organic Peroxide\r\n'); " title="Click to add 'Organic Peroxide' as a Hazard in this Risk Assessment.">Organic Peroxide</a></li>
+				   <li><a href="#point1" onClick="Populate('Chemical - Corrosive\r\n'); " title="Click to add 'Corrosive' as a Hazard in this Risk Assessment.">Corrosive</a></li>
+				   <li><a href="#point1" onClick="Populate('Chemical - Toxic\r\n'); " title="Click to add 'Toxic' as a Hazard in this Risk Assessment.">Toxic</a></li>
+				</ul>
+			 </div>
+			 <div class="col-xs-4">
+				<ul class="section-list">
+				   <li><a href="#point1" onClick="Populate('Chemical - Skin/Eye Irritant\r\n'); " title="Click to add 'Skin/Eye Irritant' as a Hazard in this Risk Assessment.">Skin/Eye Irritant</a></li>
+				   <li><a href="#point1" onClick="Populate('Chemical - Sensitiser\r\n'); " title="Click to add 'Sensitiser' as a Hazard in this Risk Assessment.">Sensitiser</a></li>
+				   <li><a href="#point1" onClick="Populate('Chemical - Mutagen\r\n'); " title="Click to add 'Mutagen' as a Hazard in this Risk Assessment.">Mutagen</a></li>
+				   <li><a href="#point1" onClick="Populate('Chemical - Carcinogen\r\n'); " title="Click to add 'Carcinogen' as a Hazard in this Risk Assessment.">Carcinogen</a></li>
+				   <li><a href="#point1" onClick="Populate('Chemical - Toxic to reproduction\r\n'); " title="Click to add 'Toxic to reproduction' as a Hazard in this Risk Assessment.">Toxic to reproduction</a></li>
+				   <li><a href="#point1" onClick="Populate('Chemical - Aquatic toxicity\r\n'); " title="Click to add 'Aquatic toxicity' as a Hazard in this Risk Assessment.">Aquatic toxicity</a></li>
+				</ul>
+			 </div>
+		  </div>
+	   </div>
+	   <div id="biological" class="tab-pane fade">
       <div class="row">
          <div class="col-xs-4">
             <ul class="section-list">
