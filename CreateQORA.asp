@@ -269,11 +269,11 @@ strJobSteps = ""
 	  </table>
 	</br>
 
-      	<strong>(1) Work activity description.</strong><br>
+      	<strong>(1) Work activity description</strong><br>
       <br>
       <table class="suprreportheader" style="width: 82%">
         <tr>
-		  <td width = 30%><b>Describe hazardous activities related to the work area or operation:</b> </br>include names of hazardous equipment, substances or materials used, </br> and any quantities and concentrations of substance(s) or reaction products</td>
+		  <td width = 30%><b>Describe this hazardous work activity:</b> </br>Include names of hazardous equipment, substances or materials used, </br> and any quantities and concentrations of substance(s) or reaction products</td>
           <td><!--<input type="text" name="txtTaskDesc" size="100%" />-->
           <textarea rows="4" name="txtTaskDesc" cols="100" ></textarea></td>
         </tr>
@@ -557,6 +557,7 @@ strJobSteps = ""
    <li><a data-toggle="tab" href="#emergency">Emergency Response Systems<br/>&nbsp;</a></li>
 </ul>
 <div class="tab-content">
+
    <div id="eliminate" class="tab-pane fade in active">
       <div class="row">
          <div class="col-xs-4">
@@ -565,20 +566,27 @@ strJobSteps = ""
                <li><a href="#point2" onClick="PopulateNext('- Restricted Access\r\n')" title="Add the control 'Restricted Access' to this Risk Assessment.">Restricted Access</a></li>
                <li><a href="#point2" onClick="PopulateNext('- Use safer materials or chemicals\r\n')" title="Add the control 'Use safer materials or chemicals' to this Risk Assessment.">Use safer materials or chemicals</a></li>
                <li><a href="#point2" onClick="PopulateNext('- Redesign the equipment\r\n')" title="Add the control 'Redesign the equipment' to this Risk Assessment.">Redesign the equipment</a></li>
-               <li><a href="#point2" onClick="PopulateNext('- Guarding/Barriers\r\n')" title="Add the control 'Guarding/Barriers' to this Risk Assessment.">Guarding / Barriers</a></li>
             </ul>
          </div>
          <div class="col-xs-4">
             <ul>
+               <li><a href="#point2" onClick="PopulateNext('- Guarding/Barriers\r\n')" title="Add the control 'Guarding/Barriers' to this Risk Assessment.">Guarding / Barriers</a></li>
                <li><a href="#point2" onClick="PopulateNext('- Biosafety Cabinet\r\n')" title="Add the control 'Biosafety Cabinet' to this Risk Assessment.">BioSafety Cabinet</a></li>
-               <li><a href="#point2" onClick="PopulateNext('- Fume Cupboard/Local Exhaust Ventillation\r\n')" title="Add the control 'Fume Cupboard/Local Exhaust Ventillation' to this Risk Assessment.">Fume Cupboard / Local Exhaust Ventilation</a></li>
-               <li><a href="#point2" onClick="PopulateNext('- Redesign the Workspace/Workflow\r\n')" title="Add the control 'Redesign the Workspace/Workflow' to this Risk Assessment.">Redesign the Workspace / Workflow</a></li>
-               <li><a href="#point2" onClick="PopulateNext('- Lifting Equipment/Trolleys\r\n')" title="Add the control 'Lifting Equipment/Trolleys' to this Risk Assessment.">Lifting Equipment / Trolleys</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Fume Cupboard\r\n')" title="Add the control 'Fume Cupboard' to this Risk Assessment.">Fume Cupboard</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Local Exhaust Ventilation\r\n')" title="Add the control 'Local Exhaust Ventilation' to this Risk Assessment.">Local Exhaust Ventilation</a></li>
+            </ul>
+         </div>
+		 <div class="col-xs-4">
+            <ul>
+               <li><a href="#point2" onClick="PopulateNext('- General Ventilation\r\n')" title="Add the control 'General Ventilation' to this Risk Assessment.">General Ventilation</a></li>
                <li><a href="#point2" onClick="PopulateNext('- Regular Maintenance of Equipment\r\n')" title="Add the control 'Regular Maintenance of Equipment' to this Risk Assessment.">Regular Maintenance of Equipment</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Redesign the Workspace / Workflow\r\n')" title="Add the control 'Redesign the Workspace / Workflow' to this Risk Assessment.">Redesign the Workspace / Workflow</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Lifting Equipment/Trolleys\r\n')" title="Add the control 'Lifting Equipment/Trolleys' to this Risk Assessment.">Lifting Equipment / Trolleys</a></li>
             </ul>
          </div>
       </div>
    </div>
+
    <div id="assess" class="tab-pane fade">
       <div class="row">
          <div class="col-xs-4">
@@ -594,13 +602,13 @@ strJobSteps = ""
             <ul>
                <li><a href="#point2" onClick="PopulateNext('- Monitor Exposure Level (Sound/Substance/Radiation)\r\n')" title="Click to add the administrative control 'Monitor Exposure Level (Sound/Substance/Radiation)' to this Risk Assessment.">Monitor Exposure Level</a></li>
                <li><a href="#point2" onClick="PopulateNext('- Licences (Lifts, Boilers, Pressure Vessles, Radiation)\r\n')" title="Click to add the administrative control 'Licences (Lifts, Boilers, Pressure Vessles, Radiation)' to this Risk Assessment.">Licences (Lifts, Boilers, Pressure Vessels, Radiation)</a></li>
-               <li><a href="#point2" onClick="PopulateNext('- Biosafety Committe Assessment (GMOs, pathogens, radiation, cytotoxins, imported biologicals)\r\n')" title="Click to add the administrative control 'Biosafety Committe Assessment (GMOs, pathogens, radiation, cytotoxins, imported biologicals)' to this Risk Assessment.">BioSafety Committee Assessment (GMOs, pathogens, radiation, cytotoxins, imported biologicals)</a></li>
-               <li><a href="#point2" onClick="PopulateNext('- UTS Fieldwork Guidelines for overnight excursions in the field\r\n')" title="Click to add the administrative control 'UTS Fieldwork Guidelines for overnight excursions in the field' to this Risk Assessment.">UTS Fieldwork Guidelines for overnight excursions in the field</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Restricted Access\r\n')" title="Click to add the administrative control 'Restricted Access' to this Risk Assessment.">Restricted Access</a></li>               
+			   <li><a href="#point2" onClick="PopulateNext('- Regular Breaks\r\n')" title="Click to add the administrative control 'Regular Breaks' to this Risk Assessment.">Regular Breaks</a></li>
              </ul>
          </div>
          <div class="col-xs-4">
             <ul>
-               <li><a href="#point2" onClick="PopulateNext('- Regular Breaks & Task Rotation\r\n')" title="Click to add the administrative control 'Regular Breaks & Task Rotation' to this Risk Assessment.">Regular Breaks & Task Rotation</a></li>
+			   <li><a href="#point2" onClick="PopulateNext('- Task Rotation\r\n')" title="Click to add the administrative control 'Task Rotation' to this Risk Assessment.">Task Rotation</a></li>
                <li><a href="#point2" onClick="PopulateNext('- Supervision\r\n'); " title="Click to add the administrative control 'Supervision' to this Risk Assessment.">Supervision</a></li>
                <li><a href="#point2" onClick="PopulateNext('- Ladder/Sling Register\r\n'); " title="Click to add the administrative control 'Ladder/Sling Register' to this Risk Assessment.">Ladder / Sling Register</a></li>
                <li><a href="#point2" onClick="PopulateNext('- Work in Pairs\r\n')" title="Click to add the administrative control 'Work in Pairs' to this Risk Assessment.">Work in Pairs</a></li>
@@ -608,11 +616,12 @@ strJobSteps = ""
          </div>
       </div>
    </div>
+
    <div id="ppe" class="tab-pane fade">
       <div class="row">
          <div class="col-xs-4">
             <ul >
-               <li><a href="#point2" onClick="PopulateNext('- Gloves\r\n')" title="Click to add the risk control 'Gloves' to this Risk Assessment.">Gloves</a></li>
+               <li><a href="#point2" onClick="PopulateNext('-  ... type gloves\r\n')" title="Click to add the risk control 'Gloves' to this Risk Assessment.">Gloves (appropriate type)</a></li>
                <li><a href="#point2" onClick="PopulateNext('- Safety Footwear\r\n')" title="Click to add the risk control 'Safety Footwear' to this Risk Assessment.">Safety Footwear</a></li>
                <li><a href="#point2" onClick="PopulateNext('- Safety Glasses/Goggles\r\n')" title="Click to add the risk control 'Safety Glasses/Goggles' to this Risk Assessment.">Safety Glasses / Goggles</a></li>
                <li><a href="#point2" onClick="PopulateNext('- Face Shield\r\n')" title="Click to add the risk control 'Face Shield' to this Risk Assessment.">Face Shield</a></li>
@@ -623,11 +632,12 @@ strJobSteps = ""
                <li><a href="#point2" onClick="PopulateNext('- Hard Hat\r\n')" title="Click to add the risk control 'Hard Hat' to this Risk Assessment.">Hard Hat</a></li>
                <li><a href="#point2" onClick="PopulateNext('- Respirator/Dust Mask\r\n')" title="Click to add the risk control 'Respirator/Dust Mask' to this Risk Assessment.">Respirator / Dust Mask</a></li>
                <li><a href="#point2" onClick="PopulateNext('- Hearing Protection\r\n')" title="Click to add the risk control 'Hearing Protection' to this Risk Assessment.">Hearing Protection</a></li>
-               <li><a href="#point2" onClick="PopulateNext('- Protective Clothing/Apron/Overalls\r\n')" title="Click to add the risk control 'Protective Clothing/Apron/Overalls' to this Risk Assessment.">Protective Clothing / Apron / Overalls</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Protective Clothing / Lab Coat / Overalls\r\n')" title="Click to add the risk control 'Protective Clothing/Lab Coat/Overalls' to this Risk Assessment.">Protective Clothing / Lab Coat / Overalls</a></li>
             </ul>
          </div>
       </div>
    </div>
+
    <div id="emergency" class="tab-pane fade">
       <div class="row">
          <div class="col-xs-4">
