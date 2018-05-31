@@ -1,7 +1,7 @@
 function ConfirmChoice() 
 { 
 if(NeedMoreRiskControls()){
-	alert("Put in place more control measures to reduce residual risk level to Medium or Low");
+	alert("Put in place more control measures to reduce residual risk level to Moderate or Low");
 	return false;
 }
 // get rid of any rows that exist but haven't been filled out in safety controls
@@ -435,19 +435,41 @@ function ValidateForm(){
  		if (radioc[i].checked){
  			conseq = radioc[i].value;}
  	}
- 	
- 	if(likely == "Almost Certain") 	{needmore = true;}
-	if(conseq == "Catastrophic" )	{needmore = true;}
-	if(conseq == "Major" )			{needmore = true;}
-	if(likely == "Likely"){
-		if(conseq =="Minor" || conseq == "Moderate")
+ 
+	// DLJ changed logic on the matrix May2018
+// 	if(likely == "Almost Certain") 	{needmore = true;}
+//	if(conseq == "Catastrophic" )	{needmore = true;}
+//	if(conseq == "Major" )			{needmore = true;}
+//	if(likely == "Likely"){
+//		if(conseq =="Minor" || conseq == "Moderate")
+//									{needmore = true;}
+//		}
+//		
+//	if(likely =="Possible"){
+//		if(conseq == "Moderate" || conseq == "major") 
+//									{needmore = true;}
+//		}
+
+
+
+ 	if(likely == "Almost Certain") 	{
+		if(conseq == "Minor" || conseq == "Moderate" || conseq == "Major" || conseq == "Catastrophic")
 									{needmore = true;}
 		}
-		
-	if(likely =="Possible"){
-		if(conseq == "Moderate" || conseq == "major") 
+
+ 	if(likely == "Likely") 	{
+		if(conseq == "Moderate" || conseq == "Major" || conseq == "Catastrophic")
 									{needmore = true;}
 		}
+ 	if(likely == "Possible") 	{
+		if(conseq == "Major" || conseq == "Catastrophic")
+									{needmore = true;}
+		}
+ 	if(likely == "Unlikely") 	{
+		if(conseq == "Catastrophic")
+									{needmore = true;}
+		}
+
 
 	return needmore;
 	

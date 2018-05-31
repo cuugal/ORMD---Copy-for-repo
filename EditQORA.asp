@@ -268,7 +268,7 @@ Dim strSurname
         <tr>
 		  <td width = 30%><b>Describe this hazardous work activity:</b> </br>Include names of hazardous equipment, substances or materials used, </br> and any quantities and concentrations of substance(s) or reaction products</td>
           <td><!--<input type="text" name="txtTaskDesc" size="100%" />-->
-          <textarea rows="4" name="txtTaskDesc" cols="100" ></textarea></td>
+          <textarea rows="4" name="txtTaskDesc" cols="100" ><%=strTaskDescription%></textarea></td>
         </tr>
       </table>
   
@@ -479,13 +479,13 @@ Dim strSurname
 
 	<tr>
     	<td><strong>Hazard List</strong> <br/> List hazards below either by using the  menu above</br> or typing directly into the text box.</td>
-      	<td><strong>Potential Harm</strong> <br/>List <strong>injury/illness</strong> that could occur from this work activity and <strong> <u>how</u></strong> this injury/illness could happen.</br> <i>e.g. - Back strain may occur from incorrect lifting.</i></td>
+      	<td><strong>Potential Harm</strong> <br/>List <strong>injury/illness</strong> that could occur from this work activity and <strong> <u>how</u></strong> this injury/illness could happen.</br> <i>e.g. - Back strain may occur from incorrect lifting, chemical burn via skin contact, chronic illness due to inhalation of fumes, infection due to aerosol inhalation</i></td>
 
 	</tr>
   	<tr>  
     	<td><!-- textarea box goes in this table cell -->
         <br/>
-        	<textarea rows="8" name="T1" id="T1" cols="45"><%=strHazardsDesc%></textarea>
+        	<textarea rows="8" name="T1" id="T1" cols="55"><%=strHazardsDesc%></textarea>
             
         </td>
 
@@ -493,7 +493,7 @@ Dim strSurname
 
         <td><!-- textarea box goes in this table cell -->
         	<br />
-          	<textarea rows="8" name="T3" id="T3" cols="45" ><%=strInherentRisk%></textarea>
+          	<textarea rows="8" name="T3" id="T3" cols="65" ><%=strInherentRisk%></textarea>
 		</td>
 	</tr>
 </table>
@@ -760,47 +760,47 @@ Dim strSurname
 	<TR>
 		<TD class="hed">Almost Certain<br/><input title="Assess this as almost certain" type="radio" name="radiol" value="Almost Certain"  <%if strLikelyhood = "Almost Certain" then%>checked<%end if%> /></TD>
 		<td class ="hed" style="font-size: 7pt;">The event will occur on<br/>an annual basis</td>
+		<TD class="medium">Moderate</TD>
 		<TD class="high">High</TD>
 		<TD class="high">High</TD>
-		<TD class="extreme">Extreme</TD>
-		<TD class="extreme">Extreme</TD>
-		<TD class="extreme">Extreme</TD>
+		<TD class="extreme">Critical</TD>
+		<TD class="extreme">Critical</TD>
 	</TR>
 	<TR>
 		<TD class="hedalt ">Likely<br/><input title="Assess this as likely" type="radio" name="radiol" value="Likely" <%if strLikelyhood = "Likely" then%>checked<%end if%> /></TD>
 		<td class= "hedalt" style="font-size: 7pt;">The event has occurred<br/>several times or more in<br/>your career</td>
-		<TD class="medium">Medium</TD>
+		<TD class="medium">Moderate</TD>
+		<TD class="medium">Moderate</TD>
 		<TD class="high">High</TD>
 		<TD class="high">High</TD>
-		<TD class="extreme">Extreme</TD>
-		<TD class="extreme">Extreme</TD>
+		<TD class="extreme">Critical</TD>
 	</TR>
 	<TR>
 		<TD class="hed">Possible<br/><input title="Assess this as possible" type="radio" name="radiol" value="Possible"  <%if strLikelyhood = "Possible" then%>checked<%end if%> /></TD>
 		<td class="hed" style="font-size: 7pt;">The event might occur<br/>once in your career</td>
 		<TD class="low">Low</TD>
-		<TD class="medium">Medium</TD>
+		<TD class="medium">Moderate</TD>
+		<TD class="medium">Moderate</TD>
 		<TD class="high">High</TD>
-		<TD class="extreme">Extreme</TD>
-		<TD class="extreme">Extreme</TD>
+		<TD class="high">High</TD>
 	</TR>
 	<TR>
 		<TD class="hedalt">Unlikely<br/><input title="Assess this as unlikely" type="radio" name="radiol" value="Unlikely"  <%if strLikelyhood = "Unlikely" then%>checked<%end if%> /></TD>
 		<td class="hedalt" style="font-size: 7pt;">The event does occur<br/>somewhere from time<br/>to time</td>
 		<TD class="low">Low</TD>
 		<TD class="low">Low</TD>
-		<TD class="medium">Medium</TD>
+		<TD class="medium">Moderate</TD>
+		<TD class="medium">Moderate</TD>
 		<TD class="high">High</TD>
-		<TD class="extreme">Extreme</TD>
 	</TR>
 	<TR>
 		<TD class="hed">Rare<br/><input title="Assess this as rare" type="radio" name="radiol" value="Rare"  <%if strLikelyhood = "Rare" then%>checked<%end if%> /></TD>
 		<td class="hed" style="font-size: 7pt;">Heard of something<br/>like this occurring somewhere</td>
 		<TD class="low">Low</TD>
 		<TD class="low">Low</TD>
-		<TD class="medium">Medium</TD>
-		<TD class="high">High</TD>
-		<TD class="high">High</TD>
+		<TD class="low">Low</TD>
+		<TD class="medium">Moderate</TD>
+		<TD class="medium">Moderate</TD>
 	</TR>
 	</TABLE>
 </TD>
