@@ -30,27 +30,31 @@ Dim strSQL
  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
  <meta http-equiv="Content-Language" content="en-au" />
   <!--#include file="bootstrap.inc"--> 
-<title>Online Risk Register - Create a Supervisor</title>
+<title>Online Risk Register - Create a User</title>
 <script type="text/javascript">
 // function to ask about the confirmation of the file.
 function ConfirmChoice() 
-{ 
-  if ((document.Form1.cboFaculty.value != "0") && (document.Form1.txtSurname.value != "") && (document.Form1.txtGivenName.value !="") && (document.Form1.txtLoginId.value !="") && (document.Form1.txtPassword.value !="")) 
+{
+console.log(document.Form1.strAccessLevel.value+" "+document.Form1.cboFaculty.value);
+console.log(document.Form1.strAccessLevel.value != 'S'|| document.Form1.cboFaculty.value != "0");
+
+  if ((document.Form1.strAccessLevel.value != 'S' || document.Form1.cboFaculty.value != "0") && (document.Form1.txtSurname.value != "") && (document.Form1.txtGivenName.value !="")
+   && (document.Form1.txtLoginId.value !="") && (document.Form1.txtPassword.value !=""))
   {
      answer = confirm("Do you want to save this record to the database?")
-  if (answer == true) 
-  { 
-           return ;
-  } 
-  else
-   { 
-   return (false);
-  }
+      if (answer == true)
+      {
+               return ;
+      }
+      else
+       {
+       return (false);
+      }
     }
   else
  {
  
-      alert ("Any fields on the form cant be empty , please fill in the entire form !");
+      alert ("Any fields on the form cant be empty, please fill in the entire form !");
     return(false);
  }
 }
@@ -60,15 +64,29 @@ function ConfirmChoice()
 <body>
     <!--#include file="HeaderMenu.asp" -->
 <div id="wrapper">
- <div id="content">
+ <div id="content" class="contentcenter">
 
- <h2 class="pagetitle">Create a Supervisor</h2>
+ <h2 class="pagetitle">Create a User</h2>
  
- <center>
+
 
  <form method="post" action="AdminCreate.asp" name="Form1" onsubmit="return ConfirmChoice();">
-<table class="adminfn" style="width: 65%">
-  <tr>
+<table class="adminfn" >
+
+    <tr>
+    <th>User Type:</th>
+    <td>
+
+        <select name="strAccessLevel" id="strAccessLevel">
+        <option value="S">Supervisor</option>
+        <option value="T">Assessor</option>
+        </select>
+
+    </td>
+    </tr>
+
+
+  <tr id="userfaculty">
    <th>Existing Faculty/Unit:</th>
    <td>
      <select size="1" name="cboFaculty" tabindex="0">
@@ -81,12 +99,12 @@ function ConfirmChoice()
     </tr>
 
  <tr>
-  <th>New Supervisor Given Name:</th>
+  <th>New User Given Name:</th>
   <td><input type="text" name="txtGivenName" size="20" tabindex="1" /></td>
  </tr>
  
  <tr>
-   <th>New Supervisor Surname:</th>
+   <th>New User Surname:</th>
    <td><input type="text" name="txtSurname" size="20" tabindex="2" /></td>
  </tr>
  
@@ -102,18 +120,30 @@ function ConfirmChoice()
 
  <tr>
   <td colspan="2">
-   <center>
+
     <input type="hidden" name="hdnOption" value="Supervisor" />&nbsp;
     <input type="submit" value="Save" name="btnSave" tabindex="5" />
     <input type="reset" value="Clear" name="btnClear" tabindex="6" />
-   </center>
+
   </td>
  </tr>
  </table>
+<script type="text/javascript">
 
+$("#strAccessLevel").change(function(){
+
+    if($(this).val() == 'S'){
+        $("#userfaculty").show();
+
+    }
+    else{
+        $("#userfaculty").hide();
+    }
+});
+</script>
 </form>
 
-</center>
+
 
 </div></div>
 

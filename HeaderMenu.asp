@@ -3,12 +3,16 @@
 
 <!--img src="images/UTS_logo.png" alt="UTS" width="152" height="50" style="border: 1px; vertical-align:top; float:right;"-->
 
+
+
+
+<div id="wrappertop">
+
 <div id="logo">
 <img src="images/UTS_logo.png" alt="UTS" width="120" height="50" style="border: 3px; vertical-align:top; float:left;">
 </div>
 
 
-<div id="wrappertop">
 <div id="content">
 <% if session("LoggedIn") then %>
     <% if session("isAdmin") then %>

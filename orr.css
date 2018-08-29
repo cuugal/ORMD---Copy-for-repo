@@ -267,12 +267,22 @@ body#printpreview { width: 100%; color: #000; background-color: #fff; font-famil
 #orrheading h1 { color: #0099cc;  font-size: 17pt; font-weight: bold; line-height: 17pt; margin: 0; top: 20px; padding: 40px 0 0 7px; }
 
 /* content */
-#content { color:#004d66; font-size: 10pt; padding: 5px 10px 10px 9px; margin-bottom: 0; background-color:#e8ede4 transparent;/* border-bottom: solid 1px #09c; */ }
 
+
+#content { color:#004d66; font-size: 10pt; padding: 5px 10px 10px 9px;
+    margin-bottom: 0; background-color:#e8ede4 transparent;/* border-bottom: solid 1px #09c; */
+
+}
+
+#wrapper #content{
+    margin: 0 auto;
+    display: table;
+    min-width: 600px;
+}
 /* styles within the content DIV - top headings */
 #content p { font-size: 10pt; color: #4C8080; }
 #content h1 { font-size: 13pt; color: #fff;  }
-#content h1.pagetitle { font-size: 12pt; font-weight: bold; line-height: 10pt; margin-top: 0; padding-top: 2px; padding-left: 10px; background-repeat: repeat-y; }
+#content h1.pagetitle { text-align:right;font-size: 12pt; font-weight: bold; line-height: 10pt; margin-top: 0; padding-top: 2px; padding-left: 10px; background-repeat: repeat-y; }
 #content h2 { font-size: 12pt; color: #0099cc;  }
 #content strong{color:#000;}
 #content hr { background-color: #004d66; color: #004d66; height: 1px; border: 0; margin-top: 5px; margin-bottom: 5px; padding: 0;}
@@ -407,7 +417,7 @@ table.searchResultsFromMenu { border: solid 1px #fff; min-width: 760px; font-siz
 .searchResultsFromMenu thead td { text-align: center; background-color: #fff; color: #000; vertical-align: top; padding: 0; margin: 0;}
 .searchResultsFromMenu thead img { border: none; background-color: #fff; color: #000; }
 
-.topframe{color:#EDF4F6;}
+.topframe{text-align:right; color:#EDF4F6;}
 #content .topframe strong{color:#EDF4F6;}
 
 

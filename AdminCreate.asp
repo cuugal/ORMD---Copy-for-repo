@@ -80,7 +80,9 @@
   add_Sup_SName = Request.form("txtSurname")
   add_Sup_LoginId = Request.form("txtLoginId")
   add_Sup_Password = Request.form("txtPassword")
-  
+  add_Sup_Type = Request.form("strAccessLevel")
+
+
   add_Operation = Request.form("txtOperationName")
   
   add_RoomName = Request.form("txtRoomName")
@@ -234,7 +236,7 @@
                       
                       if rsCheckFacilitySup.EOF = True then
                         ' adding a new record
- 					        strSQL ="Insert Into tblFacilitySupervisor(numFacultyID,strSurname,strGivenName,strLoginId,strPassword,strAccessLevel) Values ('"&add_sup_Faculty&"','"&add_sup_Sname&"','"&add_sup_Gname&"','"&add_sup_LoginId&"','"&add_sup_Password &"','S')"
+ 					        strSQL ="Insert Into tblFacilitySupervisor(numFacultyID,strSurname,strGivenName,strLoginId,strPassword,strAccessLevel) Values ('"&add_sup_Faculty&"','"&add_sup_Sname&"','"&add_sup_Gname&"','"&add_sup_LoginId&"','"&add_sup_Password &"','"&add_Sup_Type&"')"
  					        set rsAddFacilitySupervisor = Server.CreateObject("ADODB.Recordset")
                             rsAddFacilitySupervisor.Open strSQL, conn, 3, 3 %> 
                             

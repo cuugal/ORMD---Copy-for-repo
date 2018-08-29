@@ -25,7 +25,7 @@ Dim numSupervisorID
  
  ' setting up the recordset
  
-   strSQL ="Select * from tblFacilitySupervisor where numFacultyID >0 order by strLoginId"
+   strSQL ="Select * from tblFacilitySupervisor where strAccessLevel <> 'A' order by strLoginId"
    set rsFillLoginId = Server.CreateObject("ADODB.Recordset")
    rsFillLoginId.Open strSQL, conn, 3, 3
 %>
@@ -33,7 +33,7 @@ Dim numSupervisorID
  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
  <meta http-equiv="Content-Language" content="en-au" />
  <!--#include file="bootstrap.inc"--> 
-<title>Online Risk Register - Edit a Supervisor</title>
+<title>Online Risk Register - Edit a User</title>
 <script type="text/javascript">
 // function to ask about the confirmation of the file. 
 function ConfirmChoice() 
@@ -82,13 +82,13 @@ function FillDetails()
 <body>
     <!--#include file="HeaderMenu.asp" -->
 <div id="wrapper">
- <div id="content">
+ <div id="content" class="contentcenter">
 
- <h2 class="pagetitle">Edit a Supervisor</h2>
+ <h2 class="pagetitle">Edit a User</h2>
  
- <center>
 
- <table class="adminfn" style="width: auto;">
+
+ <table class="adminfn" >
  <tr>
   <th>Select the Login ID you wish to change:</th>
   <td><form method="post" action="EditSupervisor.asp" name="EditSupervisor">
@@ -142,6 +142,24 @@ Dim rsFillDetails
    
   
 %>
+
+<tr>
+<th>User Type:</th>
+<td>
+ <% if rsFillDetails.EOF <> true then%>
+<select name="strAccessLevel" id="strAccessLevel" value="<%=rsFilldetails("strAccessLevel") %>">
+<option value="S" <% if rsFillDetails("strAccessLevel") = "S" then %>selected<% end if %>>Supervisor</option>
+<option value="T"  <% if rsFillDetails("strAccessLevel") = "T" then %>selected<% end if %>>Assessor</option>
+</select>
+<% else %>
+<select size="1" name="strAccessLevel" >
+      <option>No Records</option>
+      </select>
+<% end if %>
+</td>
+</tr>
+
+
 	<tr>
       <th>Proposed new Login ID:</th>
       <td>
@@ -149,7 +167,8 @@ Dim rsFillDetails
          
       </td>
     </tr>
-      <th>Supervisor's Surname:</td>
+    <tr>
+      <th>User's Surname:</th>
       <td>
       <% if rsFillDetails.EOF <> true then%>
 
@@ -157,8 +176,9 @@ Dim rsFillDetails
       <input type="text" name="txtSurname" size="20" tabindex="1" value="<%= rsFilldetails("strSurname")%>" />
       <input type="hidden" name="hdnSupervisorId" value="<%=rsFillDetails("numSupervisorID")%>" /></td>
       </tr>
-      <tr>
-      <th>Supervisor's Faculty/Unit:</th>
+
+      <tr id="userfaculty">
+      <th >User's Faculty/Unit:</th>
       <td>
      <%'code to add the related faculties for that str loginID 
       Dim connFac
@@ -186,8 +206,10 @@ Dim rsFillDetails
        set rsFillFaculty = Server.CreateObject("ADODB.Recordset")
        rsFillFaculty.Open strSQL, connFac, 3, 3
       %>
-      <select size="1" name="cboFaculty" tabindex="3">
+      <select size="1" id="cboFaculty" name="cboFaculty" tabindex="3">
+   <% if rsFillDetails("numSupervisorID") = "S" then %>
       <option value="<%=rsFillFac("tblFacilitySupervisor.numFacultyID")%>" selected="selected"><%=rsFillFac("strFacultyName")%></option>
+          <% end if %>
       <%While not rsFillFaculty.EOF%>
       
       <option value="<%=rsFillFaculty("numFacultyID") %>"><%=rsFillFaculty("strFacultyName")%></option>
@@ -197,16 +219,16 @@ Dim rsFillDetails
         wend %> 
       </select></td>
     </tr>
-    
+
     <tr>
-      <th>Supervisor's Given Name:</th>
+      <th>User's Given Name:</th>
       <td>
        <input type="text" name="txtGivenName" size="20" tabindex="2" value="<%= rsFillDetails("strGivenName")%>" />
       </td>
     </tr>
     
     <tr>
-      <th>Supervisor's Password:</th>
+      <th>User's Password:</th>
       <td><input type="password" name="txtPassword" size="20" tabindex="4" value="<%= rsFillDetails("strPassword")%>" /></td>
     </tr>
     <tr>
@@ -221,30 +243,30 @@ Dim rsFillDetails
  </td>
 </tr>
 
-<tr>
- <th>Supervisor's Faculty/Unit:</th>
+<tr id="userfaculty">
+ <th>User's Faculty/Unit:</th>
  <td>
-      <select size="1" name="cboFaculty" tabindex="3">
+      <select size="1" id="cboFaculty" name="cboFaculty" tabindex="3">
       <option>No Records</option>
       </select>
   </td>
 </tr>
 
 <tr>
- <th>Supervisor's Given Name:</th>
+ <th>User's Given Name:</th>
  <td>
    <input type="text" name="txtGivenName" size="20" tabindex="2" value="" />
  </td>
 </tr>
 
 <tr>
- <th>Supervisor's Password:</th>
+ <th>User's Password:</th>
  <td>
    <input type="password" name="txtPassword" size="20" tabindex="4" value="" />
  </td>
 </tr>
 <tr>
-      <th>Active:</th
+      <th>Active:</th>
       <td align="center"><input type="checkbox" name="deprecated" tabindex="5" /></td>
     </tr>
 <!--end of case 2-->
@@ -252,19 +274,42 @@ Dim rsFillDetails
 
 <tr>
  <td colspan="2">
- <center> 
+
  <input type="hidden" name="hdnOption" value="Supervisor" />  
  <input type="submit" value="Edit" name="btnSave" tabindex="5" /> &nbsp;
  <!-- CL note: This button does not work in Mozilla etc. as it calls VBscript - replaced with a reset button instead 
  <input type="Button" value="Clear" name="btnClear" tabindex="6" onclick = clearform()>
   -->
  <input type="reset" value="Reset" name="btnClear" />
- </center></form>
+</form>
  </td>
 </tr>
-<table>
+</table>
+<script type="text/javascript">
 
-</center>
+$("#strAccessLevel").change(function(){
+
+    if($(this).val() == 'S'){
+        $("#userfaculty").show();
+
+    }
+    else{
+        $("#userfaculty").hide();
+    }
+});
+
+$(document).ready(function(){
+
+    if($("#strAccessLevel").val() == 'S'){
+            $("#userfaculty").show();
+        }
+        else{
+            $("#userfaculty").hide();
+        }
+});
+
+</script>
+
 
 </div></div>
 

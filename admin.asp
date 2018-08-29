@@ -29,7 +29,7 @@
  end if
 %>
 <div id="wrapper">
-<div id="content">
+<div id="content" >
 
 <h2 class="pagetitle">Administration Functions</h2>
 
@@ -41,7 +41,7 @@
  	<li><a target="_self" href="CreateFaculty.asp" title="Create a Faculty/Unit">Create a Faculty/Unit</a>
 	<li><a target="_self" href="CreateCampus.asp" title="Create a Campus">Create a Campus</a></li>
 	<li><a target="_self" href="CreateBuilding.asp" title="Create a Building">Create a Building</a></li>
-	<li><a target="_self" href="createSupervisor.asp" title="Create a Supervisor">Create a Supervisor</a></li>
+	<li><a target="_self" href="createSupervisor.asp" title="Create a User">Create a User</a></li>
 	<li><a target="_self" href="CreateFacility.asp" title="Create a Facility">Create a Facility</a></li>
 	<li><a target="_self" href="CreateOperation.asp" title="Create an Operation">Create an Operation</a></li>
 </ul>
@@ -52,7 +52,7 @@
      	<li><a target="_self" href="EditFaculty.asp" title="Edit a Faculty/Unit">Edit a Faculty/Unit</a></li>
 	<li><a target="_self" href="EditCampus.asp" title="Edit a Campus">Edit a Campus</a></li>
 	<li><a target="_self" href="EditBuilding.asp" title="Edit a Building">Edit a Building</a></li>
-	<li><a target="_self" href="EditSupervisor.asp" title="Edit a Supervisor">Edit a Supervisor</a></li>
+	<li><a target="_self" href="EditSupervisor.asp" title="Edit a User">Edit a User</a></li>
 	<li><a target="_self" href="EditFacility.asp" title="Edit a Facility">Edit a Facility</a></li>
 	<li><a target="_self" href="EditOperation.asp" title="Edit an Operation">Edit an Operation</a></li>
    </ul>
@@ -64,7 +64,7 @@
 	<li><a target="_self" href="DeleteFaculty.asp" title="Delete a Faculty/Unit">Delete a Faculty/Unit</a></li>
 	<li><a target="_self" href="DeleteCampus.asp" title="Delete a Campus">Delete a Campus</a></li>
 	<li><a target="_self" href="DeleteBuilding.asp" title="Delete a Building">Delete a Building</a></li>
-	<li><a target="_self" href="DeleteSupervisor.asp" title="Delete a Supervisor">Delete a Supervisor</a></li>
+	<li><a target="_self" href="DeleteSupervisor.asp" title="Delete a User">Delete a User</a></li>
 	<li><a target="_self" href="DeleteFacility.asp" title="Delete a Facility">Delete a Facility</a></li>
 	<li><a target="_self" href="DeleteOperation.asp" title="Delete an Operation">Delete an Operation</a></li>
    </ul>
