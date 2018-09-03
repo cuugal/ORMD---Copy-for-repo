@@ -52,6 +52,7 @@
 	        <li><a href="logout.asp" title="Log out of the Risk Register">Logout</a></li>
          <% else %>
             <li><a href="#" data-toggle="modal" data-target="#LoginModal" >Login</a></li>
+            <li><a href="Register.asp">Create Account</a></li>
          <% end if %>
 	 </ul>
 	</div>

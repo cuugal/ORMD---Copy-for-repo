@@ -246,6 +246,28 @@
 						response.redirect("admin.asp")
 													 
                       else %><p>This record already exists. Please click the 'Back' button of the browser and re-enter.</p>
+                      <%
+                                            end if
+
+           Case "Register" : ' code to add the new user into the database
+          	                ' Checking the LoginId record into the database
+
+                              strSQL = "Select * from tblFacilitySupervisor where strLoginId = '"& add_Sup_LoginId &"'"
+          	                  set rsCheckFacilitySup= Server.CreateObject("ADODB.Recordset")
+                              rsCheckFacilitySup.Open strSQL, conn, 3, 3
+
+                              if rsCheckFacilitySup.EOF = True then
+                                ' adding a new record
+         					        strSQL ="Insert Into tblFacilitySupervisor(numFacultyID,strSurname,strGivenName,strLoginId,strPassword,strAccessLevel) Values ('"&add_sup_Faculty&"','"&add_sup_Sname&"','"&add_sup_Gname&"','"&add_sup_LoginId&"','"&add_sup_Password &"','"&add_Sup_Type&"')"
+         					        set rsAddFacilitySupervisor = Server.CreateObject("ADODB.Recordset")
+                                    rsAddFacilitySupervisor.Open strSQL, conn, 3, 3 %>
+
+                                     <p>The new Supervisor has been added successfully.</p> <%
+
+        					   	'Redirect to admin functions page on success
+        						response.redirect("Home.asp")
+
+                              else %><p>This record already exists. Please click the 'Back' button of the browser and re-enter.</p>
 
 <div align="center">&nbsp;</div><%   
                       end if  
