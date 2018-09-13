@@ -473,6 +473,7 @@ table.adminfn { margin: 0; padding: 0; width: 100%; background-color: #edf4f6; c
 .adminfn input[type="radio"],
 .adminfn input[type="password"],
 .adminfn input[type="text"],
+.adminfn input[type="email"],
 .adminfn select { font-size: 10pt; font-weight: normal; border: solid 1px #ffcf00; text-align: left; margin: 3px; color: #000; background-color: #f8e9ad; }
 /* End of Administration functions styling */
 

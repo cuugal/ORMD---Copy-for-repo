@@ -28,11 +28,15 @@ Dim strSQL
 // function to ask about the confirmation of the file.
 function ConfirmChoice()
 {
-console.log(document.Form1.strAccessLevel.value+" "+document.Form1.cboFaculty.value);
-console.log(document.Form1.strAccessLevel.value != 'S'|| document.Form1.cboFaculty.value != "0");
+
+    if(document.Form1.txtPassword.value !== document.Form1.confirmPassword.value){
+            alert ("Please check that the password matches the confirmation");
+            return(false);
+
+    }
 
   if ((document.Form1.strAccessLevel.value != 'S' || document.Form1.cboFaculty.value != "0") && (document.Form1.txtSurname.value != "") && (document.Form1.txtGivenName.value !="")
-   && (document.Form1.txtLoginId.value !="") && (document.Form1.txtPassword.value !=""))
+   && (document.Form1.txtLoginId.value !="") && (document.Form1.txtPassword.value !="")&& (document.Form1.txtEmail.value !=""))
   {
      answer = confirm("Do you want to save this record to the database?")
       if (answer == true)
@@ -65,7 +69,7 @@ console.log(document.Form1.strAccessLevel.value != 'S'|| document.Form1.cboFacul
 
  <form method="post" action="AdminCreate.asp" name="Form1" onsubmit="return ConfirmChoice();">
 
- <input name=strAccessLevel" id="strAccessLevel" type="hidden" value="T"/>
+ <input name="strAccessLevel" id="strAccessLevel" type="hidden" value="T"/>
 <table class="adminfn" >
 
   <tr id="userfaculty">
@@ -94,12 +98,20 @@ console.log(document.Form1.strAccessLevel.value != 'S'|| document.Form1.cboFacul
    <th>New Login ID:</th>
    <td><input type="text" name="txtLoginId" size="20" tabindex="3" /></td>
  </tr>
-
+<tr>
+   <th>New Email:</th>
+   <td><input type="email" name="txtEmail" size="20" tabindex="3" /></td>
+ </tr>
  <tr>
   <th>New Password:</th>
   <td><input type="password" name="txtPassword" size="20" tabindex="4" /></td>
  </tr>
+<tr>
+  <th>Confirm Password:</th>
+  <td><input type="password" name="confirmPassword" size="20" tabindex="4" /></td>
+ </tr>
 
+ <tr>
  <tr>
   <td colspan="2">
 

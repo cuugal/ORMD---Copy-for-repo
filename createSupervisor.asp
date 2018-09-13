@@ -35,8 +35,6 @@ Dim strSQL
 // function to ask about the confirmation of the file.
 function ConfirmChoice() 
 {
-console.log(document.Form1.strAccessLevel.value+" "+document.Form1.cboFaculty.value);
-console.log(document.Form1.strAccessLevel.value != 'S'|| document.Form1.cboFaculty.value != "0");
 
   if ((document.Form1.strAccessLevel.value != 'S' || document.Form1.cboFaculty.value != "0") && (document.Form1.txtSurname.value != "") && (document.Form1.txtGivenName.value !="")
    && (document.Form1.txtLoginId.value !="") && (document.Form1.txtPassword.value !=""))
@@ -119,6 +117,7 @@ console.log(document.Form1.strAccessLevel.value != 'S'|| document.Form1.cboFacul
  </tr>
 
  <tr>
+
   <td colspan="2">
 
     <input type="hidden" name="hdnOption" value="Supervisor" />&nbsp;
