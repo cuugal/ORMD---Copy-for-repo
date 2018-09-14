@@ -267,6 +267,7 @@ End If
 						 edit_Sup_Password = Request.Form("txtPassword")
 						 edit_Sup_Faculty  = Request.Form("cboFaculty")
 						 edit_Sup_Deprecated = Request.Form("deprecated")
+						 	 edit_email = Request.Form("txtEmail")
                            'Response.write(edit_Sup_ID)                    
                        ' editing existing campus
                        
@@ -304,7 +305,9 @@ End If
   					      &" strSurname = '"& edit_Sup_SName&"',"_
 						  &" numFacultyID = "& edit_Sup_Faculty&","_  
 						  &" strLoginID = '"& edit_Sup_newlogin&"',"_ 
-						  &" boolDeprecated =  "&edit_Sup_Deprecated	&""_		      
+						  &" boolDeprecated =  "&edit_Sup_Deprecated	&","_
+						  &" strEmail =  '"&edit_email&"'"_
+
   					      &" where numSupervisorID = "& edit_Sup_ID &""
   					      
   					      'Response.write(strSQL)
@@ -330,7 +333,54 @@ End If
 							</script>
 							<%
 
-                          
+                            Case "ProfileEdit" : ' code to edit the User into the database
+
+                            	                  ' Reteieving the contents from the input forms
+
+                            	                  	 edit_Sup_ID = Request.form("hdnSupervisorId")
+                                                   edit_Sup_newlogin = Request.form("txtnewID")
+                                                   edit_Sup_SName = Request.form("txtSurName")
+                          						 edit_Sup_GName = Request.form("txtGivenName")
+                          						 edit_Sup_LoginId = Request.Form("hdnLoginId")
+                          						 edit_Sup_Password = Request.Form("txtPassword")
+                          						 edit_Sup_Faculty  = Request.Form("cboFaculty")
+                          						 edit_Sup_Deprecated = Request.Form("deprecated")
+                          						 edit_email = Request.Form("txtEmail")
+
+                                                     'Response.write(edit_Sup_ID)
+
+
+
+                                                    'otherwise all is well and we can proceed to update
+                            					      strSQL ="Update tblFacilitySupervisor Set strPassword ='"&edit_Sup_Password&"',"_
+                            					      &" strGivenName = '"& edit_Sup_GName &"',"_
+                            					      &" strSurname = '"& edit_Sup_SName&"',"_
+                          						  &" numFacultyID = "& edit_Sup_Faculty&","_
+                          						  &" strEmail =  '"&edit_email	&"'"_
+                            					      &" where numSupervisorID = "& edit_Sup_ID &""
+
+                            					     'Response.write(strSQL)
+                           					      set rsEditFacility = Server.CreateObject("ADODB.Recordset")
+                                                    rsEditFacility.Open strSQL, conn, 3, 3
+                                                    'response.write(strSQL)
+
+
+                                                    %>
+                                                   <p><font color="#660033"><b>The details have been edited successfully !</b></p>
+                           <%
+
+                          					   	'Redirect to admin functions page on success
+                          						'response.redirect("admin.asp")
+                          						'- assure the user the trxn was completed %>
+
+                          						<script type="text/javascript">
+                          							alert("The details have been edited successfully !");
+                          							location.href="Home.asp";
+
+                          							</script>
+                          							<%
+
+
   end select    
   
   
