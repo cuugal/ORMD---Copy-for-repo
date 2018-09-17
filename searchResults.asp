@@ -224,42 +224,75 @@ if(searchType = "task") then
 	    	end if	
 	  	end if
 	end if
+	strSQL = strSQL+" and tblQORA.numFacilityID > 0"
 	strSQL = strSQL+" and tblFacility.numFacilityID = tblQORA.numFacilityID"
 	strSQL = strSQL+" and tblFacility.numFacilitySupervisorID = tblFacilitySupervisor.numSupervisorID"
 	strSQL = strSQL+" and tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel"
-	'strSQL = strSQL+ " Order by tblQORA.strSupervisor, tblRiskLevel.numGrade, tblQORA.strTaskDescription "
-	
+
 	strSQL = strSQL+" union "
-	
+
 	strSQL = strSQL+"Select distinct(tblQORA.numQORAId) as numQORAId, tblFacilitySupervisor.numFacultyId, tblQORA.strSupervisor, tblQORA.strtaskDescription, tblRiskLevel.numGrade "
 	strSQL = strSQL+" from tblQORA, tblRiskLevel, tblOperations , tblFacilitySupervisor "
-	
+
 	where = 0
 	if Len(numFacultyId) > 0 and (numFacultyId <> 0) then
 		strSQL = strSQL+" Where tblFacilitySupervisor.numfacultyId = "& numFacultyId
 		where = 1
 	end if
-	
+
 	if Len(strHTask) >0 and strHTask <> " " and strHTask <> "*" then
 	 	if(isNumeric(strHTask)) then
-	 		if(where = 0) then 
+	 		if(where = 0) then
 	 			strSQL =  strSQL + " where tblQORA.numQORAId = "&strHTask
 	 		else
 	 			strSQL =  strSQL + " and tblQORA.numQORAId = "&strHTask
-	 		end if	
+	 		end if
 	 	else
 	 		if(where = 0) then
 	    		strSQL =  strSQL + " where tblQORA.strTaskDescription like '%"& strHTask &"%'"
 	    	else
 	    		strSQL =  strSQL + " and tblQORA.strTaskDescription like '%"& strHTask &"%'"
-	    	end if	
+	    	end if
 	  	end if
 	end if
+	strSQL = strSQL+" and tblQORA.numOperationID > 0"
 	strSQL = strSQL+" and tblOperations.numOperationID = tblQORA.numOperationID"
 	strSQL = strSQL+" and tblOperations.numFacilitySupervisorID = tblFacilitySupervisor.numSupervisorID"
 	strSQL = strSQL+" and tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel"
 	strSQL = strSQL + " Order by tblQORA.strSupervisor, tblRiskLevel.numGrade, tblQORA.strTaskDescription "
-	
+
+
+	' Third case where there is no linked operation or faculty
+	strSQL = strSQL+" union "
+
+    strSQL = strSQL+"Select distinct(tblQORA.numQORAId) as numQORAId, tblFacilitySupervisor.numFacultyId, tblQORA.strSupervisor, tblQORA.strtaskDescription, tblRiskLevel.numGrade "
+    strSQL = strSQL+" from tblQORA, tblRiskLevel, tblFacilitySupervisor "
+
+    where = 0
+    if Len(numFacultyId) > 0 and (numFacultyId <> 0) then
+        strSQL = strSQL+" Where tblFacilitySupervisor.numfacultyId = "& numFacultyId
+        where = 1
+    end if
+
+    if Len(strHTask) >0 and strHTask <> " " and strHTask <> "*" then
+        if(isNumeric(strHTask)) then
+            if(where = 0) then
+                strSQL =  strSQL + " where tblQORA.numQORAId = "&strHTask
+            else
+                strSQL =  strSQL + " and tblQORA.numQORAId = "&strHTask
+            end if
+        else
+            if(where = 0) then
+                strSQL =  strSQL + " where tblQORA.strTaskDescription like '%"& strHTask &"%'"
+            else
+                strSQL =  strSQL + " and tblQORA.strTaskDescription like '%"& strHTask &"%'"
+            end if
+        end if
+    end if
+    strSQL = strSQL+" and tblQORA.numOperationID = 0 and tblQORA.numFacilityID = 0"
+    strSQL = strSQL+" and tblQORA.strSupervisor = tblFacilitySupervisor.strLoginId"
+    strSQL = strSQL+" and tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel"
+	'response.write(strSQL)
 	
 end if
 
@@ -408,7 +441,26 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
  &" and tblFaculty.numFacultyID = tblFacilitySupervisor.numFacultyID "_
 
  &" and tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel "_
- &" order by numFacilityID, numOperationID"
+ &" order by numFacilityID, numOperationID "_
+
+  &" union all "_
+
+  &"SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacultyId, tblQORA.numFacilityId, tblQORA.strSupervisor, "_
+  &" strFacultyName, null as strRoomName, null as strRoomNumber, tblQORA.strTaskDescription, "_
+  &" strHazardsDesc ,strControlRiskDesc,strAssessRisk,boolFurtherActionsSWMS,"_
+  &" boolFurtherActionsChemicalRA, dtReview, boolSWMSRequired,"_
+  &" boolFurtherActionsGeneralRA,dtDateCreated,strText, null as strCampusName, null as strBuildingName, null as numOperationID, null as strOperationName, strDateActionsCompleted, "_
+  &" strGivenName, strSurname "_
+
+  &" FROM tblQoraTemp, tblFaculty ,tblQORA, tblRiskLevel, tblFacilitySupervisor "_
+
+  &" Where tblQORATemp.numQoraID = tblQORA.numQORAId "_
+
+  &" and tblQORA.strSupervisor = tblFacilitySupervisor.strLoginId "_
+  &" and tblFaculty.numFacultyID = tblFacilitySupervisor.numFacultyID "_
+
+  &" and tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel "_
+  &" order by numFacilityID, numOperationID"
 
   set rsFaculty = Server.CreateObject("ADODB.Recordset")
   rsFaculty.Open strSQL, conn, 3, 3 

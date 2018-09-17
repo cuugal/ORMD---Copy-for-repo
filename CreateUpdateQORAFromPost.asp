@@ -314,13 +314,21 @@ if NoSaveBeforeSWMS <> "nosave" then
 		'Response.Write(numCampusId)
 		numOperationID = 0
 	end if
+
 	if(searchType = "operation") then
 		numBuildingId = 0
 		numFacilityId = 0
 		numCampusId = 0
 		numOperationID = request.form("operationId")
 	end if 
-		
+
+	if(searchType = "user") then
+    	numOperationID = 0
+     	numBuildingId = 0
+        numFacilityId = 0
+        numCampusId = 0
+     	strLogin = session("strLoginId")
+    end if
 		
 		boolSWMSRequired = Request.form("boolSWMSRequired")
 		dtDateCreated = Request.form("txtDateCreated") 

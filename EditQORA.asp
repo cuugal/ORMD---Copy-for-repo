@@ -63,6 +63,20 @@ if(rsResults("numOperationId") <> 0) then
   numFacultyID = rsSearch("tblFacilitySupervisor.numFacultyID")
 end if
 
+if(rsResults("numOperationId") = 0 and rsResults("numFacilityId") = 0) then
+	strSQL = "Select tblQORA.*, tblFacilitySupervisor.numFacultyID"_
+	&" from tblQORA, tblFacilitySupervisor where numQORAID = "& testval &""_
+	&" and tblFacilitySupervisor.strLoginId = tblQORA.strSupervisor"
+	set rsSearch = server.CreateObject("ADODB.Recordset")
+	rsSearch.Open strSQL, dcnDb, 3, 3
+  numCampusID = 0
+  numBuildingId = 0
+  numFacilityId = 0
+  numOperationID = 0
+  numFacultyId = rsSearch("tblFacilitySupervisor.numFacultyId")
+
+ end if
+
 
 numQORAID = rsResults("numQORAId")
 strSuperv = rsResults("strSupervisor")
@@ -225,13 +239,18 @@ Dim strSurname
         <td colspan="3"><%=rsOper("strOperationName")%></td>
     </tr>
 <% end if %>
-        <tr>
-          <th>Supervisor Name</th>
-          <td colspan="3"><%=strSupervisor%></td>
-        </tr>
+
+
+      <% if searchType <> "user" then %>
+            <tr>
+              <th>Assessor Name</th>
+              <td colspan="3"><%=strSupervisorName%></td>
+            </tr>
+      <% end if %>
 
 
         <tr>
+
         <%' Code to create an Australian date format
 			todaysday = day(date)
 			todaysMonth = month(date)
@@ -241,7 +260,19 @@ Dim strSurname
 			todaysDate = cstr(todaysDay) +"/"+cstr(todaysMonth)+"/"+cstr(todaysYear)
 			renewalDate = cstr(todaysDay) +"/"+cstr(todaysMonth)+"/"+cstr(renewal)
 			%>
-        	<th>Assessor / Reviewer</th><td><input type="text" name="txtAssessor" size="35" value="<%=strAssessor%>" /></td>
+        	<th>Assessor / Reviewer</th>
+
+
+        	<% if searchType = "user" then %>
+                <td colspan="3"><%=strSupervisorName%>
+                    <input type="hidden"  name="txtAssessor" value="<%=strAssessor%>"/>
+                </td>
+            <% else %>
+                <td colspan="3">
+                    <input type="text" name="txtAssessor" value="<%=strAssessor%>">
+                </td>
+            <% end if %>
+
         	<td>Date Last Modified &nbsp;&nbsp;&nbsp;
           	<!--input type="text" name="txtDateCreated" size="9" value="<%=todaysDate%>"/></td-->
 			<%=todaysDate%></td>

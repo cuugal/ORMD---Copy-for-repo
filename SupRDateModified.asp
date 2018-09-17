@@ -111,6 +111,21 @@ End Function
 
     strSQL = strSQL&" ORDER BY tblRiskLevel.numGrade, strTaskDescription"
  end if
+
+
+if(searchType = "user") then
+	 strSQL = "SELECT * FROM tblQORA, tblRiskLevel ,tblFacilitySupervisor "_
+  &" WHERE tblFacilitySupervisor.strLoginId = tblQORA.strSupervisor"_
+  &" and tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel "
+
+  if not session("isAdmin") then
+    strSQL = strSQL&" and tblFacilitySupervisor.numSupervisorId = "& numSupervisorID
+  end if
+
+    strSQL = strSQL&" ORDER BY tblRiskLevel.numGrade, strTaskDescription"
+ end if
+
+
     'response.write (strSQL)
       
     set rsSearchH = server.CreateObject("ADODB.Recordset")
@@ -332,7 +347,7 @@ if (searchType = "operation") then %>
  end if %>
  
 <%else%>
-<strong>There are currently no Risk Assessments for this facility or operation</strong>
+<strong>There are currently no Risk Assessments for this search criteria</strong>
 <%end if%>
 </div>
     </div>

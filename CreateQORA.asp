@@ -6,7 +6,7 @@ Response.Redirect("Invalid.asp")
 End If
 
 %>
-<%strLoginId = session("strLoginId")%>
+<% strLoginId = session("strLoginId")%>
 <html>
 <head>
 
@@ -157,9 +157,18 @@ if(searchType = "operation") then
  	numFacilityID =0
 end if
 
+  'if our QORA type is user
+if(searchType = "user") then
+	operationId = 0
+ 	numFacilityID =0
+ 	strLogin = session("strLoginId")
+end if
+
+
 
 strSQL ="Select * from tblFacilitysupervisor where strLoginId = '"& strLogin &"'"
 
+'response.write(strSQL)
 
 set rsFillAdmin = Server.CreateObject("ADODB.Recordset")
 rsFillAdmin.Open strSQL, connAdmin, 3, 3
@@ -198,7 +207,7 @@ strNewQORAId = rsSearch2("newQORAId")
 strJobSteps = ""
 %>
     
-    <form method="post" 	action="AddCQORAsup.asp" name="Form1" onSubmit="return ConfirmChoice();">
+    <form method="post" action="AddCQORAsup.asp" name="Form1" onSubmit="return ConfirmChoice();">
       <input type="hidden" name="hdnBuildingId"  	value="<%=numBuildingID%>" />
       <input type="hidden" name="hdnCampusId" 		value ="<%=numCampusID%>"/ >
       <input type="hidden" name="hdnFacilityId" 	value ="<%=numFacilityID%>" />
@@ -237,10 +246,13 @@ strJobSteps = ""
 	          <td colspan="3"><%=strOperationName%></td>
 	        </tr>
         <% end if %>
+
+        <% if searchType <> "user" then %>
         <tr>
-          <th>Supervisor Name</th>
+          <th>Assessor Name</th>
           <td colspan="3"><%=strSupervisorName%></td>
         </tr>
+        <% end if %>
         <tr>
         <%' Code to create an Australian date format
 			todaysday = day(date)
@@ -251,7 +263,16 @@ strJobSteps = ""
 			todaysDate = cstr(todaysDay) +"/"+cstr(todaysMonth)+"/"+cstr(todaysYear)
 			renewalDate = cstr(todaysDay) +"/"+cstr(todaysMonth)+"/"+cstr(renewal)
 			%>
-        	<th>Assessor / Reviewer:</th><td colspan="3"><input type="text" name="txtAssessor" size="35" /></td>
+        	<th >Assessor / Reviewer:</th>
+        	<% if searchType = "user" then %>
+        	    <td colspan="3"><%=strSupervisorName%>
+        	        <input type="hidden"  name="txtAssessor" value="<%=strSupervisorName%>"/>
+        	    </td>
+        	<% else %>
+        	    <td colspan="3">
+        	        <input type="text" name="txtAssessor">
+                </td>
+        	<% end if %>
         	<!--<td colspan="2">Date Last Modified (dd/mm/yyyy)&nbsp;&nbsp;&nbsp;<input type="text" name="txtDateCreated" size="9" value="<%=todaysDate%>"/></td>-->
             <input type="hidden" name="txtDateCreated" size="9" value="<%=todaysDate%>"/>
 			<!-- the line above is needed as an input box to prevent error - how can this be converted to plain text as attempted in line below-->

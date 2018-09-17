@@ -40,7 +40,7 @@ function ConfirmChoice()
                 return(false);
 
         }
-        
+
   if ((document.Form1.cboFaculty.value != "0") && (document.Form1.txtSurname.value != "") && (document.Form1.txtGivenName.value !="") && (document.EditSupervisor.cboLoginId.value !="0") && (document.Form1.txtPassword.value !="") && (document.Form1.txtnewID.value != ""))
   {
      answer = confirm("Do you want to save changes to this record to the database?")

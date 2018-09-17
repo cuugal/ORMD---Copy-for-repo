@@ -19,6 +19,14 @@
        session("cboOperation") = 0
 	   session("cboFacility") = 0
 
+'control who can see items on the page by access level
+    displayComponent = 0
+    if not session("strAccessLevel") = "T" then
+        displayComponent = 1
+       end if
+
+
+
 	  Dim connFac
 	  Dim rsFillFac
 	  Dim strSQL
@@ -567,11 +575,21 @@
                                                 return true;
                                             }
                                             function checkSearch() {
-                                                if($("#myoperation").val() == 0 && $("#myfacility").val() == 0) {
-                                                     alert("Please select a Location or an Operation");
-                                                     return false;
-                                                }
-                                                else if($("#myoperation").val() > 0 && $("#myfacility").val() > 0) {
+                                               // if($("#myoperation").val() == 0 && $("#myfacility").val() == 0) {
+                                               //      alert("Please select a Location or an Operation");
+                                               //      return false;
+                                               // }
+                                               // else
+                                               if ($("#myfacility").val() == 0 && $('#myoperation').val() == 0) {
+                                                   //alert("Please select a Facility or Operation");
+                                                   //return false;
+                                                    $('#searchType').val("user");
+                                                    $('#cboOperation').val("");
+                                                    $('#cboFacility').val("");
+
+                                               }
+
+                                               if($("#myoperation").val() > 0 && $("#myfacility").val() > 0) {
                                                     alert("Please select a Location or an Operation (not both)");
                                                     return false;
                                                 }
@@ -586,13 +604,15 @@
 								<td colspan ="3"><strong><% =session("strFacultyName") %></strong></td>
 							</tr>
 							<tr>
-								<th>Supervisor Name:</th>
+								<th>User Name:</th>
 								<td colspan="3"><strong><% =session("strName") %></strong></td>
 							</tr>
 					
  
 							<input type="hidden" name="searchType" ID="searchType" value=""/>
-						   <tr>
+
+
+						   <tr <% if displayComponent <= 0 then %>style="display:none" <% end if %> >
 							  <th>Facility</th>
 							  <td colspan="2">
 								
@@ -611,11 +631,15 @@
 							  </td>
                                <td>
                                </tr>
-						
-						<tr><td colspan="4"><hr /></td></tr>
+
+						<% if displayComponent > 0 then %>
+						<tr ><td colspan="4"><hr /></td></tr>
 						<tr><td colspan="4" style="text-align: center;"><strong> OR </strong></td></tr>
 						<tr><td colspan="4"><hr /></td></tr>
-						   <tr>
+								<% end if %>
+
+
+						   <tr <% if displayComponent <= 0 then %>style="display:none" <% end if %>>
 							  <th>Operation/Project</th>
 							  <td colspan="2">
 								 <select autocomplete="false" class="form-control" id="myoperation" name="cboOperation" id="cboOperation" Onchange="$('#searchType').val('operation')">
@@ -634,7 +658,7 @@
 						   
 							  <td>
                            </tr>
-						   
+
 
                                <tr><td colspan="4"><hr /></td></tr>
                                <tr><td colspan="3"></td><td>
@@ -665,10 +689,14 @@
                             <script type="text/javascript">
                             function checkAndSubmit() {
                                 if ($("#myfacility").val() == 0 && $('#myoperation').val() == 0) {
-                                    alert("Please select a Facility or Operation");
-                                    return false;
+                                    //alert("Please select a Facility or Operation");
+                                    //return false;
+                                     $('#newSearchType').val("user");
+                                     $('#newcboOperation').val("");
+                                     $('#newcboFacility').val("");
+                                     $('#NewRA').submit();
                                 }
-                                else if ($("#myfacility").val() != 0 && $('#myoperation').val() != 0) {
+                               else if ($("#myfacility").val() != 0 && $('#myoperation').val() != 0) {
                                     alert("Please select a Facility or Operation (not both)");
                                     return false;
                                 }
@@ -722,10 +750,15 @@
 
     &"group by strFacultyName, tblFaculty.numFacultyID "_
 
+
     &"order by  2, strFacultyName"
 
     set rsFillFaculty = Server.CreateObject("ADODB.Recordset")
     rsFillFaculty.Open strSQL, con, 3, 3
+
+
+
+
 
 
 

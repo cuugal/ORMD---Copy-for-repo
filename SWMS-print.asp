@@ -158,6 +158,19 @@ if(rsResults("numOperationId") <> 0) then
   numFacultyID = rsSearch("tblFacilitySupervisor.numFacultyID")
 end if
 
+if(rsResults("numOperationId") = 0 and rsResults("numFacilityId") = 0) then
+    strSQL = "Select tblQORA.*, tblFacilitySupervisor.numFacultyID"_
+	&" from tblQORA, tblFacilitySupervisor where numQORAID = "& testval &""_
+	&" and tblFacilitySupervisor.strLoginId = tblQORA.strSupervisor"
+	set rsSearch = server.CreateObject("ADODB.Recordset")
+
+	rsSearch.Open strSQL, dcnDb, 3, 3
+  numCampusID = 0
+  numBuildingId = 0
+  numFacilityId = 0
+  numOperationID = 0
+   numFacultyID = rsSearch("tblFacilitySupervisor.numFacultyID")
+end if
 	
 	numQORAID = rsResults("numQORAId")
 	strSuperv = rsResults("strSupervisor")
