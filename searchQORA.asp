@@ -4,6 +4,8 @@
 <script src="DataTables-1.10.10/js/dataTables.foundation.min.js"></script>
 <script src="DataTables-1.10.10/js/dataTables.bootstrap.min.js"></script>
 
+<script src="RowGroup-1.0.3/js/dataTables.rowGroup.js"></script>
+<link rel="stylesheet" type="text/css" href="RowGroup-1.0.3/css/rowGroup.bootstrap.css" media="all" />
 
    <%
        'Empty out session
@@ -747,11 +749,18 @@
     &"and tbloperations.numfacilitysupervisorid = tblfacilitysupervisor.numsupervisorid "_
     &"and tbloperations.strOperationName not like 'Archive%' "_
     &"and tblqora.numoperationid = tbloperations.numoperationid "_
-
     &"group by strFacultyName, tblFaculty.numFacultyID "_
 
+    &"union all "_
 
-    &"order by  2, strFacultyName"
+ &"SELECT tblfacilitysupervisor.strGivenName& ' '& tblfacilitysupervisor.strSurname as name, 'User' as searchType, tblfacilitysupervisor.numSupervisorId as key_id, count(numQORAId) as numRA, sum(iif(dtReview > Date() , 1 , 0 )) as numCurr "_
+    &"from tblFaculty, tblfacilitysupervisor, tblQORA "_
+    &"where tblfaculty.numfacultyID = tblfacilitysupervisor.numfacultyid "_
+    &"and tblFacilitySupervisor.strLoginId = tblQORA.strSupervisor "_
+    &"and tblqora.numoperationid = 0 and tblqora.numfacilityid = 0 "_
+    &"group by tblfacilitysupervisor.strGivenName& ' '& tblfacilitysupervisor.strSurname, tblfacilitysupervisor.numSupervisorId "_
+
+    &"order by  2, 1"
 
     set rsFillFaculty = Server.CreateObject("ADODB.Recordset")
     rsFillFaculty.Open strSQL, con, 3, 3
@@ -798,7 +807,7 @@
      <table id="factable" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <th>Faculty/Unit Name</th>
+                <th>&nbsp;</th>
                 <th>Facility/Operation</th>
                 <th>Current RA</th>
                 <th>Total RA</th>
@@ -814,8 +823,10 @@
                 <% 
                     if rsFillFaculty("searchType") = "Facility" then
                         link = "CollectInfoAdmin.asp?searchType=location&hdnFacultyId="&rsFillFaculty("key_id") 
+                    elseif rsFillFaculty("searchType") = "Operation" then
+                        link = "CollectInfoAdmin.asp?searchType=operation&hdnFacultyId="&rsFillFaculty("key_id")
                     else
-                        link = "CollectInfoAdmin.asp?searchType=operation&hdnFacultyId="&rsFillFaculty("key_id") 
+                          link = "CollectInfoAdmin.asp?searchType=user&hdnFacultyId="&rsFillFaculty("key_id")
                     end if
                     %>
                 <td><a style="text-decoration: underline;" href="<%=link %>"><%=rsFillFaculty("strFacultyName") %></a></td>
@@ -873,8 +884,27 @@
  </div>
 		  <script type="text/javascript">
 		      $(document).ready(function () {
-		          $('#ratable').DataTable();
-		          $('#factable').DataTable();
+		          $('#ratable').DataTable(
+		              {
+		              "pageLength":50,
+		                rowGroup:{  dataSrc:1 }
+
+		        }
+		      );
+		          $('#factable').DataTable(
+		              {
+		              "pageLength":50,
+                      rowGroup:{
+                          dataSrc:1
+                      },
+                      "order":[[1, "asc"], [0, "asc"]],
+                      columnDefs:[{
+		                  targets:[1],
+		                  visible:false,
+		                  searchable:false
+                      }]
+		            }
+		          );
 		          $("form").each(function () {
 		            
 		              $(this).trigger("reset");

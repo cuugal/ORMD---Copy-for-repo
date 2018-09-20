@@ -171,7 +171,19 @@ if(searchType = "operation") then
 end If
 
 
+if(searchType = "user") then
+	strSQL = "Select distinct(tblQORA.numQORAId) as numQORAId, tblQORA.*, tblRiskLevel.* "
+	strSQL = strSQL+" from tblQORA, tblRiskLevel, tblFacilitySupervisor"
 
+	strSQL = strSQL+" Where tblFacilitySupervisor.strLoginId = tblQORA.strSupervisor "
+	strSQL = strSQL+" and tblFacilitySupervisor.numSupervisorID = "&numFacultyId
+
+    strSQL = strSQL+" and tblqora.numoperationid = 0 and tblqora.numfacilityid = 0 "
+	strSQL = strSQL+" and tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel"
+
+	strSQL = strSQL+ " Order by tblQORA.strSupervisor, tblRiskLevel.numGrade, tblQORA.strTaskDescription "
+    'Response.write(strSQL)
+end If
 
 
 ' added 3may18 DLJ

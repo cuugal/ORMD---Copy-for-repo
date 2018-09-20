@@ -37,7 +37,13 @@ Dim numSupervisorID
 <script type="text/javascript">
 // function to ask about the confirmation of the file. 
 function ConfirmChoice() 
-{ 
+{
+ if($("#strAccessLevel").val() == 'T' && parseInt($("#counts").val()) > 0){
+       alert ("Please unassign this user from any operations or facilities before changing to Assessor");
+     	   return(false);
+ }
+
+
   if ((document.Form1.cboFaculty.value != "0") && (document.Form1.txtSurname.value != "") && (document.Form1.txtGivenName.value !="") && (document.EditSupervisor.cboLoginId.value !="0") && (document.Form1.txtPassword.value !="") && (document.Form1.txtnewID.value != "")) 
   {
      answer = confirm("Do you want to save changes to this record to the database?")
@@ -167,10 +173,7 @@ Dim rsFillDetails
          
       </td>
     </tr>
-    <tr>
-       <th>Email:</th>
-       <td><input type="email" name="txtEmail" size="20" tabindex="3" value="<%= rsFilldetails("strEmail")%>"/></td>
-     </tr>
+
     <tr>
       <th>User's Surname:</th>
       <td>
@@ -180,7 +183,10 @@ Dim rsFillDetails
       <input type="text" name="txtSurname" size="20" tabindex="1" value="<%= rsFilldetails("strSurname")%>" />
       <input type="hidden" name="hdnSupervisorId" value="<%=rsFillDetails("numSupervisorID")%>" /></td>
       </tr>
-
+ <tr>
+       <th>Email:</th>
+       <td><input type="email" name="txtEmail" size="20" tabindex="3" value="<%= rsFilldetails("strEmail")%>"/></td>
+     </tr>
       <tr id="userfaculty">
       <th >User's Faculty/Unit:</th>
       <td>
@@ -209,7 +215,17 @@ Dim rsFillDetails
        strSQL ="Select * from tblFaculty order by strFacultyName"
        set rsFillFaculty = Server.CreateObject("ADODB.Recordset")
        rsFillFaculty.Open strSQL, connFac, 3, 3
+
+       'check to see if this supervisor is assigned any operations or facilities
+       strSQL = "SELECT count( *) as cc from tblOperations, tblFacility where tblOperations.NumfacilitySupervisorId = "&rsFillFac("numSupervisorId")&" or tblFacility.numfacilitySupervisorId = "&rsFillFac("numSupervisorId")&""
+        set rsCount = Server.CreateObject("ADODB.Recordset")
+        rsCount.Open strSQL, connFac, 3, 3
+
+
       %>
+
+      <input type="hidden" value="<%=rsCount("cc") %>" id="counts"/>
+
       <select size="1" id="cboFaculty" name="cboFaculty" tabindex="3">
    <% if rsFillDetails("numSupervisorID") = "S" then %>
       <option value="<%=rsFillFac("tblFacilitySupervisor.numFacultyID")%>" selected="selected"><%=rsFillFac("strFacultyName")%></option>
@@ -311,7 +327,6 @@ $(document).ready(function(){
             $("#userfaculty").hide();
         }
 });
-
 </script>
 
 
