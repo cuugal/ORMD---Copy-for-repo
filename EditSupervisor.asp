@@ -183,10 +183,7 @@ Dim rsFillDetails
       <input type="text" name="txtSurname" size="20" tabindex="1" value="<%= rsFilldetails("strSurname")%>" />
       <input type="hidden" name="hdnSupervisorId" value="<%=rsFillDetails("numSupervisorID")%>" /></td>
       </tr>
- <tr>
-       <th>Email:</th>
-       <td><input type="email" name="txtEmail" size="20" tabindex="3" value="<%= rsFilldetails("strEmail")%>"/></td>
-     </tr>
+
       <tr id="userfaculty">
       <th >User's Faculty/Unit:</th>
       <td>

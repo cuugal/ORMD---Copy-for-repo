@@ -74,7 +74,7 @@ if(rsResults("numOperationId") = 0 and rsResults("numFacilityId") = 0) then
   numFacilityId = 0
   numOperationID = 0
   numFacultyId = rsSearch("tblFacilitySupervisor.numFacultyId")
-
+    searchType = "user"
  end if
 
 
@@ -241,12 +241,7 @@ Dim strSurname
 <% end if %>
 
 
-      <% if searchType <> "user" then %>
-            <tr>
-              <th>Assessor Name</th>
-              <td colspan="3"><%=strSupervisorName%></td>
-            </tr>
-      <% end if %>
+
 
 
         <tr>
@@ -260,15 +255,15 @@ Dim strSurname
 			todaysDate = cstr(todaysDay) +"/"+cstr(todaysMonth)+"/"+cstr(todaysYear)
 			renewalDate = cstr(todaysDay) +"/"+cstr(todaysMonth)+"/"+cstr(renewal)
 			%>
-        	<th>Assessor / Reviewer</th>
+        	<th>Assessor/Reviewer</th>
 
 
         	<% if searchType = "user" then %>
-                <td colspan="3"><%=strSupervisorName%>
+                <td ><%=strAssessor%>
                     <input type="hidden"  name="txtAssessor" value="<%=strAssessor%>"/>
                 </td>
             <% else %>
-                <td colspan="3">
+                <td >
                     <input type="text" name="txtAssessor" value="<%=strAssessor%>">
                 </td>
             <% end if %>

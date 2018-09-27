@@ -53,7 +53,7 @@
 	          <li><a href="EditSupervisorProfile.asp" title="Edit Profile">Profile</a></li>
          <% else %>
             <li><a href="#" data-toggle="modal" data-target="#LoginModal" >Login</a></li>
-            <li><a href="Register.asp">Create Account</a></li>
+            <!--<li><a href="Register.asp">Create Account</a></li>-->
          <% end if %>
 	 </ul>
 	</div>

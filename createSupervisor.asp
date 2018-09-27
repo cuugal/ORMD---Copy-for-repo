@@ -110,10 +110,7 @@ function ConfirmChoice()
    <th>New Login ID:</th>
    <td><input type="text" name="txtLoginId" size="20" tabindex="3" /></td>
  </tr>
-<tr>
-   <th>New Email:</th>
-   <td><input type="email" name="txtEmail" size="20" tabindex="3" /></td>
- </tr>
+
  <tr>
   <th>New Password:</th>
   <td><input type="password" name="txtPassword" size="20" tabindex="4" /></td>

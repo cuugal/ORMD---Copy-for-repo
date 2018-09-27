@@ -173,7 +173,7 @@ if(searchType = "user") then
 
     <tr>
   			<td class="campus">
-  			<strong>Supervisor: </strong><%=rsSearchH("strGivenName")%>&nbsp;<%=rsSearchH("strSurname")%>&nbsp;&nbsp;&nbsp;</td>
+  			<strong>Assessor: </strong><%=rsSearchH("strGivenName")%>&nbsp;<%=rsSearchH("strSurname")%>&nbsp;&nbsp;&nbsp;</td>
   			<td class="campus" colspan="3"><strong>Faculty: </strong><%=session("strFacultyName")%>&nbsp;&nbsp;&nbsp;
   			</td>
             <%
@@ -193,14 +193,14 @@ if(searchType = "user") then
               <td class="campus" colspan="3"><strong>Current Risk Assessments: </strong><%=rsControls("numCurrent")%>/<%=rsControls("numRA")%></td>
   		<tr>
  </table>
-&nbsp;&nbsp;&nbsp;Click on column header to sort column.
+&nbsp;&nbsp;&nbsp;
 <% end if
 if (searchType = "operation") then %>
 <table class="searchResultsFromMenu" width="100%">
 	
     <tr>
   			<td class="campus">
-  			<strong>Supervisor: </strong><%=rsSearchH("strGivenName")%>&nbsp;<%=rsSearchH("strSurname")%>&nbsp;&nbsp;&nbsp;</td>
+  			<strong>Assessor: </strong><%=rsSearchH("strGivenName")%>&nbsp;<%=rsSearchH("strSurname")%>&nbsp;&nbsp;&nbsp;</td>
   			<td class="campus" colspan="3"><strong>Operation: </strong><%=rsSearchH("strOperationName")%>&nbsp;&nbsp;&nbsp;
   			</td>	
              <%
@@ -222,10 +222,41 @@ if (searchType = "operation") then %>
   		<tr>
 </table>
 <% end if
+
+if (searchType = "user") then %>
+<table class="searchResultsFromMenu" width="100%">
+
+    <tr>
+  			<td class="campus">
+  			<strong>Assessor: </strong><%=rsSearchH("strGivenName")%>&nbsp;<%=rsSearchH("strSurname")%>&nbsp;&nbsp;&nbsp;</td>
+  			<td class="campus" colspan="3"><strong>Faculty: </strong><%=rsSearchH("strFacultyName")%>&nbsp;&nbsp;&nbsp;
+  			</td>
+             <%
+            set connControls = Server.CreateObject("ADODB.Connection")
+  			connControls.open constr
+			' setting up the recordset
+   			strControls ="Select count(numQORAId) as numRA, sum(iif(dtReview > Date() , 1 , 0 )) as numCurrent, strOperationName from tblOperations, tblQORA "_
+                &" where tblOperations.numOperationId = "&rsSearchH("tblQORA.numOperationId")_
+                &" and tblQORA.numOperationId = tblOperations.numOperationId"_
+                &" group by strOperationName"
+
+            'response.write strControls
+  			set rsControls = Server.CreateObject("ADODB.Recordset")
+        	rsControls.Open strControls, connControls, 3, 3
+
+                %>
+              <td class="campus" colspan="3"><strong>Current Risk Assessments: </strong><%=rsControls("numCurrent")%>/<%=rsControls("numRA")%></td>
+
+  		<tr>
+</table>
+
+<% end if
+
+
    'Response.Write(strSQL) 
   if not rsSearchH.EOF then 
        %>
-
+Click on column header to sort column.
     <table class="sortable searchResultsFromMenu" id="id13">
     
       <thead>

@@ -511,7 +511,7 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
   		</tr>
   		<tr>
   			<td class="campus">
-  			<strong>Supervisor: </strong><%=rsFaculty("strGivenName")%>&nbsp;<%=rsFaculty("strSurname")%>&nbsp;&nbsp;&nbsp;</td>
+  			<strong>Assessor: </strong><%=rsFaculty("strGivenName")%>&nbsp;<%=rsFaculty("strSurname")%>&nbsp;&nbsp;&nbsp;</td>
   			<td class="campus" colspan="3"><strong>Faculty: </strong><%=rsFaculty("strFacultyName")%>&nbsp;&nbsp;&nbsp;
   			</td>
             <%
@@ -536,7 +536,7 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
   	<table width="100%" class="searchResultsFromMenu" id="id1<%=rowID%>">
   	<tr>
   			<td class="campus">
-  			<strong>Supervisor: </strong><%=rsFaculty("strGivenName")%>&nbsp;<%=rsFaculty("strSurname")%>&nbsp;&nbsp;&nbsp;</td>
+  			<strong>Assessor: </strong><%=rsFaculty("strGivenName")%>&nbsp;<%=rsFaculty("strSurname")%>&nbsp;&nbsp;&nbsp;</td>
   			<td class="campus" colspan="3"><strong>Operation: </strong><%=rsFaculty("strOperationName")%>&nbsp;&nbsp;&nbsp;
   			</td>	
              <%
@@ -560,7 +560,34 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
    
 
    
-  <% end if %>	
+
+
+    <% else %>
+    	<table width="100%" class="searchResultsFromMenu" id="id1<%=rowID%>">
+      	<tr>
+      			<td class="campus">
+      			<strong>Assessor: </strong><%=rsFaculty("strGivenName")%>&nbsp;<%=rsFaculty("strSurname")%>&nbsp;&nbsp;&nbsp;</td>
+      			<td class="campus" colspan="3"><strong>Faculty: </strong><%=rsFaculty("strFacultyName")%>&nbsp;&nbsp;&nbsp;
+      			</td>
+                 <%
+                set connControls = Server.CreateObject("ADODB.Connection")
+      			connControls.open constr
+    			' setting up the recordset
+       			strControls ="Select count(numQORAId) as numRA, sum(iif(dtReview > Date() , 1 , 0 )) as numCurrent from tblFacilitySupervisor, tblQORA "_
+                    &" where tblFacilitySupervisor.strLoginId = '"&rsFaculty("strSupervisor")&"'"_
+                    &" and tblQORA.strSupervisor = tblFacilitySupervisor.strLoginId"_
+                    &" group by strLoginId"
+
+                'response.write strControls
+      			set rsControls = Server.CreateObject("ADODB.Recordset")
+            	rsControls.Open strControls, connControls, 3, 3
+
+                    %>
+                  <td class="campus" colspan="3"><strong>Current Risk Assessments: </strong><%=rsControls("numCurrent")%>/<%=rsControls("numRA")%></td>
+
+      		<tr>
+      	</table>
+    <% end if %>
   		<% rowID = rowID +1 %>
   		<table width="100%" class="sortable searchResultsFromMenu" id="id1<%=rowID%>">
   		<tr>
@@ -777,14 +804,14 @@ end if
 
 <script type="text/javascript">
     $('#CopyModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget) // Button that triggered the modal
-        var qora = button.data('qora') // Extract info from data-* attributes
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var qora = button.data('qora'); // Extract info from data-* attributes
         // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
         // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-        var modal = $(this)
-        modal.find('.modal-title').text('Copy Risk Assessment: ' + qora)
-        modal.find('.modal-body #qora').val(qora)
-    })
+        var modal = $(this);
+        modal.find('.modal-title').text('Copy Risk Assessment: ' + qora);
+        modal.find('.modal-body #qora').val(qora);
+    });
 
     $(function () {
         //twitter bootstrap script

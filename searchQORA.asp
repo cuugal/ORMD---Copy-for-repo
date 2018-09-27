@@ -673,7 +673,7 @@
                                 <input type="submit" size="70" value="Search" class="btn btn-primary" title="List all Risk Assessments for the selected Location/Operation"
                                 onclick="return checkSearch();" name="btnGenRep" />
 
-                                <button class="btn btn-primary" type="button" title="Reset the form"
+                                <button   <% if displayComponent <= 0 then %>style="display:none" <% end if %> class="btn btn-primary" type="button" title="Reset the form"
                                 onclick="$('#myfacility').val(0);$('#myoperation').val(0);">Clear Form</button>
 
                                 <button  class="btn btn-primary" type="button" title="Create a New Risk Assessment for the selected Location/Operation"
