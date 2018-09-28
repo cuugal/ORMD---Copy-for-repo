@@ -197,7 +197,7 @@
                  
 				  <li class="active"><a data-toggle="tab" href="#facility">Facility Locations</a></li>
 				  <li><a data-toggle="tab" href="#operations">Operations/Projects</a></li>
-				  <li><a data-toggle="tab" href="#supervisors">Supervisors</a></li>
+				  <li><a data-toggle="tab" href="#supervisors">Users</a></li>
 				  <li><a data-toggle="tab" href="#ra">Keyword Search</a></li>
 				<li><a data-toggle="tab" href="#templates">Templates</a></li>
              
@@ -247,19 +247,19 @@
 						   <input type="hidden" name="cboFaculty" value="<%=cboFacultySuper%>" />
 						   <input type="hidden" name="searchType" value="supervisor" />
 						   <tr>
-							  <th>Supervisor Name</th>
+							  <th>User Name</th>
 							  <td>
 															   
 								 <select autocomplete="false" class="form-control" size="1" name="cboSupervisorName" id="cboSupervisor" tabindex="2">
 									  <option value="0">Select any one</option>
 									</select>
-								 &nbsp;
+
 							  </td>
 						   </tr>
 						   <tr>
 							  <td colspan="2">
 								 <center>
-									<input type="Submit" class="btn btn-primary" value="Search" name="btnSearch" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="btn btn-primary" value="Clear Form" name="btnClear" onclick="    clearform()" />&nbsp;&nbsp;&nbsp;&nbsp;<!--input type="Submit" value="Action Status Report" name="btnSearch" onclick="FillSearch()" /-->
+									<input type="Submit" class="btn btn-primary" value="Show Risk Assessments" name="btnSearch" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="btn btn-primary" value="Clear Form" name="btnClear" onclick="    clearform()" />&nbsp;&nbsp;&nbsp;&nbsp;<!--input type="Submit" value="Action Status Report" name="btnSearch" onclick="FillSearch()" /-->
 									<!--DLJ Removed this button from common search 22July2011-->
 						</form>
 						</center>
@@ -337,7 +337,7 @@
 						   <tr>
 							  <td colspan="2">
 								 <center>
-									<input type="Submit" class="btn btn-primary" value="Search" name="btnSearch" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="btn btn-primary" value="Clear Form" name="btnClear" onclick="    clearform()" />
+									<input type="Submit" class="btn btn-primary" value="Show Risk Assessments" name="btnSearch" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="btn btn-primary" value="Clear Form" name="btnClear" onclick="    clearform()" />
 									&nbsp;&nbsp;&nbsp;&nbsp;
 						</form>
 						</center></td>
@@ -394,7 +394,7 @@
 						   <tr>
 							  <td colspan="2">
 								 <center>
-									<input type="Submit" class="btn btn-primary" value="Search" name="btnSearch" />&nbsp;
+									<input type="Submit" class="btn btn-primary" value="Show Risk Assessments" name="btnSearch" />&nbsp;
 									&nbsp;&nbsp;&nbsp;<input type="button" value="Clear Form" class="btn btn-primary" name="btnClear" onclick="    clearform()" />&nbsp;&nbsp;&nbsp;&nbsp;<!--input type="Submit" value="Action Status Report" name="btnSearch" onclick="FillSearch()" /-->
 									<!--DLJ Removed this button from common search 22July2011-->
 						</form>
@@ -434,7 +434,7 @@
 						   <tr>
 							  <td colspan="2">
 								 <center>
-									<input type="Submit" class="btn btn-primary" value="Search" id="taskSearch" name="btnSearch"  />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="btn btn-primary" value="Clear Form" name="btnClear" onclick="clearform()" />&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="Submit" class="btn btn-primary" value="Show Risk Assessments" id="taskSearch" name="btnSearch"  />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="btn btn-primary" value="Clear Form" name="btnClear" onclick="clearform()" />&nbsp;&nbsp;&nbsp;&nbsp;
 									<!--DLJ Removed this button from common search 22July2011-->
 						
 						</center></td>
@@ -486,7 +486,7 @@
 						   <tr>
 							  <td colspan="2">
 								 <center>
-									<input type="Submit" class="btn btn-primary" value="Search" id="templateSearch" name="btnSearch"  />&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="Submit" class="btn btn-primary" value="Show Risk Assessments" id="templateSearch" name="btnSearch"  />&nbsp;&nbsp;&nbsp;&nbsp;
 									<!--input type="button" class="btn btn-primary" value="Clear Form" name="btnClear" onclick="clearform()" /-->&nbsp;&nbsp;&nbsp;&nbsp;
 									<!--DLJ Removed this button from common search 22July2011-->
 								</center></td>
@@ -670,7 +670,7 @@
                                  <!--  <button  class="btn btn-primary" type="button" onclick="window.location='LocationSup.asp'">Create New Risk Assessment</button>
                                 -->
                                 <div style="text-align: center;">
-                                <input type="submit" size="70" value="Search" class="btn btn-primary" title="List all Risk Assessments for the selected Location/Operation"
+                                <input type="submit" size="70" value="Show Risk Assessments" class="btn btn-primary" title="List all Risk Assessments for the selected Location/Operation"
                                 onclick="return checkSearch();" name="btnGenRep" />
 
                                 <button   <% if displayComponent <= 0 then %>style="display:none" <% end if %> class="btn btn-primary" type="button" title="Reset the form"
