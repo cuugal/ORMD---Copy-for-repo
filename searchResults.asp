@@ -797,12 +797,12 @@ end if
           <hr/>
                       <b>OR</b>
                       <hr />
-                      <b>Copy to self</b> (leave the above fields blank)
+                      <b>Copy to My General Risk Assessments</b> (leave the above fields blank)
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" id="submitCopy" class="btn btn-primary">Copy to Self</button>
+        <button type="button" id="submitCopy" class="btn btn-primary">Copy to My General Risk Assessment</button>
       </div>
     </div>
   </div>
