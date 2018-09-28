@@ -224,7 +224,7 @@ Dim rsFillDetails
       <input type="hidden" value="<%=rsCount("cc") %>" id="counts"/>
 
       <select size="1" id="cboFaculty" name="cboFaculty" tabindex="3">
-   <% if rsFillDetails("numSupervisorID") = "S" then %>
+   <% if rsFillDetails("strAccessLevel") = "S" then %>
       <option value="<%=rsFillFac("tblFacilitySupervisor.numFacultyID")%>" selected="selected"><%=rsFillFac("strFacultyName")%></option>
           <% end if %>
       <%While not rsFillFaculty.EOF%>

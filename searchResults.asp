@@ -758,7 +758,7 @@ end if
       <div class="modal-body">
         <form id="copyForm">
           <input type="hidden" class="form-control" id="qora" name="qora"/>
-            <input type="hidden" name="mode" id="searchType" value=""/>
+            <input type="hidden" name="mode" id="searchType" value="user"/>
           <div class="form-group">
             <label for="recipient-name" class="control-label">To Facility:</label>
            <select class="form-control" autocomplete="off" id="myfacility" size="1" name="cboFacility" tabindex="1" onchange="$('#searchType').val('location');$('#submitCopy').html('Copy to Location');">
@@ -792,11 +792,15 @@ end if
 			%>
 			</select>  
           </div>
+          <hr/>
+                      <b>OR</b>
+                      <hr />
+                      <b>Copy to self</b> (leave the above fields blank)
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" id="submitCopy" class="btn btn-primary">Copy to..</button>
+        <button type="button" id="submitCopy" class="btn btn-primary">Copy to Self</button>
       </div>
     </div>
   </div>

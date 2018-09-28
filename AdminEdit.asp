@@ -267,6 +267,8 @@ End If
 						 edit_Sup_Password = Request.Form("txtPassword")
 						 edit_Sup_Faculty  = Request.Form("cboFaculty")
 						 edit_Sup_Deprecated = Request.Form("deprecated")
+						 edit_Sup_Access = Request.form("strAccessLevel")
+
 						 	 edit_email = Request.Form("txtEmail")
                            'Response.write(edit_Sup_ID)                    
                        ' editing existing campus
@@ -306,7 +308,9 @@ End If
 						  &" numFacultyID = "& edit_Sup_Faculty&","_  
 						  &" strLoginID = '"& edit_Sup_newlogin&"',"_ 
 						  &" boolDeprecated =  "&edit_Sup_Deprecated	&","_
-						  &" strEmail =  '"&edit_email&"'"_
+						  &" strEmail =  '"&edit_email&"', "_
+						  &" strAccessLevel =  '"&edit_Sup_Access&"'"_
+
 
   					      &" where numSupervisorID = "& edit_Sup_ID &""
   					      
