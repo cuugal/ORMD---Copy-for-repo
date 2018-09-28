@@ -114,9 +114,11 @@ End Function
 
 
 if(searchType = "user") then
-	 strSQL = "SELECT * FROM tblQORA, tblRiskLevel ,tblFacilitySupervisor "_
+	 strSQL = "SELECT * FROM tblQORA, tblRiskLevel ,tblFacilitySupervisor, tblFaculty "_
   &" WHERE tblFacilitySupervisor.strLoginId = tblQORA.strSupervisor"_
-  &" and tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel "
+  &" and tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel "_
+ &" and tblFaculty.numFacultyID = tblFacilitySupervisor.numFacultyID "_
+   &" and tblQORA.numOperationId = 0 and tblQORA.numFacilityID = 0 "
 
   if not session("isAdmin") then
     strSQL = strSQL&" and tblFacilitySupervisor.numSupervisorId = "& numSupervisorID
@@ -235,10 +237,10 @@ if (searchType = "user") then %>
             set connControls = Server.CreateObject("ADODB.Connection")
   			connControls.open constr
 			' setting up the recordset
-   			strControls ="Select count(numQORAId) as numRA, sum(iif(dtReview > Date() , 1 , 0 )) as numCurrent, strOperationName from tblOperations, tblQORA "_
-                &" where tblOperations.numOperationId = "&rsSearchH("tblQORA.numOperationId")_
-                &" and tblQORA.numOperationId = tblOperations.numOperationId"_
-                &" group by strOperationName"
+   			strControls ="Select count(numQORAId) as numRA, sum(iif(dtReview > Date() , 1 , 0 )) as numCurrent from tblFacilitySupervisor, tblQORA "_
+                                &" where tblFacilitySupervisor.strLoginId = '"&rsSearchH("strSupervisor")&"'"_
+                                &" and tblQORA.strSupervisor = tblFacilitySupervisor.strLoginId"_
+                                &" group by strLoginId"
 
             'response.write strControls
   			set rsControls = Server.CreateObject("ADODB.Recordset")
@@ -435,7 +437,7 @@ Click on column header to sort column.
       <div class="modal-body">
         <form id="copyForm">
           <input type="hidden" class="form-control" id="qora" name="qora"/>
-            <input type="hidden" name="mode" id="searchType" value=""/>
+            <input type="hidden" name="mode" id="searchType" value="user"/>
           <div class="form-group">
             <label for="recipient-name" class="control-label">To Facility:</label>
            <select class="form-control" autocomplete="off" id="myfacility" size="1" name="cboFacility" tabindex="1" onchange="$('#searchType').val('location');$('#submitCopy').html('Copy to Location');">
@@ -467,13 +469,17 @@ Click on column header to sort column.
 				rsFillProj.Movenext	
 				wend 
 			%>
-			</select>  
+			</select>
+			 <hr/>
+                                  <b>OR</b>
+                                  <hr />
+                                  <b>Copy to My General Risk Assessments</b> (leave the above fields blank)
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" id="submitCopy" class="btn btn-primary">Copy to..</button>
+        <button type="button" id="submitCopy" class="btn btn-primary">Copy</button>
       </div>
     </div>
   </div>

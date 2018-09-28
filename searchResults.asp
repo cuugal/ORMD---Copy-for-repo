@@ -802,7 +802,7 @@ end if
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" id="submitCopy" class="btn btn-primary">Copy to My General Risk Assessment</button>
+        <button type="button" id="submitCopy" class="btn btn-primary">Copy</button>
       </div>
     </div>
   </div>
