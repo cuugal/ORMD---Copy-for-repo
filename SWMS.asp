@@ -292,10 +292,10 @@ if(rsResults("numOperationId") <> 0) then %>
         <td colspan="3"><%=rsOper("strOperationName")%></td>
     </tr>
 <% end if %>
-        <tr>
-          <th>Supervisor Name</th>
-          <td colspan="3"><%=strSupervisor%></td>
-        </tr>
+        <!--<tr>-->
+          <!--<th>Supervisor Name</th>-->
+          <!--<td colspan="3"><%=strSupervisor%></td>-->
+        <!--</tr>-->
         <tr>
         <%' Code to create an Australian date format
 			todaysday = day(date)
@@ -307,6 +307,11 @@ if(rsResults("numOperationId") <> 0) then %>
 			renewalDate = cstr(todaysDay) +"/"+cstr(todaysMonth)+"/"+cstr(renewal)
 			%>
         	<th>Assessor:</th><td><%=strAssessor%></td>
+
+
+
+
+
         	<td>Date Last Modified:&nbsp;&nbsp;&nbsp;
           	<%=dtDateCreated%></td>
           	<!-- <td>Review Date:&nbsp;&nbsp;&nbsp;<%=renewalDate%></td> -->
