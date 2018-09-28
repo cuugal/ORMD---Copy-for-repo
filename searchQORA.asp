@@ -753,7 +753,7 @@
 
     &"union all "_
 
- &"SELECT tblfacilitysupervisor.strGivenName& ' '& tblfacilitysupervisor.strSurname as name, 'User' as searchType, tblfacilitysupervisor.numSupervisorId as key_id, count(numQORAId) as numRA, sum(iif(dtReview > Date() , 1 , 0 )) as numCurr "_
+ &"SELECT tblfacilitysupervisor.strGivenName& ' '& tblfacilitysupervisor.strSurname as name, 'General' as searchType, tblfacilitysupervisor.numSupervisorId as key_id, count(numQORAId) as numRA, sum(iif(dtReview > Date() , 1 , 0 )) as numCurr "_
     &"from tblFaculty, tblfacilitysupervisor, tblQORA "_
     &"where tblfaculty.numfacultyID = tblfacilitysupervisor.numfacultyid "_
     &"and tblFacilitySupervisor.strLoginId = tblQORA.strSupervisor "_
