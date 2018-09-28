@@ -167,7 +167,7 @@ if(searchType = "operation") then
 		strSQL = strSQL+" and tblFacilitySupervisor.numFacultyID = "&numFacultyId
 	end if
 	strSQL = strSQL+ " Order by tblQORA.strSupervisor, tblRiskLevel.numGrade, tblQORA.strTaskDescription "
-    'Response.write(strSQL)
+   ' Response.write(strSQL)
 end If
 
 
@@ -415,7 +415,7 @@ i = 0
  
 '*************************Defining the recordset*******************************************************
 strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacultyId, tblQORA.numFacilityId, tblQORA.strSupervisor, "_
- &" strFacultyName, strRoomName,strRoomNumber,tblQORA.strTaskDescription, "_
+ &" strFacultyName, strRoomName,strRoomNumber, tblQORA.strTaskDescription, "_
  &" strHazardsDesc ,strControlRiskDesc,strAssessRisk,boolFurtherActionsSWMS,"_
  &" boolFurtherActionsChemicalRA, dtReview, boolSWMSRequired,"_
  &" boolFurtherActionsGeneralRA,dtDateCreated,strText,strCampusName,strBuildingName, null as numOperationID, null as strOperationName, strDateActionsCompleted, "_
@@ -467,6 +467,7 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
   &" FROM tblQoraTemp, tblFaculty ,tblQORA, tblRiskLevel, tblFacilitySupervisor "_
 
   &" Where tblQORATemp.numQoraID = tblQORA.numQORAId "_
+  &" and tblQORA.numOperationId = 0 and tblQORA.numFacilityID = 0 "_
 
   &" and tblQORA.strSupervisor = tblFacilitySupervisor.strLoginId "_
   &" and tblFaculty.numFacultyID = tblFacilitySupervisor.numFacultyID "_
@@ -563,7 +564,7 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
 
 
     <% else %>
-    	<table width="100%" class="searchResultsFromMenu" id="id1<%=rowID%>">
+    	<table width="100%" class="searchResultsFromMenu usermenu" id="id1<%=rowID%>">
       	<tr>
       			<td class="campus">
       			<strong>Assessor: </strong><%=rsFaculty("strGivenName")%>&nbsp;<%=rsFaculty("strSurname")%>&nbsp;&nbsp;&nbsp;</td>
@@ -588,6 +589,7 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
       		<tr>
       	</table>
     <% end if %>
+
   		<% rowID = rowID +1 %>
   		<table width="100%" class="sortable searchResultsFromMenu" id="id1<%=rowID%>">
   		<tr>
