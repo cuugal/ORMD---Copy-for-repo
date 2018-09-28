@@ -164,7 +164,7 @@ Dim rsFillSup
  
  ' setting up the recordset
  
-   strSQL ="Select * from tblFacilitySupervisor" 
+   strSQL ="Select * from tblFacilitySupervisor order by strGivenName"
    set rsFillSup = Server.CreateObject("ADODB.Recordset")
    rsFillSup.Open strSQL, connSup, 3, 3
 %>

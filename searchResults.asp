@@ -848,7 +848,9 @@ end if
         var modal = $(this)
         modal.find('.modal-title').text('Archive Risk Assessment: ' + qora)
         modal.find('.modal-body #archiveQora').val(qora)
-    })
+    });
+
+
 
     $(function () {
         //twitter bootstrap script

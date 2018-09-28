@@ -184,7 +184,7 @@
 		  }
 
 		  function clearform() {
-			  var str
+			   $( 'input,select' ).garlic( 'destroy' );
 	 
 			  location.reload();
 		  }
@@ -912,6 +912,18 @@
 		          $("#cboFacultyLocation").val(0);
 		          $("#cboFacultyOperation").val(0);
 		          $("#cboFacultySuper").val(0);
+
+
 		      });
 
+		        //form persistence
+                  $(document).ready(function(){
+
+                      $( 'input,select' ).each(function() {
+
+                          $(this).garlic();
+                          $(this).trigger('change');
+                      });
+
+                  });
     </script>

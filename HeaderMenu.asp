@@ -16,12 +16,12 @@
 <div id="content">
 <% if session("LoggedIn") then %>
     <% if session("isAdmin") then %>
-    <br /> <h1 class="pagetitle">Health and Safety Risk Register V2.3 - Administration Menu</h1>
+    <br /> <h1 class="pagetitle">Health and Safety Risk Register V2.4 - Administration Menu</h1>
     <% else %>
-     <br /> <h1 class="pagetitle">Health and Safety Risk Register V2.3 - Supervisor Menu</h1>
+     <br /> <h1 class="pagetitle">Health and Safety Risk Register V2.4 - Supervisor Menu</h1>
     <% end if %>
 <% else %>
-    <br /> <h1 class="pagetitle">Health & Safety Risk Register V2.3</h1>
+    <br /> <h1 class="pagetitle">Health & Safety Risk Register V2.4</h1>
 <% end if %>
 
 <% if session("LoggedIn") then %>
@@ -34,7 +34,7 @@
      <div class="loginlist">
      <ul>
     
-        <li><a href="Home.asp" title="Search the Online Risk Register">Home</a></li>
+        <li><a href="Home.asp" title="Search the Online Risk Register">Search</a></li>
   
          <li></li>
         <li><a href="admin.asp" title="Perform administration on the Online Risk Register">Administration Functions</a></li>
@@ -45,7 +45,7 @@
     <div class="loginlist">
 	 <ul>
 
-	   <li><a href="Home.asp" title="View the Risk Assessments for your facility/facilities">Home</a></li>
+	   <li><a href="Home.asp" title="View the Risk Assessments for your facility/facilities">Search</a></li>
 	   <!--li><a target="Operation" href="help.htm">Help</a></li-->
 	   <!--<li><a target="_top" href="menu.asp" title="Online Risk Register homepage">Home</a></li>-->
          <% if session("LoggedIn") then %>
