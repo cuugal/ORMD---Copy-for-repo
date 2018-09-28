@@ -133,6 +133,16 @@ End Function
   &" ORDER BY tblFacilitySupervisor.numFacultyId, tblRiskLevel.numGrade, strTaskDescription"
  end if
 
+ if(searchType = "user") then
+ 	 strSQL = "SELECT * FROM tblQORA, tblRiskLevel ,tblFacilitySupervisor, tblFaculty "_
+   &" WHERE tblFacilitySupervisor.strLoginId = tblQORA.strSupervisor"_
+   &" and tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel "_
+  &" and tblFaculty.numFacultyID = tblFacilitySupervisor.numFacultyID "_
+    &" and tblQORA.numOperationId = 0 and tblQORA.numFacilityID = 0 "
+
+     strSQL = strSQL&" ORDER BY tblRiskLevel.numGrade, strTaskDescription"
+  end if
+
 set rsSearchH = server.CreateObject("ADODB.Recordset")
 rsSearchH.Open strSQL, Conn, 3, 3 
 
