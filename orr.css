@@ -278,6 +278,7 @@ body#printpreview { width: 100%; color: #000; background-color: #fff; font-famil
     margin: 0 auto;
     display: table;
     min-width: 600px;
+    width:100%;
 }
 /* styles within the content DIV - top headings */
 #content p { font-size: 10pt; color: #4C8080; }
@@ -389,7 +390,7 @@ span.right {position: absolute; }
 /* resultsFrameFromAdmin.asp styling */
 /* This was also originally used for styling the locationSup.asp file - but have replaced with bluebox styling instead. */
 .searchResultsFromMenu .strong1 { font-size: 1.05em; font-weight: bolder; color: #000; background-color: #F8E9AD; font-size: 10pt; font-weight: bolder; }
-table.searchResultsFromMenu { border: solid 1px #fff; min-width: 760px; font-size: 11px; border-collapse: separate; background-color: #fff; text-align: left; }
+table.searchResultsFromMenu { border: solid 1px #fff; min-width: 760px; font-size: 11px; border-collapse: separate; background-color: #fff; text-align: left;   width:100%; }
 .searchResultsFromMenu strong { font-weight: bolder; }
 .searchResultsFromMenu td { font-size: 8pt; padding: 5px; background-color: #ebf2f4; color: #000; vertical-align: top; /* all rows was ddeef4 */}
 .searchResultsFromMenu td.facultyunitname { font-size: 8pt; text-align: left; width: 100%; color: #000; background-color: #f8e9ad; }

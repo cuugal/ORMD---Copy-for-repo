@@ -258,15 +258,10 @@ Dim strSurname
         	<th>Assessor/Reviewer</th>
 
 
-        	<% if searchType = "user" then %>
-                <td ><%=strAssessor%>
+        	     <td ><%=strAssessor%>
                     <input type="hidden"  name="txtAssessor" value="<%=strAssessor%>"/>
                 </td>
-            <% else %>
-                <td >
-                    <input type="text" name="txtAssessor" value="<%=strAssessor%>">
-                </td>
-            <% end if %>
+           
 
         	<td>Date Last Modified &nbsp;&nbsp;&nbsp;
           	<!--input type="text" name="txtDateCreated" size="9" value="<%=todaysDate%>"/></td-->

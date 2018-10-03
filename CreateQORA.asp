@@ -247,12 +247,7 @@ strJobSteps = ""
 	        </tr>
         <% end if %>
 
-        <% if searchType <> "user" then %>
-        <tr>
-          <th>Assessor Name</th>
-          <td colspan="3"><%=strSupervisorName%></td>
-        </tr>
-        <% end if %>
+
         <tr>
         <%' Code to create an Australian date format
 			todaysday = day(date)
@@ -264,15 +259,11 @@ strJobSteps = ""
 			renewalDate = cstr(todaysDay) +"/"+cstr(todaysMonth)+"/"+cstr(renewal)
 			%>
         	<th >Assessor / Reviewer:</th>
-        	<% if searchType = "user" then %>
+
         	    <td colspan="3"><%=strSupervisorName%>
         	        <input type="hidden"  name="txtAssessor" value="<%=strSupervisorName%>"/>
         	    </td>
-        	<% else %>
-        	    <td colspan="3">
-        	        <input type="text" name="txtAssessor">
-                </td>
-        	<% end if %>
+        	
         	<!--<td colspan="2">Date Last Modified (dd/mm/yyyy)&nbsp;&nbsp;&nbsp;<input type="text" name="txtDateCreated" size="9" value="<%=todaysDate%>"/></td>-->
             <input type="hidden" name="txtDateCreated" size="9" value="<%=todaysDate%>"/>
 			<!-- the line above is needed as an input box to prevent error - how can this be converted to plain text as attempted in line below-->
