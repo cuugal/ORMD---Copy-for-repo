@@ -152,7 +152,14 @@ end if
                 &" Select tblOperations.numFacilitySupervisorId from tblQORA, tblOperations"_
                 &" where tblQORA.numOperationId = tblOperations.numOperationId"_
                 &" and numQORAID = "&testval&"  and numFacilitySupervisorId = "&session("numSupervisorId")_
-                &")"
+
+                &" union all "_
+               &" Select tblFacilitySupervisor.numSupervisorID from tblQORA, tblFacilitySupervisor"_
+                    	&" where numQORAID = "& testval &""_
+                    	&" and tblFacilitySupervisor.strLoginId = tblQORA.strSupervisor"_
+                    	&" and numSupervisorID = "&session("numSupervisorId")_
+
+                    	&")"
            
             rsCanEdit.Open strSQL, dcnDb, 3, 3
             if cint(rsCanEdit("editable")) > 0 then
