@@ -199,8 +199,8 @@ Dim rsFillDetails
        strSQL ="SELECT * FROM tblFacilitySupervisor, tblFaculty WHERE tblFacilitySupervisor.numFacultyId = tblFaculty.numFacultyID and strLoginId = '"& strLoginId &"'"
        set rsFillFac = Server.CreateObject("ADODB.Recordset")
        rsFillFac.Open strSQL, connFac, 3, 3
-      %>
-        <%'code to add the different faculties for that str loginID 
+
+     'code to add the different faculties for that str loginID
       Dim connFaculty
       Dim rsFillFaculty
      
@@ -214,7 +214,14 @@ Dim rsFillDetails
        rsFillFaculty.Open strSQL, connFac, 3, 3
 
        'check to see if this supervisor is assigned any operations or facilities
-       strSQL = "SELECT count( *) as cc from tblOperations, tblFacility where tblOperations.NumfacilitySupervisorId = "&rsFillFac("numSupervisorId")&" or tblFacility.numfacilitySupervisorId = "&rsFillFac("numSupervisorId")&""
+
+         ' setting up the recordset
+          strSQL ="SELECT * FROM tblFacilitySupervisor WHERE strLoginId = '"& strLoginId &"'"
+          set rsFillSup = Server.CreateObject("ADODB.Recordset")
+          rsFillSup.Open strSQL, connFac, 3, 3
+
+
+       strSQL = "SELECT count( *) as cc from tblOperations, tblFacility where tblOperations.NumfacilitySupervisorId = "&rsFillSup("numSupervisorId")&" or tblFacility.numfacilitySupervisorId = "&rsFillSup("numSupervisorId")&""
         set rsCount = Server.CreateObject("ADODB.Recordset")
         rsCount.Open strSQL, connFac, 3, 3
 
