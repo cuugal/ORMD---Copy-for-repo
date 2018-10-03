@@ -136,11 +136,14 @@ End Function
  if(searchType = "user") then
  	 strSQL = "SELECT * FROM tblQORA, tblRiskLevel ,tblFacilitySupervisor, tblFaculty "_
    &" WHERE tblFacilitySupervisor.strLoginId = tblQORA.strSupervisor"_
+   &" and tblQORA.strSupervisor = '"&loginId&"'"_
    &" and tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel "_
   &" and tblFaculty.numFacultyID = tblFacilitySupervisor.numFacultyID "_
     &" and tblQORA.numOperationId = 0 and tblQORA.numFacilityID = 0 "
 
      strSQL = strSQL&" ORDER BY tblRiskLevel.numGrade, strTaskDescription"
+
+     'response.write(strSQL)
   end if
 
 set rsSearchH = server.CreateObject("ADODB.Recordset")

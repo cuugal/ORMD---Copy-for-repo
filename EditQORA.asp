@@ -261,7 +261,7 @@ Dim strSurname
         	     <td ><%=strAssessor%>
                     <input type="hidden"  name="txtAssessor" value="<%=strAssessor%>"/>
                 </td>
-           
+
 
         	<td>Date Last Modified &nbsp;&nbsp;&nbsp;
           	<!--input type="text" name="txtDateCreated" size="9" value="<%=todaysDate%>"/></td-->
