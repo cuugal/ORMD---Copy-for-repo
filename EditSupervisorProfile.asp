@@ -91,7 +91,8 @@ function FillDetails()
 
 
 
- <table class="adminfn" >
+
+  <table class="adminfn" style="width: 50%;    margin-left: auto;     margin-right: auto;">
 
     <tr>
     <form method="post" action="AdminEdit.asp" name="Form1" enctype="application/x-www-form-urlencoded" onsubmit="return ConfirmChoice();">
@@ -118,11 +119,11 @@ Dim rsFillDetails
 
 
 
-    <tr>
+    <!--tr>
            <th>Email:</th>
            <td><input type="email" name="txtEmail" size="20" tabindex="3" value="<%= rsFilldetails("strEmail")%>"/></td>
          </tr>
-    <tr>
+    <tr-->
       <th>User's Surname:</th>
       <td>
       <% if rsFillDetails.EOF <> true then%>
@@ -183,12 +184,12 @@ Dim rsFillDetails
     </tr>
 
     <tr>
-      <th>User's Password:</th>
-      <td><input type="password" name="txtPassword" size="20" tabindex="4" value="<%= rsFillDetails("strPassword")%>" /></td>
+      <!--th>User's Password:</th-->
+      <td><input type="hidden" name="txtPassword" size="20" tabindex="4" value="<%= rsFillDetails("strPassword")%>" /></td>
     </tr>
 <tr>
-  <th>Confirm Password:</th>
-  <td><input type="password" name="confirmPassword" size="20" tabindex="4" value="<%= rsFillDetails("strPassword")%>"/></td>
+  <!--th>Confirm Password:</th-->
+  <td><input type="hidden" name="confirmPassword" size="20" tabindex="4" value="<%= rsFillDetails("strPassword")%>"/></td>
  </tr>
 
 <!--end of case 1-->
@@ -214,7 +215,7 @@ Dim rsFillDetails
  </td>
 </tr>
 
-<tr>
+<!--tr>
  <th>User's Password:</th>
  <td>
    <input type="password" name="txtPassword" size="20" tabindex="4" value="" />
@@ -223,7 +224,7 @@ Dim rsFillDetails
 <tr>
   <th>Confirm Password:</th>
   <td><input type="password" name="confirmPassword" size="20" tabindex="4" /></td>
- </tr>
+ </tr-->
 
 
 <!--end of case 2-->

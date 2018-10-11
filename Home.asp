@@ -25,14 +25,14 @@ session.LCID = 2057	'English(British) format
 
 <table>
 <tr>
-	<td align='left' width='75%'><h2 class="pagetitle">Search UTS Risk Assessments</h2></td>
+	<td align='left' width='800px'><h2 class="pagetitle">Search UTS Risk Assessments</h2></td>
 	<td align='right'><a href ="OnlineRiskRegisterInstructions.pdf" target="_blank"><h2 class="pagetitle"><font color="8DAB3D"><u>Instructions for using this Risk Register</u></font></a></h2></td>
 </tr>
 </table>
             
             <center>
                 <div style="width:950px">
-                    <h3 style="float:left">Search By:</h3>
+                    <h3 style="float:left">Search By</h3>
                 </div>
                 <div style="clear:both"></div>
                 <div style="width:950px">

@@ -258,9 +258,10 @@ Dim strSurname
         	<th>Assessor/Reviewer</th>
 
 
-        	     <td ><%=strAssessor%>
-                    <input type="hidden"  name="txtAssessor" value="<%=strAssessor%>"/>
+                <td >
+                    <input type="text" name="txtAssessor" value="<%=strAssessor%>">
                 </td>
+
 
 
         	<td>Date Last Modified &nbsp;&nbsp;&nbsp;

@@ -209,7 +209,7 @@
 			   <ul class="nav nav-tabs" >
                  
 				  <li class="active"><a data-toggle="tab" href="#facility">Facility Locations</a></li>
-				  <li><a data-toggle="tab" href="#operations">Operations/Projects</a></li>
+				  <li><a data-toggle="tab" href="#operations">Operations</a></li>
 				  <li><a data-toggle="tab" href="#supervisors">Users</a></li>
 				  <li><a data-toggle="tab" href="#ra">Keyword Search</a></li>
 				<li><a data-toggle="tab" href="#templates">Templates</a></li>
@@ -499,7 +499,7 @@
 						   <tr>
 							  <td colspan="2">
 								 <center>
-									<input type="Submit" class="btn btn-primary" value="Show Risk Assessments" id="templateSearch" name="btnSearch"  />&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="Submit" class="btn btn-primary" value="Show Template Risk Assessments" id="templateSearch" name="btnSearch"  />&nbsp;&nbsp;&nbsp;&nbsp;
 									<!--input type="button" class="btn btn-primary" value="Clear Form" name="btnClear" onclick="clearform()" /-->&nbsp;&nbsp;&nbsp;&nbsp;
 									<!--DLJ Removed this button from common search 22July2011-->
 								</center></td>
@@ -613,22 +613,22 @@
                                         </script>
 
 					       <table class="adminfn">
-						   
-							<tr>
-								<th>Faculty/Unit:</th>
-								<td colspan ="3"><strong><% =session("strFacultyName") %></strong></td>
+
+
+								<th style="width:200px">Faculty/Unit:</th>
+								<td colspan="2"><strong><% =session("strFacultyName") %></strong></td>
 							</tr>
 							<tr>
 								<th>User Name:</th>
-								<td colspan="3"><strong><% =session("strName") %></strong></td>
+								<td><strong><% =session("strName") %></strong></td>
 							</tr>
-					
- 
+
+
 							<input type="hidden" name="searchType" ID="searchType" value=""/>
 
 
 						   <tr <% if displayComponent <= 0 then %>style="display:none" <% end if %> >
-							  <th>Facility</th>
+							  <th>Facility Location</th>
 							  <td colspan="2">
 								
 								 <select autocomplete="false" class="form-control" id="myfacility" size="1" name="cboFacility" tabindex="1" onchange="$('#searchType').val('location')">
@@ -643,19 +643,15 @@
 									   wend 
 									%>
 								 </select>
-							  </td>
-                               <td>
-                               </tr>
+								</td>
+                             </tr>
 
 						<% if displayComponent > 0 then %>
-						<tr ><td colspan="4"><hr /></td></tr>
-						<tr><td colspan="4" style="text-align: center;"><strong> OR </strong></td></tr>
-						<tr><td colspan="4"><hr /></td></tr>
-								<% end if %>
+						<% end if %>
 
 
 						   <tr <% if displayComponent <= 0 then %>style="display:none" <% end if %>>
-							  <th>Operation/Project</th>
+							  <th>Operation</th>
 							  <td colspan="2">
 								 <select autocomplete="false" class="form-control" id="myoperation" name="cboOperation" id="cboOperation" Onchange="$('#searchType').val('operation')">
 									<option value="0">Select any one</option>
@@ -670,34 +666,47 @@
 									%>
 								 </select>
 							  </td>
-						   
-							  <td>
+
                            </tr>
 
-
-                               <tr><td colspan="4"><hr /></td></tr>
-                               <tr><td colspan="3"></td><td>
-                                  </td></tr>
                                <tr>
-                               <td colspan="6">
-                                 <!--  <button  class="btn btn-primary" type="button" onclick="window.location='LocationSup.asp'">Create New Risk Assessment</button>
-                                -->
-                                <div style="text-align: center;">
-                                <input type="submit" size="70" value="Show Risk Assessments" class="btn btn-primary" title="List all Risk Assessments for the selected Location/Operation"
-                                onclick="return checkSearch();" name="btnGenRep" />
+									<th>&nbsp;</th>
+								   <td>
+									 <!--  <button  class="btn btn-primary" type="button" onclick="window.location='LocationSup.asp'">Create New Risk Assessment</button>
+									-->
+										<input type="submit" size="70" value="Show My Risk Assessments" class="btn btn-primary" title="List all Risk Assessments for selection"
+										onclick="return checkSearch();" name="btnGenRep" />
+									</td>
+									<td style="font-size: 8pt">Select a Facility Location or an Operation above to search risk assessments associated with that selection. Or just click "Show My Risk Assessments" to search your general risk assessments.</font>
+									</td>
+								</tr>
+								<tr>
+									<th>&nbsp;</th>
+									<td>
+										<button  class="btn btn-primary" type="button" title="Create a New Risk Assessment for the selected Location/Operation"
+										onclick="checkAndSubmit();">Create New Risk Assessment</button>
+									</td>
+									<td style="font-size: 8pt">Select a Facility Location or an Operation above to create a new risk assessment associated with that selection. Or just click "Create New Risk Assessment" to create a general risk assessment under your name.<font></td>
+								</tr>
 
-                                <button   <% if displayComponent <= 0 then %>style="display:none" <% end if %> class="btn btn-primary" type="button" title="Reset the form"
-                                onclick="$('#myfacility').val(0);$('#myoperation').val(0);">Clear Form</button>
+								<tr>
+									<th>&nbsp;</th>
+									<td>
+									</td>
+									<td>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button   <% if displayComponent <= 0 then %>style="display:none" <% end if %> class="btn btn-primary" type="button" title="Reset the form"
+										onclick="$('#myfacility').val(0);$('#myoperation').val(0);">Clear Form</button>
+									</td>
+								</tr>
 
-                                <button  class="btn btn-primary" type="button" title="Create a New Risk Assessment for the selected Location/Operation"
-                                onclick="checkAndSubmit();">New Risk Assessment</button>
-                                </div>
-                              </td>
-                               </tr>
-						<tr>
-						   <td>&nbsp;</td>
-						</tr>
+							<tr>
+								<td></td>
+							</tr>
+
+
 					 </table>
+
+
                           </form>
                           <form method="post" autocomplete="false" action="CreateQORA.asp"  id="NewRA" name="NewRA" enctype="application/x-www-form-urlencoded">
 
@@ -810,7 +819,7 @@
 <div style="clear:both"></div>
 <ul class="nav nav-tabs" >
                  
-	<li class="active"><a data-toggle="tab" href="#faculty_list">By Faculty/Unit</a></li>
+	<!--li class="active"><a data-toggle="tab" href="#faculty_list">By Faculty/Unit</a></li-->
 	<!--li><a data-toggle="tab" href="#fac_oper_list">By Facility/Operation</a></li-->
 <!--removed - not a benefit and a not working well-->
                   
@@ -857,6 +866,8 @@
             </tbody>
         </table>
     </div>
+
+	<!-- below is not displayed -->
     <div id="fac_oper_list" class="tab-pane fade">
     <table id="ratable" class="display" cellspacing="0" width="100%">
         <thead>
