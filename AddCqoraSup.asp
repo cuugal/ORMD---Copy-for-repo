@@ -154,14 +154,14 @@ temp = instr(1,strGenCom,"'",vbTextCompare)
 
 dtDate = Request.form("txtDtActionsCompleted")
 
-'This is our risk matrix. 
+'This is our risk matrix. Critical is same as Extreme
 ' It looks like this:
-' 	1		2		3			4			5
-'5 High	   High	   Extreme	 Extreme	Extreme
-'4 Medium  High    High	 	 Extreme	Extreme
-'3 Low	   Medium	High	 Extreme	Extreme
-'2 Low	   Low		Medium	 High		Extreme
-'1 Low	   Low		Medium	 High		High
+' 	1		2		 3			4			5
+'5 Moderate	High	 High	    Critical	Critical
+'4 Moderate	Moderate High	 	High	    Critical
+'3 Low		Moderate Moderate	High	    High
+'2 Low		Low		 Moderate	Moderate	High
+'1 Low		Low		 Low		Moderate	Moderate
 
 'This code grabs the value form the form prior, then maps it to a
 ' value that our matrix can use.
