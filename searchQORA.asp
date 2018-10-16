@@ -775,6 +775,7 @@
 
     &"union all "_
 
+
  &"SELECT tblfaculty.strFacultyName, 'General' as searchType,  tblFaculty.numFacultyID as key_id, count(numQORAId) as numRA, sum(iif(dtReview > Date() , 1 , 0 )) as numCurr "_
     &"from tblFaculty, tblfacilitysupervisor, tblQORA "_
     &"where tblfaculty.numfacultyID = tblfacilitysupervisor.numfacultyid "_
