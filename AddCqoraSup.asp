@@ -192,34 +192,35 @@ Matrix(1, 1) = "L"
 Matrix(1, 2) = "L" 
 Matrix(1, 3) = "L" 
 Matrix(1, 4) = "M" 
-Matrix(1, 5) = "H"
+Matrix(1, 5) = "M"
  
 Matrix(2, 1) = "L" 
 Matrix(2, 2) = "L" 
 Matrix(2, 3) = "M" 
-Matrix(2, 4) = "H" 
+Matrix(2, 4) = "M"
 Matrix(2, 5) = "H" 
 
-Matrix(3, 1) = "M" 
-Matrix(3, 2) = "M" 
-Matrix(3, 3) = "H" 
-Matrix(3, 4) = "H" 
-Matrix(3, 5) = "E" 
+Matrix(3, 1) = "L"
+Matrix(3, 2) = "M"
+Matrix(3, 3) = "M"
+Matrix(3, 4) = "H"
+Matrix(3, 5) = "H"
 
-Matrix(4, 1) = "H" 
-Matrix(4, 2) = "H" 
-Matrix(4, 3) = "E" 
-Matrix(4, 4) = "E" 
-Matrix(4, 5) = "E" 
+Matrix(4, 1) = "M"
+Matrix(4, 2) = "M"
+Matrix(4, 3) = "H"
+Matrix(4, 4) = "H"
+Matrix(4, 5) = "E"
 
-Matrix(5, 1) = "H" 
-Matrix(5, 2) = "E" 
-Matrix(5, 3) = "E" 
-Matrix(5, 4) = "E" 
-Matrix(5, 5) = "E" 
+Matrix(5, 1) = "M"
+Matrix(5, 2) = "H"
+Matrix(5, 3) = "H"
+Matrix(5, 4) = "E"
+Matrix(5, 5) = "E"
+
 
 strRisk = Matrix(consequencenum,likelyhoodnum)
-'Response.Write(strRisk)
+Response.Write(strRisk)
 
 
 'Here we anticipate what the next primary key is.  We cannot rely on the autoincrement as
