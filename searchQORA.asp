@@ -775,12 +775,12 @@
 
     &"union all "_
 
- &"SELECT tblfacilitysupervisor.strGivenName& ' '& tblfacilitysupervisor.strSurname as name, 'General' as searchType, tblfacilitysupervisor.numSupervisorId as key_id, count(numQORAId) as numRA, sum(iif(dtReview > Date() , 1 , 0 )) as numCurr "_
+ &"SELECT tblfaculty.strFacultyName, 'General' as searchType,  tblFaculty.numFacultyID as key_id, count(numQORAId) as numRA, sum(iif(dtReview > Date() , 1 , 0 )) as numCurr "_
     &"from tblFaculty, tblfacilitysupervisor, tblQORA "_
     &"where tblfaculty.numfacultyID = tblfacilitysupervisor.numfacultyid "_
     &"and tblFacilitySupervisor.strLoginId = tblQORA.strSupervisor "_
     &"and tblqora.numoperationid = 0 and tblqora.numfacilityid = 0 "_
-    &"group by tblfacilitysupervisor.strGivenName& ' '& tblfacilitysupervisor.strSurname, tblfacilitysupervisor.numSupervisorId "_
+    &"group by strFacultyName, tblFaculty.numFacultyID "_
 
     &"order by  2, 1"
 
