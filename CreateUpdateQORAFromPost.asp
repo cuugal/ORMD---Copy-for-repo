@@ -23,35 +23,35 @@ if NoSaveBeforeSWMS <> "nosave" then
 	check_exists_results.Open strSQL, check_exists, 3, 3
 	
 		Dim Matrix(5, 5)
-		Matrix(1, 1) = "L" 
-		Matrix(1, 2) = "L" 
-		Matrix(1, 3) = "L" 
-		Matrix(1, 4) = "M" 
-		Matrix(1, 5) = "H"
-		 
-		Matrix(2, 1) = "L" 
-		Matrix(2, 2) = "L" 
-		Matrix(2, 3) = "M" 
-		Matrix(2, 4) = "H" 
-		Matrix(2, 5) = "H" 
-		
-		Matrix(3, 1) = "M" 
-		Matrix(3, 2) = "M" 
-		Matrix(3, 3) = "H" 
-		Matrix(3, 4) = "H" 
-		Matrix(3, 5) = "E" 
-		
-		Matrix(4, 1) = "H" 
-		Matrix(4, 2) = "H" 
-		Matrix(4, 3) = "E" 
-		Matrix(4, 4) = "E" 
-		Matrix(4, 5) = "E" 
-		
-		Matrix(5, 1) = "H" 
-		Matrix(5, 2) = "E" 
-		Matrix(5, 3) = "E" 
-		Matrix(5, 4) = "E" 
-		Matrix(5, 5) = "E" 
+Matrix(1, 1) = "L" 
+Matrix(1, 2) = "L" 
+Matrix(1, 3) = "L" 
+Matrix(1, 4) = "M" 
+Matrix(1, 5) = "M"
+ 
+Matrix(2, 1) = "L" 
+Matrix(2, 2) = "L" 
+Matrix(2, 3) = "M" 
+Matrix(2, 4) = "M"
+Matrix(2, 5) = "H" 
+
+Matrix(3, 1) = "L"
+Matrix(3, 2) = "M"
+Matrix(3, 3) = "M"
+Matrix(3, 4) = "H"
+Matrix(3, 5) = "H"
+
+Matrix(4, 1) = "M"
+Matrix(4, 2) = "M"
+Matrix(4, 3) = "H"
+Matrix(4, 4) = "H"
+Matrix(4, 5) = "E"
+
+Matrix(5, 1) = "M"
+Matrix(5, 2) = "H"
+Matrix(5, 3) = "H"
+Matrix(5, 4) = "E"
+Matrix(5, 5) = "E"
 	
 	'if we find a record, then we need to update it
 	if not check_exists_results.EOF then
@@ -87,15 +87,15 @@ if NoSaveBeforeSWMS <> "nosave" then
 		'  case "Third" : strRisk = "L"
 		' end select 
 		
-		'This is our risk matrix. 
+		'This is our risk matrix. Critical is same as Extreme
 		' It looks like this:
-		' 	1		2		3			4			5
-		'5 High	   High	    Extreme	 Extreme	Extreme
-		'4 Medium  High     High	 Extreme	Extreme
-		'3 Low	   Medium	High	 Extreme	Extreme
-		'2 Low	   Low		Medium	 High		Extreme
-		'1 Low	   Low		Medium	 High		High
-		
+		' 	1		2		 3			4			5
+		'5 Moderate	High	 High	    Critical	Critical
+		'4 Moderate	Moderate High	 	High	    Critical
+		'3 Low		Moderate Moderate	High	    High
+		'2 Low		Low		 Moderate	Moderate	High
+		'1 Low		Low		 Low		Moderate	Moderate
+				
 		'get the values from the form, then marry this up to the risk value
 		likelyhood = Request.form("radiol")
 		consequence = Request.form("radioc")
@@ -409,14 +409,14 @@ if NoSaveBeforeSWMS <> "nosave" then
 		
 		dtDate = Request.form("txtDtActionsCompleted")
 		
-		'This is our risk matrix. 
+		'This is our risk matrix. Critical is same as Extreme
 		' It looks like this:
-		' 	1		2		3			4			5
-		'5 High	   High	   Extreme	 Extreme	Extreme
-		'4 Medium  High    High	 	 Extreme	Extreme
-		'3 Low	   Medium	High	 Extreme	Extreme
-		'2 Low	   Low		Medium	 High		Extreme
-		'1 Low	   Low		Medium	 High		High
+		' 	1		2		 3			4			5
+		'5 Moderate	High	 High	    Critical	Critical
+		'4 Moderate	Moderate High	 	High	    Critical
+		'3 Low		Moderate Moderate	High	    High
+		'2 Low		Low		 Moderate	Moderate	High
+		'1 Low		Low		 Low		Moderate	Moderate
 		
 		'This code grabs the value form the form prior, then maps it to a
 		' value that our matrix can use.
