@@ -314,21 +314,21 @@ Dim rsFillDetails
 $("#strAccessLevel").change(function(){
 
     if($(this).val() == 'S'){
-        $("#userfaculty").show();
+        //$("#userfaculty").show();
 
     }
     else{
-        $("#userfaculty").hide();
+        //$("#userfaculty").hide();
     }
 });
 
 $(document).ready(function(){
 
     if($("#strAccessLevel").val() == 'S'){
-            $("#userfaculty").show();
+            //$("#userfaculty").show();
         }
         else{
-            $("#userfaculty").hide();
+            //$("#userfaculty").hide();
         }
 });
 </script>

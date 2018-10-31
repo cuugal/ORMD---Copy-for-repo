@@ -176,7 +176,7 @@ if(searchType = "user") then
 	strSQL = strSQL+" from tblQORA, tblRiskLevel, tblFacilitySupervisor"
 
 	strSQL = strSQL+" Where tblFacilitySupervisor.strLoginId = tblQORA.strSupervisor "
-	strSQL = strSQL+" and tblFacilitySupervisor.numSupervisorID = "&numFacultyId
+	strSQL = strSQL+" and tblFacilitySupervisor.numFacultyID = "&numFacultyId
 
     strSQL = strSQL+" and tblqora.numoperationid = 0 and tblqora.numfacilityid = 0 "
 	strSQL = strSQL+" and tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel"

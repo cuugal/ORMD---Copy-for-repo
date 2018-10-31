@@ -132,11 +132,11 @@ function ConfirmChoice()
 $("#strAccessLevel").change(function(){
 
     if($(this).val() == 'S'){
-        $("#userfaculty").show();
+        //$("#userfaculty").show();
 
     }
     else{
-        $("#userfaculty").hide();
+        //$("#userfaculty").hide();
     }
 });
 </script>
