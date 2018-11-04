@@ -1,4 +1,5 @@
 <%@Language = VBscript%>
+<% Response.buffer = False%>
 <!--#INCLUDE FILE="DbConfig.asp"-->
 <%
 If Trim(Session("strLoginId")) = "" Then

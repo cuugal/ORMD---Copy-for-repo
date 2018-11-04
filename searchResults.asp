@@ -122,7 +122,21 @@ if(searchType = "supervisor") then
 	strSQL = strSQL+" and tblOperations.numFacilitySupervisorID = tblFacilitySupervisor.numSupervisorID"
 	strSQL = strSQL+" and tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel"
 	strSQL = strSQL + " Order by tblQORA.strSupervisor, tblRiskLevel.numGrade, tblQORA.strTaskDescription "
-		
+
+	'also, 'user' level audits
+	strSQL = strSQL+" union "
+
+    	strSQL = "Select distinct(tblQORA.numQORAId) as numQORAId, tblQORA.*, tblRiskLevel.* "
+        	strSQL = strSQL+" from tblQORA, tblRiskLevel, tblFacilitySupervisor"
+
+        	strSQL = strSQL+" Where tblFacilitySupervisor.strLoginId = tblQORA.strSupervisor "
+        	strSQL = strSQL+" and tblFacilitySupervisor.numFacultyID = "&numFacultyId
+
+            strSQL = strSQL+" and tblqora.numoperationid = 0 and tblqora.numfacilityid = 0 "
+        	strSQL = strSQL+" and tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel"
+
+        	strSQL = strSQL+ " Order by tblQORA.strSupervisor, tblRiskLevel.numGrade, tblQORA.strTaskDescription "
+
 end if
 
 if(searchType = "location") then
@@ -473,7 +487,7 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
   &" and tblFaculty.numFacultyID = tblFacilitySupervisor.numFacultyID "_
 
   &" and tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel "_
-  &" order by numFacilityID, numOperationID"
+  &" order by strSupervisor"
 
   set rsFaculty = Server.CreateObject("ADODB.Recordset")
   rsFaculty.Open strSQL, conn, 3, 3 
@@ -486,6 +500,7 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
   	tFac = rsFaculty("numFacultyId")
   	tFaci = rsFaculty("numFacilityId")
   	tOper = rsFaculty("numOperationID")
+  	tUser = rsFaculty("strSupervisor")
   else 
   		%>Sorry, no records are present under this selection. Please try again....<%
   end if  
@@ -495,7 +510,7 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
   <%  
   while not rsFaculty.EOF		
  	
-  	if tFaci <> rsFaculty("numFacilityId") or tOper <> rsFaculty("numOperationID") or first_time then%> 
+  	if (searchType = "user" and tUser <> rsFaculty("strSupervisor")) or tFaci <> rsFaculty("numFacilityId") or tOper <> rsFaculty("numOperationID") or first_time then%>
   <%'************************Change format of header when switching faculties *****************%>
     
    
@@ -606,6 +621,8 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
   <%
    		tFaci = rsFaculty("numFacilityId")
    		tOper = rsFaculty("numOperationID")
+   		tFac = rsFaculty("numFacultyId")
+   		tUser = rsFaculty("strSupervisor")
    		first_time = false
    		rowID = rowID+1
    	 end if%>
@@ -688,7 +705,7 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
    
   </tr>
   <% 
-    if tFaci <> rsFaculty("numFacilityId") or tOper <> rsFaculty("numOperationID") or first_time then
+    if (searchType = "user" and tUser <> rsFaculty("strSupervisor")) or tFaci <> rsFaculty("numFacilityId") or tOper <> rsFaculty("numOperationID") or first_time then
    		%> </table>  <%  
     end if     
  rsFaculty.Movenext
