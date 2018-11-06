@@ -259,6 +259,7 @@
 						   <input type="hidden" name="hdnFacultyId" id="superFacultyId" value="0" />
 						   <input type="hidden" name="cboFaculty" value="<%=cboFacultySuper%>" />
 						   <input type="hidden" name="searchType" value="supervisor" />
+
 						   <tr>
 							  <th>User Name</th>
 							  <td>

@@ -99,44 +99,17 @@ i = 0
 ' This query is used to collect the data to be displayed on the screen
 
 if(searchType = "supervisor") then
-	strSQL = "Select distinct(tblQORA.numQORAId) as numQORAId, tblFacilitySupervisor.numFacultyId, tblQORA.strSupervisor, tblQORA.strtaskDescription, tblRiskLevel.numGrade "
-	strSQL = strSQL+" from tblQORA, tblRiskLevel, tblFacility, tblFacilitySupervisor"
-	strSQL = strSQL+" Where tblFacilitySupervisor.numfacultyId = "& numFacultyId
-	if Len(strSupervisor) > 0 then
-		strSQL = strSQL+" and tblFacilitySupervisor.strLoginID = '"& strSupervisor &"'"
-	end if
-	strSQL = strSQL+" and tblFacility.numFacilityID = tblQORA.numFacilityID"
-	strSQL = strSQL+" and tblFacility.numFacilitySupervisorID = tblFacilitySupervisor.numSupervisorID"
-	strSQL = strSQL+" and tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel"
-	'strSQL = strSQL + " Order by tblQORA.strSupervisor, tblRiskLevel.numGrade, tblQORA.strTaskDescription "
-	
-	strSQL = strSQL+" union "
-	
-	strSQL = strSQL+"Select distinct(tblQORA.numQORAId) as numQORAId, tblFacilitySupervisor.numFacultyId, tblQORA.strSupervisor, tblQORA.strtaskDescription, tblRiskLevel.numGrade "
-	strSQL = strSQL+" from tblQORA, tblRiskLevel, tblOperations , tblFacilitySupervisor "
-	strSQL = strSQL+" Where tblFacilitySupervisor.numfacultyId = "& numFacultyId
-	if Len(strSupervisor) > 0 then
-		strSQL = strSQL+" and tblFacilitySupervisor.strLoginID = '"& strSupervisor &"'"
-	end if
-	strSQL = strSQL+" and tblOperations.numOperationID = tblQORA.numOperationID"
-	strSQL = strSQL+" and tblOperations.numFacilitySupervisorID = tblFacilitySupervisor.numSupervisorID"
-	strSQL = strSQL+" and tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel"
-	strSQL = strSQL + " Order by tblQORA.strSupervisor, tblRiskLevel.numGrade, tblQORA.strTaskDescription "
-
-	'also, 'user' level audits
-	strSQL = strSQL+" union "
-
-    	strSQL = "Select distinct(tblQORA.numQORAId) as numQORAId, tblQORA.*, tblRiskLevel.* "
+        strSQL = "Select distinct(tblQORA.numQORAId) as numQORAId, tblQORA.*, tblRiskLevel.* "
         	strSQL = strSQL+" from tblQORA, tblRiskLevel, tblFacilitySupervisor"
 
         	strSQL = strSQL+" Where tblFacilitySupervisor.strLoginId = tblQORA.strSupervisor "
-        	strSQL = strSQL+" and tblFacilitySupervisor.strLoginID = '"& strSupervisor &"'"
+        	strSQL = strSQL +" and tblFacilitySupervisor.numfacultyId = "&numFacultyId
+        	if Len(strSupervisor) > 0 then
+            		strSQL = strSQL+" and tblFacilitySupervisor.strLoginID = '"& strSupervisor &"'"
+           	end if
 
-            strSQL = strSQL+" and tblqora.numoperationid = 0 and tblqora.numfacilityid = 0 "
         	strSQL = strSQL+" and tblQORA.strAssessRisk = tblRiskLevel.strRiskLevel"
-
         	strSQL = strSQL+ " Order by tblQORA.strSupervisor, tblRiskLevel.numGrade, tblQORA.strTaskDescription "
-
 end if
 
 if(searchType = "location") then
@@ -475,10 +448,10 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
   &" union all "_
 
   &"SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacultyId, tblQORA.numFacilityId, tblQORA.strSupervisor, "_
-  &" strFacultyName, null as strRoomName, null as strRoomNumber, tblQORA.strTaskDescription, "_
+  &" strFacultyName, null as strRoomName, '' as strRoomNumber, tblQORA.strTaskDescription,  "_
   &" strHazardsDesc ,strControlRiskDesc,strAssessRisk,boolFurtherActionsSWMS,"_
   &" boolFurtherActionsChemicalRA, dtReview, boolSWMSRequired,"_
-  &" boolFurtherActionsGeneralRA,dtDateCreated,strText, null as strCampusName, null as strBuildingName, null as numOperationID, null as strOperationName, strDateActionsCompleted, "_
+  &" boolFurtherActionsGeneralRA,dtDateCreated,strText, null as strCampusName, null as strBuildingName, tblQORA.numOperationID, '' as strOperationName, strDateActionsCompleted, "_
   &" strGivenName, strSurname "_
 
   &" FROM tblQoraTemp, tblFaculty ,tblQORA, tblRiskLevel, tblFacilitySupervisor "_
@@ -513,7 +486,7 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
   <%  
   while not rsFaculty.EOF		
  	
-  	if (searchType = "user" and tUser <> rsFaculty("strSupervisor")) or tFaci <> rsFaculty("numFacilityId") or tOper <> rsFaculty("numOperationID") or first_time then%>
+  	if ((searchType = "user" or searchType = "supervisor") and tUser <> rsFaculty("strSupervisor")) or tFaci <> rsFaculty("numFacilityId") or tOper <> rsFaculty("numOperationID") or first_time then%>
   <%'************************Change format of header when switching faculties *****************%>
     
    
@@ -708,7 +681,7 @@ strSQL = "SELECT distinct(tblQORATemp.numQORAId) as numQORAId, tblQORA.numFacult
    
   </tr>
   <% 
-    if (searchType = "user" and tUser <> rsFaculty("strSupervisor")) or tFaci <> rsFaculty("numFacilityId") or tOper <> rsFaculty("numOperationID") or first_time then
+    if ((searchType = "user" or searchType = "supervisor") and tUser <> rsFaculty("strSupervisor")) or tFaci <> rsFaculty("numFacilityId") or tOper <> rsFaculty("numOperationID") or first_time then
    		%> </table>  <%  
     end if     
  rsFaculty.Movenext
