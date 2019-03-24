@@ -1,6 +1,6 @@
 <%@Language = VBscript%>
 
-<!--#INCLUDE FILE="DbConfig.asp"-->
+<!--# INCLUDE FILE="DbConfig.asp"-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -28,25 +28,28 @@
 <body-->
 
 
+<!-- In case user is directed her by link to SWMS, but does not have an active session -->
 
 
 <%
 'Junk everything in session (also kill frames)
-	Response.Expires = 0
-	session.Abandon 
+Response.Expires = 0
 
 '3 being the number of seconds before this script redirects back to the main menu
 'Response.AddHeader "Refresh", "3;URL=index.htm"
 'Response.Redirect "index.htm"
 
+session.Abandon 
 %>
+
+<!--meta http-equiv="refresh" content="3; url=home.asp"-->
 
 <table>
 	<tr align='center' width='95%'><td>
 
 		<h3> You have been logged out</h3>
 		<br/>
-		<h5> <a href="Home.asp" target="_top">Back to Home page</a></h5>
+		<h5> <a href="Home.asp" target="_top">Back to Home page</a> and try again.</h5>
 
 	</td></tr>
 </table>

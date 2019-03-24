@@ -868,7 +868,7 @@
             </tbody>
         </table>
     </div>
-
+Archived risk assessments are not counted in these totals.
 	<!-- below is not displayed -->
     <div id="fac_oper_list" class="tab-pane fade">
     <table id="ratable" class="display" cellspacing="0" width="100%">

@@ -4,3 +4,5 @@ The changes you requested to the table were not successful because they would cr
 
 
 If you get this error anywhere within the application, please delete ALL entries from tblQORATemp.  What is happening is the cached entries from search are in the temp table, and for some reason the application has crashed before it can delete them.
+
+Appears to be due to a user dumping a lot of text into the task description field. Find this and move into SWMS. Replace with brief description.
