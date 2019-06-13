@@ -220,7 +220,8 @@ strJobSteps = ""
       <table width = 80%>
      	<tr>
       		<td align="left"><h2 class="pagetitle">Enter the details of the new Risk Assessment</h2></td>
-      		<td align="right"> <h2> RA Number <%=strNewQORAId%></h1></td>
+			<!-- commented out below, because the number may change if concurrent RA saved by another user first -->
+      		<!--td align="right"> <h2> RA Number <%=strNewQORAId%></h1></td-->
       	</tr>
       </table>
       
@@ -310,7 +311,8 @@ strJobSteps = ""
 <ul class="nav nav-tabs" >
    <li class="active"><a data-toggle="tab" href="#environment">Working Environment</a></li>
    <li><a data-toggle="tab" href="#ergonomic">Ergonomic /Manual Handling</a></li>
-   <li><a data-toggle="tab" href="#plant">Plant</a></li>
+   <li><a data-toggle="tab" href="#psychological">Psychological</a></li>
+   <li><a data-toggle="tab" href="#plant">Plant and Equipment</a></li>
    <li><a data-toggle="tab" href="#electrical">Electrical</a></li>
    <li><a data-toggle="tab" href="#chemical">Chemical</a></li>
    <li><a data-toggle="tab" href="#biological">Biological</a></li>
@@ -340,7 +342,6 @@ strJobSteps = ""
                <li><a href="#point1" onClick="Populate('Working Environment - Working in Remote Locations\r\n')" title="Click to add 'Working in Remote Locations' as a Hazard in this Risk Assessment.">Working in Remote Locations</a></li>
                <li><a href="#point1" onClick="Populate('Working Environment - Working Outdoors\r\n')" title="Click to add 'Working Outdoors' as a Hazard in this Risk Assessment.">Working Outdoors</a></li>
                <li><a href="#point1" onClick="Populate('Working Environment - Clinical/Industrial Placements\r\n')" title="Click to add 'Clinical/Industrial Placements' as a Hazard in this Risk Assessment.">Clinical/Industrial Placements</a></li>
-               <li><a href="#point1" onClick="Populate('Working Environment - Violent or Volatile Clients/Interviewees\r\n')" title="Click to add 'Violent or Volatile Clients/Interviewees' as a Hazard in this Risk Assessment.">Violent or Volatile Clients/Interviewees</a></li>
                <li><a href="#point1" onClick="Populate('Working Environment - Poor Ventilation/Air Quality\r\n')" title="Click to add 'Poor Ventilation/Air Quality' as a Hazard in this Risk Assessment.">Poor Ventilation/Air Quality</a></li>
             </ul>
          </div>
@@ -349,7 +350,7 @@ strJobSteps = ""
                <li><a href="#point1" onClick="Populate('Working Environment - Work Area Not Suited to Task\r\n')" title="Click to add 'Work Area Not Suited to Task' as a Hazard in this Risk Assessment.">Work Area Not Suited to Task</a></li>
                <li><a href="#point1" onClick="Populate('Working Environment - Extremes in Temperature\r\n')" title="Click to add 'Extremes in Temperature' as a Hazard in this Risk Assessment.">Extremes in Temperature</a></li>
                <li><a href="#point1" onClick="Populate('Working Environment - Confined Space\r\n')" title="Click to add 'Confined Space' as a Hazard in this Risk Assessment.">Confined Space</a></li>
-               <li><a href="#point1" onClick="Populate('Working Environment - Isolation\r\n')" title="Click to add 'Isolation' as a Hazard in this Risk Assessment.">Isolation</a></li>
+               <li><a href="#point1" onClick="Populate('Working Environment - Remote Work\r\n')" title="Click to add 'Remote Work' as a Hazard in this Risk Assessment.">Remote Work</a></li>
             </ul>
          </div>
          <div class="col-xs-4">
@@ -383,6 +384,32 @@ strJobSteps = ""
          </div>
       </div>
    </div>
+   <div id="psychological" class="tab-pane fade">
+      <div class="row">
+         <div class="col-xs-4">
+            <ul class="section-list">
+               <li><a href="#point1" onClick="Populate('Psychological - Job satisfaction\r\n')" title="Click to add 'Job Satisfaction' as a Hazard in this Risk Assessment.">Job satisfaction</a></li>
+               <li><a href="#point1" onClick="Populate('Psychological - Workload (overload or underload) / Workpace\r\n')" title="Click to add 'Workload (overload or underload) / Workpace' as a Hazard in this Risk Assessment.">Workload (overload or underload) / Workpace</a></li>
+			   <li><a href="#point1" onClick="Populate('Psychological - Lack of Staffing\r\n')" title="Click to add 'Lack of Staffing' as a Hazard in this Risk Assessment.">Lack of Staffing</a></li>
+			   <li><a href="#point1" onClick="Populate('Psychological - Work Schedule\r\n')" title="Click to add 'Work Schedule' as a Hazard in this Risk Assessment.">Work Schedule</a></li>
+            </ul>
+         </div>
+		 <div class="col-xs-4">
+            <ul>
+               <li><a href="#point1" onClick="Populate('Psychological - Interpersonal Relationships\r\n')" title="Click to add 'Interpersonal Relationships' as a Hazard in this Risk Assessment.">Interpersonal Relationships</a></li>
+               <li><a href="#point1" onClick="Populate('Psychological - Social or Physical Isolation\r\n')" title="Click to add 'Social or Physical Isolation' as a Hazard in this Risk Assessment.">Social or Physical Isolation</a></li>
+               <li><a href="#point1" onClick="Populate('Psychological - Inadequate Consultation\r\n')" title="Click to add 'Inadequate Consultation' as a Hazard in this Risk Assessment.">Inadequate Consultation</a></li>
+               <li><a href="#point1" onClick="Populate('Psychological - Clarity around Roles and Responsibilities\r\n')" title="Click to add 'Clarity around Roles and Responsibilities' as a Hazard in this Risk Assessment.">Clarity around Roles and Responsibilities</a></li>
+            </ul>
+         </div>
+		 <div class="col-xs-4">
+            <ul>
+               <li><a href="#point1" onClick="Populate('Psychological - Workers not treated with respect\r\n')" title="Click to add 'Workers not treated with respect' as a Hazard in this Risk Assessment.">Workers not treated with respect</a></li>
+               <li><a href="#point1" onClick="Populate('Psychological - Gender Bias\r\n')" title="Click to add 'Gender Bias' as a Hazard in this Risk Assessment.">Gender Bias</a></li>
+            </ul>
+         </div>
+      </div>
+   </div>
    <div id="plant" class="tab-pane fade">
       <div class="row">
          <div class="col-xs-4">
@@ -400,6 +427,7 @@ strJobSteps = ""
                <li><a href="#point1" onClick="Populate('Plant - Sharps/Needles\r\n')" title="Click to add 'Sharps/Needles' as a Hazard in this Risk Assessment.">Sharps/Needles</a></li>
                <li><a href="#point1" onClick="Populate('Plant - Moving Parts (Crushing, Friction, Stab, Cut, Shear)\r\n')" title="Click to add 'Moving Parts (Crushing, Friction, Stab, Cut, Shear)' as a Hazard in this Risk Assessment.">Moving Parts (Crushing, Friction, Stab, Cut, Shear)</a></li>
                <li><a href="#point1" onClick="Populate('Plant - Pressure Vessels and Boilers\r\n')" title="Click to add 'Pressure Vessels and Boilers' as a Hazard in this Risk Assessment.">Pressure Vessels and Boilers</a></li>
+			   <li><a href="#point1" onClick="Populate('Plant - Poorly Maintained / Unreliable Equipment\r\n')" title="Click to add 'Poorly Maintained / Unreliable Equipment' as a Hazard in this Risk Assessment.">Poorly Maintained / Unreliable Equipment</a></li>
             </ul>
          </div>
       </div>
@@ -564,7 +592,7 @@ strJobSteps = ""
 <!-- start new style tabs -->
 <ul class="nav nav-tabs" >
    <li class="active"><a data-toggle="tab" href="#eliminate">Eliminate / Isolate / Substitute <br/>/ Engineering controls</a></li>
-   <li><a data-toggle="tab" href="#assess">Admin. Specific: Assessments <br/>/ Licences / Work Methods</a></li>
+   <li><a data-toggle="tab" href="#assess">Administrative Controls <br/>/ Licences / Work Methods</a></li>
    <li><a data-toggle="tab" href="#ppe">Personal Protective Equipment (PPE)<br/>&nbsp;</a></li>
    <li><a data-toggle="tab" href="#emergency">Emergency Response Systems<br/>&nbsp;</a></li>
 </ul>
@@ -604,26 +632,31 @@ strJobSteps = ""
          <div class="col-xs-4">
             <ul>
                <li><a href="#point2" onClick="PopulateNext('- Training/Information/Instruction\r\n')" title="Click to add the administrative control 'Training/Information/Instruction' to this Risk Assessment.">Training / Information / Instruction</a></li>
-               <!--li><a href="#point2" onClick="PopulateNext('- SWMS (Safe Work Method Statement)\r\n')" title="Click to add the administrative control 'SWMS (Safe Work Method Statement)' to this Risk Assessment.">SWMS (Safe Work Method Statement)</a></li-->
-               <li><a href="#point2" onClick="PopulateNext('- Document Chemical Risk Assessment in OCID\r\n')" title="Click to add the administrative control 'Chemical Risk Assessment' to this Risk Assessment.">Document Chemical Risk Assessment in OCID</a></li>
                <li><a href="#point2" onClick="PopulateNext('- Licensing/Certification of Operators\r\n')" title="Click to add the administrative control 'Licensing/Certification of Operators' to this Risk Assessment.">Licensing/Certification of Operators</a></li>
                <li><a href="#point2" onClick="PopulateNext('- Test and Tag Electrical Equipment\r\n')" title="Click to add the administrative control 'Test and Tag Electrical Equipment' to this Risk Assessment.">Test and Tag Electrical Equipment</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Monitor Exposure Level (Sound/Substance/Radiation)\r\n')" title="Click to add the administrative control 'Monitor Exposure Level (Sound/Substance/Radiation)' to this Risk Assessment.">Monitor Exposure Level</a></li>
+			   <li><a href="#point2" onClick="PopulateNext('- Licences (Lifts, Boilers, Pressure Vessles, Radiation)\r\n')" title="Click to add the administrative control 'Licences (Lifts, Boilers, Pressure Vessles, Radiation)' to this Risk Assessment.">Licences (Lifts, Boilers, Pressure Vessels, Radiation)</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Ladder/Sling Register\r\n'); " title="Click to add the administrative control 'Ladder/Sling Register' to this Risk Assessment.">Ladder / Sling Register</a></li>
             </ul>
          </div>
          <div class="col-xs-4">
             <ul>
-               <li><a href="#point2" onClick="PopulateNext('- Monitor Exposure Level (Sound/Substance/Radiation)\r\n')" title="Click to add the administrative control 'Monitor Exposure Level (Sound/Substance/Radiation)' to this Risk Assessment.">Monitor Exposure Level</a></li>
-               <li><a href="#point2" onClick="PopulateNext('- Licences (Lifts, Boilers, Pressure Vessles, Radiation)\r\n')" title="Click to add the administrative control 'Licences (Lifts, Boilers, Pressure Vessles, Radiation)' to this Risk Assessment.">Licences (Lifts, Boilers, Pressure Vessels, Radiation)</a></li>
+ 			   <li><a href="#point2" onClick="PopulateNext('- Task Rotation\r\n')" title="Click to add the administrative control 'Task Rotation' to this Risk Assessment.">Task Rotation</a></li>              
                <li><a href="#point2" onClick="PopulateNext('- Restricted Access\r\n')" title="Click to add the administrative control 'Restricted Access' to this Risk Assessment.">Restricted Access</a></li>               
 			   <li><a href="#point2" onClick="PopulateNext('- Regular Breaks\r\n')" title="Click to add the administrative control 'Regular Breaks' to this Risk Assessment.">Regular Breaks</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Work in Pairs\r\n')" title="Click to add the administrative control 'Work in Pairs' to this Risk Assessment.">Work in Pairs</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Flexible Work Arrangements\r\n'); " title="Click to add the administrative control 'Flexible Work Arrangements' to this Risk Assessment.">Flexible Work Arrangements</a></li>
+			   <li><a href="#point2" onClick="PopulateNext('- Supportive supervision\r\n'); " title="Click to add the administrative control 'Supportive supervision' to this Risk Assessment.">Supportive supervision</a></li>
              </ul>
          </div>
          <div class="col-xs-4">
             <ul>
-			   <li><a href="#point2" onClick="PopulateNext('- Task Rotation\r\n')" title="Click to add the administrative control 'Task Rotation' to this Risk Assessment.">Task Rotation</a></li>
-               <li><a href="#point2" onClick="PopulateNext('- Supervision\r\n'); " title="Click to add the administrative control 'Supervision' to this Risk Assessment.">Supervision</a></li>
-               <li><a href="#point2" onClick="PopulateNext('- Ladder/Sling Register\r\n'); " title="Click to add the administrative control 'Ladder/Sling Register' to this Risk Assessment.">Ladder / Sling Register</a></li>
-               <li><a href="#point2" onClick="PopulateNext('- Work in Pairs\r\n')" title="Click to add the administrative control 'Work in Pairs' to this Risk Assessment.">Work in Pairs</a></li>
+               <li><a href="#point2" onClick="PopulateNext('- Workload adjustment\r\n'); " title="Click to add the administrative control 'Workload adjustment' to this Risk Assessment.">Workload adjustment</a></li>
+			   <li><a href="#point2" onClick="PopulateNext('- Set and Manage Expectations\r\n'); " title="Click to add the administrative control 'Set and Manage Expectations' to this Risk Assessment.">Set and Manage Expectations</a></li>
+			   <li><a href="#point2" onClick="PopulateNext('- Provision of Clear / Timely Feedback\r\n'); " title="Click to add the administrative control 'Provision of Clear / Timely Feedback' to this Risk Assessment.">Provision of Clear / Timely Feedback</a></li>
+			   <li><a href="#point2" onClick="PopulateNext('- Realistic Deadlines with Adequate Warning\r\n'); " title="Click to add the administrative control 'Realistic Deadlines with Adequate Warning' to this Risk Assessment.">Realistic Deadlines with Adequate Warning</a></li>
+			   <li><a href="#point2" onClick="PopulateNext('- Clear Consultation and Communication\r\n'); " title="Click to add the administrative control 'Clear Consultation and Communication' to this Risk Assessment.">Clear Consultation and Communication</a></li>
+			   <li><a href="#point2" onClick="PopulateNext('- Job Redesign\r\n'); " title="Click to add the administrative control 'Job Redesign' to this Risk Assessment.">Job Redesign</a></li>
             </ul>
          </div>
       </div>
