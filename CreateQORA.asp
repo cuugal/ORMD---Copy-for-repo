@@ -288,7 +288,7 @@ strJobSteps = ""
         <tr>
 		  <td width = 30%><b>Briefly describe this hazardous work activity: </b> </br>E.g. Operating ... , Handling ... , Using ...</br>Include names of hazardous equipment, substances or materials used, </br> and any quantities and concentrations of substance(s) or reaction products. Enter procedural details of the task into the SWMS (Safe Work Method Statement).</td>
           <td><!--<input type="text" name="txtTaskDesc" size="100%" />-->
-          <textarea rows="4" name="txtTaskDesc" cols="100" ></textarea></td>
+          <textarea rows="4" name="txtTaskDesc" cols="100" MaxLength="1800" ></textarea></td>
         </tr>
       </table>
       <!-- <hr /> -->

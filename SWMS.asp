@@ -506,14 +506,16 @@ if isNull(strJobSteps) Then
 
    end if %>
  <strong> Work Activity steps </strong> <br/>&mdash; These "Work Activity Steps" can be edited directly. Refer to control measures listed above. 
- <br/><strong><%=strIntro%></strong>
+ <br/><strong><p style="color:red"><%=strIntro%></p></strong>
 
   <table class="bluebox" style="margin 0 auto; width:80%; padding-left:40px">
   
       	<tr>  
           <td>
             <textarea rows = "40" style="width:100%;" id="T4" name="T4" ><%=strJobSteps%>
-</textarea> 
+</textarea>
+
+            <!--textarea rows = "40" style="width:100%;" id="T4" name="T4" placeholder="<%=strJobSteps%>"></textarea--> 
           
 </td>
  </tr> 
